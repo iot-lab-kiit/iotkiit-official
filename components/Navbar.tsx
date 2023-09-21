@@ -1,13 +1,12 @@
+"use client";
 import { Transition } from "@headlessui/react";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
-  const router = useRouter();
-
-  const path = router.pathname;
+  const path = usePathname();
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -19,7 +18,6 @@ const Navbar = () => {
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
-
               <svg
                 className="block h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
@@ -75,29 +73,33 @@ const Navbar = () => {
                   title="homepage-link"
                   rel="noopener noreferrer"
                   href="/"
-                  className={`${path == "/" ? "bg-gray-900" : ""
-                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  className={`${
+                    path == "/" ? "bg-gray-900" : ""
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                 >
                   Home
                 </a>
                 <a
                   href="/team"
-                  className={`${path == "/team" ? "bg-gray-900" : ""
-                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  className={`${
+                    path == "/team" ? "bg-gray-900" : ""
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                 >
                   Team
                 </a>
                 <a
                   href="/cp-probs"
-                  className={`${path == "/work" ? "bg-gray-900" : ""
-                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  className={`${
+                    path == "/cp-probs" ? "bg-gray-900" : ""
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                 >
                   CP Questions
                 </a>
                 <a
                   href="/work"
-                  className={`${path == "/work" ? "bg-gray-900" : ""
-                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  className={`${
+                    path == "/work" ? "bg-gray-900" : ""
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                 >
                   Work
                 </a>
@@ -117,8 +119,9 @@ const Navbar = () => {
                 </a> */}
                 <a
                   href="/contact"
-                  className={`${path == "/contact" ? "bg-gray-900" : ""
-                    } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  className={`${
+                    path == "/contact" ? "bg-gray-900" : ""
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                 >
                   Contact
                 </a>
@@ -141,22 +144,25 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <a
               href="/"
-              className={`${path == "/" ? "bg-gray-900" : ""
-                } text-white hover:bg-gray-700  block px-3 py-2 rounded-md text-base font-medium`}
+              className={`${
+                path == "/" ? "bg-gray-900" : ""
+              } text-white hover:bg-gray-700  block px-3 py-2 rounded-md text-base font-medium`}
             >
               Home
             </a>
             <a
               href="/team"
-              className={`${path == "/team" ? "bg-gray-900" : ""
-                } text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium`}
+              className={`${
+                path == "/team" ? "bg-gray-900" : ""
+              } text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium`}
             >
               Team
             </a>
             <a
               href="/work"
-              className={`${path == "/work" ? "bg-gray-900" : ""
-                } text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium`}
+              className={`${
+                path == "/work" ? "bg-gray-900" : ""
+              } text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium`}
             >
               Work
             </a>
@@ -169,8 +175,9 @@ const Navbar = () => {
             {/*</a>*/}
             <a
               href="/contact"
-              className={`${path == "/contact" ? "bg-gray-900" : ""
-                } text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium`}
+              className={`${
+                path == "/contact" ? "bg-gray-900" : ""
+              } text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium`}
             >
               Contact
             </a>
