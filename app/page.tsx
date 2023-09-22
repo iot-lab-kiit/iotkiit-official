@@ -1,6 +1,4 @@
-
 import Head from "next/head";
-
 import Hero from "@/components/homePage/Hero";
 import Process from "@/components/homePage/Process";
 import AboutUs from "@/components/homePage/AboutUs";
@@ -11,6 +9,7 @@ import Showcase from "@/components/homePage/Showcase";
 export default function Home() {
   return (
     <div>
+
        <Head>
         <title>IoT Lab KiiT</title>
 
@@ -46,6 +45,7 @@ and projects with more end-user interactions."
         ></meta>
         <meta property="twitter:image" content="/images/logo_small.webp"></meta>
       </Head>
+
       <Hero/>
       <Process />
       <AboutUs />
