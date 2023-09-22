@@ -19,7 +19,7 @@ const Contact = async () => {
 
 async function getProp() {
   const footerRes = await fetch(`https://api.iotkiit.in/items/footer`, {
-    cache: "force-cache",
+    cache: "default",
   });
   const footerData0 = await footerRes.json();
   const footerData = footerData0.data;

@@ -1,18 +1,33 @@
-const Footer = ({ footerData }) => {
+import Link from "next/link";
+
+interface FooterData {
+  id: Number;
+  facebookLink?: string;
+  twitterLink?: string;
+  instagramLink?: string;
+  linkedinLink?: string;
+  githubLink?: string;
+  telegramLink?: string;
+  mediumLink?: string;
+  mailId?: string;
+}
+
+const Footer = async () => {
+  const data: FooterData = await getProp();
   return (
     <footer className="text-black body-font">
       <div className="bg-gray-100 ">
         <div className="container pb-4 sm:pt-4 pt-4 mx-auto flex items-center sm:flex-row flex-col ">
           <p className="text-sm text-black sm:ml-6 sm:mt-0 mt-4">
-            © 2023 IOTLAB —
-            <a
+            © {new Date().getFullYear()} IOTLAB —
+            <Link
               href="/"
               title="footer-link"
               rel="noopener noreferrer"
               className="text-black ml-1"
             >
               @iotlabkiit
-            </a>
+            </Link>
           </p>
           <p className="text-base my-1 items-center mx-auto text-black ">
             Coded with ❤ and ☕ by IoT Web Team
@@ -22,8 +37,7 @@ const Footer = ({ footerData }) => {
               target="_blank"
               title="facebook-link"
               rel="noopener noreferrer"
-              // href={footerData.facebookLink}
-              href="https://www.facebook.com/iot.lab.kiit"
+              href={data.facebookLink}
               className="text-black"
             >
               <svg
@@ -41,8 +55,7 @@ const Footer = ({ footerData }) => {
               target="_blank"
               title="twitter-link"
               rel="noopener noreferrer"
-              // href={footerData.twitterLink}
-              href="https://twitter.com/iotlabkiit"
+              href={data.twitterLink}
               className="ml-3 text-black"
             >
               <svg
@@ -60,8 +73,7 @@ const Footer = ({ footerData }) => {
               target="_blank"
               title="instagram-link"
               rel="noopener noreferrer"
-              // href={footerData.instagramLink}
-              href="https://www.instagram.com/iot.lab.kiit/"
+              href={data.instagramLink}
               className="ml-3 text-black"
             >
               <svg
@@ -81,8 +93,7 @@ const Footer = ({ footerData }) => {
               target="_blank"
               title="linkedin-link"
               rel="noopener noreferrer"
-              // href={footerData.linkedinLink}
-              href="https://www.linkedin.com/company/iotlabkiit/"
+              href={data.linkedinLink}
               className="ml-3 text-black"
             >
               <svg
@@ -105,8 +116,7 @@ const Footer = ({ footerData }) => {
               target="_blank"
               title="github-link"
               rel="noopener noreferrer"
-              // href={footerData.githubLink}
-              href="https://www.github.com/iot-lab-kiit"
+              href={data.githubLink}
               className="ml-3 text-black"
             >
               <svg
@@ -128,8 +138,7 @@ const Footer = ({ footerData }) => {
               target="_blank"
               title="telegram-link"
               rel="noopener noreferrer"
-              // href={footerData.telegramLink}
-              href="https://t.me/iotlabkiit"
+              href={data.telegramLink}
               className="ml-3 text-black"
             >
               <svg
@@ -154,8 +163,7 @@ const Footer = ({ footerData }) => {
               target="_blank"
               title="medium-link"
               rel="noopener noreferrer"
-              // href={footerData.mediumLink}
-              href="https://medium.com/iot-lab-kiit"
+              href={data.mediumLink}
               className="ml-3 text-black"
             >
               <svg
@@ -177,8 +185,7 @@ const Footer = ({ footerData }) => {
               target="_blank"
               title="email-link"
               rel="noopener noreferrer"
-              // href={`mailto:${footerData.mailID}`}
-              href="mailto:iot.lab@kiit.ac.in"
+              href={`mailto:${data.mailId}`}
               className="ml-3 text-black"
             >
               <svg
@@ -202,5 +209,14 @@ const Footer = ({ footerData }) => {
     </footer>
   );
 };
+
+async function getProp() {
+  const footerRes = await fetch(`https://api.iotkiit.in/items/footer`, {
+    cache: "default",
+  });
+  const footerData0 = await footerRes.json();
+  const footerData = footerData0.data;
+  return footerData;
+}
 
 export default Footer;

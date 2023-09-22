@@ -1,3 +1,7 @@
+interface ContactButtonsProps {
+  links: FooterData;
+}
+
 const ContactButtons = ({ links }: ContactButtonsProps) => {
   return (
     <section className="text-gray-600 body-font">
