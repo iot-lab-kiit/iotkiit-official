@@ -1,3 +1,16 @@
+import Image from "next/image";
+
+interface TeamMemberCard {
+  name: string;
+  position: string;
+  quote?: string;
+  imageUrl: string;
+  githubUrl: string;
+  linkedinUrl: string;
+  mailID: string;
+  ringColor: string;
+}
+
 const TeamMemberCard = ({
   name,
   position,
@@ -6,24 +19,22 @@ const TeamMemberCard = ({
   linkedinUrl,
   mailID,
   ringColor,
-  ...rest
-}) => {
+}: TeamMemberCard) => {
   let color = "";
-  ringColor = parseInt(ringColor);
   switch (ringColor) {
-    case 1:
+    case "1":
       color = "ring-blue-200";
       break;
-    case 2:
+    case "2":
       color = "ring-purple-400";
       break;
-    case 3:
+    case "3":
       color = "ring-red-400";
       break;
-    case 4:
+    case "4":
       color = "ring-gray-300";
       break;
-    case 5:
+    case "5":
       color = "ring-yellow-300";
       break;
     default:
@@ -32,10 +43,12 @@ const TeamMemberCard = ({
   return (
     <div className="p-2 lg:w-1/3 md:w-1/2 w-full z-1">
       <div className="h-full flex items-center border-gray-200 border py-6 px-8 rounded-lg">
-        <img
+        <Image
           alt="team"
           className={`w-28 h-28 ring-4 ${color} bg-gray-100 object-cover object-center flex-shrink-0 rounded-full ml-0 mr-0`}
           src={imageUrl}
+          height={150}
+          width={150}
         />
         <div className="flex-grow">
           <h2 className="text-gray-900 title-font font-medium text-center">
@@ -43,7 +56,7 @@ const TeamMemberCard = ({
           </h2>
           <p className="text-gray-500 mt-2 text-center">{position}</p>
           <div className="w-full flex justify-center pt-4 pb-2">
-            {githubUrl ? (
+            {githubUrl && (
               <a
                 href={githubUrl}
                 title="github-link"
@@ -68,8 +81,8 @@ const TeamMemberCard = ({
                   </svg>
                 </div>
               </a>
-            ) : null}
-            {linkedinUrl ? (
+            )}
+            {linkedinUrl && (
               <a
                 href={linkedinUrl}
                 title="linkedin-link"
@@ -106,8 +119,8 @@ const TeamMemberCard = ({
                   </svg>
                 </div>
               </a>
-            ) : null}
-            {mailID ? (
+            )}
+            {mailID && (
               <a
                 href={`mailto:${mailID}`}
                 title="mail-link"
@@ -129,7 +142,7 @@ const TeamMemberCard = ({
                   </svg>
                 </div>
               </a>
-            ) : null}
+            )}
           </div>
         </div>
       </div>

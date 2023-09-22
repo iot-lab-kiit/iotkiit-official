@@ -1,6 +1,5 @@
-import TeamHoverCard from '../../components/teamPage/TeamHoverCard';
-import TopTeamHoverCard from '../../components/teamPage/TopTeamHoverCard';
-
+import TeamHoverCard from "../../components/teamPage/TeamHoverCard";
+import TopTeamHoverCard from "../../components/teamPage/TopTeamHoverCard";
 
 const Mentors = ({ mentors }) => {
   return (

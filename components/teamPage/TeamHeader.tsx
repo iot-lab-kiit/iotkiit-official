@@ -1,16 +1,20 @@
+import Image from "next/image";
+
 const TeamHeader = () => {
   return (
     <div className="w-full">
-      <img
+      <Image
         src="/images/flower.svg"
         alt="flower"
-        className="absolute lg:top-3/5 -z-1 top-1/2  right-5 lg:-mt-5 lg:left-14 lg:w-52 bg-no-repeat "
+        className="absolute lg:top-3/5 -z-1 top-1/2  right-5 lg:-mt-5 lg:left-14 lg:w-52 bg-no-repeat"
+        width={136}
+        height={192}
       />
       <div className="flex bg-transparent">
         <div className="flex items-center text-center lg:text-left px-18 md:px-12 py-12 lg:w-1/2">
           <div className="p-10">
             <h3 className="text-5xl sm:text-5xl leading-normal font-extrabold tracking-tight uppercase text-gray-900 pb-8 -mt-4">
-              Meet &nbsp;the <div className="py-1"></div>
+              Meet the <br />
               <span className="text-primary-default tracking-wide">
                 IOT LAB Team
               </span>
@@ -29,10 +33,7 @@ const TeamHeader = () => {
             className="h-full bg-no-repeat"
             style={{ backgroundImage: "url(/images/aboutus.svg)" }}
           >
-            <div
-              className="h-full opacity-20 bg-[#b3c3e4]"
-              // style={{ backgroundColor: "#b3c3e4" }}
-            />
+            <div className="h-full opacity-20 bg-[#b3c3e4]" />
           </div>
         </div>
       </div>
