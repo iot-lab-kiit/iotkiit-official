@@ -1,4 +1,11 @@
 import "./globals.css";
+import type { Metadata} from "next";
+import Footer from "@/components/Footer";
+import { Comfortaa } from "next/font/google";
+
+const comfo = Comfortaa({
+  subsets: ["latin"],
+});
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={comfo.className}>
+        <Navbar />
+        {children}
+        <Footer/>
+      </body>
     </html>
   );
 }
