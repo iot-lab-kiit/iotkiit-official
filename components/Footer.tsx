@@ -1,4 +1,4 @@
-const Footer = ({ footerData }) => {
+const Footer = () => {
   return (
     <footer className="text-black body-font">
       <div className="bg-gray-100 ">

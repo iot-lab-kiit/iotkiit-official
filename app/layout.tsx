@@ -1,12 +1,13 @@
 import "./globals.css";
-import type { Metadata} from "next";
+import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { Comfortaa } from "next/font/google";
 
 const comfo = Comfortaa({
   subsets: ["latin"],
 });
-import type { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body className={comfo.className}>
         <Navbar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

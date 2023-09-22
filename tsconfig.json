@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "typings.d.ts"
-  ],
+, "components/Footer.tsx"  ],
   "exclude": ["node_modules"]
 }
