@@ -1,6 +1,6 @@
 import Lottie from "react-lottie";
 import animationData from "./LottieFiles/22830-page-construction.json";
-
+import React from 'react';
 const WorkAnimation = () => {
   const defaultOptions = {
     loop: true,

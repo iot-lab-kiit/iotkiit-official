@@ -1,6 +1,6 @@
 import Lottie from "react-lottie";
 import animationData from "./LottieFiles/45022-isometric-smartphone.json";
-
+import React from 'react';
 const AppDevAnimation = () => {
   const defaultOptions = {
     loop: true,

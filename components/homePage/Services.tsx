@@ -1,6 +1,6 @@
-import AppDevAnimation from "../animations/AppDevAnimation";
-import WebDevAnimation from "../animations/WebDevAnimation";
-import EventManagementAnimation from "../animations/EventManagementAnimation";
+// import AppDevAnimation from "../animations/AppDevAnimation";
+// import WebDevAnimation from "../animations/WebDevAnimation";
+// import EventManagementAnimation from "../animations/EventManagementAnimation";
 
 const Services = () => {
   return (

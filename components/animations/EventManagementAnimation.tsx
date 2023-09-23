@@ -1,3 +1,4 @@
+import React from 'react';
 import Lottie from "react-lottie";
 import animationData from "./LottieFiles/35684-business-team-discusses-project.json";
 
