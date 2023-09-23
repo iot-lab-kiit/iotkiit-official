@@ -1,8 +1,8 @@
-import Navbar from "@/components/Navbar";
 import "./globals.css";
 import type { Metadata } from "next";
-import Footer from "@/components/Footer";
 import { Comfortaa } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const comfo = Comfortaa({
   subsets: ["latin"],
