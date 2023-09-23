@@ -34,5 +34,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Personally for @kpriyanshu2003
+# @kpriyanshu2003
 apiDoc.md
