@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 
 const comfo = Comfortaa({
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
