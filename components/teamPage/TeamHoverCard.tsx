@@ -1,11 +1,22 @@
-const TeamHoverCard = ({ name, position, email, imageUrl }) => {
+import Image from "next/image";
+
+interface TeamHoverCard {
+  name: string;
+  position: string;
+  imageUrl: string;
+  email: string;
+}
+
+const TeamHoverCard = ({ name, position, email, imageUrl }: TeamHoverCard) => {
   return (
     <div>
       <div className="relative max-w-sm overflow-hidden transition duration-300 transform rounded-lg shadow-lg mx-3 md:mx-0 lg:hover:-translate-y-2  hover:shadow-2xl">
-        <img
+        <Image
           className="object-cover w-full h-40 md:h-60 xl:h-60 "
           src={imageUrl}
           alt="Person"
+          width={240}
+          height={240}
         />
         <div className="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
           <p className="mb-1 text-sm sm:text-xl font-bold text-gray-100">
