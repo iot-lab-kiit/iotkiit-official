@@ -4,6 +4,22 @@ import HandWave from "@/components/contactPage/HandWave";
 import MapFooter from "@/components/contactPage/MapsFooter";
 import Testimonials from "@/components/contactPage/Testimonials";
 
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+const { SERVER } = publicRuntimeConfig;
+
+interface FooterData {
+  id: Number;
+  facebookLink?: string;
+  twitterLink?: string;
+  instagramLink?: string;
+  linkedinLink?: string;
+  githubLink?: string;
+  telegramLink?: string;
+  mediumLink?: string;
+  mailID?: string;
+}
+
 const Contact = async () => {
   const data: FooterData = await getProp();
   return (
@@ -18,12 +34,12 @@ const Contact = async () => {
 };
 
 async function getProp() {
-  const footerRes = await fetch(`https://api.iotkiit.in/items/footer`, {
+  const ContactRes = await fetch(`${SERVER}/items/footer`, {
     cache: "default",
   });
-  const footerData0 = await footerRes.json();
-  const footerData = footerData0.data;
-  return footerData;
+  const ContactResponse = await ContactRes.json();
+  const ContactData = ContactResponse.data;
+  return ContactData;
 }
 
 export default Contact;

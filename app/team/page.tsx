@@ -2,6 +2,7 @@ import TeamHeader from "@/components/teamPage/TeamHeader";
 // import Mentors from "@/container/teams/Mentors";
 import Coordinators from "@/container/teams/Coordinators";
 import Team from "@/container/teams/Team";
+
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 const { SERVER } = publicRuntimeConfig;
@@ -36,8 +37,9 @@ const memberIndex = [
 ];
 
 interface TeamData {
-  coordinators: any;
-  members: any;
+  coordinators: [MemberData];
+  members: [MemberData];
+  // mentors: [MemberData];
 }
 
 export interface MemberData {
@@ -71,7 +73,7 @@ const Layout = async () => {
   return (
     <div>
       <TeamHeader />
-      {/* <Mentors mentors={props.mentors} /> */}
+      {/* <Mentors mentors={propsData.mentors} /> */}
       <Coordinators coordinators={propsData.coordinators} />
       <Team members={propsData.members} />
     </div>
@@ -81,10 +83,8 @@ const Layout = async () => {
 async function getData() {
   // Get All Team Data
   const response = await fetch(`${SERVER}/items/teams`, {
-    cache: "default",
     next: { revalidate: 600 },
   });
-  // const response = await fetch("http://localhost:3000/teamData.json");   // Use for local testing
   const allTeamResponse = await response.json();
   const allTeamData = await allTeamResponse.data;
 
@@ -94,7 +94,9 @@ async function getData() {
   const membersData = allTeamData.filter((member: MemberData) =>
     memberIndex.includes(member.position)
   );
-  // const mentorsData = totalDataArray.filter(member => member.position === "Mentor");
+  // const mentorsData = allTeamData.filter(
+  //   (member: MemberData) => member.position === "Mentor"
+  // );
 
   return {
     coordinators: coordinatorsData,

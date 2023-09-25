@@ -1,5 +1,4 @@
 import CoordinatorCard from "@/components/teamPage/CoordinatorCard";
-import CoordinatorMainCard from "@/components/teamPage/CoordinatorMainCard";
 import { positionData, MemberData } from "@/app/team/page";
 
 import getConfig from "next/config";
@@ -12,7 +11,7 @@ interface CoordinatorsPropData {
 
 const Coordinators = ({ coordinators }: CoordinatorsPropData) => {
   return (
-    <section className="text-gray-600 body-font border">
+    <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="max-w-xl mb-10 ml-6 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
           <div>
@@ -51,35 +50,22 @@ const Coordinators = ({ coordinators }: CoordinatorsPropData) => {
           <p className="text-base font-light text-gray-700 md:text-lg">
             “Of all the things I’ve done, the most vital is coordinating those
             who work with me and aiming their efforts at a certain goal.” <br />
-            <span className="font-bold tracking-wider">- Walt Disney</span>
+            <span className="font-bold tracking-wider">– Walt Disney</span>
           </p>
         </div>
         <div className="flex flex-wrap -mt-4">
-          {coordinators.map((coordinator) =>
-            coordinator.position == "Senior Coordinator" ? (
-              <CoordinatorMainCard
-                key={`coordinator-card-${coordinator.id}`}
-                name={coordinator.name}
-                position={positionData[coordinator.position]}
-                imageUrl={SERVER + "/assets/" + coordinator.avatar}
-                quote={coordinator.quote}
-                githubUrl={coordinator.github}
-                linkedinUrl={coordinator.linkedin}
-                mailID={coordinator.email}
-              />
-            ) : (
-              <CoordinatorCard
-                key={`coordinator-card-${coordinator.id}`}
-                name={coordinator.name}
-                position={positionData[coordinator.position]}
-                imageUrl={SERVER + "/assets/" + coordinator.avatar}
-                quote={coordinator.quote}
-                githubUrl={coordinator.github}
-                linkedinUrl={coordinator.linkedin}
-                mailID={coordinator.email}
-              />
-            )
-          )}
+          {coordinators.map((coordinator) => (
+            <CoordinatorCard
+              key={`coordinator-card-${coordinator.id}`}
+              name={coordinator.name}
+              position={positionData[coordinator.position]}
+              imageUrl={SERVER + "/assets/" + coordinator.avatar}
+              quote={coordinator.quote}
+              githubUrl={coordinator.github}
+              linkedinUrl={coordinator.linkedin}
+              mailID={coordinator.email}
+            />
+          ))}
         </div>
       </div>
     </section>

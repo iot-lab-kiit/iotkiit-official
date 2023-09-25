@@ -6,7 +6,7 @@ const ContactUs = () => {
   const [didSubmit, setDidSubmit] = useState("");
 
   // make changes here
-  const sendEmail = (e: any) => {
+  const sendEmail = (e) => {
     e.preventDefault();
     setDidSubmit("Sending...");
     emailjs

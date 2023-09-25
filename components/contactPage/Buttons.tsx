@@ -1,8 +1,15 @@
-interface ContactButtonsProps {
+interface FooterData {
+  facebookLink?: string;
+  twitterLink?: string;
+  instagramLink?: string;
+  linkedinLink?: string;
+  mailID?: string;
+}
+interface ContactButtonProps {
   links: FooterData;
 }
 
-const ContactButtons = ({ links }: ContactButtonsProps) => {
+const ContactButtons = ({ links }: ContactButtonProps) => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-20 mx-auto">
@@ -106,7 +113,7 @@ const ContactButtons = ({ links }: ContactButtonsProps) => {
                 title="email-link"
                 rel="noopener noreferrer"
                 target="_blank"
-                href={`mailto:${links.mailId}`}
+                href={`mailto:${links.mailID}`}
               >
                 <button className=" ml-auto text-white bg-primary-default border-0 py-1 mt-2 px-4 focus:outline-none hover:bg-indigo-600 rounded">
                   E-mail
