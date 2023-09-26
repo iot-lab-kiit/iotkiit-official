@@ -68,16 +68,16 @@ const RequestForm: React.FC = () => {
             },
             body: JSON.stringify(data),
         })
-        .then((res) => {
-            setName('');
-            setEmail('');
-            setRoll('');
-            setTeam('');
-            setReason('');
-        })
-        .catch((e) => {
-            console.error(e);
-        });
+            .then((res) => {
+                setName('');
+                setEmail('');
+                setRoll('');
+                setTeam('');
+                setReason('');
+            })
+            .catch((e) => {
+                console.error(e);
+            });
 
         setErrorMessage('');
         handleClose();
@@ -133,7 +133,7 @@ const RequestForm: React.FC = () => {
                             label={"Enter Name"}
                             type={"text"}
                             value={name}
-                            onChange={(event:any) => {
+                            onChange={(event: any) => {
                                 setName(event.target.value);
                             }}
                         />
@@ -142,7 +142,7 @@ const RequestForm: React.FC = () => {
                             label={"Enter Email ID"}
                             type={"email"}
                             value={email}
-                            onChange={(event:any) => {
+                            onChange={(event: any) => {
                                 setEmail(event.target.value);
                             }}
                         />
@@ -151,7 +151,7 @@ const RequestForm: React.FC = () => {
                             label={"Enter Roll No."}
                             type={"number"}
                             value={roll}
-                            onChange={(event:any) => {
+                            onChange={(event: any) => {
                                 setRoll(event.target.value);
                             }}
                         />
@@ -162,7 +162,7 @@ const RequestForm: React.FC = () => {
                                     label={"Team"}
                                     select
                                     value={team}
-                                    onChange={(event:any) => {
+                                    onChange={(event: any) => {
                                         setTeam(event.target.value);
                                     }}
                                 >
@@ -182,12 +182,12 @@ const RequestForm: React.FC = () => {
                                     <MobileDatePicker
                                         inputFormat="dd/MM/yyyy"
                                         value={selectedDate}
-                                        onChange={(value:any) => {
+                                        onChange={(value: any) => {
                                             setSelectedDate(value);
                                             setFrom(value);
                                             setTo(value)
                                         }}
-                                        renderInput={(params:any) => (
+                                        renderInput={(params: any) => (
                                             <CustomTextField
                                                 {...params}
                                                 label={"Date"}
@@ -205,11 +205,11 @@ const RequestForm: React.FC = () => {
                                     <MobileTimePicker
                                         label="Time"
                                         value={from}
-                                        onChange={(value:any) => {
+                                        onChange={(value: any) => {
                                             setFrom(value);
                                             setErrorMessage('')
                                         }}
-                                        renderInput={(params:any) => (
+                                        renderInput={(params: Date) => (
                                             <CustomTextField
                                                 {...params}
                                                 label={"From"}
@@ -222,14 +222,14 @@ const RequestForm: React.FC = () => {
                                     <MobileTimePicker
                                         label="Time"
                                         value={to}
-                                        onChange={(value:any) => {
+                                        onChange={(value: any) => {
                                             if (isDurationValid()) {
                                                 setTo(value);
                                                 setErrorMessage('')
                                             }
                                             else setErrorMessage('Enter a valid duration')
                                         }}
-                                        renderInput={(params:any) => (
+                                        renderInput={(params: any) => (
                                             <CustomTextField
                                                 {...params}
                                                 label={"To"}
@@ -248,7 +248,7 @@ const RequestForm: React.FC = () => {
                             multiline={true}
                             rows={3}
                             value={reason}
-                            onChange={(event:any) => {
+                            onChange={(event: any) => {
                                 setReason(event.target.value);
                             }}
                         />
