@@ -1,7 +1,12 @@
-import TeamHoverCard from "../../components/teamPage/TeamHoverCard";
-import TopTeamHoverCard from "../../components/teamPage/TopTeamHoverCard";
+import TeamHoverCard from "@/components/teamPage/TeamHoverCard";
+import TopTeamHoverCard from "@/components/teamPage/TopTeamHoverCard";
+import { positionData, MemberData } from "@/app/team/page";
 
-const Mentors = ({ mentors }) => {
+interface MentorsPropData {
+  mentors: [MemberData];
+}
+
+const Mentors = ({ mentors }: MentorsPropData) => {
   return (
     <div className="px-4 pb-16 pt-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl mb-10 ml-6 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -47,7 +52,7 @@ const Mentors = ({ mentors }) => {
         </p>
       </div>
       <div className=" py-6 grid gap-5 sm:gap-10 px-5 grid-cols-2 sm:grid-cols-2 lg:grid-cols-2">
-        {mentors?.slice(0, 2)?.map((mentor, index) => (
+        {mentors?.slice(0, 2)?.map((mentor) => (
           <TopTeamHoverCard
             key={`mentor-id-${mentor.id}`}
             name={mentor.name}

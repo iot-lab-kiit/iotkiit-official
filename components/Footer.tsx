@@ -1,4 +1,7 @@
 import Link from "next/link";
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+const { SERVER } = publicRuntimeConfig;
 
 interface FooterData {
   id: Number;
@@ -211,11 +214,11 @@ const Footer = async () => {
 };
 
 async function getProp() {
-  const footerRes = await fetch(`https://api.iotkiit.in/items/footer`, {
+  const footerRes = await fetch(`${SERVER}/items/footer`, {
     cache: "default",
   });
-  const footerData0 = await footerRes.json();
-  const footerData = footerData0.data;
+  const footerResponse = await footerRes.json();
+  const footerData = footerResponse.data;
   return footerData;
 }
 
