@@ -94,7 +94,6 @@ const Testimonials = () => {
                   </h3>
                 </div>
               </blockquote> */}
-              *
             </div>
           </div>
         </div>
