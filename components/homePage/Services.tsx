@@ -2,7 +2,7 @@ import AppDevAnimation from "../animations/AppDevAnimation";
 import WebDevAnimation from "../animations/WebDevAnimation";
 import EventManagementAnimation from "../animations/EventManagementAnimation";
 import React from 'react';
-const Services = () => {
+const Services: React.FC  = () => {
   return (
     <div id="services" className="relative lg:px-32 md:px-32 px-4 pb-14 ">
       <img
@@ -17,7 +17,7 @@ const Services = () => {
         </h3>
         <div className="flex flex-col md:flex-row items-center mb-24 md:mb-16 xl:mb-8 mt-16 md:mt-0 lg:mt-0">
           <div className="md:w-1/3">
-            <AppDevAnimation />
+            {/* <AppDevAnimation /> */}
           </div>
           <div className="md:ml-16 xl:ml-32 ">
             <h4 className="text-2xl md:text-3xl font-bold text-secondary-800 mb-4 py-2">

@@ -1,9 +1,11 @@
 import React from 'react';
-import Lottie from 'react-lottie';
-
+import Lottie from 'react-lottie'
 import animationData from "./LottieFiles/45022-isometric-smartphone.json";
 
-const AppDevAnimation = () => {
+
+
+
+const AppDevAnimation: React.FC  = () => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -12,12 +14,14 @@ const AppDevAnimation = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-
-  return (
-  <div>
   
-</div>);
-
+  return (
+    <Lottie
+      options={defaultOptions}
+      height={300}
+      width={270}
+    />
+  );
 }
 
 export default AppDevAnimation;

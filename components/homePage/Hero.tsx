@@ -1,4 +1,4 @@
-const Hero = () => {
+const Hero : React.FC = () => {
     return (
       <div className="relative overflow-hidden px-0 pb-0 ">
         <img
