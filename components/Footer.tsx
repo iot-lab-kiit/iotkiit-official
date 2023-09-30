@@ -218,7 +218,7 @@ async function getProp() {
     cache: "default",
   });
   const footerResponse = await footerRes.json();
-  const footerData = footerResponse.data;
+  const footerData: FooterData = footerResponse.data;
   return footerData;
 }
 
