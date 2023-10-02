@@ -84,7 +84,8 @@ and projects with more end-user interactions."
         <WorkHeader numProjects={propsData.projects.length} numBlogs={propsData.numBlogs} />
         <SectionHeader />
         <Filler />
-        {/* <Swiper
+        {/* error */}
+        <Swiper
           slidesPerView={1}
           autoplay={{ delay: 2500 }}
           pagination={{ clickable: true }}
@@ -111,7 +112,7 @@ and projects with more end-user interactions."
               <ProjectCard key={`project-id-${project.id}`} project={project} />
             </SwiperSlide>
           ))}
-        </Swiper>  */}
+        </Swiper> 
 
         {/*<Blog main={blogs.main} top={blogs.top} bottom={blogs.bottom} /> */}
       </main>
