@@ -1,26 +1,32 @@
 "use client";
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 
 const ContactUs = () => {
   const [didSubmit, setDidSubmit] = useState("");
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    message: "",
+  });
 
   // make changes here
-  const sendEmail = (e) => {
+  const sendEmail = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setDidSubmit("Sending...");
-    emailjs
-      .sendForm(
-        "service_9r26e08",
-        "template_g8e53f1",
-        e.target,
-        "user_cHobJq2ujAScEcDuHSCNs"
-      )
-      .then((result) => setDidSubmit("Submitted"))
-      .catch((e) => {
-        console.error(e);
+    fetch(`https://api.iotkiit.in/items/contactus`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    }).then((res) => {
+      if (res.status === 200) {
+        setDidSubmit("Submitted");
+      } else {
         setDidSubmit("Internal Error. We will resolve it soon!");
-      });
+      }
+    });
+    setTimeout(() => setDidSubmit(""), 5000);
   };
 
   return (
@@ -1005,6 +1011,11 @@ const ContactUs = () => {
               id="name"
               type="text"
               name="name"
+              value={formData.fullname}
+              onChange={(e) =>
+                setFormData({ ...formData, fullname: e.target.value })
+              }
+              required
               className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
             />
           </div>
@@ -1017,8 +1028,13 @@ const ContactUs = () => {
             <input
               type="email"
               id="email"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              required
               name="from_name"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
             />
           </div>
@@ -1031,6 +1047,11 @@ const ContactUs = () => {
             <textarea
               id="message"
               name="message"
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              required
               className="w-full h-32 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline resize-none"
             ></textarea>
           </div>

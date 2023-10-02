@@ -9,6 +9,21 @@ interface CoordinatorsPropData {
   coordinators: [MemberData];
 }
 
+const getCoordinator = (x: string) => {
+  switch (x) {
+    case positionData["1"]:
+      return "Coordinator";
+    case positionData["2"]:
+      return "Non-Tech Coordinator";
+    case positionData["3"]:
+      return "Tech Coordinator";
+    case positionData["4"]:
+      return "Administrative Coordinator";
+    default:
+      return "Coordinator";
+  }
+};
+
 const Coordinators = ({ coordinators }: CoordinatorsPropData) => {
   return (
     <section className="text-gray-600 body-font">
@@ -58,7 +73,7 @@ const Coordinators = ({ coordinators }: CoordinatorsPropData) => {
             <CoordinatorCard
               key={`coordinator-card-${coordinator.id}`}
               name={coordinator.name}
-              position={positionData[coordinator.position]}
+              position={getCoordinator(coordinator.position)}
               imageUrl={SERVER + "/assets/" + coordinator.avatar}
               quote={coordinator.quote}
               githubUrl={coordinator.github}
