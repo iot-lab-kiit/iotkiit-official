@@ -55,6 +55,7 @@ export interface MemberData {
   dob: string;
   year: string;
   branch: string;
+  
   domain: string;
   avatar: string;
   linkedin: string;

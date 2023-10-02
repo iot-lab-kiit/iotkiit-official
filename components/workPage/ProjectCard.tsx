@@ -1,4 +1,4 @@
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project}) => {
     return (
       <div className=" w-full pt-6 pb-20 px-3">
         <div className="bg-white shadow-xl rounded-lg overflow-hidden">
