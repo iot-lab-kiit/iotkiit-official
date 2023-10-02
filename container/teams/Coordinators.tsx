@@ -68,7 +68,7 @@ const Coordinators = ({ coordinators }: CoordinatorsPropData) => {
             <span className="font-bold tracking-wider">– Walt Disney</span>
           </p>
         </div>
-        <div className="flex flex-wrap -mt-4">
+        <div className="flex flex-wrap lg:ml-[3rem] -mt-4">
           {coordinators.map((coordinator) => (
             <CoordinatorCard
               key={`coordinator-card-${coordinator.id}`}
