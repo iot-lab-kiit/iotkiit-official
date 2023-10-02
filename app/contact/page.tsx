@@ -8,7 +8,7 @@ import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 const { SERVER } = publicRuntimeConfig;
 
-interface FooterData {
+interface ContactData {
   id: Number;
   facebookLink?: string;
   twitterLink?: string;
@@ -21,7 +21,7 @@ interface FooterData {
 }
 
 const Contact = async () => {
-  const data: FooterData = await getProp();
+  const data: ContactData = await getProp();
   return (
     <div>
       <HandWave />
@@ -38,7 +38,7 @@ async function getProp() {
     cache: "default",
   });
   const ContactResponse = await ContactRes.json();
-  const ContactData = ContactResponse.data;
+  const ContactData: ContactData = ContactResponse.data;
   return ContactData;
 }
 

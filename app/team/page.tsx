@@ -8,13 +8,13 @@ const { publicRuntimeConfig } = getConfig();
 const { SERVER } = publicRuntimeConfig;
 
 export const positionData = {
-  1: "Coordinator",
-  2: "Non-Tech Coordinator",
-  3: "Tech Coordinator",
-  4: "Administrative Coordinator",
-  5: "Team Lead",
-  6: "Co-Lead",
-  7: "Member",
+  1: "coordinator",
+  2: "nontechcoordinator",
+  3: "techcoordinator",
+  4: "administrativecoordinator",
+  5: "teamlead",
+  6: "colead",
+  7: "member",
 };
 
 const coordinatorIndex = [
@@ -22,19 +22,8 @@ const coordinatorIndex = [
   positionData["2"],
   positionData["3"],
   positionData["4"],
-  "1",
-  "2",
-  "3",
-  "4",
 ];
-const memberIndex = [
-  positionData["5"],
-  positionData["6"],
-  positionData["7"],
-  "5",
-  "6",
-  "7",
-];
+const memberIndex = [positionData["5"], positionData["6"], positionData["7"]];
 
 interface TeamData {
   coordinators: [MemberData];
@@ -98,7 +87,6 @@ async function getData() {
   // const mentorsData = allTeamData.filter(
   //   (member: MemberData) => member.position === "Mentor"
   // );
-
   return {
     coordinators: coordinatorsData,
     members: membersData,

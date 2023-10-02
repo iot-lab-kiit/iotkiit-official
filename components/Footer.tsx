@@ -12,7 +12,7 @@ interface FooterData {
   githubLink?: string;
   telegramLink?: string;
   mediumLink?: string;
-  mailId?: string;
+  mailID?: string;
 }
 
 const Footer = async () => {
@@ -188,7 +188,7 @@ const Footer = async () => {
               target="_blank"
               title="email-link"
               rel="noopener noreferrer"
-              href={`mailto:${data.mailId}`}
+              href={`mailto:${data.mailID}`}
               className="ml-3 text-black"
             >
               <svg
@@ -218,7 +218,7 @@ async function getProp() {
     cache: "default",
   });
   const footerResponse = await footerRes.json();
-  const footerData = footerResponse.data;
+  const footerData: FooterData = footerResponse.data;
   return footerData;
 }
 

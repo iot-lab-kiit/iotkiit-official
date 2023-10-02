@@ -55,12 +55,12 @@ const Services: React.FC  = () => {
             </p>
           </div>
           <div className="md:w-1/3">
-            {/* <WebDevAnimation /> */}
+            <WebDevAnimation />
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/3">
-            {/* <EventManagementAnimation /> */}
+            <EventManagementAnimation />
           </div>
           <div className="md:ml-16 xl:ml-32">
             <h4 className="text-2xl md:text-3xl font-bold text-secondary-800 mb-4 py-2">

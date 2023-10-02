@@ -9,6 +9,19 @@ interface TeamMemberPropsData {
   members: [MemberData];
 }
 
+const getMember = (x: string) => {
+  switch (x) {
+    case positionData["5"]:
+      return "Team Lead";
+    case positionData["6"]:
+      return "Co-Lead";
+    case positionData["7"]:
+      return "Member";
+    default:
+      return "Member";
+  }
+};
+
 const Team = ({ members }: TeamMemberPropsData) => {
   const membersIndex = ["5", "6", "7"];
   return (
@@ -64,11 +77,7 @@ const Team = ({ members }: TeamMemberPropsData) => {
                 githubUrl={member.github}
                 linkedinUrl={member.linkedin}
                 mailID={member.email}
-                position={
-                  membersIndex.includes(member.position)
-                    ? positionData[member.position]
-                    : member.position
-                }
+                position={getMember(member.position)}
                 imageUrl={SERVER + "/assets/" + member.avatar + "?quality=25"}
               />
             ))}
