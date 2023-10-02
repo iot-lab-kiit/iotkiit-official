@@ -1,21 +1,26 @@
-const ProjectCard = ({ project }) => {
+import { ProjectsDetails } from "@/app/work/page";
+
+ interface ProjectCardPropData{
+  projects:[ProjectsDetails]
+ }
+const ProjectCard = ({projects}:ProjectCardPropData) => {
     return (
       <div className=" w-full pt-6 pb-20 px-3">
         <div className="bg-white shadow-xl rounded-lg overflow-hidden">
           <div
             className="bg-cover bg-center h-44 p-4"
             style={{
-              backgroundImage: `url(${project.imgUrl})`,
+              backgroundImage: `url(${projects.imgUrl})`,
             }}
           ></div>
           <div className="p-4">
             <p className="uppercase tracking-wide leading-relaxed text-xs font-bold text-gray-700">
-              {project.type}
+              {projects.type}
             </p>
             <p className="text-2xl leading-relaxed  text-gray-900">
-              {project.name}
+              {projects.name}
             </p>
-            <p className="text-gray-700 leading-relaxed ">{project.addr}</p>
+            <p className="text-gray-700 leading-relaxed ">{projects.addr}</p>
           </div>
           <div className="flex p-4 border-t border-gray-300 text-gray-700">
             <div className="flex-1 inline-flex items-center px-1">
@@ -31,11 +36,11 @@ const ProjectCard = ({ project }) => {
               <p>
                 <span className="text-gray-900 font-normal text-sm px-4 ">
                   <a
-                    href={project.link}
+                    href={projects.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {project.linktext}
+                    {projects.linktext}
                   </a>
                 </span>
               </p>
@@ -47,7 +52,7 @@ const ProjectCard = ({ project }) => {
             </div>
             <div className="flex items-center pt-2">
               <div>
-                <p className="text-sm text-gray-700">{project.description}</p>
+                <p className="text-sm text-gray-700">{projects.description}</p>
               </div>
             </div>
           </div>

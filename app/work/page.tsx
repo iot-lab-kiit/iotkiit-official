@@ -1,29 +1,28 @@
-// 'use client';
+"use client";
 import ProjectCard from "../../components/workPage/ProjectCard";
 import WorkHeader from "../../components/workPage/WorkHeader";
 import Head from "next/head";
 import { Blog } from "../../components/workPage/BlogCard";
-import {Swiper} from "swiper/react";
+import { Swiper } from "swiper/react";
 import { SwiperSlide } from "swiper/react";
-import SwiperCore from "swiper";
-import Navigation from "swiper";
-import Pagination from "swiper";
-import Scrollbar from "swiper";
-import Ally from "swiper";
-import Autoplay from "swiper";
-
+import {
+  Pagination,
+  Navigation,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
 import Filler from "../../components/workPage/Filler";
 import SectionHeader from "../../components/workPage/SectionHeader";
 
 let Parser = require("rss-parser");
 let parser = new Parser();
-
-SwiperCore.use([Navigation, Pagination, Scrollbar, Ally, Autoplay]);
-interface ProjectData{
-  projects:[ProjectsDetails]
-  numBlogs:number
+// SwiperCore.use([Navigation, Pagination, Scrollbar, Ally, Autoplay]);
+interface ProjectData {
+  projects: [ProjectsDetails];
+  numBlogs: number;
 }
-export interface ProjectsDetails{
+export interface ProjectsDetails {
   id: number;
   status: string;
   user_created: string;
@@ -31,18 +30,15 @@ export interface ProjectsDetails{
   user_updated: string;
   date_updated: string;
   name: string;
-  type:string,
-  link:string,
-  linktext:string,
-  imgUrl:string,
-  aadr:string,
-  description:string
+  type: string;
+  link: string;
+  linktext: string;
+  imgUrl: string;
+  aadr: string;
+  description: string;
 }
-const Works = async() => {
+const Works = async () => {
   const propsData: ProjectData = await getData();
-  // console.log(propsData);
-  // const { blogs } = props;
-
   return (
     <>
       <Head>
@@ -81,7 +77,10 @@ and projects with more end-user interactions."
         <meta property="twitter:image" content="/images/logo_small.webp"></meta>
       </Head>
       <main>
-        <WorkHeader numProjects={propsData.projects.length} numBlogs={propsData.numBlogs} />
+        <WorkHeader
+          numProjects={propsData.projects.length}
+          numBlogs={propsData.numBlogs}
+        />
         <SectionHeader />
         <Filler />
         {/* error */}
@@ -89,6 +88,8 @@ and projects with more end-user interactions."
           slidesPerView={1}
           autoplay={{ delay: 2500 }}
           pagination={{ clickable: true }}
+          modules={[Pagination]}
+
           breakpoints={{
             640: {
               width: 640,
@@ -107,12 +108,15 @@ and projects with more end-user interactions."
             },
           }}
         >
-          {propsData.projects.map((project:any) => (
+          {propsData.projects.map((project: any) => (
             <SwiperSlide key={`slide-id-${project.id}`}>
-              <ProjectCard key={`project-id-${project.id}`} project={project} />
+              <ProjectCard
+                key={`project-id-${project.id}`}
+                projects={project}
+              />
             </SwiperSlide>
           ))}
-        </Swiper> 
+        </Swiper>
 
         {/*<Blog main={blogs.main} top={blogs.top} bottom={blogs.bottom} /> */}
       </main>
@@ -125,14 +129,17 @@ async function getData() {
   //Getting Projects from Server
   const response = await fetch(`${SERVER}/items/projects`, {
     next: { revalidate: 600 },
-  });;
+  });
   const projectsRes = await response.json();
   const projectsData = projectsRes.data;
-  projectsData.forEach((v:any, i:any, arr:any[]) => (arr[i].imgUrl = SERVER + '/assets/' + v.imgUrl));
+  projectsData.forEach(
+    (v: any, i: any, arr: any[]) =>
+      (arr[i].imgUrl = SERVER + "/assets/" + v.imgUrl)
+  );
 
   // Getting Feed from Medium
   let res = await parser.parseURL("https://medium.com/feed/iot-lab-kiit");
-  let articleItems=res.items;
+  let articleItems = res.items;
   // let feed = await fetch("https://medium.com/feed/iot-lab-kiit");
   // const articles_items = feed.items;
   // console.log(feed);
@@ -163,13 +170,12 @@ async function getData() {
     //     top,
     //     bottom,
     //   },
-      // numProjects: projectsData?.length,
-      // numBlogs: articles_items?.length,
+    // numProjects: projectsData?.length,
+    // numBlogs: articles_items?.length,
     // },
     // revalidate: 600,
-    projects:projectsData,
+    projects: projectsData,
     numBlogs: articleItems?.length,
-    
   };
 }
 
