@@ -1,8 +1,10 @@
+// 'use client';
 import ProjectCard from "../../components/workPage/ProjectCard";
 import WorkHeader from "../../components/workPage/WorkHeader";
 import Head from "next/head";
 import { Blog } from "../../components/workPage/BlogCard";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper} from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import Navigation from "swiper";
 import Pagination from "swiper";
@@ -17,9 +19,29 @@ let Parser = require("rss-parser");
 let parser = new Parser();
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, Ally, Autoplay]);
-
-const Works = (props:any) => {
-  const { blogs } = props;
+interface ProjectData{
+  projects:[ProjectsDetails]
+  numBlogs:number
+}
+export interface ProjectsDetails{
+  id: number;
+  status: string;
+  user_created: string;
+  date_created: string;
+  user_updated: string;
+  date_updated: string;
+  name: string;
+  type:string,
+  link:string,
+  linktext:string,
+  imgUrl:string,
+  aadr:string,
+  description:string
+}
+const Works = async() => {
+  const propsData: ProjectData = await getData();
+  // console.log(propsData);
+  // const { blogs } = props;
 
   return (
     <>
@@ -59,10 +81,10 @@ and projects with more end-user interactions."
         <meta property="twitter:image" content="/images/logo_small.webp"></meta>
       </Head>
       <main>
-        <WorkHeader numProjects={props.numProjects} numBlogs={props.numBlogs} />
+        <WorkHeader numProjects={propsData.projects.length} numBlogs={propsData.numBlogs} />
         <SectionHeader />
         <Filler />
-        <Swiper
+        {/* <Swiper
           slidesPerView={1}
           autoplay={{ delay: 2500 }}
           pagination={{ clickable: true }}
@@ -84,62 +106,69 @@ and projects with more end-user interactions."
             },
           }}
         >
-          {props.projects.map((project:any) => (
+          {propsData.projects.map((project:any) => (
             <SwiperSlide key={`slide-id-${project.id}`}>
               <ProjectCard key={`project-id-${project.id}`} project={project} />
             </SwiperSlide>
           ))}
-        </Swiper>
+        </Swiper>  */}
 
-        {/*<Blog main={blogs.main} top={blogs.top} bottom={blogs.bottom} />*/}
+        {/*<Blog main={blogs.main} top={blogs.top} bottom={blogs.bottom} /> */}
       </main>
     </>
   );
 };
-
-export async function getStaticProps(context:any) {
+async function getData() {
   const SERVER = "https://api.iotkiit.in";
 
   //Getting Projects from Server
-  const response = await fetch(`${SERVER}/items/projects`);
+  const response = await fetch(`${SERVER}/items/projects`, {
+    next: { revalidate: 600 },
+  });;
   const projectsRes = await response.json();
   const projectsData = projectsRes.data;
   projectsData.forEach((v:any, i:any, arr:any[]) => (arr[i].imgUrl = SERVER + '/assets/' + v.imgUrl));
 
-  //Getting Feed from Medium
-  let feed = await parser.parseURL("https://medium.com/feed/iot-lab-kiit");
-  const articles_items = feed.items;
+  // Getting Feed from Medium
+  let res = await parser.parseURL("https://medium.com/feed/iot-lab-kiit");
+  let articleItems=res.items;
+  // let feed = await fetch("https://medium.com/feed/iot-lab-kiit");
+  // const articles_items = feed.items;
+  // console.log(feed);
 
-  articles_items.forEach((v:any, i:any, arr:any[]) => {
-    //Converting date format
-    arr[i].date = v.pubDate.substr(0, 17);
+  // articles_items.forEach((v:any, i:any, arr:any[]) => {
+  //   //Converting date format
+  //   arr[i].date = v.pubDate.substr(0, 17);
 
-    //Assigning author to each post
-    arr[i].author = v.creator;
+  //   //Assigning author to each post
+  //   arr[i].author = v.creator;
 
-    //Extracting thumbnail from HTML
-    arr[i].authorPic = "/images/logo_small.webp";
+  //   //Extracting thumbnail from HTML
+  //   arr[i].authorPic = "/images/logo_small.webp";
 
-    //Extract the first <p> tag
-    arr[i].desc =
-      v["content:encoded"].match("<p>([^<].+?)</p>")[1].substr(0, 150) + "...";
-  });
+  //   //Extract the first <p> tag
+  //   arr[i].desc =
+  //     v["content:encoded"].match("<p>([^<].+?)</p>")[1].substr(0, 150) + "...";
+  // });
 
   //Taking the first 3 articles
-  const [main, top, bottom] = articles_items;
+  // const [main, top, bottom] = articles_items;
 
   return {
-    props: {
-      projects: projectsData,
-      blogs: {
-        main,
-        top,
-        bottom,
-      },
-      numProjects: projectsData?.length,
-      numBlogs: articles_items?.length,
-    },
-    revalidate: 600,
+    // props: {
+    //   projects: projectsData,
+    //   blogs: {
+    //     main,
+    //     top,
+    //     bottom,
+    //   },
+      // numProjects: projectsData?.length,
+      // numBlogs: articles_items?.length,
+    // },
+    // revalidate: 600,
+    projects:projectsData,
+    numBlogs: articleItems?.length,
+    
   };
 }
 
