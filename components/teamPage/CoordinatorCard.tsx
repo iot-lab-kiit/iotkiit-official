@@ -20,10 +20,11 @@ const CoordinatorCard = ({
   mailID,
 }: CoordinatorCard) => {
   return (
+    // ${
+    //   position === " Coordinator" ? "lg:w-screen" : "lg:w-1/2"
+    // }
     <div
-      className={`p-4 ${
-        position === "Senior Coordinator" ? "lg:w-screen" : "lg:w-1/2"
-      } mx-auto sm:mx-0`}
+      className={`p-4 mx-auto sm:mx-0 lg:w-1/2`}
     >
       <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
         <Image

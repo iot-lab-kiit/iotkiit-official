@@ -1,10 +1,13 @@
-import React from 'react';
-import Lottie from 'react-lottie';
-
+"use client";
+import { useLottie } from "lottie-react";
 import animationData from "./LottieFiles/45022-isometric-smartphone.json";
-
 const AppDevAnimation = () => {
-  const defaultOptions = {
+  const style = {
+    height: 300,
+    width: 270,
+  };
+
+  const options = {
     loop: true,
     autoplay: true,
     animationData: animationData,
@@ -13,11 +16,9 @@ const AppDevAnimation = () => {
     },
   };
 
-  return (
-  <div>
-  
-</div>);
+  const { View } = useLottie(options, style);
 
-}
+  return View;
+};
 
 export default AppDevAnimation;
