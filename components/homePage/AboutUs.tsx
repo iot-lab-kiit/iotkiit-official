@@ -1,4 +1,4 @@
-const AboutUs = () => {
+const AboutUs: React.FC  = () => {
     return (
       <div
         id="about-us"

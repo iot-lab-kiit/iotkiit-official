@@ -1,4 +1,4 @@
-const Showcase = () => {
+const Showcase: React.FC  = () => {
     return (
       <div className="bg-gray-200">
         <div className="max-w-6xl mx-auto px-8 py-16">

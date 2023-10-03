@@ -1,4 +1,4 @@
-const Process = () => {
+const Process: React.FC  = () => {
     return (
       <div id="our-process" className="relative">
         <img
