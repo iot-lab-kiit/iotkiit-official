@@ -4,31 +4,52 @@ import WorkHeader from "../../components/workPage/WorkHeader";
 import Head from "next/head";
 import { Blog } from "../../components/workPage/BlogCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore from "swiper";
-import Navigation from "swiper";
-import Pagination from "swiper";
-import Scrollbar from "swiper";
-import Ally from "swiper";
-import Autoplay from "swiper";
 import 'swiper/css';
+// import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
+
+import {
+  Pagination,
+  Navigation,
+  Scrollbar,
+  A11y,
+  Autoplay,
+}from "swiper";
 import Filler from "../../components/workPage/Filler";
 import SectionHeader from "../../components/workPage/SectionHeader";
-import {use} from 'react';
+import {useEffect,use} from 'react';
 import { Calistoga } from "next/font/google";
 let Parser = require("rss-parser");
 let parser = new Parser();
-// SwiperCore.use([Navigation, Pagination, Scrollbar, Ally, Autoplay]);
+// new SwiperCore([Navigation, Pagination, Scrollbar, Ally, Autoplay]);
 // interface MySwiperProps {}
 
 
+interface ProjectData {
+  projects: [ProjectsDetails];
+  numBlogs: number;
+}
+export interface ProjectsDetails {
+  id: number;
+  status: string;
+  user_created: string;
+  date_created: string;
+  user_updated: string;
+  date_updated: string;
+  name: string;
+  type: string;
+  link: string;
+  linktext: string;
+  imgUrl: string;
+  aadr: string;
+  description: string;
+}
 
 
-
-
-const Works  = () => {
+const Works  =() => {
   const props:any= use(getWork());
   const { blogs } = props;
-
+ 
   return (
     <>
       <Head>
@@ -71,10 +92,12 @@ and projects with more end-user interactions."
         <SectionHeader />
         <Filler />
         <Swiper 
-        
+         modules={[Navigation, Pagination, Scrollbar,A11y,Autoplay]}
           slidesPerView={1}
           autoplay={{ delay: 2500 }}
+          navigation
           pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
           breakpoints={{
             640: {
               width: 640,
@@ -94,8 +117,8 @@ and projects with more end-user interactions."
           }}
         >
           {props.props.projects.map((project:any) => (
-            <SwiperSlide key={`slide-id-${project.id}`}>
-              <ProjectCard key={`project-id-${project.id}`} project={project} />
+            <SwiperSlide key={`slide-id-${project.id}`} >
+              <ProjectCard key={`project-id-${project.id}`} project={project}  />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -106,15 +129,15 @@ and projects with more end-user interactions."
   );
 };
 
-export async function getWork() {
+export async function getWork(){
   try{
   const SERVER = "https://api.iotkiit.in";
 
   //Getting Projects from Server
   const response = await fetch(`${SERVER}/items/projects`);
   const projectsRes = await response.json();
-  const projectsData = projectsRes.data;
-  projectsData.forEach((v:any, i:any, arr:any[]) => (arr[i].imgUrl = SERVER + '/assets/' + v.imgUrl));
+  const projectsData:ProjectsDetails[] = projectsRes.data;
+  projectsData.map((v:any, i:any, arr:any[]) => (arr[i].imgUrl = SERVER + '/assets/' + v.imgUrl));
 
   //Getting Feed from Medium
   // let feed = await parser.parseURL("https://medium.com/feed/iot-lab-kiit");

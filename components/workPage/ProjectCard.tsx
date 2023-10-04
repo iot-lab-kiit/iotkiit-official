@@ -1,6 +1,7 @@
 const ProjectCard = ({ project}) => {
     return (
-      <div className=" w-full pt-6 pb-20 px-3">
+      <div className=" w-full pt-6 pb-20 px-3 swiper-pagination-bullet ">
+    
         <div className="bg-white shadow-xl rounded-lg overflow-hidden">
           <div
             className="bg-cover bg-center h-44 p-4"
