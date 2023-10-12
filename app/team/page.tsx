@@ -2,20 +2,11 @@ import TeamHeader from "@/components/teamPage/TeamHeader";
 // import Mentors from "@/container/teams/Mentors";
 import Coordinators from "@/container/teams/Coordinators";
 import Team from "@/container/teams/Team";
+import  {positionData} from "@/types";
 
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 const { SERVER } = publicRuntimeConfig;
-
-export const positionData = {
-  1: "coordinator",
-  2: "nontechcoordinator",
-  3: "techcoordinator",
-  4: "administrativecoordinator",
-  5: "teamlead",
-  6: "colead",
-  7: "member",
-};
 
 const coordinatorIndex = [
   positionData["1"],

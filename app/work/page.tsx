@@ -2,7 +2,7 @@
 import ProjectCard from "../../components/workPage/ProjectCard";
 import WorkHeader from "../../components/workPage/WorkHeader";
 import Head from "next/head";
-import { Blog } from "../../components/workPage/BlogCard";
+// import { Blog } from "../../components/workPage/BlogCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 // import 'swiper/css/pagination';
@@ -17,18 +17,12 @@ import {
 }from "swiper";
 import Filler from "../../components/workPage/Filler";
 import SectionHeader from "../../components/workPage/SectionHeader";
-import {useEffect,use} from 'react';
-import { Calistoga } from "next/font/google";
+import {use} from 'react';
+// import { Calistoga } from "next/font/google";
 let Parser = require("rss-parser");
 let parser = new Parser();
 // new SwiperCore([Navigation, Pagination, Scrollbar, Ally, Autoplay]);
 // interface MySwiperProps {}
-
-
-interface ProjectData {
-  projects: [ProjectsDetails];
-  numBlogs: number;
-}
 export interface ProjectsDetails {
   id: number;
   status: string;
@@ -48,7 +42,7 @@ export interface ProjectsDetails {
 
 const Works  =() => {
   const props:any= use(getWork());
-  const { blogs } = props;
+  // const { blogs } = props;
  
   return (
     <>

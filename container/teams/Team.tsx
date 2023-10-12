@@ -1,5 +1,6 @@
 import TeamMemberCard from "@/components/teamPage/TeamMemberCard";
-import { positionData, MemberData } from "@/app/team/page";
+import {MemberData } from "@/app/team/page";
+import  {positionData} from "@/types";
 
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();

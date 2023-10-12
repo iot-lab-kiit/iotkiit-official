@@ -4,11 +4,8 @@ import { GetStaticProps } from 'next';
 import FormComponent from "../../components/webinarPage/FormComponent";
 import HeroComponent from "../../components/webinarPage/HeroComponent";
 import SpeakerComponent from "../../components/webinarPage/SpeakerComponent";
-interface WebinarProps {
-    speakers: any;
-    eventDescription: [];
-  }
-const Webinar: React.FC<WebinarProps> = ({speakers,eventDescription}) => {
+
+export default function Webinar () {
     const getData=async()=> {
         const response = await fetch(`https://api.iotkiit.in/speakers`)
         const speakerData= await response.json();
@@ -95,6 +92,3 @@ and projects with more end-user interactions."
 
 
 
-
-
-export default Webinar;
