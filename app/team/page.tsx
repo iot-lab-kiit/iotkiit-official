@@ -2,6 +2,7 @@ import TeamHeader from "@/components/teamPage/TeamHeader";
 // import Mentors from "@/container/teams/Mentors";
 import Coordinators from "@/container/teams/Coordinators";
 import Team from "@/container/teams/Team";
+import TeamLead from "@/container/teams/TeamLead";
 
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
@@ -25,9 +26,12 @@ const coordinatorIndex = [
 ];
 const memberIndex = [positionData["5"], positionData["6"], positionData["7"]];
 
+const teamLeadIndex = [positionData["5"]];
+
 interface TeamData {
   coordinators: [MemberData];
   members: [MemberData];
+  teamleads: [MemberData];
   // mentors: [MemberData];
 }
 
@@ -65,6 +69,7 @@ const Layout = async () => {
       <TeamHeader />
       {/* <Mentors mentors={propsData.mentors} /> */}
       <Coordinators coordinators={propsData.coordinators} />
+      <TeamLead teamleads={propsData.teamleads} />
       <Team members={propsData.members} />
     </div>
   );
@@ -84,12 +89,18 @@ async function getData() {
   const membersData = allTeamData.filter((member: MemberData) =>
     memberIndex.includes(member.position)
   );
+
+  const teamleadsData = allTeamData.filter((member: MemberData) =>
+    teamLeadIndex.includes(member.position)
+  );
+
   // const mentorsData = allTeamData.filter(
   //   (member: MemberData) => member.position === "Mentor"
   // );
   return {
     coordinators: coordinatorsData,
     members: membersData,
+    teamleads: teamleadsData,
     // mentors: mentorsData,
   };
 }
