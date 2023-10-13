@@ -1,10 +1,10 @@
-import ContactButtons from "@/components/contactPage/Buttons";
-import ContactUs from "@/components/contactPage/ContactUs";
-import HandWave from "@/components/contactPage/HandWave";
-import MapFooter from "@/components/contactPage/MapsFooter";
-import Testimonials from "@/components/contactPage/Testimonials";
+import ContactButtons from '@/components/contactPage/Buttons';
+import ContactUs from '@/components/contactPage/ContactUs';
+import HandWave from '@/components/contactPage/HandWave';
+import MapFooter from '@/components/contactPage/MapsFooter';
+import Testimonials from '@/components/contactPage/Testimonials';
 
-import getConfig from "next/config";
+import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
 const { SERVER } = publicRuntimeConfig;
 
@@ -35,7 +35,7 @@ const Contact = async () => {
 
 async function getProp() {
   const ContactRes = await fetch(`${SERVER}/items/footer`, {
-    cache: "default",
+    cache: 'default',
   });
   const ContactResponse = await ContactRes.json();
   const ContactData: ContactData = ContactResponse.data;

@@ -1,20 +1,20 @@
-import TeamHeader from "@/components/teamPage/TeamHeader";
+import TeamHeader from '@/components/teamPage/TeamHeader';
 // import Mentors from "@/container/teams/Mentors";
-import Coordinators from "@/container/teams/Coordinators";
-import Team from "@/container/teams/Team";
-import  {positionData} from "@/types";
+import Coordinators from '@/container/teams/Coordinators';
+import Team from '@/container/teams/Team';
+import { positionData } from '@/types';
 
-import getConfig from "next/config";
+import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
 const { SERVER } = publicRuntimeConfig;
 
 const coordinatorIndex = [
-  positionData["1"],
-  positionData["2"],
-  positionData["3"],
-  positionData["4"],
+  positionData['1'],
+  positionData['2'],
+  positionData['3'],
+  positionData['4'],
 ];
-const memberIndex = [positionData["5"], positionData["6"], positionData["7"]];
+const memberIndex = [positionData['5'], positionData['6'], positionData['7']];
 
 interface TeamData {
   coordinators: [MemberData];
@@ -35,7 +35,7 @@ export interface MemberData {
   dob: string;
   year: string;
   branch: string;
-  
+
   domain: string;
   avatar: string;
   linkedin: string;
@@ -64,16 +64,16 @@ const Layout = async () => {
 async function getData() {
   // Get All Team Data
   const response = await fetch(`${SERVER}/items/teams`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 2 },
   });
   const allTeamResponse = await response.json();
   const allTeamData = await allTeamResponse.data;
 
   const coordinatorsData = allTeamData.filter((member: MemberData) =>
-    coordinatorIndex.includes(member.position)
+    coordinatorIndex.includes(member.position),
   );
   const membersData = allTeamData.filter((member: MemberData) =>
-    memberIndex.includes(member.position)
+    memberIndex.includes(member.position),
   );
   // const mentorsData = allTeamData.filter(
   //   (member: MemberData) => member.position === "Mentor"

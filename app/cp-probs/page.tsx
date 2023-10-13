@@ -1,7 +1,7 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import SingleQuestion from "../../components/cp-probs/AccordionCard";
-import style from "../../styles/AccordionCard.module.css";
+'use client';
+import React, { useEffect, useState } from 'react';
+import SingleQuestion from '../../components/cp-probs/AccordionCard';
+import style from '../../styles/AccordionCard.module.css';
 
 interface QuestionType {
   id: number;
@@ -9,7 +9,7 @@ interface QuestionType {
   question: string;
   solution: null | any;
   category: string;
-  sort: null | any; 
+  sort: null | any;
   level: string;
 }
 
@@ -21,9 +21,9 @@ const Cp = () => {
     setLoading(true);
 
     // Getting data from Server
-    fetch("https://api.iotkiit.in/items/questions?groupBy[]=category")
-      .then((res) => res.json())
-      .then((res) => {
+    fetch('https://api.iotkiit.in/items/questions?groupBy[]=category')
+      .then(res => res.json())
+      .then(res => {
         setQuestions(res.data);
         setLoading(false);
       });
