@@ -5,18 +5,17 @@ import UpcomingCard from "../../components/eventPage/UpcomingCard";
 import FlagshipEvents from "../../components/eventPage/FlagshipEvents";
 
 export interface eventData {
- id:number;
- title:string;
- desc:string;
- imgurl:string;
- date:string;
- year:string;
- link:string;
- type:string;
+  id: number;
+  title: string;
+  desc: string;
+  imgurl: string;
+  date: string;
+  year: string;
+  link: string;
+  type: string;
 }
 
-const Events= (props:any) => {
-  
+const Events = () => {
   return (
     <>
       <Head>
@@ -55,7 +54,6 @@ and projects with more end-user interactions."
         <meta property="twitter:image" content="/images/logo_small.webp"></meta>
       </Head>
       <EventHeader />
-      {console.log(props.upcomingevents)}
       {/* {props.upcomingevents.length == 0 ? null : (
         <section>
           <div className="container max-w-full mx-auto lg:py-0 md:pt-0 sm:pt-80 pt-48 mt-48 sm:mt-4 px-6 ">
@@ -84,34 +82,34 @@ and projects with more end-user interactions."
           </div>
         </section>
       )}  */}
-       <FlagshipEvents
+      {/* <FlagshipEvents
         main={props.flagshipevents.main}
         left={props.flagshipevents.left}
         right={props.flagshipevents.right}
-      />
-      {/* {*<EventExtra extraevents={props.extraevents} /> */} 
-    </> 
+      /> */}
+      {/* {*<EventExtra extraevents={props.extraevents} /> */}
+    </>
   );
 };
 
 // const getStaticProps=async()=> {
 //   const SERVER = await fetch ("https://api.iotkiit.in");
 
-  //Getting upcomingevents from Server
+//Getting upcomingevents from Server
 
-  // //Getting Extra events from Server
-  // const totalEventRes = await fetch(`${SERVER}/items/events`);
-  // const total=await totalEventRes.json();
-  // const totalEventsData = total.data;
+// //Getting Extra events from Server
+// const totalEventRes = await fetch(`${SERVER}/items/events`);
+// const total=await totalEventRes.json();
+// const totalEventsData = total.data;
 
-  // const extraEventsData = totalEventsData.filter((event :any) => event.type == "extraEvent");
-  // //Getting Flagship Events from Server
-  // const flagshipEventsRes = await (await fetch(`${SERVER}/items/flagshipevents`)).json()
-  // const flagshipEventsData = flagshipEventsRes.data;
-  // const upcomingeventsData = totalEventsData.filter((event:any) => event.type === 'upcomingEvent');
-  // const left = flagshipEventsData.filter((event:any) => event.position === 'left');
-  // const right = flagshipEventsData.filter((event:any) => event.position === 'right');
-  // const main = flagshipEventsData.filter((event:any) => event.position === 'main');
+// const extraEventsData = totalEventsData.filter((event :any) => event.type == "extraEvent");
+// //Getting Flagship Events from Server
+// const flagshipEventsRes = await (await fetch(`${SERVER}/items/flagshipevents`)).json()
+// const flagshipEventsData = flagshipEventsRes.data;
+// const upcomingeventsData = totalEventsData.filter((event:any) => event.type === 'upcomingEvent');
+// const left = flagshipEventsData.filter((event:any) => event.position === 'left');
+// const right = flagshipEventsData.filter((event:any) => event.position === 'right');
+// const main = flagshipEventsData.filter((event:any) => event.position === 'main');
 
 //   return {
 //     props: {

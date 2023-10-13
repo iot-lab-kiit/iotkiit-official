@@ -1,4 +1,6 @@
-const ProjectCard = ({ project}) => {
+import { ProjectCardProps } from "@/types";
+
+const ProjectCard = (props: {key: string, project: ProjectCardProps}) => {
     return (
       <div className=" w-full pt-6 pb-20 px-3 swiper-pagination-bullet ">
     
@@ -6,17 +8,17 @@ const ProjectCard = ({ project}) => {
           <div
             className="bg-cover bg-center h-44 p-4"
             style={{
-              backgroundImage: `url(${project.imgUrl})`,
+              backgroundImage: `url(${props.project.imgUrl})`,
             }}
           ></div>
           <div className="p-4">
             <p className="uppercase tracking-wide leading-relaxed text-xs font-bold text-gray-700">
-              {project.type}
+              {props.project.type}
             </p>
             <p className="text-2xl leading-relaxed  text-gray-900">
-              {project.name}
+              {props.project.name}
             </p>
-            <p className="text-gray-700 leading-relaxed ">{project.addr}</p>
+            <p className="text-gray-700 leading-relaxed ">{props.project.addr}</p>
           </div>
           <div className="flex p-4 border-t border-gray-300 text-gray-700">
             <div className="flex-1 inline-flex items-center px-1">
@@ -32,11 +34,11 @@ const ProjectCard = ({ project}) => {
               <p>
                 <span className="text-gray-900 font-normal text-sm px-4 ">
                   <a
-                    href={project.link}
+                    href={props.project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {project.linktext}
+                    {props.project.linktext}
                   </a>
                 </span>
               </p>
@@ -48,7 +50,7 @@ const ProjectCard = ({ project}) => {
             </div>
             <div className="flex items-center pt-2">
               <div>
-                <p className="text-sm text-gray-700">{project.description}</p>
+                <p className="text-sm text-gray-700">{props.project.description}</p>
               </div>
             </div>
           </div>
