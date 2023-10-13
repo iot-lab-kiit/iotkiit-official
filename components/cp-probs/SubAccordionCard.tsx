@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import style from "../../styles/SubAccordianCard.module.css";
+import React, { useState } from 'react';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import style from '../../styles/SubAccordianCard.module.css';
 
 interface SubAccordionCardProps {
   id: number;
@@ -8,11 +8,11 @@ interface SubAccordionCardProps {
   question: string;
   solution: null | any;
   category: string;
-  sort: null | any; 
+  sort: null | any;
   level: string;
 }
 
-const SubAccordionCard= ( problem: SubAccordionCardProps ) => {
+const SubAccordionCard = (problem: SubAccordionCardProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -34,9 +34,7 @@ const SubAccordionCard= ( problem: SubAccordionCardProps ) => {
           <h1>
             <b>Question</b>
           </h1>
-          <div
-            dangerouslySetInnerHTML={{ __html: problem.question }}
-          ></div>
+          <div dangerouslySetInnerHTML={{ __html: problem.question }}></div>
         </>
       )}
     </article>

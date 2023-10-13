@@ -1,24 +1,24 @@
-import { Box, Button, Dialog, Grid, IconButton, MenuItem } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import { MobileTimePicker } from "@mui/x-date-pickers";
+import { Box, Button, Dialog, Grid, IconButton, MenuItem } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { useState } from 'react';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { MobileTimePicker } from '@mui/x-date-pickers';
 // import dayjs from 'dayjs';
-import CustomTextField from "./CustomTextField";
+import CustomTextField from './CustomTextField';
 
 const teams: string[] = [
-  "CP",
-  "Web Dev",
-  "App",
-  "Marketing & Management",
-  "Content",
-  "GD & UI/UX",
-  "IoT",
-  "Cyber",
-  "Administration(HR)",
-  "Video Editing",
+  'CP',
+  'Web Dev',
+  'App',
+  'Marketing & Management',
+  'Content',
+  'GD & UI/UX',
+  'IoT',
+  'Cyber',
+  'Administration(HR)',
+  'Video Editing',
 ];
 
 interface FormDataType {
@@ -45,32 +45,32 @@ const RequestForm: React.FC = () => {
   const handleClick = () => setPop(true);
   const handleClose = () => setPop(false);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    roll: "",
-    team: "",
+    name: '',
+    email: '',
+    roll: '',
+    team: '',
     selectedDate: new Date(),
     from: new Date(),
     to: new Date(),
-    reason: "",
+    reason: '',
   });
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const isDurationValid = (): boolean => {
     const diffMs: number = formData.to.getTime() - formData.from.getTime();
     const diffMinutes: number = Math.round(
-      ((diffMs % 86400000) % 3600000) / 60000
+      ((diffMs % 86400000) % 3600000) / 60000,
     );
     return diffMinutes > 60; // Modify the validation logic as needed
   };
 
   const validate = (): boolean => {
     return (
-      formData.name !== "" &&
-      formData.email !== "" &&
-      formData.roll !== "" &&
-      formData.team !== "" &&
-      formData.reason !== ""
+      formData.name !== '' &&
+      formData.email !== '' &&
+      formData.roll !== '' &&
+      formData.team !== '' &&
+      formData.reason !== ''
     );
   };
 
@@ -86,41 +86,41 @@ const RequestForm: React.FC = () => {
 
     // Perform your fetch request here
     // Replace the following code with your actual API call
-    fetch("https://api.iotkiit.in/items/lab_open_request", {
-      method: "POST",
+    fetch('https://api.iotkiit.in/items/lab_open_request', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
       .then(() => {
         setFormData({
-          name: "",
-          email: "",
-          roll: "",
-          team: "",
+          name: '',
+          email: '',
+          roll: '',
+          team: '',
           selectedDate: new Date(),
           from: new Date(),
           to: new Date(),
-          reason: "",
+          reason: '',
         });
       })
-      .catch((e) => {
+      .catch(e => {
         console.error(e);
       });
-    setErrorMessage("");
+    setErrorMessage('');
     handleClose();
   };
 
   return (
     <div>
       <Button
-        variant={"contained"}
+        variant={'contained'}
         onClick={handleClick}
         sx={{
-          textTransform: "none",
-          color: "#000",
-          ":hover": { color: "#fff" },
+          textTransform: 'none',
+          color: '#000',
+          ':hover': { color: '#fff' },
         }}
       >
         Request
@@ -129,53 +129,53 @@ const RequestForm: React.FC = () => {
         open={pop}
         onClose={handleClose}
         sx={{
-          backdropFilter: "blur(3px)",
-          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          backdropFilter: 'blur(3px)',
+          backgroundColor: 'rgba(0, 0, 0, 0.1)',
         }}
       >
         <Box
-          width={"100%"}
-          height={"100%"}
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
+          width={'100%'}
+          height={'100%'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
         >
           <Box
             py={3}
             px={3}
             zIndex={1}
-            width={"500px"}
-            bgcolor={"#FFF"}
-            display={"flex"}
-            flexDirection={"column"}
-            justifyContent={"center"}
-            alignItems={"center"}
+            width={'500px'}
+            bgcolor={'#FFF'}
+            display={'flex'}
+            flexDirection={'column'}
+            justifyContent={'center'}
+            alignItems={'center'}
           >
             <Box
-              width={"100%"}
-              display={"flex"}
-              justifyContent={"space-between"}
-              alignItems={"center"}
+              width={'100%'}
+              display={'flex'}
+              justifyContent={'space-between'}
+              alignItems={'center'}
             >
-              <Box fontSize={"22px"} fontWeight={600}>
+              <Box fontSize={'22px'} fontWeight={600}>
                 Request
               </Box>
               <IconButton onClick={handleClose}>
-                <CloseIcon sx={{ color: "#000" }} />
+                <CloseIcon sx={{ color: '#000' }} />
               </IconButton>
             </Box>
             <Box
               mt={1}
               mb={2}
-              color={"#ACACAC"}
-              fontSize={"15px"}
-              alignSelf={"flex-start"}
+              color={'#ACACAC'}
+              fontSize={'15px'}
+              alignSelf={'flex-start'}
             >
               Please enter the required details
             </Box>
             <CustomTextField
-              label="Enter Name"
-              type="text"
+              label='Enter Name'
+              type='text'
               value={formData.name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setFormData({ ...formData, name: e.target.value })
@@ -183,8 +183,8 @@ const RequestForm: React.FC = () => {
             />
             <Box mt={2} />
             <CustomTextField
-              label="Enter Email ID"
-              type="email"
+              label='Enter Email ID'
+              type='email'
               value={formData.email}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -192,8 +192,8 @@ const RequestForm: React.FC = () => {
             />
             <Box mt={2} />
             <CustomTextField
-              label="Enter Roll No."
-              type="number"
+              label='Enter Roll No.'
+              type='number'
               value={formData.roll}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setFormData({ ...formData, roll: e.target.value })
@@ -203,7 +203,7 @@ const RequestForm: React.FC = () => {
             <Grid container spacing={2}>
               <Grid item xs={6}>
                 <CustomTextField
-                  label={"Team"}
+                  label={'Team'}
                   select
                   value={formData.team}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -244,7 +244,7 @@ const RequestForm: React.FC = () => {
               <Grid container spacing={2}>
                 <Grid item xs={6}>
                   <MobileTimePicker
-                    label="From"
+                    label='From'
                     value={formData.from}
                     onAccept={(e: Date | null) =>
                       setFormData({
@@ -263,13 +263,13 @@ const RequestForm: React.FC = () => {
                 </Grid>
                 <Grid item xs={6}>
                   <MobileTimePicker
-                    label="To"
+                    label='To'
                     value={formData.to}
                     onAccept={(e: Date | null) => {
                       if (isDurationValid()) {
                         setFormData({ ...formData, to: e || new Date() });
-                        setErrorMessage("");
-                      } else setErrorMessage("Enter a valid duration");
+                        setErrorMessage('');
+                      } else setErrorMessage('Enter a valid duration');
                     }}
                     // renderInput={(params: any) => (
                     //   <CustomTextField
@@ -285,8 +285,8 @@ const RequestForm: React.FC = () => {
             <Box mt={2} />
             <CustomTextField
               fullWidth
-              label={"Reason"}
-              type={"text"}
+              label={'Reason'}
+              type={'text'}
               multiline={true}
               rows={3}
               value={formData.reason}
@@ -295,8 +295,8 @@ const RequestForm: React.FC = () => {
               }
             />
 
-            {errorMessage !== "" && (
-              <Box mt={2} color={"red"} fontSize={"14px"}>
+            {errorMessage !== '' && (
+              <Box mt={2} color={'red'} fontSize={'14px'}>
                 {errorMessage}
               </Box>
             )}
@@ -305,18 +305,18 @@ const RequestForm: React.FC = () => {
               disableElevation
               disabled={!validate()}
               onClick={handleSubmit}
-              variant={"contained"}
+              variant={'contained'}
               fullWidth
               sx={{
-                borderRadius: "15px",
+                borderRadius: '15px',
                 zIndex: 2,
                 py: 1.5,
-                ":disabled": {
-                  border: "transparent",
+                ':disabled': {
+                  border: 'transparent',
                 },
-                border: "1px solid #000",
-                color: "#000",
-                ":hover": { color: "#fff" },
+                border: '1px solid #000',
+                color: '#000',
+                ':hover': { color: '#fff' },
               }}
             >
               Submit

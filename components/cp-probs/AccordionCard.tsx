@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import SubAccordionCard from "./SubAccordionCard";
-import style from "../../styles/AccordionCard.module.css";
+import React, { useState, useEffect } from 'react';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import SubAccordionCard from './SubAccordionCard';
+import style from '../../styles/AccordionCard.module.css';
 
 interface AccordionCardProps {
-    category: string;
+  category: string;
 }
 interface QuestionType {
   id: number;
@@ -12,7 +12,7 @@ interface QuestionType {
   question: string;
   solution: null | any;
   category: string;
-  sort: null | any; 
+  sort: null | any;
   level: string;
 }
 
@@ -27,12 +27,12 @@ const AccordionCard = (props: AccordionCardProps) => {
 
       try {
         const response = await fetch(
-          `https://api.iotkiit.in/items/questions?filter[category][_eq]=${props.category}`
+          `https://api.iotkiit.in/items/questions?filter[category][_eq]=${props.category}`,
         );
         const data = await response.json();
         setQuestions(data.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }

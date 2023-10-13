@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Contact",
-  icons: "/images/logo_small.png",
+  title: 'Contact',
+  icons: '/images/logo_small.png',
 };
 
 export default function ContactLayout({

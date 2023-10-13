@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface SpeakerCardProps {
   image: string;
@@ -7,30 +7,35 @@ interface SpeakerCardProps {
   linkedin: string;
 }
 
-const SpeakerCard: React.FC<SpeakerCardProps> = ({ image, name, title, linkedin }) => {
+const SpeakerCard: React.FC<SpeakerCardProps> = ({
+  image,
+  name,
+  title,
+  linkedin,
+}) => {
   let imageUrl = `https://api.iotkiit.in/assets/${image}`;
-  
+
   return (
     <>
-      <div className="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 my-6">
+      <div className='max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 my-6'>
         <img
-          className="object-cover w-screen h-auto"
+          className='object-cover w-screen h-auto'
           src={imageUrl}
-          alt="avatar"
+          alt='avatar'
         />
 
-        <div className="py-5 text-center">
+        <div className='py-5 text-center'>
           <a
-            href="#"
-            className="block text-2xl font-bold text-gray-800 dark:text-white"
+            href='#'
+            className='block text-2xl font-bold text-gray-800 dark:text-white'
           >
             {name}
           </a>
-          <span className="text-sm text-gray-700 dark:text-gray-200">
+          <span className='text-sm text-gray-700 dark:text-gray-200'>
             {title}
           </span>
           <br />
-          <span className="text-sm mt-2 text-gray-700 dark:text-gray-200 flex justify-center">
+          <span className='text-sm mt-2 text-gray-700 dark:text-gray-200 flex justify-center'>
             {/* <a
               target="_blank"
               title="github-link"
@@ -55,26 +60,26 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ image, name, title, linkedin 
             </a>{" "} */}
             &nbsp;&nbsp;
             <a
-              target="_blank"
-              title="linkedin-link"
-              rel="noopener noreferrer"
+              target='_blank'
+              title='linkedin-link'
+              rel='noopener noreferrer'
               href={linkedin}
-              className="text-black"
+              className='text-black'
             >
               <svg
-                fill="currentColor"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                fill='currentColor'
+                stroke='currentColor'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 strokeWidth={0}
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
+                className='w-5 h-5'
+                viewBox='0 0 24 24'
               >
                 <path
-                  stroke="none"
-                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                  stroke='none'
+                  d='M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z'
                 />
-                <circle cx={4} cy={4} r={2} stroke="none" />
+                <circle cx={4} cy={4} r={2} stroke='none' />
               </svg>
             </a>
           </span>
