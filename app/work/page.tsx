@@ -2,11 +2,8 @@
 import ProjectCard from "../../components/workPage/ProjectCard";
 import WorkHeader from "../../components/workPage/WorkHeader";
 import Head from "next/head";
-// import { Blog } from "../../components/workPage/BlogCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
-// import 'swiper/css/pagination';
-// import 'swiper/css/navigation';
 
 import {
   Pagination,
@@ -17,12 +14,15 @@ import {
 }from "swiper";
 import Filler from "../../components/workPage/Filler";
 import SectionHeader from "../../components/workPage/SectionHeader";
-import {use} from 'react';
-// import { Calistoga } from "next/font/google";
+import {useEffect,use} from 'react';
+import { Calistoga } from "next/font/google";
+import { ProjectCardProps } from "@/types";
 let Parser = require("rss-parser");
 let parser = new Parser();
 // new SwiperCore([Navigation, Pagination, Scrollbar, Ally, Autoplay]);
 // interface MySwiperProps {}
+
+
 export interface ProjectsDetails {
   id: number;
   status: string;
@@ -42,7 +42,6 @@ export interface ProjectsDetails {
 
 const Works  =() => {
   const props:any= use(getWork());
-  // const { blogs } = props;
  
   return (
     <>
@@ -110,7 +109,7 @@ and projects with more end-user interactions."
             },
           }}
         >
-          {props.props.projects.map((project:any) => (
+          {props.props.projects.map((project: ProjectCardProps) => (
             <SwiperSlide key={`slide-id-${project.id}`} >
               <ProjectCard key={`project-id-${project.id}`} project={project}  />
             </SwiperSlide>
@@ -123,7 +122,7 @@ and projects with more end-user interactions."
   );
 };
 
-export async function getWork(){
+async function getWork(){
   try{
   const SERVER = "https://api.iotkiit.in";
 
