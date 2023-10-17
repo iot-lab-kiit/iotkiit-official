@@ -1,24 +1,37 @@
-import TeamHeader from '@/components/teamPage/TeamHeader';
+import TeamHeader from "@/components/teamPage/TeamHeader";
 // import Mentors from "@/container/teams/Mentors";
-import Coordinators from '@/container/teams/Coordinators';
-import Team from '@/container/teams/Team';
-import { positionData } from '@/types';
+import Coordinators from "@/container/teams/Coordinators";
+import Team from "@/container/teams/Team";
+import TeamLead from "@/container/teams/TeamLead";
 
-import getConfig from 'next/config';
+import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 const { SERVER } = publicRuntimeConfig;
 
+export const positionData = {
+  1: "coordinator",
+  2: "nontechcoordinator",
+  3: "techcoordinator",
+  4: "administrativecoordinator",
+  5: "teamlead",
+  6: "colead",
+  7: "member",
+};
+
 const coordinatorIndex = [
-  positionData['1'],
-  positionData['2'],
-  positionData['3'],
-  positionData['4'],
+  positionData["1"],
+  positionData["2"],
+  positionData["3"],
+  positionData["4"],
 ];
-const memberIndex = [positionData['5'], positionData['6'], positionData['7']];
+const memberIndex = [positionData["6"], positionData["7"]];
+
+const teamLeadIndex = [positionData["5"]];
 
 interface TeamData {
   coordinators: [MemberData];
   members: [MemberData];
+  teamleads: [MemberData];
   // mentors: [MemberData];
 }
 
@@ -35,7 +48,7 @@ export interface MemberData {
   dob: string;
   year: string;
   branch: string;
-
+  
   domain: string;
   avatar: string;
   linkedin: string;
@@ -56,6 +69,7 @@ const Layout = async () => {
       <TeamHeader />
       {/* <Mentors mentors={propsData.mentors} /> */}
       <Coordinators coordinators={propsData.coordinators} />
+      <TeamLead teamleads={propsData.teamleads} />
       <Team members={propsData.members} />
     </div>
   );
@@ -64,23 +78,29 @@ const Layout = async () => {
 async function getData() {
   // Get All Team Data
   const response = await fetch(`${SERVER}/items/teams`, {
-    next: { revalidate: 2 },
+    next: { revalidate: 3600 },
   });
   const allTeamResponse = await response.json();
   const allTeamData = await allTeamResponse.data;
 
   const coordinatorsData = allTeamData.filter((member: MemberData) =>
-    coordinatorIndex.includes(member.position),
+    coordinatorIndex.includes(member.position)
   );
   const membersData = allTeamData.filter((member: MemberData) =>
-    memberIndex.includes(member.position),
+    memberIndex.includes(member.position)
   );
+
+  const teamleadsData = allTeamData.filter((member: MemberData) =>
+    teamLeadIndex.includes(member.position)
+  );
+
   // const mentorsData = allTeamData.filter(
   //   (member: MemberData) => member.position === "Mentor"
   // );
   return {
     coordinators: coordinatorsData,
     members: membersData,
+    teamleads: teamleadsData,
     // mentors: mentorsData,
   };
 }
