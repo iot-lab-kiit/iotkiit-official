@@ -1,0 +1,210 @@
+.temp {
+  z-index: 10;
+  position: absolute;
+  left: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
+  background: #1f293750;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 90vw;
+  height: 11vh;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.temp4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 130px;
+  height: 110px;
+  margin-bottom: 1vw;
+}
+
+.vertical {
+  border-left: 0.1vw solid rgba(0, 0, 0, 0.699);
+  height: 9vh;
+}
+
+.title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  margin-left: 2vw;
+  font-weight: 700;
+  font-size: 35px;
+  color: #17191ae5;
+}
+
+.temp2 {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2.3vw;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 2vw;
+}
+
+.lines {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: 500;
+  font-size: 25px;
+  text-wrap: nowrap;
+  font-weight: bold;
+}
+
+.belowLine {
+  margin-left: 2.5vw;
+}
+
+.temp3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw 7vh; /* Adjust the padding as needed */
+  font-size: 19px; /* Adjust the font size as needed */
+  height: 6vh;
+  width: 11vw;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #4763b7; /* Border color */
+  color: #f7eded; /* Text color */
+  background-color: #4763b7; /* Background color */
+  border-radius: 5px; /* Adjust border-radius for rounded corners */
+  transition: background-color 0.3s, color 0.3s, border 0.3s; /* Add smooth transition effect */
+}
+
+@media screen and (max-width: 918px) {
+    .title{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 936px) {
+    .title{
+        font-size: 23px;
+    }
+
+    .lines {
+        font-size: 18px;
+      }
+}
+
+@media screen and (max-width: 727px) {
+  .title{
+    font-size: 20px;
+  }
+
+  .lines {
+    font-size: 15px;
+  }
+
+  .icon {
+    width: 90px;
+    height: 90px;
+    
+  }
+
+  
+}
+
+@media screen and (max-width: 565px) {
+    .title{
+        display: none;
+    }
+
+    .text{
+        
+         position: relative;
+        
+         
+    }
+
+    .temp3{
+      margin-left: 2rem;
+    }
+}
+
+@media screen and (max-width: 454px) {
+  .title{
+      display: none;
+  }
+
+  .button{
+    height: 5vh;
+    width: 0.5vw;
+    font-size: 16px;
+}
+
+.lines{
+  font-size: 13px;
+  
+}
+
+  .temp3{
+    margin-left: 0.5rem;
+  }
+
+  .icon {
+    width: 85px;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  
+
+    .background{
+        height: 13vh;
+    }
+
+    .title{
+        display: none;
+    }
+
+    .text{
+        margin: auto;
+        flex-direction: column;
+        
+    }
+
+    .temp3{
+      margin-right: 14vw;
+    }
+
+    .lines{
+        font-size: 17px;
+        font-weight: 600;
+    }
+    
+    .button{
+        height: 4vh;
+        width: 0.5vw;
+        font-size: 14px;
+    }
+}
