@@ -23,7 +23,7 @@ const Announcement = () => {
           <div className={style.temp3}>
             <button className={style.button}>
               <a
-                href='https://innovance.iotkiit.in/register'
+                href='https://innovance.iotkiit.in'
                 target='_blank'
                 rel='noopener noreferrer'
                 className={style.link}
