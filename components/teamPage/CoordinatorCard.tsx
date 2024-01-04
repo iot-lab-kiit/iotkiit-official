@@ -23,8 +23,9 @@ const CoordinatorCard = ({
     // ${
     //   position === " Coordinator" ? "lg:w-screen" : "lg:w-1/2"
     // }
-    <div className={`p-4 mx-auto sm:mx-0 lg:w-1/2`}>
-      <div className='h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left'>
+    <div className='p-4 mx-auto'>
+      {/* <div className='h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left'> */}
+      <div className='h-full text-center sm:text-left grid place-items-center'>
         <Image
           alt='team'
           className='flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4'
@@ -32,13 +33,13 @@ const CoordinatorCard = ({
           width={200}
           height={200}
         />
-        <div className='flex-grow sm:pl-8'>
+        <div className='flex-grow py-5 grid place-items-center'>
           <h2 className='title-font font-medium text-xl text-gray-900'>
             {name}
           </h2>
-          <h3 className='text-gray-500 text-lg mb-3'>{position}</h3>
-          <p className='mb-4'>{quote}</p>
-          <span className='inline-flex sm:-ml-2.5'>
+          <h3 className='text-gray-500 text-lg mb-2'>{position}</h3>
+          {quote && <p className='mb-2'>{quote}</p>}
+          <span className='inline-flex'>
             {githubUrl && (
               <a
                 className='text-gray-500 mx-3'
