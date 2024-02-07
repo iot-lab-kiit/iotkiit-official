@@ -28,7 +28,7 @@ const getCoordinator = (x: string) => {
 const Coordinators = ({ coordinators }: CoordinatorsPropData) => {
   return (
     <section className='text-gray-600 body-font'>
-      <div className='container px-5 py-24 mx-auto'>
+      <div className='container py-24 mx-auto'>
         <div className='max-w-xl mb-10 ml-6 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12'>
           <div>
             <p className='inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400'>
@@ -69,7 +69,7 @@ const Coordinators = ({ coordinators }: CoordinatorsPropData) => {
             <span className='font-bold tracking-wider'>– Walt Disney</span>
           </p>
         </div>
-        <div className='flex flex-wrap lg:ml-[3rem] -mt-4'>
+        <div className='flex flex-wrap lg:flex-nowrap'>
           {coordinators.map(coordinator => (
             <CoordinatorCard
               key={`coordinator-card-${coordinator.id}`}
