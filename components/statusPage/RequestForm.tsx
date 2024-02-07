@@ -7,7 +7,6 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 // import dayjs from 'dayjs';
 import CustomTextField from './CustomTextField';
-
 const teams: string[] = [
   'CP',
   'Web Dev',
@@ -20,30 +19,8 @@ const teams: string[] = [
   'Administration(HR)',
   'Video Editing',
 ];
-
-interface FormDataType {
-  email: string;
-  name: string;
-  roll: string;
-  team: string;
-  selectedDate: Date;
-  from: Date;
-  to: Date;
-  reason: string;
-}
-
-interface SubmitDataType {
-  department: string;
-  name: string;
-  roll_no: string;
-  time: string;
-  reason: string;
-}
-
-const RequestForm: React.FC = () => {
+const RequestForm = () => {
   const [pop, setPop] = useState(false);
-  const handleClick = () => setPop(true);
-  const handleClose = () => setPop(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -54,14 +31,12 @@ const RequestForm: React.FC = () => {
     to: new Date(),
     reason: '',
   });
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const isDurationValid = (): boolean => {
     const diffMs: number = formData.to.getTime() - formData.from.getTime();
-    const diffMinutes: number = Math.round(
-      ((diffMs % 86400000) % 3600000) / 60000,
-    );
-    return diffMinutes > 60; // Modify the validation logic as needed
+    const diffMinutes: number = Math.round(diffMs / 60000); // Convert milliseconds to minutes
+    return diffMinutes > 60;
   };
 
   const validate = (): boolean => {
@@ -74,25 +49,32 @@ const RequestForm: React.FC = () => {
     );
   };
 
-  const handleSubmit = () => {
-    // Sending Lab Opening Request to Server
-    const data: SubmitDataType = {
-      department: formData.team,
-      name: formData.name,
-      roll_no: formData.roll,
-      time: `${formData.to.getHours()}:${formData.to.getMinutes()}:${formData.to.getSeconds()}`,
-      reason: formData.reason,
-    };
+  const handleClick = () => setPop(true);
+  const handleClose = () => setPop(false);
 
-    // Perform your fetch request here
-    // Replace the following code with your actual API call
+  const handleSubmit = () => {
+    if (!validate()) {
+      setErrorMessage('Please fill out all fields.');
+      return;
+    }
+
+    if (!isDurationValid()) {
+      setErrorMessage('Enter a valid duration.');
+      return;
+    }
     fetch('https://api.iotkiit.in/items/lab_open_request', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(formData),
     })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(() => {
         setFormData({
           name: '',
@@ -104,12 +86,13 @@ const RequestForm: React.FC = () => {
           to: new Date(),
           reason: '',
         });
+        setErrorMessage('');
+        handleClose();
       })
-      .catch(e => {
-        console.error(e);
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        setErrorMessage('There was a problem submitting your request. Please try again later.');
       });
-    setErrorMessage('');
-    handleClose();
   };
 
   return (
@@ -228,13 +211,6 @@ const RequestForm: React.FC = () => {
                         selectedDate: e || new Date(),
                       })
                     }
-                    // renderInput={(params: Date) => (
-                    //   <CustomTextField
-                    //     {...params}
-                    //     label={"Date"}
-                    //     InputProps={{ disableUnderline: true }}
-                    //   />
-                    // )}
                   />
                 </LocalizationProvider>
               </Grid>
@@ -252,13 +228,6 @@ const RequestForm: React.FC = () => {
                         from: e || new Date(),
                       })
                     }
-                    // renderInput={(params: Date) => (
-                    //   <CustomTextField
-                    //     {...params}
-                    //     label={"From"}
-                    //     InputProps={{ disableUnderline: true }}
-                    //   />
-                    // )}
                   />
                 </Grid>
                 <Grid item xs={6}>
@@ -266,18 +235,11 @@ const RequestForm: React.FC = () => {
                     label='To'
                     value={formData.to}
                     onAccept={(e: Date | null) => {
-                      if (isDurationValid()) {
+                      if (!isDurationValid()) {
                         setFormData({ ...formData, to: e || new Date() });
                         setErrorMessage('');
-                      } else setErrorMessage('Enter a valid duration');
+                      } 
                     }}
-                    // renderInput={(params: any) => (
-                    //   <CustomTextField
-                    //     {...params}
-                    //     label={"To"}
-                    //     InputProps={{ disableUnderline: true }}
-                    //   />
-                    // )}
                   />
                 </Grid>
               </Grid>
