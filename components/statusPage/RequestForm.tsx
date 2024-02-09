@@ -10,22 +10,24 @@ import CustomTextField from './CustomTextField';
 const teams: string[] = [
   'CP',
   'Web Dev',
-  'App',
+  'App Dev',
+  'AI/ML',
   'Marketing & Management',
   'Content',
   'GD & UI/UX',
   'IoT',
-  'Cyber',
+  'Cyber Security',
   'Administration(HR)',
   'Video Editing',
+  '3D Prototyping',
 ];
 const RequestForm = () => {
   const [pop, setPop] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    roll: '',
-    team: '',
+    roll_no: '',
+    department: '',
     selectedDate: new Date(),
     from: new Date(),
     to: new Date(),
@@ -43,8 +45,8 @@ const RequestForm = () => {
     return (
       formData.name !== '' &&
       formData.email !== '' &&
-      formData.roll !== '' &&
-      formData.team !== '' &&
+      formData.roll_no !== '' &&
+      formData.department !== '' &&
       formData.reason !== ''
     );
   };
@@ -79,8 +81,8 @@ const RequestForm = () => {
         setFormData({
           name: '',
           email: '',
-          roll: '',
-          team: '',
+          roll_no: '',
+          department: '',
           selectedDate: new Date(),
           from: new Date(),
           to: new Date(),
@@ -177,9 +179,9 @@ const RequestForm = () => {
             <CustomTextField
               label='Enter Roll No.'
               type='number'
-              value={formData.roll}
+              value={formData.roll_no}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setFormData({ ...formData, roll: e.target.value })
+                setFormData({ ...formData, roll_no: e.target.value })
               }
             />
             <Box mt={2} />
@@ -188,9 +190,9 @@ const RequestForm = () => {
                 <CustomTextField
                   label={'Team'}
                   select
-                  value={formData.team}
+                  value={formData.department}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setFormData({ ...formData, team: e.target.value })
+                    setFormData({ ...formData, department: e.target.value })
                   }
                 >
                   {teams.map((team, index) => (
