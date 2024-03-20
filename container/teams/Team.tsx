@@ -12,11 +12,11 @@ interface TeamMemberPropsData {
 
 const getMember = (x: string) => {
   switch (x) {
-    case positionData['5']:
-      return 'Team Lead';
     case positionData['6']:
-      return 'Co-Lead';
+      return 'Team Lead';
     case positionData['7']:
+      return 'Co-Lead';
+    case positionData['8']:
       return 'Member';
     default:
       return 'Member';
@@ -24,7 +24,7 @@ const getMember = (x: string) => {
 };
 
 const Team = ({ members }: TeamMemberPropsData) => {
-  const membersIndex = ['5', '6', '7'];
+  const membersIndex = ['6', '7', '8'];
   return (
     <div>
       <section className='text-gray-600 body-font'>

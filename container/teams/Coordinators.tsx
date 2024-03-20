@@ -20,6 +20,8 @@ const getCoordinator = (x: string) => {
       return 'Tech Coordinator';
     case positionData['4']:
       return 'Administrative Coordinator';
+    case positionData['5']:
+      return 'Faculty Coordinator';
     default:
       return 'Coordinator';
   }

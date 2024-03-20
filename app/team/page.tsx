@@ -13,8 +13,9 @@ const coordinatorIndex = [
   positionData['2'],
   positionData['3'],
   positionData['4'],
+  positionData['5'],
 ];
-const memberIndex = [positionData['5'], positionData['6'], positionData['7']];
+const memberIndex = [positionData['6'], positionData['7'], positionData['8']];
 
 interface TeamData {
   coordinators: [MemberData];

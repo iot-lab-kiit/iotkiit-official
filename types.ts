@@ -3,9 +3,10 @@ export const positionData = {
   2: "nontechcoordinator",
   3: "techcoordinator",
   4: "administrativecoordinator",
-  5: "teamlead",
-  6: "colead",
-  7: "member",
+  5: "Faculty Coordinator",
+  6: "teamlead",
+  7: "colead",
+  8: "member",
 };
 export interface WebinarProps {
   speakers: any;
