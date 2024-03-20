@@ -63,7 +63,7 @@ const Layout = async () => {
 
 async function getData() {
   // Get All Team Data
-  const response = await fetch(`${SERVER}/items/teams`, {
+  const response = await fetch(`${SERVER}/items/teams?limit=200`, {
     next: { revalidate: 2 },
   });
   const allTeamResponse = await response.json();
