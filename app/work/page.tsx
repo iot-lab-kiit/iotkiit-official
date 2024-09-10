@@ -33,7 +33,7 @@ export interface ProjectsDetails {
 }
 
 const Works = () => {
-  const props: any = use(getWork());
+  // const props: any = use(getWork());
 
   return (
     <>
@@ -73,10 +73,10 @@ and projects with more end-user interactions.'
         <meta property='twitter:image' content='/images/logo_small.webp'></meta>
       </Head>
       <main>
-        <WorkHeader
+        {/* <WorkHeader
           numProjects={props.props.numProjects}
           numBlogs={props.props.numBlogs}
-        />
+        /> */}
         <SectionHeader />
         <Filler />
         <Swiper
@@ -104,11 +104,11 @@ and projects with more end-user interactions.'
             },
           }}
         >
-          {props.props.projects.map((project: ProjectCardProps) => (
+          {/* {props.props.projects.map((project: ProjectCardProps) => (
             <SwiperSlide key={`slide-id-${project.id}`}>
               <ProjectCard key={`project-id-${project.id}`} project={project} />
             </SwiperSlide>
-          ))}
+          ))} */}
         </Swiper>
 
         {/* <Blog main={blogs.main} top={blogs.top} bottom={blogs.bottom} /> */}
