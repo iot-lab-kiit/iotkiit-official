@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const localAPI = "http://localhost:3000/api";
-const prodAPI = "https://api.iotkiit.in";
+const prodAPI = "https://service.iotkiit.in";
 
 const nextConfig = {
   reactStrictMode: true,

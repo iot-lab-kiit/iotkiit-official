@@ -119,7 +119,7 @@ and projects with more end-user interactions.'
 
 async function getWork() {
   try {
-    const SERVER = 'https://api.iotkiit.in';
+    const SERVER = 'https://service.iotkiit.in';
 
     //Getting Projects from Server
     const response = await fetch(`${SERVER}/items/projects`);
