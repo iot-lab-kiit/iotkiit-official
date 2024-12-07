@@ -59,7 +59,7 @@ const Mentors = ({ mentors }: MentorsPropData) => {
             name={mentor.name}
             position={mentor.position}
             email={mentor.email}
-            // imageUrl={mentor.imageUrl.url}
+            imageUrl={mentor.avatar}
           />
         ))}
       </div>
@@ -70,7 +70,7 @@ const Mentors = ({ mentors }: MentorsPropData) => {
             name={mentor.name}
             position={mentor.position}
             email={mentor.email}
-            imageUrl={mentor.imageUrl.url}
+            imageUrl={mentor.avatar}
           />
         ))}
       </div>
