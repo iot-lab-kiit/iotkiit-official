@@ -7,9 +7,14 @@ const ProjectCard = (props: { key: string; project: ProjectCardProps }) => {
         <div
           className='bg-cover bg-center h-44 p-4'
           style={{
-            backgroundImage: `url(${props.project.imgUrl})`,
+            backgroundImage: `url(${
+              props.project.imgUrl !== 'https://api.iotkiit.in/assets/null'
+                ? props.project.imgUrl
+                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1O62vqe4xJ0_tcwSxXRBovw5t6obzgZOJFw&s'
+            })`,
           }}
         ></div>
+
         <div className='p-4'>
           <p className='uppercase tracking-wide leading-relaxed text-xs font-bold text-gray-700'>
             {props.project.type}

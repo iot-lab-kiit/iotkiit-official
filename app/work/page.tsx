@@ -33,7 +33,7 @@ export interface ProjectsDetails {
 }
 
 const Works = () => {
-  // const props: any = use(getWork());
+  const props: any = use(getWork());
 
   return (
     <>
@@ -73,10 +73,10 @@ and projects with more end-user interactions.'
         <meta property='twitter:image' content='/images/logo_small.webp'></meta>
       </Head>
       <main>
-        {/* <WorkHeader
+        <WorkHeader
           numProjects={props.props.numProjects}
           numBlogs={props.props.numBlogs}
-        /> */}
+        />
         <SectionHeader />
         <Filler />
         <Swiper
@@ -104,11 +104,11 @@ and projects with more end-user interactions.'
             },
           }}
         >
-          {/* {props.props.projects.map((project: ProjectCardProps) => (
+          {props.props.projects.map((project: ProjectCardProps) => (
             <SwiperSlide key={`slide-id-${project.id}`}>
               <ProjectCard key={`project-id-${project.id}`} project={project} />
             </SwiperSlide>
-          ))} */}
+          ))}
         </Swiper>
 
         {/* <Blog main={blogs.main} top={blogs.top} bottom={blogs.bottom} /> */}
@@ -119,7 +119,7 @@ and projects with more end-user interactions.'
 
 async function getWork() {
   try {
-    const SERVER = 'https://service.iotkiit.in';
+    const SERVER = 'https://api.iotkiit.in';
 
     //Getting Projects from Server
     const response = await fetch(`${SERVER}/items/projects`);
@@ -129,7 +129,9 @@ async function getWork() {
       (v: any, i: any, arr: any[]) =>
         (arr[i].imgUrl = SERVER + '/assets/' + v.imgUrl),
     );
-
+    projectsData.sort(
+      (a, b) => Date.parse(b.date_updated) - Date.parse(a.date_updated),
+    );
     //Getting Feed from Medium
     // let feed = await parser.parseURL("https://medium.com/feed/iot-lab-kiit");
     // const articles_items = feed.items;
@@ -151,7 +153,7 @@ async function getWork() {
 
     // //Taking the first 3 articles
     // const [main, top, bottom] = articles_items;
-
+    // console.log(projectsData);
     return {
       props: {
         projects: projectsData,

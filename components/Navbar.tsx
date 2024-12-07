@@ -70,7 +70,7 @@ const Navbar = () => {
                 />
               </a> */}
             </div>
-            <div className='hidden sm:block sm:ml-6 md:justify-self-end '>
+            <div className=' hidden sm:ml-6 md:justify-self-end sm:block'>
               <div className='flex space-x-4'>
                 <Link
                   title='homepage-link'
@@ -84,7 +84,7 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
-                {/* <Link
+                <Link
                   href='/team'
                   className={`${
                     path == '/team'
@@ -93,7 +93,7 @@ const Navbar = () => {
                   } text-gray-300  px-3 py-2 rounded-md text-sm font-medium`}
                 >
                   Team
-                </Link> */}
+                </Link>
                 {/* <a
                   href="/cp-probs"
                   className={`${
@@ -102,7 +102,7 @@ const Navbar = () => {
                 >
                   CP Questions
                 </a> */}
-                {/* <Link
+                <Link
                   href='/work'
                   className={`${
                     path == '/work'
@@ -111,7 +111,7 @@ const Navbar = () => {
                   } text-gray-300 px-3 py-2 rounded-md text-sm font-medium`}
                 >
                   Work
-                </Link> */}
+                </Link>
                 {/* <a
                   href="/events"
                   className={`${path == "/events" ? "bg-gray-900 text-white" : ""
@@ -171,7 +171,7 @@ const Navbar = () => {
             >
               Home
             </Link>
-            {/* <Link
+            <Link
               href='/team'
               className={`${
                 path == '/team'
@@ -180,8 +180,8 @@ const Navbar = () => {
               } text-gray-300 block px-3 py-2 rounded-md text-base font-medium`}
             >
               Team
-            </Link> */}
-            {/* <Link
+            </Link>
+            <Link
               href='/work'
               className={`${
                 path == '/work'
@@ -190,7 +190,7 @@ const Navbar = () => {
               } text-gray-300  block px-3 py-2 rounded-md text-base font-medium`}
             >
               Work
-            </Link> */}
+            </Link>
             {/*<a*/}
             {/*  href="/events"*/}
             {/*  className={`${path == "/events" ? "bg-gray-900 text-white" : ""*/}

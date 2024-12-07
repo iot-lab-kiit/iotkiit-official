@@ -1,12 +1,12 @@
 export const positionData = {
-  1: "coordinator",
-  2: "nontechcoordinator",
-  3: "techcoordinator",
-  4: "administrativecoordinator",
-  5: "Faculty Coordinator",
-  6: "teamlead",
-  7: "colead",
-  8: "member",
+  1: 'coordinator',
+  2: 'nontechcoordinator',
+  3: 'techcoordinator',
+  4: 'administrativecoordinator',
+  5: 'Faculty Coordinator',
+  6: 'teamlead',
+  7: 'colead',
+  8: 'member',
 };
 export interface WebinarProps {
   speakers: any;
@@ -29,3 +29,18 @@ export interface ProjectCardProps {
   addr: string;
   description: string;
 }
+
+export const domainData = {
+  "1": 'Administration',
+  "2": 'Web ',
+  "3": 'App',
+  "4": 'Marketing ',
+  "5": 'Content Writing',
+  "6": 'IoT',
+  "7": 'Cyber Security',
+  "8": 'Competitive Programming',
+  "9": 'Video Editing',
+  "10": 'GD & UI/UX',
+  "11": 'Machine Learning',
+  "12": 'Rapid Prototyping',
+};

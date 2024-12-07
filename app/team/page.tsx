@@ -1,10 +1,11 @@
 import TeamHeader from '@/components/teamPage/TeamHeader';
-// import Mentors from "@/container/teams/Mentors";
+import Mentors from "@/container/teams/Mentors";
 import Coordinators from '@/container/teams/Coordinators';
 import Team from '@/container/teams/Team';
 import { positionData } from '@/types';
 
 import getConfig from 'next/config';
+import TeamLead from '@/container/teams/TeamLead';
 const { publicRuntimeConfig } = getConfig();
 const { SERVER } = publicRuntimeConfig;
 
@@ -15,12 +16,13 @@ const coordinatorIndex = [
   positionData['4'],
   positionData['5'],
 ];
-const memberIndex = [positionData['6'], positionData['7'], positionData['8']];
-
+const memberIndex = [ positionData['7'], positionData['8']];
+const teamLeadIndex = [positionData["5"]];
 interface TeamData {
   coordinators: [MemberData];
   members: [MemberData];
-  // mentors: [MemberData];
+  mentors: [MemberData];
+  teamLead: [MemberData];
 }
 
 export interface MemberData {
@@ -52,11 +54,13 @@ export interface MemberData {
 
 const Layout = async () => {
   const propsData: TeamData = await getData();
+  // console.log(propsData.members);
   return (
     <div>
       <TeamHeader />
-      {/* <Mentors mentors={propsData.mentors} /> */}
+      <Mentors mentors={propsData.mentors} />
       <Coordinators coordinators={propsData.coordinators} />
+      <TeamLead teamleads={propsData.teamLead} />
       <Team members={propsData.members} />
     </div>
   );
@@ -69,20 +73,23 @@ async function getData() {
   });
   const allTeamResponse = await response.json();
   const allTeamData = await allTeamResponse.data;
-
   const coordinatorsData = allTeamData.filter((member: MemberData) =>
     coordinatorIndex.includes(member.position),
   );
   const membersData = allTeamData.filter((member: MemberData) =>
     memberIndex.includes(member.position),
   );
-  // const mentorsData = allTeamData.filter(
-  //   (member: MemberData) => member.position === "Mentor"
-  // );
+  const mentorsData = allTeamData.filter(
+    (member: MemberData) => member.position === "Mentor"
+  );
+  const teamleadsData = allTeamData.filter((member: MemberData) =>
+   member.position.includes("lead")
+  ); 
   return {
     coordinators: coordinatorsData,
     members: membersData,
-    // mentors: mentorsData,
+    mentors: mentorsData,
+    teamLead: teamleadsData,
   };
 }
 
