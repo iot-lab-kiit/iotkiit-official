@@ -70,7 +70,7 @@ const Navbar = () => {
                 />
               </a> */}
             </div>
-            <div className=' hidden sm:ml-6 md:justify-self-end sm:block'>
+            <div className='hidden sm:flex sm:ml-6 md:justify-self-end '>
               <div className='flex space-x-4'>
                 <Link
                   title='homepage-link'
