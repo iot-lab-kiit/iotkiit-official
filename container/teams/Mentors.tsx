@@ -53,7 +53,7 @@ const Mentors = ({ mentors }: MentorsPropData) => {
         </p>
       </div>
       <div className=' py-6 grid gap-5 sm:gap-10 px-5 grid-cols-2 sm:grid-cols-2 lg:grid-cols-2'>
-        {/* {mentors?.slice(0, 2)?.map((mentor) => (
+        {mentors?.slice(0, 2)?.map((mentor) => (
           <TopTeamHoverCard
             key={`mentor-id-${mentor.id}`}
             name={mentor.name}
@@ -61,18 +61,18 @@ const Mentors = ({ mentors }: MentorsPropData) => {
             email={mentor.email}
             // imageUrl={mentor.imageUrl.url}
           />
-        ))} */}
+        ))}
       </div>
       <div className=' pt-6 grid gap-5 sm:gap-10 px-5 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4'>
-        {/* {mentors?.slice(2)?.map((mentor) => (
+        {mentors?.slice(2)?.map((mentor) => (
           <TeamHoverCard
             key={`mentor-id-${mentor.id}`}
             name={mentor.name}
             position={mentor.position}
             email={mentor.email}
-            // imageUrl={mentor.imageUrl.url}
+            imageUrl={mentor.imageUrl.url}
           />
-        ))} */}
+        ))}
       </div>
     </div>
   );

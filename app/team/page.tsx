@@ -1,5 +1,5 @@
 import TeamHeader from '@/components/teamPage/TeamHeader';
-// import Mentors from "@/container/teams/Mentors";
+import Mentors from "@/container/teams/Mentors";
 import Coordinators from '@/container/teams/Coordinators';
 import Team from '@/container/teams/Team';
 import { positionData } from '@/types';
@@ -20,7 +20,7 @@ const memberIndex = [positionData['6'], positionData['7'], positionData['8']];
 interface TeamData {
   coordinators: [MemberData];
   members: [MemberData];
-  // mentors: [MemberData];
+  mentors: [MemberData];
 }
 
 export interface MemberData {
@@ -52,10 +52,11 @@ export interface MemberData {
 
 const Layout = async () => {
   const propsData: TeamData = await getData();
+  // console.log(propsData.members);
   return (
     <div>
       <TeamHeader />
-      {/* <Mentors mentors={propsData.mentors} /> */}
+      <Mentors mentors={propsData.mentors} />
       <Coordinators coordinators={propsData.coordinators} />
       <Team members={propsData.members} />
     </div>
@@ -69,20 +70,19 @@ async function getData() {
   });
   const allTeamResponse = await response.json();
   const allTeamData = await allTeamResponse.data;
-
   const coordinatorsData = allTeamData.filter((member: MemberData) =>
     coordinatorIndex.includes(member.position),
   );
   const membersData = allTeamData.filter((member: MemberData) =>
     memberIndex.includes(member.position),
   );
-  // const mentorsData = allTeamData.filter(
-  //   (member: MemberData) => member.position === "Mentor"
-  // );
+  const mentorsData = allTeamData.filter(
+    (member: MemberData) => member.position === "Mentor"
+  );
   return {
     coordinators: coordinatorsData,
     members: membersData,
-    // mentors: mentorsData,
+    mentors: mentorsData,
   };
 }
 

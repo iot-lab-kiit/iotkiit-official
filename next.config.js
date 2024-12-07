@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const localAPI = "http://localhost:3000/api";
-const prodAPI = "https://service.iotkiit.in";
+const prodAPI = "https://api.iotkiit.in";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -13,7 +13,7 @@ const nextConfig = {
     SERVER: prodAPI,
     apiVersion: "v1",
   },
-  //   target: "serverless",
+    // target: "serverless",
 };
 
 module.exports = nextConfig;

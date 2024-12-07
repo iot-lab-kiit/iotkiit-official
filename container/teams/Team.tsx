@@ -74,7 +74,7 @@ const Team = ({ members }: TeamMemberPropsData) => {
               <TeamMemberCard
                 key={`team-member-card-${member.id}`}
                 name={member.name}
-                ringColor={member.year}
+                ringColor={(parseInt(member.year) - 2020).toString()}
                 githubUrl={member.github}
                 linkedinUrl={member.linkedin}
                 mailID={member.email}
