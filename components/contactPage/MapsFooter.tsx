@@ -1,12 +1,12 @@
 const MapFooter = () => {
   return (
     <section className='text-gray-700 body-font relative'>
-      <div className='absolute inset-0 bg-gray-300 '>
+      <div className='absolute inset-0 '>
         <iframe
           width='100%'
           height='100%'
           title='map'
-          className='grayscale contrast-125 opacity-50'
+          // className='grayscale contrast-125 opacity-50'
           src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d935.2104779406211!2d85.8158259!3d20.3481485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5f698e918e3440f1!2sSchool%20Of%20Computer%20Engineering%2C%20KIIT!5e0!3m2!1sen!2sin!4v1611431926272!5m2!1sen!2sin'
         />
       </div>
@@ -26,9 +26,7 @@ const MapFooter = () => {
             <br />
             Odisha, India 751024
           </p>
-          <p className='text-xs text-gray-500 mt-3'>
-            Closed due to the Pandemic, Right now. :(
-          </p>
+        
         </div>
       </div>
     </section>
