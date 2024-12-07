@@ -83,9 +83,8 @@ async function getData() {
     (member: MemberData) => member.position === "Mentor"
   );
   const teamleadsData = allTeamData.filter((member: MemberData) =>
-    member.position==="Team Lead"
-  );
- 
+   member.position.includes("lead")
+  ); 
   return {
     coordinators: coordinatorsData,
     members: membersData,

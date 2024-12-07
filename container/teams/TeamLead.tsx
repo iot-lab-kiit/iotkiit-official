@@ -68,7 +68,7 @@ const TeamLead = ({ teamleads }: TeamLeadsPropData) => {
               name={teamlead.name}
               position={getTeamLead(teamlead.position)}
               domain={teamlead.domain}
-              imageUrl={SERVER + "/assets/" + teamlead.avatar}
+              avatar={SERVER + "/assets/" + teamlead.avatar}
               quote={teamlead.quote}
               githubUrl={teamlead.github}
               linkedinUrl={teamlead.linkedin}
