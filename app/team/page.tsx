@@ -112,7 +112,7 @@ const Team = () => {
             step={60}
           >
             {leads.map((p) => (
-              <PersonCard key={p.name + p.role} person={p} />
+              <PersonCard key={p.name + p.role} person={p} hideDomain />
             ))}
           </Stagger>
         </div>
