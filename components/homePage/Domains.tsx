@@ -15,7 +15,6 @@ import VideocamIcon from "@mui/icons-material/Videocam";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import TouchAppIcon from "@mui/icons-material/TouchApp";
 import { domains, type Domain } from "@/data/domains";
 
 const ICONS: Record<string, typeof TerminalIcon> = {
@@ -131,6 +130,46 @@ const DomainCard = ({
   );
 };
 
+// Mobile tile: a static, fully-readable card (icon + horizontal title + desc).
+// The kinetic accordion doesn't work on a narrow column — collapsed slivers
+// crush the vertical labels — so on phones we show this clear grid instead.
+const DomainTile = ({ domain }: { domain: Domain }) => {
+  const Icon = ICONS[domain.icon] ?? TerminalIcon;
+
+  return (
+    <div className="group relative flex min-h-[172px] flex-col justify-end overflow-hidden rounded-2xl border border-white/10">
+      {/* Background image, dimmed for legibility */}
+      <div className="absolute inset-0">
+        <Image
+          src={domain.img}
+          alt={domain.title}
+          fill
+          sizes="(max-width: 640px) 100vw, 50vw"
+          className="object-cover brightness-[0.4]"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/20" />
+      <div
+        className={clsx(
+          "absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t opacity-30",
+          domain.color
+        )}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col gap-1.5 p-4">
+        <Icon sx={{ fontSize: 26 }} className="text-white/90" />
+        <h3 className="text-lg font-black uppercase leading-tight tracking-tight text-white">
+          {domain.title}
+        </h3>
+        <p className="text-xs leading-snug text-gray-300/90 line-clamp-3">
+          {domain.desc}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const Domains = () => {
   const [activeId, setActiveId] = useState<string>(domains[0].id);
 
@@ -141,17 +180,18 @@ const Domains = () => {
       <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-blue-500/10 blur-[100px]" />
 
       {/* Header */}
-      <div className="relative z-10 mb-10 text-center md:mb-14">
+      <div className="relative z-10 mb-8 text-center md:mb-14">
         <h2 className="bg-gradient-to-b from-white to-white/40 bg-clip-text text-4xl font-bold tracking-tighter text-transparent sm:text-5xl md:text-6xl">
           Our Domains
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-base text-gray-400 md:mt-4 md:text-lg">
-          The specialized guilds powering our innovation engine. Hover to explore.
+        <p className="mx-auto mt-3 max-w-xl text-sm text-gray-400 sm:text-base md:mt-4 md:text-lg">
+          The specialized guilds powering our innovation engine.
+          <span className="hidden md:inline"> Hover to explore.</span>
         </p>
       </div>
 
-      {/* Kinetic accordion */}
-      <div className="relative z-10 flex h-[560px] w-full max-w-[1500px] flex-col gap-1.5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-3 backdrop-blur-2xl md:mx-auto md:h-[650px] md:flex-row md:gap-3 md:rounded-[2.5rem] md:p-4 lg:h-[700px]">
+      {/* Desktop: kinetic accordion (hidden on phones) */}
+      <div className="relative z-10 hidden h-[650px] w-full max-w-[1500px] gap-3 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.04] p-4 backdrop-blur-2xl md:mx-auto md:flex md:flex-row lg:h-[700px]">
         {domains.map((domain) => (
           <DomainCard
             key={domain.id}
@@ -162,10 +202,11 @@ const Domains = () => {
         ))}
       </div>
 
-      {/* Mobile hint */}
-      <div className="relative z-10 mt-6 flex items-center justify-center gap-2 text-sm text-gray-500 md:hidden">
-        <TouchAppIcon sx={{ fontSize: 16 }} />
-        <span>Tap a card to expand</span>
+      {/* Mobile: readable static grid (hidden from md up) */}
+      <div className="relative z-10 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 md:hidden">
+        {domains.map((domain) => (
+          <DomainTile key={domain.id} domain={domain} />
+        ))}
       </div>
     </section>
   );
