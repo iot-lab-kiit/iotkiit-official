@@ -89,7 +89,7 @@ export const members: Person[] = [
   { name: "Akshat Chauhan", photo: "/images/team/akshat-chauhan.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/akshat-chauhan-ai/", github: "https://github.com/AkZcH" },
   { name: "Aman Singh", domain: "Machine Learning", linkedin: "https://linkedin.com/in/naman-singh419", github: "https://github.com/NamanSingh69" },
   { name: "Avaneesh Kumar rai", photo: "/images/team/avaneesh-kumar-rai.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/avaneesh-rai-16aa01287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Avaneesh040" },
-  { name: "Naman Singh", domain: "Machine Learning", linkedin: "https://linkedin.com/in/naman-singh419", github: "https://github.com/NamanSingh69" },
+  { name: "Naman Singh", photo: "/images/team/naman-singh.jpg", domain: "Machine Learning", linkedin: "https://linkedin.com/in/naman-singh419", github: "https://github.com/NamanSingh69" },
   { name: "Souvik Bose", photo: "/images/team/souvik-bose.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/souvik-thecvguy?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
   { name: "Taniya Chouhan", photo: "/images/team/taniya-chouhan.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/taniya-chouhan-625999286", github: "https://github.com/TaniyaChouhan20" },
   { name: "Vaidik Gupta", photo: "/images/team/vaidik-gupta.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/vaidik-gupta-ss2311383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
