@@ -5,7 +5,7 @@ import { alumni } from '@/data/alumni';
 export const metadata = {
   title: 'Alumni | IoT Lab KIIT',
   description:
-    'The previous batch that built IoT Lab, KIIT: coordinators, leads and members whose work we carry forward.',
+    'The previous members of IoT Lab KIIT, whose work and ideas still shape the lab.',
 };
 
 const coordinators = alumni.filter((a) => a.tier === 'coordinator');
@@ -25,8 +25,8 @@ const Alumni = () => {
           Our <span className="text-primary-default">Alumni</span>
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base font-light text-gray-500">
-          The seniors who shaped IoT Lab before us. Their contribution, and their journeys,
-          live on here.
+          The people who helped shape the lab before us, and whose work still
+          carries forward.
         </p>
       </section>
 
@@ -75,7 +75,7 @@ const Alumni = () => {
             <SectionTitle
               eyebrow="The Family"
               title="Members"
-              subtitle="The 2024-25 batch who built the lab before us."
+              subtitle="People from the previous batch who were part of the lab."
             />
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
               {members.map((a, i) => (

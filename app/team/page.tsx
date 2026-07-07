@@ -16,19 +16,21 @@ const DOMAIN_ORDER = [
   'Cyber Security',
   'Content',
   'GD & UI/UX',
-  'Creative',
   'Video',
   'Marketing',
   'Administration',
 ];
 
+const normalizeDomain = (domain?: string) =>
+  domain === 'Creative' ? 'GD & UI/UX' : domain;
+
 const groupedMembers = DOMAIN_ORDER.map((domain) => ({
   domain,
-  people: members.filter((m) => m.domain === domain),
+  people: members.filter((m) => normalizeDomain(m.domain) === domain),
 })).filter((g) => g.people.length > 0);
 
 const ungrouped = members.filter(
-  (m) => !m.domain || !DOMAIN_ORDER.includes(m.domain),
+  (m) => !normalizeDomain(m.domain) || !DOMAIN_ORDER.includes(normalizeDomain(m.domain)!),
 );
 
 const MemberGrid = ({ people }: { people: Person[] }) => (
@@ -48,16 +50,16 @@ const Team = () => {
       <section className="border-y border-gray-100 bg-primary-50/40 px-6 py-16 sm:py-20">
         <SectionTitle
           eyebrow="Guidance"
-          title="FIC · Mentorship Team"
-          subtitle="Meet our Mentors, Advisors and FIC."
+          title="Our FIC"
+          subtitle="The people we turn to for guidance, perspective, and support."
         />
         <figure className="mx-auto max-w-2xl text-center">
           <blockquote className="text-lg font-light italic leading-relaxed text-gray-600 sm:text-xl">
-            “A mentor is someone who allows you to see the hope inside yourself, and
-            helps you turn the very best of what is inside of you, out of you.”
+            “A mentor helps you notice the strengths you already have, and gives
+            you the push to use them well.”
           </blockquote>
           <figcaption className="mt-3 text-sm font-medium text-gray-400">
-            — Bob Proctor
+            Bob Proctor
           </figcaption>
         </figure>
         <div className="mx-auto mt-10 max-w-xs">
@@ -80,7 +82,7 @@ const Team = () => {
         <SectionTitle
           eyebrow="Leadership"
           title="Coordinators"
-          subtitle="Steering IoT Lab and keeping every domain moving in sync."
+          subtitle="The two people keeping the lab organized and moving."
         />
         <div className="mx-auto flex max-w-2xl flex-col justify-center gap-8 sm:flex-row">
           {coordinators.map((p) => (
@@ -97,7 +99,7 @@ const Team = () => {
           <SectionTitle
             eyebrow="Core Team"
             title="Domain Leads"
-            subtitle="The people driving each technical and creative vertical of the lab."
+            subtitle="The people leading each domain with their own pace and style."
           />
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-4">
             {leads.map((p) => (
@@ -112,7 +114,7 @@ const Team = () => {
         <SectionTitle
           eyebrow="The Family"
           title="Our Members"
-          subtitle="Students building, learning and shipping together across every domain."
+          subtitle="Students learning, building, and helping each other across the lab."
         />
         <div className="space-y-12">
           {groupedMembers.map((g) => (

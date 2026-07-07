@@ -19,15 +19,13 @@ const AboutUs: React.FC = () => {
               <span className='bg-primary-default h-1 w-20 block mt-4' />
             </h3>
             <p className='text-lg text-secondary-700 mb-4'>
-              A group of dedicated students and faculties who are keenly focused
-              on working towards the betterment of society through technology
-              believing that small steps gradually contribute to bigger and
-              better changes.
+              We are a group of students and faculty who care about building
+              useful technology and using it to make everyday life a little
+              better.
             </p>
             <p className='text-lg text-secondary-700'>
-              Even though we are a research lab, we harbour all domains,
-              technical and non-technical for a complete in-house holistic
-              approach towards everything.
+              The lab spans technical and non-technical work, so people can
+              learn, experiment, and contribute from different angles.
             </p>
           </div>
         </div>

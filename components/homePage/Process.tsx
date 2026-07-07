@@ -19,8 +19,8 @@ const Process: React.FC = () => {
               What do we do?
             </h4>
             <p className=' lg:w-full md:w-full sm:w-1/2 px-1 text-center text-secondary-700 leading-relaxed'>
-              Nature is full of mysteries. We try to find real-world problem
-              statements and work passively in order to find their solutions.
+              We look for problems that matter in daily life, then work through
+              them until the solution feels useful and real.
             </p>
           </div>
           <div className='group flex flex-col items-center md:px-6 py-4 lg:px-12 transition-transform duration-300 hover:-translate-y-1'>
@@ -29,9 +29,8 @@ const Process: React.FC = () => {
               How do we do it?
             </h4>
             <p className='lg:w-full md:w-full sm:w-1/2 px-1 text-center text-secondary-700 leading-relaxed'>
-              Well, everyone is blessed with unique skills. We figure out the
-              capabilities of each individual and combine them to work in
-              conjunction.
+              Everyone brings something different. We figure out where people
+              fit best, then let those strengths work together.
             </p>
           </div>
           <div className='group flex flex-col items-center md:px-6 py-4 lg:px-12 transition-transform duration-300 hover:-translate-y-1'>
@@ -40,8 +39,8 @@ const Process: React.FC = () => {
               How are we unique?
             </h4>
             <p className='lg:w-full md:w-full sm:w-1/2 px-1 text-center text-secondary-700 leading-relaxed'>
-              Extensive research and on-field analysis are the key factors to
-              our success. Of course, we have other secret ingredients as well!
+              We rely on research, hands-on testing, and a lot of honest
+              iteration. That is what keeps the work grounded.
             </p>
           </div>
         </div>

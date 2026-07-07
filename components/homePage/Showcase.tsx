@@ -34,15 +34,13 @@ const Showcase: React.FC = () => {
               </svg>
               <div className='relative py-12 lg:py-16 px-8 lg:px-16 text-gray-700 leading-relaxed'>
                 <p>
-                  The best thing about working in an workspace is the excitement
-                  of learning something new on a regular basis.
+                  One of the best parts of working here is that there is always
+                  something new to learn.
                 </p>
                 <br />
                 <p>
-                  Our team at Campus 25, A-004 in the School of Computer
-                  Science and Engineering always has the opportunity to
-                  investigate and learn different kinds of approaches, methods,
-                  and techniques.
+                  At Campus 25, A-004, the team gets to try different ideas,
+                  learn from them, and keep improving together.
                 </p>
               </div>
             </div>
