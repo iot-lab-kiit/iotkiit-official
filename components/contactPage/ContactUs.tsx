@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { site } from '@/data/site';
 
 const ContactUs = () => {
   const [didSubmit, setDidSubmit] = useState('');
@@ -9,23 +10,16 @@ const ContactUs = () => {
     message: '',
   });
 
-  // make changes here
+  // Opens the visitor's email client pre-filled to the lab inbox.
+  // No backend required; the message goes straight to iot.lab@kiit.ac.in.
   const sendEmail = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setDidSubmit('Sending...');
-    fetch(`https://api.iotkiit.in/items/contactus`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    }).then(res => {
-      if (res.status === 200) {
-        setDidSubmit('Submitted');
-      } else {
-        setDidSubmit('Internal Error. We will resolve it soon!');
-      }
-    });
+    const subject = encodeURIComponent(`Website enquiry from ${formData.fullname}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.fullname}\nEmail: ${formData.email}\n\n${formData.message}`,
+    );
+    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+    setDidSubmit('Opening your email app…');
     setTimeout(() => setDidSubmit(''), 5000);
   };
 

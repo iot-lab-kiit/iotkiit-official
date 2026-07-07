@@ -24,16 +24,12 @@ const Services: React.FC = () => {
               App Development
             </h4>
             <p className='text-secondary-700 text-lg mb-4'>
-              Our next-gen app development ideologies simplifies the business
-              complexities for you as we aim at spending more time at the
-              drawing board in order to get a better understanding of your needs
-              and interests.
+              We build apps by first understanding the problem properly. That
+              helps us keep the work simple, useful, and easier to trust.
             </p>
             <p className='text-secondary-700 text-lg'>
-              Binding technology with solutions to real world problems, is
-              exactly what we provide to your business. We come up with
-              innovative features that extends the domians of e-commerce by
-              putting you in the driver's seat.
+              The goal is practical tech that solves something real and gives
+              people a smoother experience.
             </p>
           </div>
         </div>
@@ -43,22 +39,19 @@ const Services: React.FC = () => {
               Web Solutions
             </h4>
             <p className='text-secondary-700 text-lg mb-4'>
-              In the era of internet, take your business up a notch with
-              portfolios and e-commerce websites. With digitization in every
-              sector, we strive to develop e-commerce websites that add
-              innovation to your businesses.
+              We make websites that are clear, fast, and easy to use, whether
+              they are for a portfolio, a lab, or a business.
             </p>
             <p className='text-secondary-700 text-lg'>
-              We also offer portfolio websites that present your business ideas
-              to the global audience. From Cloud Server Management to Online
-              Storage to Databases, we have all the tricks up our sleeve.
+              We also handle the practical side of the web, from hosting to
+              storage to the small details that keep things running smoothly.
             </p>
           </div>
           <div className='md:w-1/3'>
             <WebDevAnimation />
           </div>
         </div>
-        <div className='flex flex-col md:flex-row items-center'>
+        <div className='relative mt-16 flex flex-col md:mt-12 md:flex-row items-center'>
           <div className='md:w-1/3'>
             <EventManagementAnimation />
           </div>
@@ -67,15 +60,12 @@ const Services: React.FC = () => {
               Event Management
             </h4>
             <p className='text-secondary-700 text-lg mb-4'>
-              We soulfully extend our hands in organizing and managing events.
-              We are always working in the background, ensuring all pieces are
-              working in conjunction so that you can focus on providing value.
+              We help plan and run events with a steady hand, so the people in
+              front can focus on the actual event.
             </p>
             <p className='text-secondary-700 text-lg'>
-              We work with you from the beginning stages of planning the event
-              to the live event and post-event reconciliation. Be it a small
-              hackathon, or an international innovation drive, we have been a
-              part of everything.
+              From the first planning call to the wrap-up after the event, we
+              stay involved and keep things moving.
             </p>
           </div>
         </div>

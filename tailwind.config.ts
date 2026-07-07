@@ -57,7 +57,8 @@ const config: Config = {
         "main-btn-color": "#1D539F",
       },
       fontFamily: {
-        custom: ["Comfortaa"],
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        custom: ["Inter", "sans-serif"],
       },
     },
   },

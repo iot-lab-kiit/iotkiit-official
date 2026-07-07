@@ -7,9 +7,9 @@ const HandWave = () => {
         <div className='flex flex-wrap items-center -mx-3'>
           <div className='order-1 w-full px-3 lg:w-1/2 lg:order-0'>
             <div className='w-full lg:max-w-md'>
-              <h2 className='mb-4 text-2xl font-bold leading-tight tracking-tight sm:text-3xl font-heading'>
+              <h1 className='mb-4 text-2xl font-bold leading-tight tracking-tight sm:text-3xl font-heading'>
                 Jam-packed with all the tools you need to succeed!
-              </h2>
+              </h1>
               <div className='mb-4 leading-normal font-semibold tracking-tight text-gray-500 '>
                 “You don&apos;t have to see the whole staircase, just take the
                 first step.”

@@ -8,9 +8,9 @@ const AboutUs: React.FC = () => {
         <div className='flex flex-col md:flex-row'>
           <div className='md:w-1/2 md:pr-8 lg:pr-16'>
             <img
-              src='/images/team.svg'
-              alt='team_photo'
-              className='-mt-24 md:mt-0 lg:-mt-24 mb-0 md:mb-0'
+              src='/images/lab-life.jpeg'
+              alt='IoT Lab members at a session'
+              className='-mt-16 md:mt-4 lg:-mt-12 mb-6 md:mb-0 w-full rounded-2xl object-cover shadow-2xl ring-1 ring-black/5'
             />
           </div>
           <div className='md:w-1/2'>
@@ -19,15 +19,13 @@ const AboutUs: React.FC = () => {
               <span className='bg-primary-default h-1 w-20 block mt-4' />
             </h3>
             <p className='text-lg text-secondary-700 mb-4'>
-              A group of dedicated students and faculties who are keenly focused
-              on working towards the betterment of society through technology
-              believing that small steps gradually contribute to bigger and
-              better changes.
+              We are a group of students and faculty who care about building
+              useful technology and using it to make everyday life a little
+              better.
             </p>
             <p className='text-lg text-secondary-700'>
-              Even though we are a research lab, we harbour all domains,
-              technical and non-technical for a complete in-house holistic
-              appraoch towards everything.
+              The lab spans technical and non-technical work, so people can
+              learn, experiment, and contribute from different angles.
             </p>
           </div>
         </div>
