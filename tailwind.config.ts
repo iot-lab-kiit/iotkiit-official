@@ -60,6 +60,20 @@ const config: Config = {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         custom: ["Inter", "sans-serif"],
       },
+      keyframes: {
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(14px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        tileIn: {
+          "0%": { opacity: "0", transform: "translateY(16px) scale(0.96)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+      },
+      animation: {
+        "fade-up": "fadeUp 0.5s ease-out both",
+        "tile-in": "tileIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both",
+      },
     },
   },
   variants: {
