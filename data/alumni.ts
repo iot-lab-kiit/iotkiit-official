@@ -30,7 +30,7 @@ export const alumni: Alum[] = [
   { name: "Yugansh Kumar", role: "Former IoT Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/yugansh-kumar-0a2004201" },
   { name: "Soudeep Ghoshal", role: "Former Machine Learning Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/soudeep-ghoshal/", github: "https://github.com/SoudeepGhoshal" },
   { name: "Samriddhi", role: "Former Social Media Manager", tier: "member" },
-  { name: "22052962", tier: "member", linkedin: "https://www.linkedin.com/in/aditya-tulsyan28/", github: "https://github.com/adityatulsyan03" },
+  { name: "Aditya Tulsyan", tier: "member", linkedin: "https://www.linkedin.com/in/aditya-tulsyan28/", github: "https://github.com/adityatulsyan03" },
   { name: "Aakash Raj", tier: "member", linkedin: "https://www.linkedin.com/in/akash-raj-82981b23a/", github: "https://github.com/akash-R-A-J" },
   { name: "Aakriti Roy", tier: "member", linkedin: "https://www.linkedin.com/in/aakriti-roy-3a3534261?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app", github: "https://github.com/Aakriti184" },
   { name: "Aayushi Das", tier: "member", linkedin: "https://www.linkedin.com/in/aayushi-das-741a43256?utm_source=share\\&amp;utm_campaign=share_via\\&amp;utm_content=profile\\&amp;utm_medium=ios_app", github: "https://github.com/iyoushedas" },

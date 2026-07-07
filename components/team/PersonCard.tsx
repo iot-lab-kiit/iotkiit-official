@@ -5,6 +5,7 @@ import type { Person } from '@/data/team';
 interface Props {
   person: Person;
   featured?: boolean; // coordinators get the larger, highlighted treatment
+  hideDomain?: boolean; // leads already say e.g. "App Dev Lead" in their role
 }
 
 const Social = ({ href, label, children }: { href: string; label: string; children: React.ReactNode }) => (
@@ -20,7 +21,7 @@ const Social = ({ href, label, children }: { href: string; label: string; childr
   </a>
 );
 
-const PersonCard = ({ person, featured = false }: Props) => {
+const PersonCard = ({ person, featured = false, hideDomain = false }: Props) => {
   const size = featured ? 'w-40 h-40 sm:w-44 sm:h-44' : 'w-32 h-32';
   const objectPosition = person.objectPosition ?? 'object-top';
   return (
@@ -51,7 +52,7 @@ const PersonCard = ({ person, featured = false }: Props) => {
           {person.role}
         </p>
       )}
-      {person.domain && (
+      {person.domain && !hideDomain && (
         <span className="mt-3 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700">
           {person.domain}
         </span>

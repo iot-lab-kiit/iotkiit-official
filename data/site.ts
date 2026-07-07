@@ -5,12 +5,12 @@ export const site = {
   location: 'Campus 25, A-004',
   mapsUrl: 'https://maps.app.goo.gl/wuBhh7PJVyAbosY28',
   socials: {
-    github: 'https://github.com/iot-lab-kiit', // verified org
-    instagram: '', // e.g. https://instagram.com/iotlab.kiit (add when confirmed)
-    linkedin: '', // e.g. https://linkedin.com/company/iotlab-kiit (add when confirmed)
+    github: 'https://github.com/iot-lab-kiit',
+    linkedin: 'https://www.linkedin.com/company/iotlabkiit',
+    instagram: 'https://www.instagram.com/iot.lab.kiit',
+    medium: 'https://medium.com/iot-lab-kiit',
     twitter: '',
     facebook: '',
     telegram: '',
-    medium: '',
   },
 };

@@ -5,9 +5,9 @@ import BentoGallery from "@/components/gallery/BentoGallery";
 import { galleryEvents } from "@/data/gallery";
 
 // Cinematic dark gallery: a light "Moments" wall over an ambient navy field.
-// One event open at a time; expanding reveals that event's bento collage.
+// One event open at a time; all start collapsed so the page opens calm and clean.
 export default function GalleryPage() {
-  const [openId, setOpenId] = useState<number | null>(galleryEvents[0]?.id ?? null);
+  const [openId, setOpenId] = useState<number | null>(null);
   const totalPhotos = galleryEvents.reduce((n, e) => n + e.images.length, 0);
 
   return (
@@ -130,7 +130,7 @@ export default function GalleryPage() {
                   </button>
 
                   {isOpen && (
-                    <div className="mt-4 border-t border-white/10 pt-2">
+                    <div className="animate-fade-up mt-4 border-t border-white/10 pt-2">
                       <BentoGallery images={event.images} />
                     </div>
                   )}

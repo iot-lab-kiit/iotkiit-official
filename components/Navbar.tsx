@@ -38,13 +38,24 @@ const Navbar = () => {
               aria-label={open ? "Close main menu" : "Open main menu"}
             >
               <span className="sr-only">Toggle main menu</span>
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {open ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              {/* Animated hamburger: three bars morph into an X */}
+              <span className="relative block h-5 w-6" aria-hidden="true">
+                <span
+                  className={`absolute left-0 h-0.5 w-6 rounded-full bg-current transition-all duration-300 ease-in-out ${
+                    open ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-1'
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-1/2 h-0.5 w-6 -translate-y-1/2 rounded-full bg-current transition-all duration-200 ease-in-out ${
+                    open ? 'opacity-0' : 'opacity-100'
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 h-0.5 w-6 rounded-full bg-current transition-all duration-300 ease-in-out ${
+                    open ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-1'
+                  }`}
+                />
+              </span>
             </button>
           </div>
 
