@@ -13,8 +13,8 @@ const Process: React.FC = () => {
         </h3>
         <div className='flex flex-col md:flex-row xl:px-32 py-5'>
           {/* TODO() make this a component */}
-          <div className='flex flex-col items-center md:px-6 py-4 lg:px-12'>
-            <span className='text-6xl text-primary-default mb-4'>1</span>
+          <div className='group flex flex-col items-center md:px-6 py-4 lg:px-12 transition-transform duration-300 hover:-translate-y-1'>
+            <span className='text-6xl text-primary-default mb-4 transition-transform duration-300 group-hover:scale-110'>1</span>
             <h4 className='font-semibold text-2xl text-secondary mb-2 text-center'>
               What do we do?
             </h4>
@@ -23,8 +23,8 @@ const Process: React.FC = () => {
               statements and work passively in order to find their solutions.
             </p>
           </div>
-          <div className='flex flex-col items-center md:px-6 py-4 lg:px-12'>
-            <span className='text-6xl text-primary-default mb-4'>2</span>
+          <div className='group flex flex-col items-center md:px-6 py-4 lg:px-12 transition-transform duration-300 hover:-translate-y-1'>
+            <span className='text-6xl text-primary-default mb-4 transition-transform duration-300 group-hover:scale-110'>2</span>
             <h4 className='font-semibold text-2xl text-secondary mb-2 text-center'>
               How do we do it?
             </h4>
@@ -34,8 +34,8 @@ const Process: React.FC = () => {
               conjunction.
             </p>
           </div>
-          <div className='flex flex-col items-center md:px-6 py-4 lg:px-12'>
-            <span className='text-6xl text-primary-default mb-4'>3</span>
+          <div className='group flex flex-col items-center md:px-6 py-4 lg:px-12 transition-transform duration-300 hover:-translate-y-1'>
+            <span className='text-6xl text-primary-default mb-4 transition-transform duration-300 group-hover:scale-110'>3</span>
             <h4 className='font-semibold text-2xl text-secondary mb-2 text-center'>
               How are we unique?
             </h4>

@@ -16,7 +16,7 @@ const MapFooter = () => {
             Locate Us
           </h2>
           <p className='leading-relaxed mb-3 text-gray-600'>
-            DL-7 (IoT Lab)
+            IoT Lab, Campus 24 A 004
             <br />
             School Of Computer Engineering
             <br />

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Work | IoT Lab KIIT',
-  description: 'Projects and research from IoT Lab, KIIT — coming soon.',
+  description: 'Projects and research from IoT Lab, KIIT. Coming soon.',
 };
 
 // The old projects showcase was powered by a CMS that is no longer online.

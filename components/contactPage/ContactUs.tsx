@@ -11,7 +11,7 @@ const ContactUs = () => {
   });
 
   // Opens the visitor's email client pre-filled to the lab inbox.
-  // No backend required — the message goes straight to iot.lab@kiit.ac.in.
+  // No backend required; the message goes straight to iot.lab@kiit.ac.in.
   const sendEmail = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Website enquiry from ${formData.fullname}`);

@@ -11,8 +11,8 @@ const Showcase: React.FC = () => {
                 src='/images/lab.webp'
               />
               <div className='absolute inset-0 bg-indigo-900 opacity-60' />
-              <div className='relative font-bold text-white text-5xl'>
-                DL - 7
+              <div className='relative font-bold text-white text-4xl sm:text-5xl text-center px-4'>
+                Campus 24 A 004
               </div>
             </div>
             <div className='relative lg:w-7/12 bg-white'>
@@ -31,9 +31,9 @@ const Showcase: React.FC = () => {
                 </p>
                 <br />
                 <p>
-                  Our team at DL-7 in Computer Science Building always has the
-                  opportunity to investigate and learn different kinds of
-                  approaches, methods, and techniques.
+                  Our team at Campus 24 A 004 in the School of Computer
+                  Engineering always has the opportunity to investigate and
+                  learn different kinds of approaches, methods, and techniques.
                 </p>
               </div>
             </div>

@@ -44,7 +44,7 @@ const Footer = () => {
               <span className="text-lg font-bold text-gray-900">IoT Lab, KIIT</span>
             </div>
             <p className="mt-3 text-sm font-light leading-relaxed text-gray-500">
-              A Centre of Excellence — a student research forum exploring the Internet of Things
+              A Centre of Excellence, a student research forum exploring the Internet of Things
               and building across every domain of technology.
             </p>
           </div>
@@ -90,7 +90,7 @@ const Footer = () => {
 
         <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-gray-100 pt-6 text-xs text-gray-400 sm:flex-row">
           <p>© {new Date().getFullYear()} IoT Lab, KIIT. All rights reserved.</p>
-          <p>Built with ❤ by the IoT Lab Web Team</p>
+          <p>Built with love by IoT Lab</p>
         </div>
       </div>
     </footer>

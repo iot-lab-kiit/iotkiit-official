@@ -1,4 +1,4 @@
-// AUTO-GENERATED starting point — safe to edit by hand.
+// AUTO-GENERATED starting point, safe to edit by hand.
 // To update the team each year: edit these arrays, then `git push` (Vercel redeploys).
 // Photos live in /public/team/<slug>.webp. Members without a photo render an initials avatar.
 
@@ -7,32 +7,36 @@ export interface Person {
   role?: string;
   domain?: string;
   photo?: string;
+  // Tailwind object-position for the photo, tuned per-image so no face is cropped.
+  // Defaults to object-top when omitted.
+  objectPosition?: string;
   linkedin?: string;
   github?: string;
   email?: string;
 }
 
 export const coordinators: Person[] = [
-  { name: "Aaron Chakraborty", role: "Lab Coordinator", domain: "Administration", photo: "/team/aaron.webp" },
-  { name: "Pratham", role: "Creative Coordinator", domain: "Creative", photo: "/team/pratham.webp" }
+  { name: "Aaron Chakraborty", role: "Lab Coordinator", photo: "/team/aaron.webp", objectPosition: "object-top" },
+  { name: "Pratham", role: "Kreative Coordinator", photo: "/team/pratham.webp", objectPosition: "object-top" }
 ];
 
 export const leads: Person[] = [
-  { name: "Absar", role: "CP Lead", domain: "Competitive Programming", photo: "/team/absar.webp" },
+  { name: "Absar", role: "CP Lead", domain: "Competitive Programming", photo: "/team/absar.webp", objectPosition: "object-top" },
   { name: "Aayush", role: "CP Co-Lead", domain: "Competitive Programming" },
-  { name: "Ajay", role: "Video Lead", domain: "Video", photo: "/team/ajay.webp" },
-  { name: "Adrija", role: "App Dev Lead", domain: "App Dev", photo: "/team/adrija.webp" },
-  { name: "Kunal", role: "App Dev Co-Lead", domain: "App Dev", photo: "/team/kunal.webp" },
-  { name: "Suman Saha", role: "IoT Lead", domain: "IoT", photo: "/team/suman.webp" },
-  { name: "Priyanshu De", role: "Web Lead", domain: "Web Dev", photo: "/team/priyanshu.webp" },
-  { name: "Adwai", role: "ML Lead", domain: "Machine Learning", photo: "/team/adwai.webp" },
-  { name: "Shrinkhala", role: "ML Co-Lead", domain: "Machine Learning", photo: "/team/shrinkhala.webp" },
-  { name: "Bajinder", role: "Cyber Lead", domain: "Cyber Security", photo: "/team/bajinder.webp" },
-  { name: "Wriddhirupa", role: "Content Lead", domain: "Content", photo: "/team/wriddhirupa.webp" },
-  { name: "Srinjoy", role: "GD Lead", domain: "GD & UI/UX", photo: "/team/srinjoy.webp" },
-  { name: "Hemant", role: "GD Co-Lead", domain: "GD & UI/UX", photo: "/team/hemant.webp" },
-  { name: "Anushka", role: "Marketing Lead", domain: "Marketing", photo: "/team/anushka.webp" },
-  { name: "Yashovardhan", role: "Marketing Lead", domain: "Marketing", photo: "/team/yashovardhan.webp" }
+  { name: "Ajay", role: "Video Lead", domain: "Video", photo: "/team/ajay.webp", objectPosition: "object-top" },
+  { name: "Adrija", role: "App Dev Lead", domain: "App Dev", photo: "/team/adrija.webp", objectPosition: "object-top" },
+  { name: "Kunal", role: "App Dev Co-Lead", domain: "App Dev", photo: "/team/kunal.webp", objectPosition: "object-top" },
+  { name: "Suman Saha", role: "IoT Lead", domain: "IoT", photo: "/team/suman.webp", objectPosition: "object-top" },
+  { name: "Priyanshu De", role: "Web Lead", domain: "Web Dev", photo: "/team/priyanshu.webp", objectPosition: "object-top" },
+  { name: "Adwai", role: "ML Lead", domain: "Machine Learning", photo: "/team/adwai.webp", objectPosition: "object-center" },
+  { name: "Shrinkhala", role: "ML Co-Lead", domain: "Machine Learning", photo: "/team/shrinkhala.webp", objectPosition: "object-top" },
+  { name: "Bajinder", role: "Cyber Lead", domain: "Cyber Security", photo: "/team/bajinder.webp", objectPosition: "object-top" },
+  { name: "Wriddhirupa", role: "Content Lead", domain: "Content", photo: "/team/wriddhirupa.webp", objectPosition: "object-center" },
+  { name: "Srinjoy", role: "GD Lead", domain: "GD & UI/UX", photo: "/team/srinjoy.webp", objectPosition: "object-center" },
+  { name: "Hemant", role: "GD Co-Lead", domain: "GD & UI/UX", photo: "/team/hemant.webp", objectPosition: "object-top" },
+  { name: "Anushka", role: "Marketing Lead", domain: "Marketing", photo: "/team/anushka.webp", objectPosition: "object-center" },
+  { name: "Yashovardhan", role: "Marketing Lead", domain: "Marketing", photo: "/team/yashovardhan.webp", objectPosition: "object-top" },
+  { name: "Samriddhi", role: "Social Media Manager", domain: "Social Media" }
 ];
 
 export const members: Person[] = [
@@ -93,7 +97,6 @@ export const members: Person[] = [
   { name: "Shivam Ramraika" },
   { name: "Shresth Agrawal" },
   { name: "Shreya Singh", domain: "IoT" },
-  { name: "Shreya Singh", domain: "IoT" },
   { name: "Shreyash Tripathy", domain: "IoT" },
   { name: "Shubham Sinha" },
   { name: "Snigdha Mishra" },
@@ -110,6 +113,5 @@ export const members: Person[] = [
   { name: "Tanya" },
   { name: "Tarni Verma", domain: "Creative" },
   { name: "Tithi Bera", domain: "Marketing" },
-  { name: "Vinayak Tiwari" },
-  { name: "Yashovardhhan Ajitsaria", domain: "Marketing" }
+  { name: "Vinayak Tiwari" }
 ];

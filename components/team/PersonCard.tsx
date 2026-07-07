@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import InitialsAvatar from './InitialsAvatar';
+import PhotoPlaceholder from './PhotoPlaceholder';
 import type { Person } from '@/data/team';
 
 interface Props {
@@ -22,9 +22,10 @@ const Social = ({ href, label, children }: { href: string; label: string; childr
 
 const PersonCard = ({ person, featured = false }: Props) => {
   const size = featured ? 'w-40 h-40 sm:w-44 sm:h-44' : 'w-32 h-32';
+  const objectPosition = person.objectPosition ?? 'object-top';
   return (
     <div
-      className={`group flex flex-col items-center rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary-100 hover:shadow-lg ${
+      className={`group flex h-full flex-col items-center rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-lg ${
         featured ? 'sm:p-8' : ''
       }`}
     >
@@ -35,18 +36,20 @@ const PersonCard = ({ person, featured = false }: Props) => {
             alt={person.name}
             fill
             sizes="(max-width: 640px) 40vw, 200px"
-            className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            className={`object-cover ${objectPosition} transition-transform duration-500 group-hover:scale-105`}
           />
         ) : (
-          <InitialsAvatar name={person.name} className="h-full w-full" />
+          <PhotoPlaceholder name={person.name} className="h-full w-full rounded-2xl" />
         )}
       </div>
 
-      <h3 className={`mt-5 font-bold text-gray-900 ${featured ? 'text-xl' : 'text-lg'}`}>
+      <h3 className={`mt-5 font-bold tracking-tight text-gray-900 ${featured ? 'text-xl' : 'text-lg'}`}>
         {person.name}
       </h3>
       {person.role && (
-        <p className="mt-0.5 text-sm font-medium text-primary-default">{person.role}</p>
+        <p className={`mt-1 font-medium text-primary-default ${featured ? 'text-sm' : 'text-[13px]'}`}>
+          {person.role}
+        </p>
       )}
       {person.domain && (
         <span className="mt-3 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700">

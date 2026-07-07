@@ -5,7 +5,7 @@ import { alumni } from '@/data/alumni';
 export const metadata = {
   title: 'Alumni | IoT Lab KIIT',
   description:
-    'The previous batch that built IoT Lab, KIIT — coordinators, leads and members whose work we carry forward.',
+    'The previous batch that built IoT Lab, KIIT: coordinators, leads and members whose work we carry forward.',
 };
 
 const coordinators = alumni.filter((a) => a.tier === 'coordinator');
@@ -25,8 +25,8 @@ const Alumni = () => {
           Our <span className="text-primary-default">Alumni</span>
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base font-light text-gray-500">
-          The seniors who shaped IoT Lab before us. Photos from the old site couldn&apos;t be
-          recovered, but their contribution — and their journeys — live on here.
+          The seniors who shaped IoT Lab before us. Their contribution, and their journeys,
+          live on here.
         </p>
       </section>
 
@@ -34,7 +34,7 @@ const Alumni = () => {
       {coordinators.length > 0 && (
         <section className="mx-auto max-w-6xl px-6 py-16">
           <SectionTitle eyebrow="Leadership" title="Coordinators" />
-          <div className="mx-auto grid max-w-3xl grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
+          <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-5">
             {coordinators.map((a) => (
               <AlumCard key={a.name} alum={a} featured />
             ))}
@@ -47,7 +47,7 @@ const Alumni = () => {
         <section className="bg-primary-50/40 py-16">
           <div className="mx-auto max-w-6xl px-6">
             <SectionTitle eyebrow="Core Team" title="Team Leads" />
-            <div className="mx-auto grid max-w-3xl grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+            <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-4">
               {leads.map((a) => (
                 <AlumCard key={a.name} alum={a} featured />
               ))}
@@ -60,7 +60,7 @@ const Alumni = () => {
       {mentors.length > 0 && (
         <section className="mx-auto max-w-6xl px-6 py-16">
           <SectionTitle eyebrow="Guidance" title="Mentors & Advisors" />
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 md:grid-cols-6">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8 md:grid-cols-6">
             {mentors.map((a) => (
               <AlumCard key={a.name} alum={a} />
             ))}
@@ -77,9 +77,9 @@ const Alumni = () => {
               title="Members"
               subtitle={`${members.length} members of the 2024-25 batch.`}
             />
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {members.map((a) => (
-                <AlumCard key={a.name} alum={a} />
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
+              {members.map((a, i) => (
+                <AlumCard key={`${a.name}-${i}`} alum={a} />
               ))}
             </div>
           </div>

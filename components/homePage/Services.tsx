@@ -58,7 +58,7 @@ const Services: React.FC = () => {
             <WebDevAnimation />
           </div>
         </div>
-        <div className='flex flex-col md:flex-row items-center'>
+        <div className='relative mt-16 flex flex-col md:mt-12 md:flex-row items-center'>
           <div className='md:w-1/3'>
             <EventManagementAnimation />
           </div>

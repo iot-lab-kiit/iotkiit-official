@@ -33,7 +33,7 @@ const Team = () => {
             title="Domain Leads"
             subtitle="The people driving each technical and creative vertical of the lab."
           />
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-4">
             {leads.map((p) => (
               <PersonCard key={p.name + p.role} person={p} />
             ))}
@@ -48,9 +48,9 @@ const Team = () => {
           title="Our Members"
           subtitle={`${members.length} students building, learning and shipping together.`}
         />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {members.map((p) => (
-            <MemberCard key={p.name} person={p} />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+          {members.map((p, i) => (
+            <MemberCard key={`${p.name}-${i}`} person={p} />
           ))}
         </div>
       </section>

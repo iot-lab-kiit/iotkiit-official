@@ -1,23 +1,34 @@
-import InitialsAvatar from './InitialsAvatar';
 import type { Alum } from '@/data/alumni';
 
 const normalize = (url: string) =>
   url.startsWith('http') ? url : `https://${url}`;
 
-// Alumni have no photos (old CMS offline) — always initials.
+// Alumni photos couldn't be recovered from the old CMS, so rather than a page
+// full of identical placeholders we use a clean, text-only card: name, role and
+// socials. A slim accent bar carries the brand colour and gives leads a touch
+// more visual weight than plain members.
 const AlumCard = ({ alum, featured = false }: { alum: Alum; featured?: boolean }) => {
   return (
-    <div className="group flex flex-col items-center rounded-xl border border-gray-100 bg-white p-4 text-center shadow-sm transition-all duration-200 hover:border-primary-100 hover:shadow-md">
-      <InitialsAvatar
-        name={alum.name}
-        className={`rounded-full ${featured ? 'h-20 w-20' : 'h-14 w-14'}`}
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-lg">
+      <span
+        className={`absolute inset-x-0 top-0 h-1 ${
+          featured ? 'bg-primary-default' : 'bg-primary-100'
+        }`}
       />
-      <p className={`mt-3 font-semibold text-gray-800 ${featured ? 'text-base' : 'text-sm'}`}>
+      <p
+        className={`font-semibold tracking-tight text-gray-900 ${
+          featured ? 'text-base' : 'text-sm'
+        }`}
+      >
         {alum.name}
       </p>
-      {alum.role && <p className="text-xs text-primary-500">{alum.role}</p>}
+      {alum.role && (
+        <p className="mt-1 text-xs font-medium uppercase tracking-wide text-primary-500">
+          {alum.role}
+        </p>
+      )}
       {(alum.linkedin || alum.github) && (
-        <div className="mt-2 flex items-center gap-3">
+        <div className="mt-4 flex items-center justify-center gap-3">
           {alum.linkedin && (
             <a
               href={normalize(alum.linkedin)}
