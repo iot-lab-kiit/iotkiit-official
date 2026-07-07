@@ -84,7 +84,7 @@ export default function GalleryPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                       <span className="absolute bottom-3 left-4 font-mono text-[10px] font-semibold uppercase tracking-widest text-white/80">
-                        {String(i + 1).padStart(2, "0")} — Flagship
+                        {String(i + 1).padStart(2, "0")} · Flagship
                       </span>
                     </div>
 

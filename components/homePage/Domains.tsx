@@ -146,7 +146,7 @@ const Domains = () => {
           Our Domains
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-base text-gray-400 md:mt-4 md:text-lg">
-          The specialized guilds powering our innovation engine — hover to explore.
+          The specialized guilds powering our innovation engine. Hover to explore.
         </p>
       </div>
 
