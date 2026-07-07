@@ -1,96 +1,61 @@
 import TeamHeader from '@/components/teamPage/TeamHeader';
-import Mentors from "@/container/teams/Mentors";
-import Coordinators from '@/container/teams/Coordinators';
-import Team from '@/container/teams/Team';
-import { positionData } from '@/types';
+import SectionTitle from '@/components/team/SectionTitle';
+import PersonCard from '@/components/team/PersonCard';
+import MemberCard from '@/components/team/MemberCard';
+import { coordinators, leads, members } from '@/data/team';
 
-import getConfig from 'next/config';
-import TeamLead from '@/container/teams/TeamLead';
-const { publicRuntimeConfig } = getConfig();
-const { SERVER } = publicRuntimeConfig;
-
-const coordinatorIndex = [
-  positionData['1'],
-  positionData['2'],
-  positionData['3'],
-  positionData['4'],
-  positionData['5'],
-];
-const memberIndex = [ positionData['7'], positionData['8']];
-const teamLeadIndex = [positionData["5"]];
-interface TeamData {
-  coordinators: [MemberData];
-  members: [MemberData];
-  mentors: [MemberData];
-  teamLead: [MemberData];
-}
-
-export interface MemberData {
-  id: number;
-  status: string;
-  user_created: string;
-  date_created: string;
-  user_updated: string;
-  date_updated: string;
-  name: string;
-  position: string;
-  email: string;
-  dob: string;
-  year: string;
-  branch: string;
-
-  domain: string;
-  avatar: string;
-  linkedin: string;
-  github: string;
-  about: string;
-  quote?: string;
-  phone_number: string;
-  whatsapp_number: string;
-  rfid_tag?: string;
-  heart_rate?: string;
-  oxygen_level?: string;
-}
-
-const Layout = async () => {
-  const propsData: TeamData = await getData();
-  // console.log(propsData.members);
+const Team = () => {
   return (
-    <div>
+    <main className="bg-white">
       <TeamHeader />
-      <Mentors mentors={propsData.mentors} />
-      <Coordinators coordinators={propsData.coordinators} />
-      <TeamLead teamleads={propsData.teamLead} />
-      <Team members={propsData.members} />
-    </div>
+
+      {/* Coordinators */}
+      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+        <SectionTitle
+          eyebrow="Leadership"
+          title="Coordinators"
+          subtitle="Steering IoT Lab and keeping every domain moving in sync."
+        />
+        <div className="mx-auto flex max-w-2xl flex-col justify-center gap-8 sm:flex-row">
+          {coordinators.map((p) => (
+            <div key={p.name} className="w-full sm:w-72">
+              <PersonCard person={p} featured />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Domain Leads */}
+      <section className="bg-primary-50/40 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <SectionTitle
+            eyebrow="Core Team"
+            title="Domain Leads"
+            subtitle="The people driving each technical and creative vertical of the lab."
+          />
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+            {leads.map((p) => (
+              <PersonCard key={p.name + p.role} person={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Members */}
+      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+        <SectionTitle
+          eyebrow="The Family"
+          title="Our Members"
+          subtitle={`${members.length} students building, learning and shipping together.`}
+        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {members.map((p) => (
+            <MemberCard key={p.name} person={p} />
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
 
-async function getData() {
-  // Get All Team Data
-  const response = await fetch(`${SERVER}/items/teams?limit=200`, {
-    next: { revalidate: 2 },
-  });
-  const allTeamResponse = await response.json();
-  const allTeamData = await allTeamResponse.data;
-  const coordinatorsData = allTeamData.filter((member: MemberData) =>
-    coordinatorIndex.includes(member.position),
-  );
-  const membersData = allTeamData.filter((member: MemberData) =>
-    memberIndex.includes(member.position),
-  );
-  const mentorsData = allTeamData.filter(
-    (member: MemberData) => member.position === "Mentor"
-  );
-  const teamleadsData = allTeamData.filter((member: MemberData) =>
-   member.position.includes("lead")
-  ); 
-  return {
-    coordinators: coordinatorsData,
-    members: membersData,
-    mentors: mentorsData,
-    teamLead: teamleadsData,
-  };
-}
-
-export default Layout;
+export default Team;

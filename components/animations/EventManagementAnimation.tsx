@@ -1,25 +1,9 @@
 'use client';
-import { useLottie } from 'lottie-react';
 import animationData from './LottieFiles/35684-business-team-discusses-project.json';
+import LottiePlayer from './LottiePlayer';
 
-const EventManagementAnimation = () => {
-  const style = {
-    height: 300,
-    width: 350,
-  };
-
-  const options = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
-
-  const { View } = useLottie(options, style);
-
-  return View;
-};
+const EventManagementAnimation = () => (
+  <LottiePlayer animationData={animationData} style={{ height: 300, width: 350 }} />
+);
 
 export default EventManagementAnimation;

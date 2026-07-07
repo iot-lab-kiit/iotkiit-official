@@ -37,3 +37,12 @@ next-env.d.ts
 # @kpriyanshu2003
 apiDoc.md
 
+# Raw source data — contains PII (phone numbers, personal emails, roll numbers,
+# payment links) and large unoptimized images. NEVER commit to the public repo.
+# The site runs off the generated data/*.ts files and optimized images in public/team/.
+data/*.xlsx
+data/IOT LEADS PICS/
+data/archive/
+# WSL "mark of the web" artifacts
+*:Zone.Identifier
+
