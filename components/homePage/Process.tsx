@@ -1,3 +1,5 @@
+import Stagger from '@/components/Stagger';
+
 const Process: React.FC = () => {
   return (
     <div id='our-process' className='relative'>
@@ -11,7 +13,7 @@ const Process: React.FC = () => {
           Our Process{' '}
           <span className='bg-primary-default h-1 w-20 block mt-4' />
         </h3>
-        <div className='flex flex-col md:flex-row xl:px-32 py-5'>
+        <Stagger className='flex flex-col md:flex-row xl:px-32 py-5' childClassName='flex-1' step={120}>
           {/* TODO() make this a component */}
           <div className='group flex flex-col items-center md:px-6 py-4 lg:px-12 transition-transform duration-300 hover:-translate-y-1'>
             <span className='text-6xl text-primary-default mb-4 transition-transform duration-300 group-hover:scale-110'>1</span>
@@ -43,7 +45,7 @@ const Process: React.FC = () => {
               iteration. That is what keeps the work grounded.
             </p>
           </div>
-        </div>
+        </Stagger>
       </div>
     </div>
   );
