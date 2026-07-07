@@ -18,6 +18,7 @@ export const alumni: Alum[] = [
   { name: "Nekhil Kumar Agarwal", role: "Former Team Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/nekhil-k-agarwal" },
   { name: "Shibajyoti Choudhury", role: "Former Team Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/shibajyoti-choudhury-27105665", github: "https://github.com/Shiba1809" },
   { name: "Umang Shekhar", role: "Former Team Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/umang-shekhar-84bb36221/", github: "https://github.com/P4R4D0X-HACKS" },
+  { name: "Samriddhi", tier: "member" },
   { name: "&quot;Sohom Ch. Chandra &quot;", tier: "member", linkedin: "https://www.linkedin.com/in/sohom-chandra-chandra-8212b7286?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app", github: "https://github.com/SohomChandra" },
   { name: "22052962", tier: "member", linkedin: "https://www.linkedin.com/in/aditya-tulsyan28/", github: "https://github.com/adityatulsyan03" },
   { name: "Aakash Raj", tier: "member", linkedin: "https://www.linkedin.com/in/akash-raj-82981b23a/", github: "https://github.com/akash-R-A-J" },

@@ -7,7 +7,7 @@ const MapFooter = () => {
           height='100%'
           title='map'
           // className='grayscale contrast-125 opacity-50'
-          src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d935.2104779406211!2d85.8158259!3d20.3481485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5f698e918e3440f1!2sSchool%20Of%20Computer%20Engineering%2C%20KIIT!5e0!3m2!1sen!2sin!4v1611431926272!5m2!1sen!2sin'
+          src='https://maps.google.com/maps?q=20.3644763,85.8169693&z=16&output=embed'
         />
       </div>
       <div className=' container px-5 py-24 mx-auto flex'>
@@ -16,9 +16,9 @@ const MapFooter = () => {
             Locate Us
           </h2>
           <p className='leading-relaxed mb-3 text-gray-600'>
-            IoT Lab, Campus 24 A 004
+            IoT Lab, Campus 25, A-004
             <br />
-            School Of Computer Engineering
+            School of Computer Science and Engineering (New Block)
             <br />
             Kalinga Institute of Industrial Technology
             <br />
@@ -26,7 +26,14 @@ const MapFooter = () => {
             <br />
             Odisha, India 751024
           </p>
-        
+          <a
+            href='https://maps.app.goo.gl/wuBhh7PJVyAbosY28'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='mt-1 text-sm font-medium text-primary-default hover:underline'
+          >
+            📍 Open in Google Maps
+          </a>
         </div>
       </div>
     </section>

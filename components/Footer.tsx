@@ -66,7 +66,14 @@ const Footer = () => {
             <a href={`mailto:${site.email}`} className="text-sm hover:text-primary-default">
               {site.email}
             </a>
-            <p className="mt-2 text-sm text-gray-500">{site.location}</p>
+            <a
+              href={site.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 block text-sm text-gray-500 transition-colors hover:text-primary-default"
+            >
+              📍 {site.location}
+            </a>
             {activeSocials.length > 0 && (
               <div className="mt-4 flex items-center gap-4">
                 {activeSocials.map((s) => (
@@ -89,8 +96,8 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-gray-100 pt-6 text-xs text-gray-400 sm:flex-row">
-          <p>© {new Date().getFullYear()} IoT Lab, KIIT. All rights reserved.</p>
-          <p>Built with love by IoT Lab</p>
+          <p>© 2026 IOTLAB - @iotlabkiit</p>
+          <p>Coded with ❤ and ☕ by IoT Lab</p>
         </div>
       </div>
     </footer>

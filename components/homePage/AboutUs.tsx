@@ -8,9 +8,9 @@ const AboutUs: React.FC = () => {
         <div className='flex flex-col md:flex-row'>
           <div className='md:w-1/2 md:pr-8 lg:pr-16'>
             <img
-              src='/images/team.svg'
-              alt='team_photo'
-              className='-mt-24 md:mt-0 lg:-mt-24 mb-0 md:mb-0'
+              src='/images/lab-life.jpeg'
+              alt='IoT Lab members at a session'
+              className='-mt-16 md:mt-4 lg:-mt-12 mb-6 md:mb-0 w-full rounded-2xl object-cover shadow-2xl ring-1 ring-black/5'
             />
           </div>
           <div className='md:w-1/2'>
@@ -27,7 +27,7 @@ const AboutUs: React.FC = () => {
             <p className='text-lg text-secondary-700'>
               Even though we are a research lab, we harbour all domains,
               technical and non-technical for a complete in-house holistic
-              appraoch towards everything.
+              approach towards everything.
             </p>
           </div>
         </div>

@@ -30,10 +30,10 @@ const TeamHeader = () => {
           style={{ clipPath: 'polygon(10% 0, 100% 0%, 100% 100%, 0 100%)' }}
         >
           <div
-            className='h-full bg-no-repeat'
-            style={{ backgroundImage: 'url(/images/aboutus.svg)' }}
+            className='h-full bg-cover bg-center bg-no-repeat'
+            style={{ backgroundImage: 'url(/images/team-group.jpeg)' }}
           >
-            <div className='h-full opacity-20 bg-[#b3c3e4]' />
+            <div className='h-full bg-primary-900/10' />
           </div>
         </div>
       </div>

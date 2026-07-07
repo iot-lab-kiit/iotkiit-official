@@ -75,7 +75,7 @@ const Alumni = () => {
             <SectionTitle
               eyebrow="The Family"
               title="Members"
-              subtitle={`${members.length} members of the 2024-25 batch.`}
+              subtitle="The 2024-25 batch who built the lab before us."
             />
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
               {members.map((a, i) => (

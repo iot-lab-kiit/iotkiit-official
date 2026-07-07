@@ -2,7 +2,8 @@
 // Fill in a URL to make that icon appear in the footer; leave it "" to hide it.
 export const site = {
   email: 'iot.lab@kiit.ac.in',
-  location: 'Campus 24 A 004',
+  location: 'Campus 25, A-004',
+  mapsUrl: 'https://maps.app.goo.gl/wuBhh7PJVyAbosY28',
   socials: {
     github: 'https://github.com/iot-lab-kiit', // verified org
     instagram: '', // e.g. https://instagram.com/iotlab.kiit (add when confirmed)
