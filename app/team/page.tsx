@@ -2,6 +2,7 @@ import TeamHeader from '@/components/teamPage/TeamHeader';
 import SectionTitle from '@/components/team/SectionTitle';
 import PersonCard from '@/components/team/PersonCard';
 import MemberCard from '@/components/team/MemberCard';
+import Stagger from '@/components/Stagger';
 import { coordinators, leads, members, type Person } from '@/data/team';
 
 // Fixed display order for the member domain groups. Members whose domain isn't
@@ -34,11 +35,15 @@ const ungrouped = members.filter(
 );
 
 const MemberGrid = ({ people }: { people: Person[] }) => (
-  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
+  <Stagger
+    className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4"
+    childClassName="h-full"
+    step={60}
+  >
     {people.map((p, i) => (
       <MemberCard key={`${p.name}-${i}`} person={p} />
     ))}
-  </div>
+  </Stagger>
 );
 
 const Team = () => {
@@ -101,11 +106,15 @@ const Team = () => {
             title="Domain Leads"
             subtitle="The people leading each domain with their own pace and style."
           />
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-4">
+          <Stagger
+            className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-4"
+            childClassName="h-full"
+            step={60}
+          >
             {leads.map((p) => (
               <PersonCard key={p.name + p.role} person={p} />
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
