@@ -26,19 +26,24 @@ const Navbar = () => {
     } ${base}`;
 
   return (
-    <nav className="bg-gray-800">
+    <nav className="sticky top-0 z-50 border-b border-white/5 bg-gray-800/95 backdrop-blur supports-[backdrop-filter]:bg-gray-800/80">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           {/* mobile toggle */}
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
               onClick={() => setOpen(!open)}
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-300 transition-colors hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded={open}
+              aria-label={open ? "Close main menu" : "Open main menu"}
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">Toggle main menu</span>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                {open ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
             </button>
           </div>
@@ -66,21 +71,25 @@ const Navbar = () => {
       {/* mobile menu */}
       <Transition
         show={open}
-        enter="transition-all ease-in-out duration-300"
-        enterFrom="h-0 opacity-0"
-        enterTo="opacity-100"
-        leave="transition-all ease-in-out duration-300"
-        leaveFrom="opacity-100"
-        leaveTo="h-0 opacity-0"
+        enter="transition ease-out duration-200"
+        enterFrom="opacity-0 -translate-y-2"
+        enterTo="opacity-100 translate-y-0"
+        leave="transition ease-in duration-150"
+        leaveFrom="opacity-100 translate-y-0"
+        leaveTo="opacity-0 -translate-y-2"
       >
-        <div className="sm:hidden">
-          <div className="space-y-1 px-2 pb-3 pt-2">
+        <div className="border-t border-white/10 bg-gray-800 sm:hidden">
+          <div className="space-y-1 px-3 pb-4 pt-3">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className={cls(l.href, 'block rounded-md px-3 py-2 text-base font-medium')}
+                className={`${
+                  path === l.href
+                    ? 'border-primary-400 bg-gray-900 text-white'
+                    : 'border-transparent text-gray-300 hover:bg-gray-700 hover:text-white'
+                } block rounded-lg border-l-2 px-4 py-3 text-base font-medium transition-colors`}
               >
                 {l.label}
               </Link>
