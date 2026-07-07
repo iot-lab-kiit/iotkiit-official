@@ -9,7 +9,10 @@ const Hero: React.FC = () => {
       <div className='container mx-auto relative px-6 lg:px-12'>
         <div className='flex flex-col md:flex-row items-center pt-32 lg:pl-12 md:px-12 px-12 pb-16 md:pb-0 '>
           <div className='md:w-1/2 lg:w-1/3 mb-4 sm:mb-16 md:mb-0'>
-            <h1 className='text-6xl md:text-7xl font-bold font-sans text-secondary leading-tight mb-4 md:mb-4'>
+            <h1
+              className='animate-fade-up text-6xl md:text-7xl font-bold font-sans text-secondary leading-tight mb-4 md:mb-4 motion-reduce:animate-none'
+              style={{ animationDelay: '80ms' }}
+            >
               <div>
                 <span className='flex h-7 w-7 sm:-ml-0.5 -m-1.5'>
                   <span className='animate-ping inline-flex h-full w-full rounded-full bg-primary-default opacity-75' />
@@ -19,12 +22,22 @@ const Hero: React.FC = () => {
                 <br /> KIIT
               </div>
             </h1>
-            <h2 className='text-2xl font-bold text-secondary-600 uppercase mb-12 ml-1'>
+            <h2
+              className='animate-fade-up text-2xl font-bold text-secondary-600 uppercase mb-12 ml-1 motion-reduce:animate-none'
+              style={{ animationDelay: '220ms' }}
+            >
               A Centre Of Excellence
             </h2>
           </div>
-          <div className='mt-16 sm:mt-0 flex-1 flex justify-end'>
-            <img src='/images/hero.svg' alt='lab_photo' />
+          <div
+            className='mt-16 sm:mt-0 flex-1 flex justify-end animate-fade-up motion-reduce:animate-none'
+            style={{ animationDelay: '360ms' }}
+          >
+            <img
+              src='/images/hero.svg'
+              alt='lab_photo'
+              className='animate-float motion-reduce:animate-none'
+            />
           </div>
         </div>
       </div>
