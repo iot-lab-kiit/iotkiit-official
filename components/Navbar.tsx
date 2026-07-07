@@ -10,6 +10,7 @@ const links = [
   { href: '/team', label: 'Team' },
   { href: '/alumni', label: 'Alumni' },
   { href: '/gallery', label: 'Gallery' },
+  { href: '/achievements', label: 'Achievements' },
   { href: '/contact', label: 'Contact' },
 ];
 
