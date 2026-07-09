@@ -24,6 +24,10 @@ const Status = () => {
         setStatus(res.data);
         setIsOpen(res.data.current_status !== 'Closed');
         setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching lab status:', err);
+        setLoading(false);
       });
   }, []);
 

@@ -27,6 +27,10 @@ const Cp = () => {
       .then(res => {
         setQuestions(res.data);
         setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching questions:', err);
+        setLoading(false);
       });
   }, []);
 

@@ -13,12 +13,15 @@ const Status = () => {
 
   useEffect(() => {
     async function setStatus() {
-      await fetch(`${API_URL}/items/status`)
-        .then(res => res.json())
-        .then(res => {
-          setIsOpen(res.data.current_status === 'opened');
-          setLoading(false);
-        });
+      try {
+        const res = await fetch(`${API_URL}/items/status`);
+        const data = await res.json();
+        setIsOpen(data.data.current_status === 'opened');
+      } catch (err) {
+        console.error('Error fetching status:', err);
+      } finally {
+        setLoading(false);
+      }
     }
     setStatus();
   }, []);

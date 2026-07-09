@@ -6,7 +6,16 @@ const prodAPI = process.env.NEXT_PUBLIC_API_URL || "https://api.iotkiit.in";
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["api.iotkiit.in", "i.imgur.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.iotkiit.in",
+      },
+      {
+        protocol: "https",
+        hostname: "i.imgur.com",
+      },
+    ],
   },
   serverRuntimeConfig: {},
   publicRuntimeConfig: {
