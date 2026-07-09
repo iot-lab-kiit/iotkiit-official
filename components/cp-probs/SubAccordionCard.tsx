@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import DOMPurify from 'isomorphic-dompurify';
 import style from '../../styles/SubAccordianCard.module.css';
 
 interface SubAccordionCardProps {
@@ -34,7 +35,7 @@ const SubAccordionCard = (problem: SubAccordionCardProps) => {
           <h1>
             <b>Question</b>
           </h1>
-          <div dangerouslySetInnerHTML={{ __html: problem.question }}></div>
+          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(problem.question) }}></div>
         </>
       )}
     </article>

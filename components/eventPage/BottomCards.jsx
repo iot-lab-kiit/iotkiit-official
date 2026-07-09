@@ -8,12 +8,9 @@ export const PurpleBottom = () => {
         viewBox="0 0 350 112.35"
       >
         <defs>
-          <style
-            dangerouslySetInnerHTML={{
-              __html:
-                ".color-1{fill:#E93D84;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}",
-            }}
-          />
+          <style>
+            {".color-1{fill:#E93D84;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}"}
+          </style>
         </defs>
         <title>bottom-part1</title>
         <g id="bottom-part">
@@ -63,12 +60,9 @@ export const OrangeBottom = () => {
         viewBox="0 0 350 112.35"
       >
         <defs>
-          <style
-            dangerouslySetInnerHTML={{
-              __html:
-                ".color-2{fill:#EC912D;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}",
-            }}
-          />
+          <style>
+            {".color-2{fill:#EC912D;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}"}
+          </style>
         </defs>
         <title>bottom-part1</title>
         <g id="bottom-part">
@@ -117,12 +111,9 @@ export const CyanBottom = () => (
       viewBox="0 0 350 112.35"
     >
       <defs>
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              ".color-3{fill:#6FCCDD;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}",
-          }}
-        />
+        <style>
+          {".color-3{fill:#6FCCDD;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}"}
+        </style>
       </defs>
       <title>bottom-part1</title>
       <g id="bottom-part">
