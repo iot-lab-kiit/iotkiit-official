@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import RequestForm from '@/components/statusPage/RequestForm';
 import Image from 'next/image';
+import { API_URL } from '@/lib/config';
 
 // const { publicRuntimeConfig } = getConfig();
 // const { SERVER } = publicRuntimeConfig;
@@ -17,7 +18,7 @@ const Status = () => {
     setLoading(true);
 
     //Getting Lab Status from Server
-    fetch('https://api.iotkiit.in/items/status')
+    fetch(`${API_URL}/items/status`)
       .then(res => res.json())
       .then(res => {
         setStatus(res.data);

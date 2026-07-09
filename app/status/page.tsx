@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import RequestForm from '@/components/statusPage/RequestForm';
 import Image from 'next/image';
+import { API_URL } from '@/lib/config';
 
 const Status = () => {
   const [isLoading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ const Status = () => {
 
   useEffect(() => {
     async function setStatus() {
-      await fetch(`https://api.iotkiit.in/items/status`)
+      await fetch(`${API_URL}/items/status`)
         .then(res => res.json())
         .then(res => {
           setIsOpen(res.data.current_status === 'opened');

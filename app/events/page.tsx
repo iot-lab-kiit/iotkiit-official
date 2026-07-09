@@ -93,7 +93,7 @@ and projects with more end-user interactions.'
 };
 
 // const getStaticProps=async()=> {
-//   const SERVER = await fetch ("https://api.iotkiit.in");
+//   const SERVER = await fetch (API_URL);
 
 //Getting upcomingevents from Server
 

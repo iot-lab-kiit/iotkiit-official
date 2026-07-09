@@ -1,4 +1,5 @@
 import { ProjectCardProps } from '@/types';
+import { API_URL } from '../../lib/config';
 
 const ProjectCard = (props: { key: string; project: ProjectCardProps }) => {
   return (
@@ -8,7 +9,7 @@ const ProjectCard = (props: { key: string; project: ProjectCardProps }) => {
           className='bg-cover bg-center h-44 p-4'
           style={{
             backgroundImage: `url(${
-              props.project.imgUrl !== 'https://api.iotkiit.in/assets/null'
+              props.project.imgUrl !== `${API_URL}/assets/null`
                 ? props.project.imgUrl
                 : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1O62vqe4xJ0_tcwSxXRBovw5t6obzgZOJFw&s'
             })`,

@@ -4,13 +4,14 @@ import { GetStaticProps } from 'next';
 import FormComponent from '../../components/webinarPage/FormComponent';
 import HeroComponent from '../../components/webinarPage/HeroComponent';
 import SpeakerComponent from '../../components/webinarPage/SpeakerComponent';
+import { API_URL } from '../../lib/config';
 
 export default function Webinar() {
   const getData = async () => {
-    const response = await fetch(`https://api.iotkiit.in/speakers`);
+    const response = await fetch(`${API_URL}/speakers`);
     const speakerData = await response.json();
 
-    const event = await fetch(`https://api.iotkiit.in/webinars`);
+    const event = await fetch(`${API_URL}/webinars`);
     const description = await event.json();
     return {
       props: {
@@ -68,10 +69,10 @@ and projects with more end-user interactions.'
 // import { GetStaticProps } from 'next';
 
 // const getStaticProps: GetStaticProps<WebinarProps> = async () => {
-//   const response = await fetch(`https://api.iotkiit.in/speakers`);
+//   const response = await fetch(`${API_URL}/speakers`);
 //   const speakerData = await response.json();
 
-//   const event = await fetch(`https://api.iotkiit.in/webinars`);
+//   const event = await fetch(`${API_URL}/webinars`);
 //   const description = await event.json();
 
 //   return {
