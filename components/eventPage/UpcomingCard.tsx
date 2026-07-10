@@ -1,4 +1,4 @@
-const UpcomingCard = ({ index, title, desc, link, date, year, imgUrl }) => {
+const UpcomingCard = ({ index, title, desc, link, date, year, imgUrl }: { index: any; title: any; desc: any; link: any; date: any; year: any; imgUrl: any }) => {
   return (
     <div className="flex relative pt-10 pb-14 sm:items-center md:w-2/3 mx-auto">
       <div className="h-full w-6 absolute inset-0 flex items-center justify-center">

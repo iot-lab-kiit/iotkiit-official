@@ -2,7 +2,7 @@ import RightArrow from "../bullets/RightArrow";
 import Tick from "../bullets/Tick";
 import { CyanBottom, OrangeBottom, PurpleBottom } from "./BottomCards";
 
-const EventListItemCenter = ({ point, ...rest }) => {
+const EventListItemCenter = ({ point, ...rest }: { point: any; [key: string]: any }) => {
   return (
     <li className="flex items-center">
       <div className=" rounded-full p-2 fill-current text-green-700">
@@ -13,7 +13,7 @@ const EventListItemCenter = ({ point, ...rest }) => {
   );
 };
 
-const EventListItem = ({ point, ...rest }) => {
+const EventListItem = ({ point, ...rest }: { point: any; [key: string]: any }) => {
   return (
     <li className="flex items-center">
       <div className=" rounded-full p-2 fill-current text-green-700">
