@@ -15,7 +15,7 @@ const CheckIcon = () => {
   );
 };
 
-const EventCard = (props: any) => {
+const EventCard = (props) => {
   return (
     <div className="lg:w-3/12 md:w-3/12 min-w-max sm:w-full h-1/2 shadow-lg rounded-xl">
       <div className="text-center pricing-header p-5">

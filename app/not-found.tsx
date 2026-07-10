@@ -45,7 +45,7 @@ const PageNotFound = () => {
             mt={5}
             textAlign={'center'}
           >
-            We don't have any page with name
+            we don't any page with name
             <span
               style={{
                 fontSize: '50px',

@@ -1,4 +1,4 @@
-const EventExtra = ({ extraevents }: any) => {
+const EventExtra = ({ extraevents }) => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -17,7 +17,7 @@ const EventExtra = ({ extraevents }: any) => {
           </p>
         </div>
         <div className="flex flex-wrap -m-4">
-          {extraevents.map((i: any) => (
+          {extraevents.map((i) => (
             <div key={i.id} className="xl:w-1/4 md:w-1/2 p-4">
               <div className="bg-gray-100 p-6 rounded-lg">
                 <img
