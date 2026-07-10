@@ -3,7 +3,6 @@ import EventHeader from '../../components/eventPage/EventHeader';
 import Head from 'next/head';
 import UpcomingCard from '../../components/eventPage/UpcomingCard';
 import FlagshipEvents from '../../components/eventPage/FlagshipEvents';
-import { API_URL } from '../../lib/config';
 
 export interface eventData {
   id: number;
@@ -16,50 +15,46 @@ export interface eventData {
   type: string;
 }
 
-const Events = async () => {
-  let upcomingevents: any[] = [];
-  let extraevents: any[] = [];
-  let flagshipevents = { left: [], main: [], right: [] };
-
-  try {
-    const totalEventRes = await fetch(`${API_URL}/items/events`, { next: { revalidate: 600 } });
-    const total = await totalEventRes.json();
-    const totalEventsData = total.data || [];
-
-    extraevents = totalEventsData.filter((event: any) => event.type == "extraEvent");
-    upcomingevents = totalEventsData.filter((event: any) => event.type === 'upcomingEvent');
-
-    const flagshipEventsRes = await fetch(`${API_URL}/items/flagshipevents`, { next: { revalidate: 600 } });
-    const flagship = await flagshipEventsRes.json();
-    const flagshipEventsData = flagship.data || [];
-    
-    flagshipevents.left = flagshipEventsData.filter((event: any) => event.position === 'left');
-    flagshipevents.right = flagshipEventsData.filter((event: any) => event.position === 'right');
-    flagshipevents.main = flagshipEventsData.filter((event: any) => event.position === 'main');
-  } catch (error) {
-    console.error("Failed to fetch events:", error);
-  }
-
+const Events = () => {
   return (
     <>
       <Head>
         <title>Events</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-        <meta name='description' content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step.'></meta>
+
+        <meta
+          name='description'
+          content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and
+encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum
+exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research
+and projects with more end-user interactions.'
+        ></meta>
         <meta property='og:type' content='website'></meta>
         <meta property='og:url' content='https://iotkiit.in'></meta>
         <meta property='og:title' content='IoT Lab KiiT'></meta>
-        <meta property='og:description' content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step.'></meta>
+        <meta
+          property='og:description'
+          content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and
+encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum
+exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research
+and projects with more end-user interactions.'
+        ></meta>
         <meta property='og:image' content='/images/logo_small.webp'></meta>
+
         <meta property='twitter:card' content='summary_large_image'></meta>
         <meta property='twitter:url' content='https://iotkiit.in'></meta>
         <meta property='twitter:title' content='IoT Lab KiiT'></meta>
-        <meta property='twitter:description' content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step.'></meta>
+        <meta
+          property='twitter:description'
+          content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and
+encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum
+exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research
+and projects with more end-user interactions.'
+        ></meta>
         <meta property='twitter:image' content='/images/logo_small.webp'></meta>
       </Head>
       <EventHeader />
-      
-      {upcomingevents.length === 0 ? null : (
+      {/* {props.upcomingevents.length == 0 ? null : (
         <section>
           <div className="container max-w-full mx-auto lg:py-0 md:pt-0 sm:pt-80 pt-48 mt-48 sm:mt-4 px-6 ">
             <h1 className="text-center sm:mt-12 text-4xl text-black font-medium leading-snug uppercase tracking-wider">
@@ -72,7 +67,7 @@ const Events = async () => {
             <div className="h-1 mx-auto bg-indigo-200 w-24 opacity-75 mt-4 rounded"></div>
           </div>
           <div className="container px-5 py-12 mx-auto flex flex-wrap">
-            {upcomingevents.map((i: any, index: number) => (
+            {props.upcomingevents.map((i:any, index:number) => (
               <UpcomingCard
                 key={`upcoming-event-${i.id}`}
                 index={index + 1}
@@ -86,17 +81,48 @@ const Events = async () => {
             ))}
           </div>
         </section>
-      )}
-      
-      <FlagshipEvents
-        main={flagshipevents.main}
-        left={flagshipevents.left}
-        right={flagshipevents.right}
-      />
-      
-      <EventExtra extraevents={extraevents} />
+      )}  */}
+      {/* <FlagshipEvents
+        main={props.flagshipevents.main}
+        left={props.flagshipevents.left}
+        right={props.flagshipevents.right}
+      /> */}
+      {/* {*<EventExtra extraevents={props.extraevents} /> */}
     </>
   );
 };
+
+// const getStaticProps=async()=> {
+//   const SERVER = await fetch ("https://api.iotkiit.in");
+
+//Getting upcomingevents from Server
+
+// //Getting Extra events from Server
+// const totalEventRes = await fetch(`${SERVER}/items/events`);
+// const total=await totalEventRes.json();
+// const totalEventsData = total.data;
+
+// const extraEventsData = totalEventsData.filter((event :any) => event.type == "extraEvent");
+// //Getting Flagship Events from Server
+// const flagshipEventsRes = await (await fetch(`${SERVER}/items/flagshipevents`)).json()
+// const flagshipEventsData = flagshipEventsRes.data;
+// const upcomingeventsData = totalEventsData.filter((event:any) => event.type === 'upcomingEvent');
+// const left = flagshipEventsData.filter((event:any) => event.position === 'left');
+// const right = flagshipEventsData.filter((event:any) => event.position === 'right');
+// const main = flagshipEventsData.filter((event:any) => event.position === 'main');
+
+//   return {
+//     props: {
+//       upcomingevents: upcomingeventsData,
+//       extraevents: extraEventsData,
+//       flagshipevents: {
+//         left: left,
+//         main: main,
+//         right: right,
+//       },
+//     },
+//     revalidate: 600,
+//   };
+// }
 
 export default Events;
