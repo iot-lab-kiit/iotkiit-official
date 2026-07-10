@@ -8,7 +8,7 @@ const HeroComponent: React.FC = () => {
           <div className='flex flex-wrap text-center justify-center'>
             <div className='w-full lg:w-6/12 px-4'>
               <h2 className='text-4xl pt-5 font-semibold text-gray-800'>
-                Let's Build something!!
+                Let&apos;s Build something!!
               </h2>
               <p className='text-lg leading-relaxed mt-4 mb-4 text-gray-600'>
                 We at IOT lab, will help us to learn skills that are very

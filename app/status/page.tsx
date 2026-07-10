@@ -69,7 +69,7 @@ const Status = () => {
               textAlign={'center'}
             >
               <span>{isOpen ? 'Welcome ! ' : 'Sorry ! '}</span>
-              we're
+              we&apos;re
               <span
                 style={{
                   fontSize: '50px',
@@ -103,7 +103,7 @@ const Status = () => {
               <span
                 style={{ fontSize: '50px', fontWeight: 700, color: '#4763B7' }}
               >
-                Hold On! We're Fetching the Details . .{' '}
+                Hold On! We&apos;re Fetching the Details . .{' '}
               </span>
             </Box>
           </Box>

@@ -11,7 +11,7 @@ const EventExtra = ({ extraevents }: { extraevents: any[] }) => {
           </div>
           <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
             Collaborations, Interships, Recruitment Drives, and everything else.
-            In case, you have missed any these, we'd suggest keeping up with the
+            In case, you have missed any these, we&apos;d suggest keeping up with the
             <b> Upcoming Events</b> sections and our <b>Social Media</b> ,
             because it sucks to know about these after they are over :(
           </p>
