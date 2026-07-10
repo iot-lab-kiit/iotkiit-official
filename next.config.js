@@ -17,6 +17,14 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      undici: false,
+      canvas: false,
+    };
+    return config;
+  },
   serverRuntimeConfig: {},
   publicRuntimeConfig: {
     SERVER: prodAPI,

@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import DOMPurify from 'isomorphic-dompurify';
 import style from '../../styles/SubAccordianCard.module.css';
+
+const sanitizeHtml = (html: string) => {
+  if (typeof window !== 'undefined') {
+    const DOMPurify = require('isomorphic-dompurify');
+    return DOMPurify.sanitize(html);
+  }
+  return html;
+};
 
 interface SubAccordionCardProps {
   id: number;
@@ -35,7 +42,7 @@ const SubAccordionCard = (problem: SubAccordionCardProps) => {
           <h1>
             <b>Question</b>
           </h1>
-          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(problem.question) }}></div>
+          <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(problem.question) }}></div>
         </>
       )}
     </article>
