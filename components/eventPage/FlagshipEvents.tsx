@@ -24,11 +24,11 @@ const EventListItem = ({ point, ...rest }) => {
   );
 };
 
-const FlagshipEvents = ({ main, left, right }) => {
+const FlagshipEvents = ({ main, left, right }: { main: any; left: any; right: any }) => {
 
-  main = main[0];
-  left = left[0];
-  right = right[0];
+  main = main?.[0] || {};
+  left = left?.[0] || {};
+  right = right?.[0] || {};
 
   return (
     <section>

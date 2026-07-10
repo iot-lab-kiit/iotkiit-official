@@ -49,3 +49,4 @@ data/archive/
 # WSL "mark of the web" artifacts
 *:Zone.Identifier
 
+.env.example
