@@ -7,6 +7,20 @@ import SpeakerComponent from '../../components/webinarPage/SpeakerComponent';
 import { API_URL } from '../../lib/config';
 
 export default function Webinar() {
+  const getData = async () => {
+    const response = await fetch(`${API_URL}/speakers`);
+    const speakerData = await response.json();
+
+    const event = await fetch(`${API_URL}/webinars`);
+    const description = await event.json();
+    return {
+      props: {
+        speakers: speakerData,
+        eventDescription: description,
+      },
+      revalidate: 600,
+    };
+  };
 
   return (
     <div>
