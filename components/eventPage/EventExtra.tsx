@@ -1,4 +1,4 @@
-const EventExtra = ({ extraevents }) => {
+const EventExtra = ({ extraevents }: { extraevents: any[] }) => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -11,13 +11,13 @@ const EventExtra = ({ extraevents }) => {
           </div>
           <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
             Collaborations, Interships, Recruitment Drives, and everything else.
-            In case, you have missed any these, we'd suggest keeping up with the
+            In case, you have missed any these, we&apos;d suggest keeping up with the
             <b> Upcoming Events</b> sections and our <b>Social Media</b> ,
             because it sucks to know about these after they are over :(
           </p>
         </div>
         <div className="flex flex-wrap -m-4">
-          {extraevents.map((i) => (
+          {extraevents.map((i: any) => (
             <div key={i.id} className="xl:w-1/4 md:w-1/2 p-4">
               <div className="bg-gray-100 p-6 rounded-lg">
                 <img

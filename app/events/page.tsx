@@ -1,6 +1,6 @@
+import { Metadata } from 'next';
 import EventExtra from '../../components/eventPage/EventExtra';
 import EventHeader from '../../components/eventPage/EventHeader';
-import Head from 'next/head';
 import UpcomingCard from '../../components/eventPage/UpcomingCard';
 import FlagshipEvents from '../../components/eventPage/FlagshipEvents';
 
@@ -15,44 +15,27 @@ export interface eventData {
   type: string;
 }
 
+export const metadata: Metadata = {
+  title: 'Events',
+  description: 'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research and projects with more end-user interactions.',
+  openGraph: {
+    type: 'website',
+    url: 'https://iotkiit.in',
+    title: 'IoT Lab KiiT',
+    description: 'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research and projects with more end-user interactions.',
+    images: ['/images/logo_small.webp'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IoT Lab KiiT',
+    description: 'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research and projects with more end-user interactions.',
+    images: ['/images/logo_small.webp'],
+  },
+};
+
 const Events = () => {
   return (
     <>
-      <Head>
-        <title>Events</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-
-        <meta
-          name='description'
-          content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and
-encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum
-exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research
-and projects with more end-user interactions.'
-        ></meta>
-        <meta property='og:type' content='website'></meta>
-        <meta property='og:url' content='https://iotkiit.in'></meta>
-        <meta property='og:title' content='IoT Lab KiiT'></meta>
-        <meta
-          property='og:description'
-          content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and
-encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum
-exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research
-and projects with more end-user interactions.'
-        ></meta>
-        <meta property='og:image' content='/images/logo_small.webp'></meta>
-
-        <meta property='twitter:card' content='summary_large_image'></meta>
-        <meta property='twitter:url' content='https://iotkiit.in'></meta>
-        <meta property='twitter:title' content='IoT Lab KiiT'></meta>
-        <meta
-          property='twitter:description'
-          content='IoT Lab, KIIT is a team of dedicated students working under a team of competent and
-encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum
-exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research
-and projects with more end-user interactions.'
-        ></meta>
-        <meta property='twitter:image' content='/images/logo_small.webp'></meta>
-      </Head>
       <EventHeader />
       {/* {props.upcomingevents.length == 0 ? null : (
         <section>

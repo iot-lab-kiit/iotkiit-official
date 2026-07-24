@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import SubAccordionCard from './SubAccordionCard';
 import style from '../../styles/AccordionCard.module.css';
+import { API_URL } from '../../lib/config';
 
 interface AccordionCardProps {
   category: string;
@@ -27,7 +28,7 @@ const AccordionCard = (props: AccordionCardProps) => {
 
       try {
         const response = await fetch(
-          `https://api.iotkiit.in/items/questions?filter[category][_eq]=${props.category}`,
+          `${API_URL}/items/questions?filter[category][_eq]=${props.category}`,
         );
         const data = await response.json();
         setQuestions(data.data);

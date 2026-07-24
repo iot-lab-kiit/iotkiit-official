@@ -15,7 +15,7 @@ const CheckIcon = () => {
   );
 };
 
-const EventCard = (props) => {
+const EventCard = (props: any) => {
   return (
     <div className="lg:w-3/12 md:w-3/12 min-w-max sm:w-full h-1/2 shadow-lg rounded-xl">
       <div className="text-center pricing-header p-5">
@@ -59,12 +59,9 @@ const EventCard = (props) => {
           className="rounded-b-xl"
         >
           <defs>
-            <style
-              dangerouslySetInnerHTML={{
-                __html:
-                  ".color-1{fill:#2bdbdc;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}",
-              }}
-            />
+            <style>
+              {".color-1{fill:#2bdbdc;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}"}
+            </style>
           </defs>
           <title>bottom-part1</title>
           <g id="bottom-part">

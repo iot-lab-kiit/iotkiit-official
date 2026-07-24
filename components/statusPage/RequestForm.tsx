@@ -7,6 +7,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 // import dayjs from 'dayjs';
 import CustomTextField from './CustomTextField';
+import { API_URL } from '../../lib/config';
 const teams: string[] = [
   'CP',
   'Web Dev',
@@ -64,7 +65,7 @@ const RequestForm = () => {
       setErrorMessage('Enter a valid duration.');
       return;
     }
-    fetch('https://api.iotkiit.in/items/lab_open_request', {
+    fetch(`${API_URL}/items/lab_open_request`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

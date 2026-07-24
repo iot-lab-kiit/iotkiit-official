@@ -1,4 +1,5 @@
 import React from 'react';
+import { API_URL } from '../../lib/config';
 
 interface SpeakerCardProps {
   image: string;
@@ -13,7 +14,7 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
   title,
   linkedin,
 }) => {
-  let imageUrl = `https://api.iotkiit.in/assets/${image}`;
+  let imageUrl = `${API_URL}/assets/${image}`;
 
   return (
     <>
