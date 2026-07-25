@@ -1,145 +1,133 @@
 "use client";
+
 import { useState } from "react";
 import Image from "next/image";
-import BentoGallery from "@/components/gallery/BentoGallery";
 import { galleryEvents } from "@/data/gallery";
+import { Camera, Sparkles, ChevronDown, Image as ImageIcon, X, Maximize2 } from "lucide-react";
 
-// Cinematic dark gallery: a light "Moments" wall over an ambient navy field.
-// One event open at a time; all start collapsed so the page opens calm and clean.
 export default function GalleryPage() {
-  const [openId, setOpenId] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [activeLightbox, setActiveLightbox] = useState<string | null>(null);
+
   const totalPhotos = galleryEvents.reduce((n, e) => n + e.images.length, 0);
 
-  return (
-    <div className="relative min-h-screen overflow-hidden bg-[#060d29] text-[#E4E4FF]">
-      {/* ambient glows */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(60rem 40rem at 15% -10%, rgba(75,99,183,0.28), transparent 60%), radial-gradient(50rem 40rem at 110% 20%, rgba(139,159,222,0.18), transparent 55%)",
-        }}
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#040819]" />
+  // Flatten images with metadata for masonry showcase
+  const allImages = galleryEvents.flatMap((evt) =>
+    evt.images.map((img) => ({
+      url: img,
+      event: evt.eventName,
+      date: evt.date,
+    }))
+  );
 
-      <div className="relative mx-auto max-w-[1440px] px-6 py-14 md:px-12">
+  const filteredImages =
+    selectedCategory === "All"
+      ? allImages
+      : allImages.filter((img) => img.event.toLowerCase().includes(selectedCategory.toLowerCase()));
+
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-[#030712] text-white py-24 px-6 lg:px-12">
+      {/* Ambient Glows */}
+      <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[650px] rounded-full bg-blue-600/15 blur-[160px]" />
+      <div className="pointer-events-none absolute bottom-10 right-10 h-80 w-80 rounded-full bg-cyan-500/15 blur-[130px]" />
+
+      <div className="relative mx-auto max-w-7xl">
         {/* Header */}
-        <div className="animate-fade-up grid grid-cols-1 items-end gap-y-6 md:grid-cols-2 md:gap-x-8">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8B9FDE] backdrop-blur md:text-xs">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#8B9FDE]" />
-              IoT Lab · Archive
-            </span>
-            <p className="mt-4 max-w-[300px] text-sm font-medium uppercase leading-relaxed tracking-wide text-[#c9d3f5]/90">
-              A collection of the best moments we lived together at our flagship
-              events.
-            </p>
-            <p className="mt-3 font-mono text-xs tracking-widest text-[#8B9FDE]">
-              {galleryEvents.length} EVENTS · {totalPhotos} PHOTOS
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+          <div className="space-y-4 max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 backdrop-blur-xl">
+              <Camera className="h-4 w-4 text-cyan-300" />
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300">
+                Visual Darkroom Archive
+              </span>
+            </div>
+
+            <h1 className="font-display text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
+              LAB ARCHIVE & MOMENTS
+            </h1>
+
+            <p className="text-gray-300 font-light text-base sm:text-lg">
+              Capturing core memories, hackathon victories, hardware testing sessions, and community life at IoT Lab KIIT.
             </p>
           </div>
-          <div className="flex items-end justify-start md:justify-end">
-            <h1 className="bg-gradient-to-br from-white via-[#C1D0FF] to-[#7E93DA] bg-clip-text font-extrabold leading-[0.85] tracking-tight text-transparent text-[clamp(3.5rem,11vw,8.5rem)] drop-shadow-[0_8px_40px_rgba(80,110,220,0.25)]">
-              GALLERY
-            </h1>
+
+          <div className="font-mono text-xs tracking-widest text-cyan-400 border border-cyan-400/20 bg-cyan-950/30 p-4 rounded-2xl backdrop-blur-xl">
+            <span className="text-gray-400 block mb-1">{`// TOTAL ARCHIVE METRICS`}</span>
+            <span>{galleryEvents.length} FLAGSHIP EVENTS · {totalPhotos} HQ PHOTOS</span>
           </div>
         </div>
 
-        <div className="mt-8 h-px bg-gradient-to-r from-transparent via-[#E4E4FF]/40 to-transparent" />
+        {/* Category Filters */}
+        <div className="flex flex-wrap items-center gap-3 mb-12">
+          {["All", "Hackathon", "Innovate", "Workshop", "Orientation"].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 backdrop-blur-xl ${
+                selectedCategory === cat
+                  ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-glow-blue scale-105"
+                  : "border border-white/10 bg-white/[0.03] text-gray-300 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {cat === "All" ? "All Moments" : cat}
+            </button>
+          ))}
+        </div>
 
-        <div className="mt-10 flex flex-col gap-6 md:flex-row">
-          <div className="flex items-start justify-center md:w-[40px] md:items-center md:justify-start">
-            <span className="whitespace-nowrap font-mono text-[10px] font-semibold tracking-[0.3em] text-[#8B9FDE] md:rotate-[-90deg]">
-              #momentsofIoT
-            </span>
-          </div>
+        {/* Masonry Image Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredImages.map((img, idx) => (
+            <div
+              key={idx}
+              onClick={() => setActiveLightbox(img.url)}
+              className="group relative cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-xl transition-all duration-500 hover:border-cyan-400/40 hover:-translate-y-2 hover:shadow-2xl aspect-[4/3]"
+            >
+              <Image
+                src={img.url}
+                alt={img.event}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-black/20 to-transparent opacity-60 transition-opacity group-hover:opacity-80" />
 
-          <div className="flex flex-1 flex-col gap-5">
-            {galleryEvents.map((event, i) => {
-              const isOpen = openId === event.id;
-              return (
-                <div
-                  key={event.id}
-                  className={`animate-fade-up rounded-3xl border p-4 transition-colors duration-300 md:p-5 ${
-                    isOpen
-                      ? "border-[#8B9FDE]/30 bg-white/[0.05]"
-                      : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]"
-                  }`}
-                  style={{ animationDelay: `${i * 90}ms` }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setOpenId(isOpen ? null : event.id)}
-                    aria-expanded={isOpen}
-                    className="grid w-full cursor-pointer grid-cols-1 items-center gap-6 text-left md:grid-cols-[1fr_320px] md:gap-8"
-                  >
-                    <div className="group relative overflow-hidden rounded-2xl ring-1 ring-white/10">
-                      <Image
-                        src={event.coverImage}
-                        alt={event.eventName}
-                        width={640}
-                        height={320}
-                        sizes="(max-width: 768px) 100vw, 640px"
-                        className="h-[220px] w-full object-cover object-[50%_30%] transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-110 md:h-[280px]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-                      <span className="absolute bottom-3 left-4 font-mono text-[10px] font-semibold uppercase tracking-widest text-white/80">
-                        {String(i + 1).padStart(2, "0")} · Flagship
-                      </span>
-                    </div>
-
-                    <div className="flex h-full flex-col justify-between gap-6">
-                      <div className="space-y-2">
-                        <h2 className="bg-gradient-to-r from-white to-[#C1D0FF] bg-clip-text text-3xl font-bold leading-tight text-transparent md:text-4xl">
-                          {event.eventName}
-                        </h2>
-                        <p className="text-sm tracking-wide text-[#8B9FDE]">
-                          {event.date}
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between gap-4">
-                        <span
-                          className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold shadow-lg transition-all duration-300 ${
-                            isOpen
-                              ? "bg-white/10 text-white ring-1 ring-white/20"
-                              : "bg-gradient-to-r from-[#E4E4FF] to-[#B9C8FF] text-[#09164A] hover:shadow-[0_8px_30px_rgba(140,160,230,0.35)]"
-                          }`}
-                        >
-                          {isOpen ? "Minimize" : "Explore"}
-                          <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                          >
-                            <path
-                              d="M6 9l6 6 6-6"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </span>
-                        <p className="text-right font-mono text-xs font-semibold tracking-wider text-[#8B9FDE]">
-                          {event.images.length} PHOTOS
-                        </p>
-                      </div>
-                    </div>
-                  </button>
-
-                  {isOpen && (
-                    <div className="animate-fade-up mt-4 border-t border-white/10 pt-2">
-                      <BentoGallery images={event.images} />
-                    </div>
-                  )}
+              <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex justify-end">
+                  <span className="p-2 rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md">
+                    <Maximize2 className="h-4 w-4" />
+                  </span>
                 </div>
-              );
-            })}
-          </div>
+                <div className="space-y-1">
+                  <span className="font-mono text-[10px] text-cyan-300 uppercase tracking-wider block">
+                    {img.date}
+                  </span>
+                  <h3 className="font-display text-lg font-bold text-white leading-snug">
+                    {img.event}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {activeLightbox && (
+        <div
+          onClick={() => setActiveLightbox(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl"
+        >
+          <button
+            onClick={() => setActiveLightbox(null)}
+            className="absolute top-6 right-6 p-3 rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 transition-colors"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <div className="relative w-full max-w-5xl aspect-[16/10] overflow-hidden rounded-3xl border border-white/20">
+            <Image src={activeLightbox} alt="Enlarged photo" fill className="object-contain" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

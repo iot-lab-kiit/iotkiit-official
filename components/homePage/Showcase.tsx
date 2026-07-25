@@ -1,54 +1,72 @@
-const Showcase: React.FC = () => {
+"use client";
+
+import ScrollText from "@/components/ScrollText";
+import { MapPin, Navigation, Compass, ExternalLink } from "lucide-react";
+
+export default function Showcase() {
   return (
-    <div className='bg-gray-200'>
-      <div className='max-w-6xl mx-auto px-8 py-16'>
-        <div className='relative'>
-          <div className='relative lg:flex rounded-lg shadow-2xl overflow-hidden'>
-            <div className='h-64 lg:h-auto lg:w-5/12 relative flex items-center justify-center'>
-              <img
-                className='absolute h-full w-full object-cover'
-                alt='The IoT Lab team at Campus 25'
-                src='/images/team-group.jpeg'
-              />
-              <div className='absolute inset-0 bg-secondary-900 opacity-70' />
-              <a
-                href='https://maps.app.goo.gl/wuBhh7PJVyAbosY28'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='relative flex flex-col items-center gap-2 px-4 text-center text-white transition-transform duration-300 hover:scale-105'
-              >
-                <span className='text-4xl font-bold sm:text-5xl'>Campus 25, A-004</span>
-                <span className='text-sm font-medium uppercase tracking-widest text-white/80'>
-                  📍 Find us on Maps
+    <section className="relative overflow-hidden bg-[#030712] py-24 px-6 lg:px-12 text-white border-t border-white/5">
+      {/* Background Ambient Glow */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-[450px] w-[650px] rounded-full bg-blue-600/10 blur-[160px]" />
+
+      <div className="relative mx-auto max-w-7xl">
+        <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/[0.03] p-8 md:p-12 backdrop-blur-2xl shadow-glass">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left Column: HQ Details */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 backdrop-blur-xl">
+                <MapPin className="h-3.5 w-3.5 text-cyan-300" />
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300">
+                  Headquarters & Laboratory
                 </span>
-              </a>
+              </div>
+
+              <ScrollText as="h2" className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                Visit Campus 25 Innovation Hub
+              </ScrollText>
+
+              <ScrollText as="p" className="text-gray-300 font-light text-base leading-relaxed" delay={0.2}>
+                Room A-004, School of Computer Engineering, KIIT University, Bhubaneswar, Odisha — 751024. Our physical laboratory is equipped with workstation nodes, hardware test benches, 3D printing equipment, and collaborative meeting areas.
+              </ScrollText>
+
+              <div className="pt-2">
+                <a
+                  href="https://maps.app.goo.gl/wuBhh7PJVyAbosY28"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-3 text-xs font-bold text-white shadow-glow-blue hover:shadow-glow-cyan hover:scale-105 transition-all"
+                >
+                  <Navigation className="h-4 w-4" />
+                  <span>Navigate on Google Maps</span>
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </div>
-            <div className='relative lg:w-7/12 bg-white'>
-              <svg
-                className='absolute h-full text-white w-24 -ml-12'
-                fill='currentColor'
-                viewBox='0 0 100 100'
-                preserveAspectRatio='none'
-              >
-                <polygon points='50,0 100,0 50,100 0,100' />
-              </svg>
-              <div className='relative py-12 lg:py-16 px-8 lg:px-16 text-gray-700 leading-relaxed'>
-                <p>
-                  One of the best parts of working here is that there is always
-                  something new to learn.
-                </p>
-                <br />
-                <p>
-                  At Campus 25, A-004, the team gets to try different ideas,
-                  learn from them, and keep improving together.
-                </p>
+
+            {/* Right Column: High-tech Map Frame */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/15 bg-black/60 p-6 backdrop-blur-xl flex flex-col justify-between">
+                <div className="flex items-center justify-between text-xs font-mono text-cyan-400">
+                  <span>📍 CAMPUS 25, ROOM A-004</span>
+                  <span className="text-green-400">● LAB OPEN</span>
+                </div>
+                <div className="my-4 text-center space-y-1">
+                  <span className="font-mono text-2xl font-extrabold text-white block">
+                    IoT LAB KIIT
+                  </span>
+                  <span className="text-xs text-gray-400 font-light block">
+                    Patia, Bhubaneswar, Odisha
+                  </span>
+                </div>
+                <div className="text-center font-mono text-[10px] text-gray-500">
+                  LAT: 20.3540° N · LONG: 85.8184° E
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Showcase;
+}

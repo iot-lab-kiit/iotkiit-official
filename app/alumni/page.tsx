@@ -1,92 +1,195 @@
-import SectionTitle from '@/components/team/SectionTitle';
-import AlumCard from '@/components/team/AlumCard';
-import { alumni } from '@/data/alumni';
+"use client";
 
-export const metadata = {
-  title: 'Alumni | IoT Lab KIIT',
-  description:
-    'The previous members of IoT Lab KIIT, whose work and ideas still shape the lab.',
+import Image from "next/image";
+import { GraduationCap, Award, ShieldCheck, HeartHandshake, MapPin } from "lucide-react";
+import { alumni, type Alum } from "@/data/alumni";
+import { LinkedinIcon, GithubIcon } from "@/components/Icons";
+import MagneticCard from "@/components/MagneticCard";
+import ScrollText from "@/components/ScrollText";
+import Stagger from "@/components/Stagger";
+
+const coordinators = alumni.filter((a) => a.tier === "coordinator");
+const leads = alumni.filter((a) => a.tier === "lead");
+const mentors = alumni.filter((a) => a.tier === "mentor");
+const members = alumni.filter((a) => a.tier === "member");
+
+const getAvatarFallback = (name: string) => {
+  const parts = name.split(" ");
+  if (parts.length >= 2) return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+  return name.slice(0, 2).toUpperCase();
 };
 
-const coordinators = alumni.filter((a) => a.tier === 'coordinator');
-const leads = alumni.filter((a) => a.tier === 'lead');
-const mentors = alumni.filter((a) => a.tier === 'mentor');
-const members = alumni.filter((a) => a.tier === 'member');
+const SocialLink = ({ url, icon: Icon }: { url: string; icon: any }) => (
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex h-7 w-7 items-center justify-center rounded-full bg-white/5 text-gray-400 hover:bg-cyan-500/20 hover:text-cyan-300 transition-colors"
+  >
+    <Icon className="h-3.5 w-3.5" />
+  </a>
+);
 
-const Alumni = () => {
+const AlumShowcaseCard = ({ alum, featured = false }: { alum: Alum; featured?: boolean }) => (
+  <MagneticCard
+    className={`group flex flex-col items-center gap-3 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-5 text-center transition-all duration-500 hover:border-cyan-400/40 hover:bg-white/[0.05] ${
+      featured ? "shadow-glass" : ""
+    }`}
+  >
+    <div
+      className={`relative overflow-hidden rounded-full border-2 border-white/10 transition-colors group-hover:border-cyan-400/50 ${
+        featured ? "h-24 w-24" : "h-16 w-16"
+      }`}
+    >
+      {alum.image ? (
+        <Image src={alum.image} alt={alum.name} fill className="object-cover" />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-800 to-black text-xl font-bold text-gray-500">
+          {getAvatarFallback(alum.name)}
+        </div>
+      )}
+    </div>
+    
+    <div className="space-y-1 w-full">
+      <h4 className={`font-display font-bold text-white truncate px-1 ${featured ? "text-lg" : "text-sm"}`}>
+        {alum.name}
+      </h4>
+      <p className="font-mono text-[9px] text-cyan-400 uppercase tracking-widest truncate">
+        {alum.role || "Alumni"}
+      </p>
+      {alum.currentCompany && (
+        <p className="text-[10px] text-gray-400 truncate mt-1 flex items-center justify-center gap-1">
+          <MapPin className="h-2.5 w-2.5" />
+          {alum.currentCompany}
+        </p>
+      )}
+    </div>
+
+    {(alum.linkedin || alum.github) && (
+      <div className="flex items-center justify-center gap-1.5 pt-2 border-t border-white/10 w-full">
+        {alum.linkedin && <SocialLink url={alum.linkedin} icon={LinkedinIcon} />}
+        {alum.github && <SocialLink url={alum.github} icon={GithubIcon} />}
+      </div>
+    )}
+  </MagneticCard>
+);
+
+export default function AlumniPage() {
   return (
-    <main className="bg-white">
-      {/* Header */}
-      <section className="border-b border-gray-100 bg-primary-50/40 px-6 py-20 text-center">
-        <p className="mb-3 inline-block rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-700 shadow-sm">
-          2024 – 25 Batch
-        </p>
-        <h1 className="text-4xl font-extrabold uppercase tracking-tight text-gray-900 sm:text-5xl">
-          Our <span className="text-primary-default">Alumni</span>
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-base font-light text-gray-500">
-          The people who helped shape the lab before us, and whose work still
-          carries forward.
-        </p>
-      </section>
+    <main className="relative min-h-screen bg-[#030712] text-white py-20 px-6 lg:px-12 overflow-hidden">
+      {/* Ambient Radial Glows */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[600px] w-[800px] rounded-full bg-blue-600/10 blur-[180px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-cyan-500/10 blur-[150px]" />
 
-      {/* Coordinators */}
-      {coordinators.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 py-16">
-          <SectionTitle eyebrow="Leadership" title="Coordinators" />
-          <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-5">
-            {coordinators.map((a) => (
-              <AlumCard key={a.name} alum={a} featured />
-            ))}
+      <div className="relative mx-auto max-w-7xl">
+        {/* Header Badge */}
+        <div className="flex flex-col items-center text-center space-y-4 mb-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1.5 backdrop-blur-2xl shadow-glow-cyan">
+            <GraduationCap className="h-4 w-4 text-cyan-300" />
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300">
+              CHAPTER 07 // THE ALUMNI NETWORK
+            </span>
           </div>
-        </section>
-      )}
 
-      {/* Leads */}
-      {leads.length > 0 && (
-        <section className="bg-primary-50/40 py-16">
-          <div className="mx-auto max-w-6xl px-6">
-            <SectionTitle eyebrow="Core Team" title="Team Leads" />
-            <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-4">
+          <ScrollText as="h1" className="font-display text-4xl sm:text-7xl font-black tracking-tight text-white leading-tight">
+            LEGACY &amp; <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent">NETWORK</span>
+          </ScrollText>
+
+          <ScrollText as="p" className="text-gray-300 font-light text-base sm:text-xl max-w-3xl" delay={0.2}>
+            The visionary minds who helped build and shape IoT Lab KIIT, now leading innovations across top global companies and research institutions.
+          </ScrollText>
+        </div>
+
+        {/* Coordinators Tier */}
+        {coordinators.length > 0 && (
+          <div className="mb-20">
+            <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
+              <h3 className="font-display text-2xl font-bold text-white tracking-tight">
+                PAST COORDINATORS
+              </h3>
+              <span className="font-mono text-xs text-cyan-400 uppercase">Legacy Leaders</span>
+            </div>
+            <Stagger
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6"
+              childClassName="h-full"
+              step={60}
+            >
+              {coordinators.map((a) => (
+                <AlumShowcaseCard key={a.name} alum={a} featured />
+              ))}
+            </Stagger>
+          </div>
+        )}
+
+        {/* Leads Tier */}
+        {leads.length > 0 && (
+          <div className="mb-20">
+            <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
+              <h3 className="font-display text-2xl font-bold text-white tracking-tight">
+                PAST DOMAIN LEADS
+              </h3>
+              <span className="font-mono text-xs text-cyan-400 uppercase">Guild Masters</span>
+            </div>
+            <Stagger
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6"
+              childClassName="h-full"
+              step={50}
+            >
               {leads.map((a) => (
-                <AlumCard key={a.name} alum={a} featured />
+                <AlumShowcaseCard key={a.name} alum={a} featured />
               ))}
+            </Stagger>
+          </div>
+        )}
+
+        {/* Mentors Tier */}
+        {mentors.length > 0 && (
+          <div className="mb-20">
+            <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
+              <h3 className="font-display text-2xl font-bold text-white tracking-tight">
+                MENTORS &amp; ADVISORS
+              </h3>
+              <span className="font-mono text-xs text-cyan-400 uppercase">Guidance</span>
             </div>
+            <Stagger
+              className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4"
+              childClassName="h-full"
+              step={40}
+            >
+              {mentors.map((a) => (
+                <AlumShowcaseCard key={a.name} alum={a} />
+              ))}
+            </Stagger>
           </div>
-        </section>
-      )}
+        )}
 
-      {/* Mentors */}
-      {mentors.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 py-16">
-          <SectionTitle eyebrow="Guidance" title="Mentors & Advisors" />
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8 md:grid-cols-6">
-            {mentors.map((a) => (
-              <AlumCard key={a.name} alum={a} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Members */}
-      {members.length > 0 && (
-        <section className="bg-primary-50/40 py-16">
-          <div className="mx-auto max-w-6xl px-6">
-            <SectionTitle
-              eyebrow="The Family"
-              title="Members"
-              subtitle="People from the previous batch who were part of the lab."
-            />
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
+        {/* Members Tier */}
+        {members.length > 0 && (
+          <div className="mb-12">
+            <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-4">
+              <h3 className="font-display text-2xl font-bold text-white tracking-tight">
+                GRADUATED MEMBERS
+              </h3>
+              <span className="font-mono text-xs text-cyan-400 uppercase">The Network ({members.length})</span>
+            </div>
+            <Stagger
+              className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4"
+              childClassName="h-full"
+              step={30}
+            >
               {members.map((a, i) => (
-                <AlumCard key={`${a.name}-${i}`} alum={a} />
+                <AlumShowcaseCard key={`${a.name}-${i}`} alum={a} />
               ))}
-            </div>
+            </Stagger>
           </div>
-        </section>
-      )}
+        )}
+        
+        <div className="text-center pt-8 border-t border-white/10">
+          <p className="font-mono text-xs text-gray-500 uppercase tracking-widest">
+            // ONCE A PART OF THE IOT FAMILY, ALWAYS A PART OF THE IOT FAMILY.
+          </p>
+        </div>
+      </div>
     </main>
   );
-};
-
-export default Alumni;
+}

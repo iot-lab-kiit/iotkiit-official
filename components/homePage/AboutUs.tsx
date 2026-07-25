@@ -1,37 +1,141 @@
-const AboutUs: React.FC = () => {
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import ScrollText from "@/components/ScrollText";
+import { Target, Compass, Lightbulb, CheckCircle2, Sparkles, Layers } from "lucide-react";
+
+const pillars = [
+  {
+    id: "mission",
+    title: "Our Mission",
+    icon: Target,
+    desc: "To empower students with state-of-the-art infrastructure, expert faculty mentorship, and hands-on exposure to solve real-world complex problems through technology.",
+    points: ["Interdisciplinary Research", "Student-Led Prototypes", "Industry Standard Mentorship"],
+  },
+  {
+    id: "ecosystem",
+    title: "Lab Ecosystem",
+    icon: Layers,
+    desc: "A vibrant multi-domain ecosystem bridging hardware edge computing, AI algorithms, cloud deployment, product design, and community leadership.",
+    points: ["11 Specialized Guilds", "State-of-the-art Hardware Bench", "24/7 Innovation Sandbox"],
+  },
+  {
+    id: "vision",
+    title: "Our Vision",
+    icon: Lightbulb,
+    desc: "To emerge as a premier technology research incubator that produces global leaders, patentable inventions, and industry-grade solutions.",
+    points: ["Hackathon Supremacy", "Patentable Innovations", "Global Alumni Placements"],
+  },
+];
+
+export default function AboutUs() {
+  const [activePillar, setActivePillar] = useState("mission");
+  const selectedPillar = pillars.find((p) => p.id === activePillar) || pillars[0];
+
   return (
-    <div
-      id='about-us'
-      className='bg-blue-100 lg:px-24 md:px-24 px-8 mt-28 pb-6'
-    >
-      <div className='container mx-auto px-6'>
-        <div className='flex flex-col md:flex-row'>
-          <div className='md:w-1/2 md:pr-8 lg:pr-16'>
-            <img
-              src='/images/lab-life.jpeg'
-              alt='IoT Lab members at a session'
-              className='-mt-16 md:mt-4 lg:-mt-12 mb-6 md:mb-0 w-full rounded-2xl object-cover shadow-2xl ring-1 ring-black/5'
-            />
+    <section id="about-us" className="relative overflow-hidden bg-[#030712] py-24 px-6 lg:px-12 text-white border-t border-white/5">
+      {/* Background Ambient Glow */}
+      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 h-[450px] w-[450px] rounded-full bg-blue-600/10 blur-[140px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]" />
+
+      <div className="relative mx-auto max-w-7xl">
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 backdrop-blur-xl">
+            <Compass className="h-3.5 w-3.5 text-cyan-400" />
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300">
+              Innovation & Research Hub
+            </span>
           </div>
-          <div className='md:w-1/2'>
-            <h3 className='flex flex-col text-4xl text-secondary font-bold mt-10 mb-4'>
-              About us{' '}
-              <span className='bg-primary-default h-1 w-20 block mt-4' />
-            </h3>
-            <p className='text-lg text-secondary-700 mb-4'>
-              We are a group of students and faculty who care about building
-              useful technology and using it to make everyday life a little
-              better.
-            </p>
-            <p className='text-lg text-secondary-700'>
-              The lab spans technical and non-technical work, so people can
-              learn, experiment, and contribute from different angles.
-            </p>
+
+          <ScrollText as="h2" className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-white max-w-3xl leading-tight">
+            Nurturing Engineering Excellence & Pioneering Ideas
+          </ScrollText>
+
+          <ScrollText as="p" className="text-gray-400 font-light text-base sm:text-lg max-w-2xl" delay={0.2}>
+            IoT Lab KIIT unites passionate student minds and visionary professors to create impact-driven technology that matters.
+          </ScrollText>
+        </div>
+
+        {/* Main 2-Column Story Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Column: Interactive Image Glass Frame */}
+          <div className="lg:col-span-6 relative">
+            <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/[0.03] p-3 backdrop-blur-2xl shadow-glass group">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/lab-life.jpeg"
+                  alt="IoT Lab members collaborating"
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-80" />
+                
+                {/* Floating Glass Badge */}
+                <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/20 bg-black/60 p-4 backdrop-blur-xl flex items-center justify-between">
+                  <div>
+                    <span className="font-mono text-xs text-cyan-400 font-bold block">
+                      CAMPUS RESEARCH INCUBATOR
+                    </span>
+                    <span className="text-xs text-gray-300 font-light">
+                      School of Computer Engineering
+                    </span>
+                  </div>
+                  <Sparkles className="h-5 w-5 text-cyan-300" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Tabbed Pillar System */}
+          <div className="lg:col-span-6 space-y-6">
+            
+            {/* Tabs */}
+            <div className="flex items-center gap-2 p-1.5 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl">
+              {pillars.map((pillar) => {
+                const Icon = pillar.icon;
+                const isActive = pillar.id === activePillar;
+                return (
+                  <button
+                    key={pillar.id}
+                    onClick={() => setActivePillar(pillar.id)}
+                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 ${
+                      isActive
+                        ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-glow-blue"
+                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span>{pillar.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Pillar Content Card */}
+            <div className="rounded-3xl border border-white/15 bg-white/[0.03] p-8 backdrop-blur-2xl shadow-glass space-y-6">
+              <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                <span className="text-cyan-400 font-mono">0{pillars.findIndex(p => p.id === activePillar) + 1}.</span>
+                {selectedPillar.title}
+              </h3>
+              <p className="text-gray-300 text-base font-light leading-relaxed">
+                {selectedPillar.desc}
+              </p>
+              
+              <div className="space-y-3 pt-2">
+                {selectedPillar.points.map((pt, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm text-gray-200">
+                    <CheckCircle2 className="h-4 w-4 text-cyan-400 shrink-0" />
+                    <span className="font-medium">{pt}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default AboutUs;
+}

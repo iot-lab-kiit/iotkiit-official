@@ -60,7 +60,7 @@ const WorkHeader = ({ numBlogs, numProjects }: WorkHeaderProps) => {
                       <WorkAnimation />
                     </div>
                     <div className='lg:ml-5 text-left'>
-                      <div className='flex items-center justify-center w-12 h-12 rounded-full bg-cool-gray-100 text-gray-800 animate-bounce hover:text-gray-900 hover:bg-cool-gray-50 transition duration-300 ease-in-out cursor-pointer'>
+                      <div className='flex items-center justify-center w-12 h-12 rounded-full bg-cool-gray-100 text-gray-800 hover:text-gray-900 hover:bg-cool-gray-50 transition duration-300 ease-in-out cursor-pointer'>
                         <svg
                           className='w-6 h-6'
                           fill='none'

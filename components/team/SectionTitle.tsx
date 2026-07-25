@@ -1,17 +1,30 @@
 interface Props {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   subtitle?: string;
+  align?: 'left' | 'center';
 }
 
-// Consistent, centered section heading used across the Team & Alumni pages.
-const SectionTitle = ({ eyebrow, title, subtitle }: Props) => (
-  <div className="mx-auto mb-12 max-w-2xl text-center">
-    <p className="mb-3 inline-block rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-700">
-      {eyebrow}
-    </p>
-    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{title}</h2>
-    {subtitle && <p className="mt-4 text-base font-light text-gray-500">{subtitle}</p>}
+const SectionTitle = ({
+  eyebrow,
+  title,
+  subtitle,
+  align = 'center',
+}: Props) => (
+  <div className={`mb-12 ${align === 'center' ? 'mx-auto text-center' : ''} max-w-3xl space-y-3`}>
+    {eyebrow && (
+      <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3.5 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-cyan-300 backdrop-blur-xl">
+        {eyebrow}
+      </span>
+    )}
+    <h2 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+      {title}
+    </h2>
+    {subtitle && (
+      <p className="text-base font-light text-gray-300/90 sm:text-lg">
+        {subtitle}
+      </p>
+    )}
   </div>
 );
 

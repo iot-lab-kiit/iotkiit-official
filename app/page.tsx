@@ -1,30 +1,24 @@
 import Hero from '@/components/homePage/Hero';
 import Process from '@/components/homePage/Process';
+import InteractiveTimeline from '@/components/homePage/InteractiveTimeline';
 import AboutUs from '@/components/homePage/AboutUs';
 import Services from '@/components/homePage/Services';
 import Domains from '@/components/homePage/Domains';
 import Showcase from '@/components/homePage/Showcase';
-import Reveal from '@/components/Reveal';
+import Marquee from '@/components/Marquee';
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-[#030712] overflow-x-hidden">
       <Hero />
-      <Reveal>
-        <Process />
-      </Reveal>
-      <Reveal>
-        <AboutUs />
-      </Reveal>
-      <Reveal>
-        <Services />
-      </Reveal>
-      <Reveal>
-        <Domains />
-      </Reveal>
-      <Reveal>
-        <Showcase />
-      </Reveal>
+      <Marquee texts={["INTERNET OF THINGS", "EMBEDDED SYSTEMS", "AI & EDGE COMPUTING", "FULL STACK DEVELOPMENT"]} speed={20} />
+      <Process />
+      <InteractiveTimeline />
+      <AboutUs />
+      <Marquee texts={["RESEARCH LAB", "INNOVATION HUB", "HACKATHON WINNERS", "PATENT INCUBATOR"]} speed={24} />
+      <Services />
+      <Domains />
+      <Showcase />
     </div>
   );
 }

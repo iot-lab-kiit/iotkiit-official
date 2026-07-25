@@ -24,7 +24,7 @@ function ImageTile({
       style={{ animationDelay: `${Math.min(index, 10) * 60}ms` }}
     >
       {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-white/10 via-white/[0.04] to-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/[0.04] to-white/10" />
       )}
       <Image
         src={src}

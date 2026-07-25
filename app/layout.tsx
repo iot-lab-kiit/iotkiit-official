@@ -1,36 +1,32 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-});
+import SmoothScroll from '@/components/SmoothScroll';
+import CustomCursor from '@/components/CustomCursor';
+import InteractiveTerminal from '@/components/InteractiveTerminal';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://iotkiit.in/'),
-  title: 'IoT Lab KIIT',
+  title: 'IoT Lab KIIT | Centre of Excellence',
   description:
-    'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research  and projects with more end-user interactions.',
-  icons: '/images/logo_small.png',
+    'IoT Lab, KIIT is a premier research, deep tech innovation, and software development centre of excellence at KIIT University.',
+  icons: '/images/logo_small.webp',
   openGraph: {
     type: 'website',
     url: 'https://iotkiit.in/',
-    title: 'IoT Lab KIIT',
+    title: 'IoT Lab KIIT | Centre of Excellence',
     description:
-      'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research  and projects with more end-user interactions.',
-    images: '/images/logo_small.png', // or webp
+      'Premier student-faculty research hub, hackathon incubator, and multidisciplinary deep tech laboratory at KIIT University.',
+    images: '/images/logo_small.webp',
   },
   twitter: {
     card: 'summary_large_image',
     site: 'https://iotkiit.in/',
-    title: 'IoT Lab KIIT',
+    title: 'IoT Lab KIIT | Centre of Excellence',
     description:
-      'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research  and projects with more end-user interactions.',
-    images: '/images/logo_small.png', // or webp
+      'Premier student-faculty research hub, hackathon incubator, and multidisciplinary deep tech laboratory at KIIT University.',
+    images: '/images/logo_small.webp',
   },
 };
 
@@ -40,11 +36,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>
-        <Navbar />
-        {children}
-        <Footer />
+    <html lang="en" className="dark scroll-smooth">
+      <body className="bg-[#030712] text-white antialiased selection:bg-blue-600/40 selection:text-white">
+        <div className="noise-overlay" />
+        <CustomCursor />
+        <InteractiveTerminal />
+        <SmoothScroll>
+          <Navbar />
+          <main className="min-h-screen pt-20">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
