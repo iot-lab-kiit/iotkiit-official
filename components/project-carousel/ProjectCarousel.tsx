@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { ChevronLeft, ChevronRight, ExternalLink, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Sparkles, Code } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, memo, useCallback } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,6 +17,7 @@ type Project = {
   description: string;
   image: string;
   link: string;
+  github?: string;
 };
 
 const PROJECTS: Project[] = [
@@ -27,6 +28,7 @@ const PROJECTS: Project[] = [
     description: "Real-time analytics dashboard with modern UI and responsive monitoring.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     link: "#",
+    github: "https://github.com",
   },
   {
     id: 2,
@@ -43,6 +45,7 @@ const PROJECTS: Project[] = [
     description: "Embedded hardware engineered with precision and reliability.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
     link: "#",
+    github: "https://github.com",
   },
   {
     id: 4,
@@ -51,6 +54,7 @@ const PROJECTS: Project[] = [
     description: "Autonomous robotics with computer vision and intelligent control.",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop",
     link: "#",
+    github: "https://github.com",
   },
   {
     id: 5,
@@ -77,7 +81,7 @@ const CanvasBackground = memo(function CanvasBackground() {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
-    
+
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
@@ -88,7 +92,7 @@ const CanvasBackground = memo(function CanvasBackground() {
     let logicalWidth = 0;
     let logicalHeight = 0;
     let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number }> = [];
-    
+
     // Store mouse position relative to canvas
     const mouse = { x: -1000, y: -1000, radius: 180 };
 
@@ -97,7 +101,7 @@ const CanvasBackground = memo(function CanvasBackground() {
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
     };
-    
+
     const handleMouseLeave = () => {
       // Move interaction out of bounds when mouse leaves
       mouse.x = -1000;
@@ -112,12 +116,12 @@ const CanvasBackground = memo(function CanvasBackground() {
       for (const entry of entries) {
         const { width, height } = entry.contentRect;
         const dpr = window.devicePixelRatio || 1;
-        
+
         canvas.width = width * dpr;
         canvas.height = height * dpr;
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
-        
+
         ctx.scale(dpr, dpr);
         logicalWidth = width;
         logicalHeight = height;
@@ -153,7 +157,7 @@ const CanvasBackground = memo(function CanvasBackground() {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (dist < mouse.radius && !prefersReducedMotion) {
           const angle = Math.atan2(dy, dx);
           // Gentle pull TOWARDS the cursor
@@ -224,7 +228,8 @@ type ProjectCardProps = {
 
 const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: ProjectCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  
+  const [isHovered, setIsHovered] = useState(false);
+
   // Track normalized mouse position inside the card (0 to 1)
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -237,7 +242,7 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
   // Map mouse position to rotation degrees (max 12 deg tilt)
   const rotateX = useTransform(smoothY, [0, 1], [12, -12]);
   const rotateY = useTransform(smoothX, [0, 1], [-12, 12]);
-  
+
   // Map vertical mouse position to glare intensity
   const glareOpacity = useTransform(smoothY, [0, 0.5, 1], [0.2, 0, 0.2]);
 
@@ -249,41 +254,42 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
     mouseY.set(Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height)));
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeaveWrapper = () => {
     // Reset to center on exit
     mouseX.set(0.5);
     mouseY.set(0.5);
+    setIsHovered(false);
   };
 
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeaveWrapper}
       onClick={onClick}
       style={{
         rotateX: isActive ? rotateX : 0,
         rotateY: isActive ? rotateY : 0,
         transformStyle: "preserve-3d",
       }}
-      className={`relative h-[480px] w-[340px] rounded-[32px] cursor-pointer will-change-transform ${
-        isActive ? "z-50" : "z-10"
-      }`}
+      className={`relative h-[480px] w-[340px] rounded-[32px] cursor-pointer will-change-transform ${isActive ? "z-50" : "z-10"
+        }`}
       aria-hidden={!isActive} // Hide non-active cards from screen readers
     >
       <motion.div
-        animate={{ 
+        animate={{
           scale: isActive ? 1 : 0.95,
-          boxShadow: isActive 
-            ? "0 30px 80px rgba(94, 100, 210, 0.25), 0 0 0 1px rgba(94, 100, 210, 0.2)" 
+          boxShadow: isActive
+            ? "0 30px 80px rgba(94, 100, 210, 0.25), 0 0 0 1px rgba(94, 100, 210, 0.2)"
             : "0 10px 30px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255,255,255,0.5)"
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         className="absolute inset-0 bg-white rounded-[32px] overflow-hidden flex flex-col"
       >
         {/* The moving light glare effect */}
-        <motion.div 
-          className="absolute inset-0 z-50 pointer-events-none rounded-[32px]"
+        <motion.div
+          className="absolute inset-0 z-[60] pointer-events-none rounded-[32px]"
           style={{
             background: "linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)",
             opacity: isActive ? glareOpacity : 0,
@@ -291,11 +297,93 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
           }}
         />
 
+        {/* Hover Morph Overlay */}
+        <AnimatePresence>
+          {isActive && isHovered && (
+            <motion.div
+              initial={{ opacity: 0, y: '100%' }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: '100%' }}
+              transition={{ type: "spring", damping: 25, stiffness: 250 }}
+              className="absolute inset-0 z-50 flex flex-col bg-slate-900/95 backdrop-blur-xl text-white p-8 overflow-hidden rounded-[32px]"
+            >
+              {/* Animated background accent */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/30 blur-[50px] rounded-full pointer-events-none"
+              />
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                className="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-500/30 blur-[50px] rounded-full pointer-events-none"
+              />
+
+              <div className="relative z-10 flex flex-col h-full">
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className={`${mono.className} mb-2 text-[11px] uppercase tracking-[0.3em] font-semibold text-indigo-400`}
+                >
+                  {project.category}
+                </motion.p>
+                <motion.h3
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                  className="text-2xl font-bold tracking-tight mb-4"
+                >
+                  {project.title}
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-sm leading-relaxed text-slate-300 mb-6"
+                >
+                  {project.description}
+                  {" "}This project showcases advanced integration of hardware and software, designed with a focus on scalability, real-time performance, and a seamless user experience.
+                </motion.p>
+
+                <div className="mt-auto flex flex-col gap-3">
+                  {project.github && (
+                    <motion.a
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.25 }}
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white text-slate-900 rounded-xl font-bold transition-all hover:bg-slate-100 hover:scale-[1.02] active:scale-95"
+                      onClick={(e: any) => e.stopPropagation()}
+                    >
+                      <Code size={18} /> View on Github
+                    </motion.a>
+                  )}
+                  <motion.a
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white/10 text-white rounded-xl font-bold transition-all hover:bg-white/20 hover:scale-[1.02] active:scale-95 border border-white/10"
+                    onClick={(e: any) => e.stopPropagation()}
+                  >
+                    <ExternalLink size={18} /> Live
+                  </motion.a>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <div className="relative h-[55%] w-full bg-slate-100 overflow-hidden">
-          <img 
-            src={project.image} 
-            alt={`Screenshot of ${project.title}`} 
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105" 
+          <img
+            src={project.image}
+            alt={`Screenshot of ${project.title}`}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -314,14 +402,7 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
             </p>
           </div>
 
-          {/* Prevent keyboard focus on hidden/inactive cards */}
-          <a 
-            href={project.link} 
-            tabIndex={isActive ? 0 : -1}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 pt-2 w-max focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 rounded-md px-1 -ml-1 transition-colors hover:text-indigo-700"
-          >
-            Explore Project <ExternalLink size={14} aria-hidden="true" />
-          </a>
+
         </div>
       </motion.div>
     </motion.div>
@@ -333,6 +414,7 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
  */
 export default function PolishedProjectShowcase() {
   const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const autoplayRef = useRef<NodeJS.Timeout>();
 
   const next = useCallback(() => setActive((p) => (p + 1) % PROJECTS.length), []);
@@ -340,15 +422,17 @@ export default function PolishedProjectShowcase() {
 
   // Handle auto-advance
   useEffect(() => {
-    autoplayRef.current = setInterval(next, 6000);
+    if (!isPaused) {
+      autoplayRef.current = setInterval(next, 6000);
+    }
     return () => clearInterval(autoplayRef.current);
-  }, [next]);
+  }, [next, isPaused]);
 
   // Handle keyboard navigation for the carousel
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") { next(); setIsPaused(true); }
+      if (e.key === "ArrowLeft") { prev(); setIsPaused(true); }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -366,7 +450,7 @@ export default function PolishedProjectShowcase() {
   }, [active]);
 
   return (
-    <section 
+    <section
       className={`${inter.className} relative w-full min-h-screen py-16 md:py-24 flex flex-col justify-between overflow-hidden bg-slate-50`}
       style={{ backgroundImage: "linear-gradient(135deg, #E0EBFF 0%, #C7DCFF 100%)" }}
       aria-label="Featured Projects Showcase"
@@ -379,7 +463,7 @@ export default function PolishedProjectShowcase() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 w-full flex-grow flex flex-col justify-center">
-        
+
         {/* Header content */}
         <header className="mb-12 md:mb-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 border border-indigo-200/50 bg-white/80 backdrop-blur-md shadow-sm">
@@ -398,8 +482,8 @@ export default function PolishedProjectShowcase() {
         </header>
 
         {/* 3D Carousel container (preserve-3d is critical here) */}
-        <div 
-          className="relative mx-auto h-[520px] flex items-center justify-center w-full" 
+        <div
+          className="relative mx-auto h-[520px] flex items-center justify-center w-full"
           style={{ perspective: "2500px", transformStyle: "preserve-3d" }}
           role="region"
           aria-roledescription="carousel"
@@ -409,12 +493,12 @@ export default function PolishedProjectShowcase() {
             const x = project.offset * 320;
             const rotateY = project.offset * -12;
             const scale = isActive ? 1 : 0.85;
-            
+
             // Push inactive cards further back on the Z-axis
             const z = isActive ? 100 : 50 - Math.abs(project.offset) * 20;
-            
+
             // Only show the active card and its direct neighbors
-            const opacity = Math.abs(project.offset) > 2 ? 0 : 1; 
+            const opacity = Math.abs(project.offset) > 2 ? 0 : 1;
 
             return (
               <motion.div
@@ -424,10 +508,13 @@ export default function PolishedProjectShowcase() {
                 className="absolute"
                 style={{ transformStyle: "preserve-3d", transformOrigin: "center center" }}
               >
-                <ProjectCard 
-                  project={project} 
-                  isActive={isActive} 
-                  onClick={() => setActive(PROJECTS.findIndex(p => p.id === project.id))} 
+                <ProjectCard
+                  project={project}
+                  isActive={isActive}
+                  onClick={() => {
+                    setActive(PROJECTS.findIndex(p => p.id === project.id));
+                    setIsPaused(true);
+                  }}
                 />
               </motion.div>
             );
@@ -436,36 +523,36 @@ export default function PolishedProjectShowcase() {
 
         {/* Navigation Controls */}
         <nav className="mt-12 flex items-center justify-center gap-6 z-20" aria-label="Carousel Pagination">
-          <button 
-            onClick={prev} 
+          <button
+            onClick={() => { prev(); setIsPaused(true); }}
             className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-indigo-100 text-slate-700 transition-all hover:bg-slate-50 active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
             aria-label="Previous project"
           >
             <ChevronLeft size={20} />
           </button>
-          
+
           <div className="flex items-center gap-3">
             {PROJECTS.map((_, i) => (
-              <button 
-                key={i} 
-                onClick={() => setActive(i)} 
+              <button
+                key={i}
+                onClick={() => { setActive(i); setIsPaused(true); }}
                 className="py-3 px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded-md transition-transform active:scale-95"
                 aria-label={`Go to project ${i + 1}`}
                 aria-current={active === i ? "true" : "false"}
               >
-                <motion.div 
-                  animate={{ 
-                    width: active === i ? 36 : 8, 
-                    backgroundColor: active === i ? "#4F46E5" : "#C7D2FE" 
-                  }} 
-                  className="h-2 rounded-full" 
+                <motion.div
+                  animate={{
+                    width: active === i ? 36 : 8,
+                    backgroundColor: active === i ? "#4F46E5" : "#C7D2FE"
+                  }}
+                  className="h-2 rounded-full"
                 />
               </button>
             ))}
           </div>
 
-          <button 
-            onClick={next} 
+          <button
+            onClick={() => { next(); setIsPaused(true); }}
             className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-indigo-100 text-slate-700 transition-all hover:bg-slate-50 active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
             aria-label="Next project"
           >
