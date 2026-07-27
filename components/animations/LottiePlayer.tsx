@@ -8,18 +8,18 @@ import { CSSProperties } from 'react';
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 interface Props {
-  animationData: unknown;
-  style: CSSProperties;
+ animationData: unknown;
+ style: CSSProperties;
 }
 
 const LottiePlayer = ({ animationData, style }: Props) => (
-  <Lottie
-    animationData={animationData}
-    loop
-    autoplay
-    style={style}
-    rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
-  />
+ <Lottie
+ animationData={animationData}
+ loop
+ autoplay
+ style={style}
+ rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
+ />
 );
 
 export default LottiePlayer;

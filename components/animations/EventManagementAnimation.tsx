@@ -3,7 +3,7 @@ import animationData from './LottieFiles/35684-business-team-discusses-project.j
 import LottiePlayer from './LottiePlayer';
 
 const EventManagementAnimation = () => (
-  <LottiePlayer animationData={animationData} style={{ height: 300, width: 350 }} />
+ <LottiePlayer animationData={animationData} style={{ height: 300, width: 350 }} />
 );
 
 export default EventManagementAnimation;

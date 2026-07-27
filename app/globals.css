@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,153 +8,100 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    background-color: #030712;
-    color: #F8FAFC;
-    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    background-color: #FFFFFF;
+    color: #0033CC;
   }
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    background-color: #030712;
+    background-color: #FFFFFF;
+    /* The Engineering Blueprint Grid */
+    background-image: 
+      linear-gradient(rgba(0, 51, 204, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 51, 204, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: -1px -1px;
   }
   .font-display {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
   }
   ::selection {
-    background-color: rgba(6, 182, 212, 0.4);
-    color: #ffffff;
+    background-color: #0033CC;
+    color: #FFFFFF;
   }
 }
 
-/* Premium Noise Grain Overlay */
-.noise-overlay {
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  width: 200%;
-  height: 200%;
-  background: transparent url('data:image/svg+xml,%3Csvg viewBox="0%200%20200%20200"%20xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter%20id="noiseFilter"%3E%3CfeTurbulence%20type="fractalNoise"%20baseFrequency="0.65"%20numOctaves="3"%20stitchTiles="stitch"/%3E%3C/filter%3E%3Crect%20width="100%25"%20height="100%25"%20filter="url(%23noiseFilter)"/%3E%3C/svg%3E') repeat;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 9999;
-  animation: grain-animation 8s steps(10) infinite;
+/* Duotone Schematic Image Filter */
+.blueprint-image {
+  filter: sepia(100%) hue-rotate(190deg) saturate(500%) brightness(80%) contrast(120%);
+  mix-blend-mode: multiply;
+  transition: all 0.2s ease-in-out;
 }
 
-@keyframes grain-animation {
-  0%, 100% { transform:translate(0, 0) }
-  10% { transform:translate(-5%, -10%) }
-  20% { transform:translate(-15%, 5%) }
-  30% { transform:translate(7%, -25%) }
-  40% { transform:translate(-5%, 25%) }
-  50% { transform:translate(-15%, 10%) }
-  60% { transform:translate(15%, 0%) }
-  70% { transform:translate(0%, 15%) }
-  80% { transform:translate(3%, 35%) }
-  90% { transform:translate(-10%, 10%) }
+.blueprint-image:hover {
+  filter: none;
+  mix-blend-mode: normal;
 }
 
-/* Spotlight Hover Effect Card */
-.spotlight-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+/* Solid Outline Cards */
+.schematic-card {
+  background-color: #FFFFFF;
+  border: 1px solid #0033CC;
+  box-shadow: 4px 4px 0px 0px #0033CC;
+  transition: all 0.15s ease-out;
 }
 
-.spotlight-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-    rgba(6, 182, 212, 0.12),
-    transparent 40%
-  );
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.schematic-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px 0px #0033CC;
 }
 
-.spotlight-card:hover::before {
-  opacity: 1;
+/* Solid Invert Buttons */
+.schematic-btn {
+  background-color: #FFFFFF;
+  border: 1px solid #0033CC;
+  color: #0033CC;
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0px 0px #0033CC;
+  transition: all 0.1s ease-out;
+  cursor: pointer;
 }
 
-.spotlight-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  padding: 1px;
-  background: radial-gradient(
-    400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-    rgba(6, 182, 212, 0.4),
-    transparent 40%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  z-index: 3;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.schematic-btn:hover {
+  background-color: #0033CC;
+  color: #FFFFFF;
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px 0px #0033CC;
 }
 
-.spotlight-card:hover::after {
-  opacity: 1;
+.schematic-btn:active {
+  transform: translate(4px, 4px);
 }
 
-/* Glassmorphism Design System Utilities */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card:hover {
-  border-color: rgba(96, 165, 250, 0.35);
-  box-shadow: 0 12px 40px 0 rgba(37, 99, 235, 0.25);
-  transform: translateY(-4px);
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-/* Scrollbar */
+/* Scrollbar (Schematic Mode) */
 @media (min-width: 768px) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(6, 182, 212, 0.4) #030712;
+    scrollbar-color: #0033CC #FFFFFF;
   }
   *::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
   *::-webkit-scrollbar-track {
-    background: #030712;
+    background: #FFFFFF;
+    border-left: 1px solid rgba(0, 51, 204, 0.2);
   }
   *::-webkit-scrollbar-thumb {
-    background-color: rgba(6, 182, 212, 0.4);
-    border-radius: 9999px;
+    background-color: #0033CC;
+    border-radius: 0;
   }
   *::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(6, 182, 212, 0.7);
+    background-color: #001A66;
   }
 }
