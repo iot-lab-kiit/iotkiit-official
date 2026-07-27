@@ -8,63 +8,7 @@ import { useEffect, useMemo, useRef, useState, memo, useCallback } from "react";
 const inter = Inter({ subsets: ["latin"] });
 const mono = JetBrains_Mono({ subsets: ["latin"] });
 
-// --- Types & Mock Data ---
-
-type Project = {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  image: string;
-  link: string;
-  github?: string;
-};
-
-const PROJECTS: Project[] = [
-  {
-    id: 1,
-    title: "IoT Dashboard",
-    category: "Analytics",
-    description: "Real-time analytics dashboard with modern UI and responsive monitoring.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-    github: "https://github.com",
-  },
-  {
-    id: 2,
-    title: "Industrial IoT",
-    category: "Automation",
-    description: "Industrial monitoring powered by AI and predictive analytics.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Embedded Project",
-    category: "Embedded",
-    description: "Embedded hardware engineered with precision and reliability.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-    github: "https://github.com",
-  },
-  {
-    id: 4,
-    title: "Robotics",
-    category: "AI",
-    description: "Autonomous robotics with computer vision and intelligent control.",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-    github: "https://github.com",
-  },
-  {
-    id: 5,
-    title: "Smart Campus",
-    category: "IoT",
-    description: "Connected campus infrastructure with live monitoring.",
-    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop",
-    link: "#",
-  },
-];
+import { Project } from "@/data/projects";
 
 // --- Components ---
 
@@ -352,10 +296,11 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.25 }}
+                      whileTap={{ scale: 0.95 }}
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white text-slate-900 rounded-xl font-bold transition-all hover:bg-slate-100 hover:scale-[1.02] active:scale-95"
+                      className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white text-slate-900 rounded-xl font-bold transition-all hover:bg-slate-100 hover:scale-[1.02] active:bg-slate-900 active:text-white"
                       onClick={(e: any) => e.stopPropagation()}
                     >
                       <Code size={18} /> View on Github
@@ -365,10 +310,11 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
+                    whileTap={{ scale: 0.95 }}
                     href={project.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white/10 text-white rounded-xl font-bold transition-all hover:bg-white/20 hover:scale-[1.02] active:scale-95 border border-white/10"
+                    className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white/10 text-white rounded-xl font-bold transition-all hover:bg-white/20 hover:scale-[1.02] border border-white/10 active:bg-white active:text-slate-900"
                     onClick={(e: any) => e.stopPropagation()}
                   >
                     <ExternalLink size={18} /> Live
@@ -412,13 +358,13 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
 /**
  * Main Carousel Orchestrator Component
  */
-export default function PolishedProjectShowcase() {
+export default function PolishedProjectShowcase({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const autoplayRef = useRef<NodeJS.Timeout>();
 
-  const next = useCallback(() => setActive((p) => (p + 1) % PROJECTS.length), []);
-  const prev = useCallback(() => setActive((p) => (p - 1 + PROJECTS.length) % PROJECTS.length), []);
+  const next = useCallback(() => setActive((p) => (p + 1) % projects.length), [projects]);
+  const prev = useCallback(() => setActive((p) => (p - 1 + projects.length) % projects.length), [projects]);
 
   // Handle auto-advance
   useEffect(() => {
@@ -440,14 +386,14 @@ export default function PolishedProjectShowcase() {
 
   // Calculate positions relative to the currently active item
   const orderedItems = useMemo(() => {
-    return PROJECTS.map((item, index) => {
+    return projects.map((item, index) => {
       let offset = index - active;
       // Handle the wrapping logic for infinite loop
-      if (offset > 2) offset -= PROJECTS.length;
-      if (offset < -2) offset += PROJECTS.length;
+      if (offset > 2) offset -= projects.length;
+      if (offset < -2) offset += projects.length;
       return { ...item, offset };
     });
-  }, [active]);
+  }, [active, projects]);
 
   return (
     <section
@@ -459,7 +405,7 @@ export default function PolishedProjectShowcase() {
 
       {/* Screen reader live region ensures visually impaired users know when the slide changes */}
       <div aria-live="polite" className="sr-only">
-        Currently displaying project {active + 1} of {PROJECTS.length}: {PROJECTS[active].title}.
+        Currently displaying project {active + 1} of {projects.length}: {projects[active]?.title}.
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 w-full flex-grow flex flex-col justify-center">
@@ -512,7 +458,7 @@ export default function PolishedProjectShowcase() {
                   project={project}
                   isActive={isActive}
                   onClick={() => {
-                    setActive(PROJECTS.findIndex(p => p.id === project.id));
+                    setActive(projects.findIndex(p => p.id === project.id));
                     setIsPaused(true);
                   }}
                 />
@@ -532,7 +478,7 @@ export default function PolishedProjectShowcase() {
           </button>
 
           <div className="flex items-center gap-3">
-            {PROJECTS.map((_, i) => (
+            {projects.map((_, i) => (
               <button
                 key={i}
                 onClick={() => { setActive(i); setIsPaused(true); }}
