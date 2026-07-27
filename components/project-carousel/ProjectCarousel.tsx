@@ -2,8 +2,7 @@
 
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Inter, JetBrains_Mono } from "next/font/google";
-// Removed Github from this import to prevent the ts(2305) error
-import { ChevronLeft, ChevronRight, ExternalLink, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, memo, useCallback } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -69,9 +68,6 @@ const PROJECTS: Project[] = [
 
 // --- Components ---
 
-/**
- * Custom Github Icon SVG to bypass the lucide-react version error
- */
 const GithubIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -90,9 +86,6 @@ const GithubIcon = ({ size = 24, className = "" }: { size?: number, className?: 
   </svg>
 );
 
-/**
- * Interactive Particle Canvas Background
- */
 const CanvasBackground = memo(function CanvasBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -178,7 +171,7 @@ const CanvasBackground = memo(function CanvasBackground() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(94, 100, 210, 0.4)";
+        ctx.fillStyle = "rgba(0, 98, 255, 0.4)";
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -188,7 +181,7 @@ const CanvasBackground = memo(function CanvasBackground() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(37, 99, 235, ${0.15 * (1 - distance / 120)})`;
+            ctx.strokeStyle = `rgba(0, 98, 255, ${0.15 * (1 - distance / 120)})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -198,7 +191,7 @@ const CanvasBackground = memo(function CanvasBackground() {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(79, 70, 229, ${0.35 * (1 - dist / mouse.radius)})`; 
+          ctx.strokeStyle = `rgba(0, 98, 255, ${0.35 * (1 - dist / mouse.radius)})`; 
           ctx.lineWidth = 1.2;
           ctx.stroke();
         }
@@ -223,9 +216,6 @@ const CanvasBackground = memo(function CanvasBackground() {
   );
 });
 
-/**
- * Individual 3D Hover Card
- */
 type ProjectCardProps = {
   project: Project;
   isActive: boolean;
@@ -272,15 +262,14 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
         rotateY: isActive ? rotateY : 0,
         transformStyle: "preserve-3d",
       }}
-      className={`relative h-[480px] w-[340px] rounded-[32px] cursor-pointer will-change-transform ${isActive ? "z-50" : "z-10"
-        }`}
+      className={`relative h-[480px] w-[340px] rounded-[32px] cursor-pointer will-change-transform ${isActive ? "z-50" : "z-10"}`}
       aria-hidden={!isActive}
     >
       <motion.div
         animate={{
           scale: isActive ? 1 : 0.95,
           boxShadow: isActive
-            ? "0 30px 80px rgba(94, 100, 210, 0.25), 0 0 0 1px rgba(94, 100, 210, 0.2)"
+            ? "0 30px 80px rgba(0, 98, 255, 0.25), 0 0 0 1px rgba(0, 98, 255, 0.2)"
             : "0 10px 30px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255,255,255,0.5)"
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -307,28 +296,20 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/30 blur-[50px] rounded-full pointer-events-none"
+                className="absolute -top-24 -right-24 w-48 h-48 bg-blue-600/30 blur-[50px] rounded-full pointer-events-none"
               />
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-500/30 blur-[50px] rounded-full pointer-events-none"
+                className="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-400/30 blur-[50px] rounded-full pointer-events-none"
               />
 
               <div className="relative z-10 flex flex-col h-full">
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className={`${mono.className} mb-2 text-[11px] uppercase tracking-[0.3em] font-semibold text-indigo-400`}
-                >
-                  {project.category}
-                </motion.p>
                 <motion.h3
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 }}
-                  className="text-2xl font-bold tracking-tight mb-4"
+                  className="text-2xl font-bold tracking-tight mb-4 mt-2"
                 >
                   {project.title}
                 </motion.h3>
@@ -354,7 +335,6 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
                       className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white text-slate-900 rounded-xl font-bold transition-all hover:bg-slate-100 hover:scale-[1.02] active:scale-95"
                       onClick={(e: any) => e.stopPropagation()}
                     >
-                      {/* Using the custom inline SVG component */}
                       <GithubIcon size={18} /> View on Github
                     </motion.a>
                   )}
@@ -388,10 +368,7 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
 
         <div className="flex-grow p-6 flex flex-col justify-between bg-white">
           <div>
-            <p className={`${mono.className} mb-1.5 text-[11px] uppercase tracking-[0.3em] font-semibold text-indigo-600`}>
-              {project.category}
-            </p>
-            <h3 className="text-xl font-bold tracking-tight text-slate-900">
+            <h3 className="text-xl font-bold tracking-tight text-slate-900 mt-2">
               {project.title}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-2">
@@ -404,9 +381,6 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
   );
 });
 
-/**
- * Main Carousel Orchestrator Component
- */
 export default function PolishedProjectShowcase() {
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -454,19 +428,38 @@ export default function PolishedProjectShowcase() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 w-full flex-grow flex flex-col justify-center">
 
-        <header className="mb-12 md:mb-16 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 border border-indigo-200/50 bg-white/80 backdrop-blur-md shadow-sm">
-            <Sparkles size={14} className="text-indigo-600" aria-hidden="true" />
-            <p className={`${mono.className} text-xs uppercase tracking-[0.3em] font-semibold text-indigo-600`}>
+        {/* Minimalist, Cinematic Header */}
+        <header className="mb-12 md:mb-16 text-center relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex items-center justify-center gap-4 mb-4"
+          >
+            <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-blue-500/50" />
+            <p className={`${mono.className} text-xs uppercase tracking-[0.3em] font-semibold text-blue-600/80`}>
               Featured Projects
             </p>
-          </div>
-          <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl text-slate-900">
+            <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-blue-500/50" />
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl text-slate-900"
+          >
             Crafted for <span className="inline-block bg-gradient-to-r from-[#0062FF] to-[#00B3FF] bg-clip-text text-transparent">Innovation</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-slate-600 leading-relaxed">
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-slate-600 leading-relaxed"
+          >
             A high-performance showcase of engineering prowess, smart automation, and connected ecosystems.
-          </p>
+          </motion.p>
         </header>
 
         <div
@@ -475,6 +468,9 @@ export default function PolishedProjectShowcase() {
           role="region"
           aria-roledescription="carousel"
         >
+          {/* Ambient Floor Glow: Grounds the 3D cards so they don't look like they are floating in nowhere */}
+          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-3/4 max-w-[600px] h-24 bg-blue-500/20 blur-[50px] rounded-full pointer-events-none" />
+
           {orderedItems.map((project) => {
             const isActive = project.offset === 0;
             const x = project.offset * 320;
@@ -507,7 +503,7 @@ export default function PolishedProjectShowcase() {
         <nav className="mt-12 flex items-center justify-center gap-6 z-20" aria-label="Carousel Pagination">
           <button
             onClick={() => { prev(); setIsPaused(true); }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-indigo-100 text-slate-700 transition-all hover:bg-slate-50 active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-blue-100 text-slate-700 transition-all hover:bg-slate-50 active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             aria-label="Previous project"
           >
             <ChevronLeft size={20} />
@@ -518,14 +514,14 @@ export default function PolishedProjectShowcase() {
               <button
                 key={i}
                 onClick={() => { setActive(i); setIsPaused(true); }}
-                className="py-3 px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded-md transition-transform active:scale-95"
+                className="py-3 px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md transition-transform active:scale-95"
                 aria-label={`Go to project ${i + 1}`}
                 aria-current={active === i ? "true" : "false"}
               >
                 <motion.div
                   animate={{
                     width: active === i ? 36 : 8,
-                    backgroundColor: active === i ? "#4F46E5" : "#C7D2FE"
+                    backgroundColor: active === i ? "#0062FF" : "rgba(0, 98, 255, 0.25)"
                   }}
                   className="h-2 rounded-full"
                 />
@@ -535,7 +531,7 @@ export default function PolishedProjectShowcase() {
 
           <button
             onClick={() => { next(); setIsPaused(true); }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-indigo-100 text-slate-700 transition-all hover:bg-slate-50 active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-blue-100 text-slate-700 transition-all hover:bg-slate-50 active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             aria-label="Next project"
           >
             <ChevronRight size={20} />
