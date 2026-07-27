@@ -2,7 +2,8 @@
 
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { ChevronLeft, ChevronRight, ExternalLink, Sparkles, Code } from "lucide-react";
+// Removed Github from this import to prevent the ts(2305) error
+import { ChevronLeft, ChevronRight, ExternalLink, Sparkles } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, memo, useCallback } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,9 +14,28 @@ import { Project } from "@/data/projects";
 // --- Components ---
 
 /**
+ * Custom Github Icon SVG to bypass the lucide-react version error
+ */
+const GithubIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+/**
  * Interactive Particle Canvas Background
- * Wrapped in React.memo so the canvas doesn't re-render and reset particles 
- * every time the user clicks 'next' on the carousel.
  */
 const CanvasBackground = memo(function CanvasBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -29,7 +49,6 @@ const CanvasBackground = memo(function CanvasBackground() {
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    // Respect system settings: disable motion if the user prefers reduced motion
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let animationFrameId: number;
@@ -37,7 +56,6 @@ const CanvasBackground = memo(function CanvasBackground() {
     let logicalHeight = 0;
     let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number }> = [];
 
-    // Store mouse position relative to canvas
     const mouse = { x: -1000, y: -1000, radius: 180 };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -47,7 +65,6 @@ const CanvasBackground = memo(function CanvasBackground() {
     };
 
     const handleMouseLeave = () => {
-      // Move interaction out of bounds when mouse leaves
       mouse.x = -1000;
       mouse.y = -1000;
     };
@@ -55,7 +72,6 @@ const CanvasBackground = memo(function CanvasBackground() {
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
-    // ResizeObserver ensures the canvas stays sharp on retina displays and resizes properly
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const { width, height } = entry.contentRect;
@@ -70,7 +86,6 @@ const CanvasBackground = memo(function CanvasBackground() {
         logicalWidth = width;
         logicalHeight = height;
 
-        // Re-calculate particle density based on new screen size
         const particleCount = Math.floor((width * height) / 9000);
         particles = Array.from({ length: particleCount }).map(() => ({
           x: Math.random() * width,
@@ -84,7 +99,6 @@ const CanvasBackground = memo(function CanvasBackground() {
 
     resizeObserver.observe(container);
 
-    // Main animation loop
     const render = () => {
       ctx.clearRect(0, 0, logicalWidth, logicalHeight);
 
@@ -93,29 +107,24 @@ const CanvasBackground = memo(function CanvasBackground() {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce off edges
         if (p.x < 0 || p.x > logicalWidth) p.vx *= -1;
         if (p.y < 0 || p.y > logicalHeight) p.vy *= -1;
 
-        // Mouse repulsion logic
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < mouse.radius && !prefersReducedMotion) {
           const angle = Math.atan2(dy, dx);
-          // Gentle pull TOWARDS the cursor
           p.x += Math.cos(angle) * 0.5;
           p.y += Math.sin(angle) * 0.5;
         }
 
-        // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = "rgba(94, 100, 210, 0.4)";
         ctx.fill();
 
-        // Draw interconnecting lines if particles are close enough
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const distance = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
@@ -123,19 +132,17 @@ const CanvasBackground = memo(function CanvasBackground() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            // Opacity fades out as distance increases
             ctx.strokeStyle = `rgba(37, 99, 235, ${0.15 * (1 - distance / 120)})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
 
-        // Draw connecting line from particle to MOUSE cursor
         if (dist < mouse.radius) {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(79, 70, 229, ${0.35 * (1 - dist / mouse.radius)})`; // Indigo line
+          ctx.strokeStyle = `rgba(79, 70, 229, ${0.35 * (1 - dist / mouse.radius)})`; 
           ctx.lineWidth = 1.2;
           ctx.stroke();
         }
@@ -145,7 +152,6 @@ const CanvasBackground = memo(function CanvasBackground() {
 
     render();
 
-    // Cleanup listeners and observer on unmount
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
@@ -174,32 +180,25 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Track normalized mouse position inside the card (0 to 1)
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
-  // Apply spring physics so the tilt feels natural, not rigid
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  // Map mouse position to rotation degrees (max 12 deg tilt)
   const rotateX = useTransform(smoothY, [0, 1], [12, -12]);
   const rotateY = useTransform(smoothX, [0, 1], [-12, 12]);
-
-  // Map vertical mouse position to glare intensity
   const glareOpacity = useTransform(smoothY, [0, 0.5, 1], [0.2, 0, 0.2]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isActive || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    // Normalize coordinates to 0 - 1
     mouseX.set(Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)));
     mouseY.set(Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height)));
   };
 
   const handleMouseLeaveWrapper = () => {
-    // Reset to center on exit
     mouseX.set(0.5);
     mouseY.set(0.5);
     setIsHovered(false);
@@ -219,7 +218,7 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
       }}
       className={`relative h-[480px] w-[340px] rounded-[32px] cursor-pointer will-change-transform ${isActive ? "z-50" : "z-10"
         }`}
-      aria-hidden={!isActive} // Hide non-active cards from screen readers
+      aria-hidden={!isActive}
     >
       <motion.div
         animate={{
@@ -231,7 +230,6 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         className="absolute inset-0 bg-white rounded-[32px] overflow-hidden flex flex-col"
       >
-        {/* The moving light glare effect */}
         <motion.div
           className="absolute inset-0 z-[60] pointer-events-none rounded-[32px]"
           style={{
@@ -241,7 +239,6 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
           }}
         />
 
-        {/* Hover Morph Overlay */}
         <AnimatePresence>
           {isActive && isHovered && (
             <motion.div
@@ -251,7 +248,6 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
               className="absolute inset-0 z-50 flex flex-col bg-slate-900/95 backdrop-blur-xl text-white p-8 overflow-hidden rounded-[32px]"
             >
-              {/* Animated background accent */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -303,7 +299,8 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
                       className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white text-slate-900 rounded-xl font-bold transition-all hover:bg-slate-100 hover:scale-[1.02] active:bg-slate-900 active:text-white"
                       onClick={(e: any) => e.stopPropagation()}
                     >
-                      <Code size={18} /> View on Github
+                      {/* Using the custom inline SVG component */}
+                      <GithubIcon size={18} /> View on Github
                     </motion.a>
                   )}
                   <motion.a
@@ -347,8 +344,6 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
               {project.description}
             </p>
           </div>
-
-
         </div>
       </motion.div>
     </motion.div>
@@ -366,7 +361,6 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
   const next = useCallback(() => setActive((p) => (p + 1) % projects.length), [projects]);
   const prev = useCallback(() => setActive((p) => (p - 1 + projects.length) % projects.length), [projects]);
 
-  // Handle auto-advance
   useEffect(() => {
     if (!isPaused) {
       autoplayRef.current = setInterval(next, 6000);
@@ -374,7 +368,6 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
     return () => clearInterval(autoplayRef.current);
   }, [next, isPaused]);
 
-  // Handle keyboard navigation for the carousel
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") { next(); setIsPaused(true); }
@@ -384,7 +377,6 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [next, prev]);
 
-  // Calculate positions relative to the currently active item
   const orderedItems = useMemo(() => {
     return projects.map((item, index) => {
       let offset = index - active;
@@ -403,14 +395,12 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
     >
       <CanvasBackground />
 
-      {/* Screen reader live region ensures visually impaired users know when the slide changes */}
       <div aria-live="polite" className="sr-only">
         Currently displaying project {active + 1} of {projects.length}: {projects[active]?.title}.
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 w-full flex-grow flex flex-col justify-center">
 
-        {/* Header content */}
         <header className="mb-12 md:mb-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 border border-indigo-200/50 bg-white/80 backdrop-blur-md shadow-sm">
             <Sparkles size={14} className="text-indigo-600" aria-hidden="true" />
@@ -419,7 +409,6 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
             </p>
           </div>
           <h2 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl text-slate-900">
-            {/* UPDATED GRADIENT: Highly saturated, vibrant blue/cyan for maximum pop on light backgrounds */}
             Crafted for <span className="inline-block bg-gradient-to-r from-[#0062FF] to-[#00B3FF] bg-clip-text text-transparent">Innovation</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-slate-600 leading-relaxed">
@@ -427,7 +416,6 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
           </p>
         </header>
 
-        {/* 3D Carousel container (preserve-3d is critical here) */}
         <div
           className="relative mx-auto h-[520px] flex items-center justify-center w-full"
           style={{ perspective: "2500px", transformStyle: "preserve-3d" }}
@@ -439,11 +427,7 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
             const x = project.offset * 320;
             const rotateY = project.offset * -12;
             const scale = isActive ? 1 : 0.85;
-
-            // Push inactive cards further back on the Z-axis
             const z = isActive ? 100 : 50 - Math.abs(project.offset) * 20;
-
-            // Only show the active card and its direct neighbors
             const opacity = Math.abs(project.offset) > 2 ? 0 : 1;
 
             return (
@@ -467,7 +451,6 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
           })}
         </div>
 
-        {/* Navigation Controls */}
         <nav className="mt-12 flex items-center justify-center gap-6 z-20" aria-label="Carousel Pagination">
           <button
             onClick={() => { prev(); setIsPaused(true); }}
