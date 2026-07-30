@@ -134,6 +134,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/css-tokenizer/-/css-tokenizer-4.0.0.tgz#798a33950d11226a0ebb6acafa60f5594424967f"
   integrity sha512-QxULHAm7cNu72w97JUNCBFODFaXpbDg+dP8b/oWFAZ2MTRppA3U00Y2L1HqaS4J6yBqxwa/Y3nMBaxVKbB/NsA==
 
+"@dicebear/core@^10.3.2":
+  version "10.3.2"
+  resolved "https://registry.yarnpkg.com/@dicebear/core/-/core-10.3.2.tgz#e730c1f66179fd8d5b1df9ccfc14dfa75f2d39d5"
+  integrity sha512-gTTnN8rwQqlyqy3Pe4wllSARty26sA2a+pVu4XIBA45Tfix5htjwtwoi6w2VYLs5sx67dfYUR7AmcEAv8DfPQw==
+
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.11.0.tgz#c2d872b6a7767a9d176d007f5b31f7d504bb5d6c"
