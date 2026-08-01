@@ -99,7 +99,11 @@ export default function Home() {
 
       </section>
 
-      <Reveal>
+      <div className="hero-to-content" aria-hidden="true">
+        <span />
+      </div>
+
+      <Reveal className="process-flow">
         <Process />
       </Reveal>
       <Reveal>
