@@ -27,6 +27,74 @@ html {
     var(--paper);
 }
 
+.hero-scroll-stage {
+  --front-fade: 1;
+  --mid-fade: 1;
+  --back-fade: 1;
+  --front-shift: 0px;
+  --mid-shift: 0px;
+  --back-shift: 0px;
+  --assembly-fade: 1;
+  --copy-fade: 1;
+  --copy-lift: 0px;
+  position: relative;
+  height: 175vh;
+  min-height: 1080px;
+  background: var(--paper);
+}
+
+.hero-scroll-stage .hero {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 720px;
+}
+
+.hero-scroll-stage .hero-copy {
+  opacity: var(--copy-fade);
+  transform: translateY(var(--copy-lift));
+  will-change: opacity, transform;
+}
+
+.hero-scroll-stage .layer-front {
+  opacity: var(--front-fade);
+  transform: translate3d(
+    calc(118px + var(--front-shift)),
+    calc(18px - var(--front-shift)),
+    70px
+  );
+  will-change: opacity, transform;
+}
+
+.hero-scroll-stage .layer-mid {
+  opacity: var(--mid-fade);
+  transform: translate3d(
+    0,
+    var(--mid-shift),
+    0
+  );
+  will-change: opacity, transform;
+}
+
+.hero-scroll-stage .layer-back {
+  opacity: var(--back-fade);
+  transform: translate3d(
+    calc(-118px + var(--back-shift)),
+    calc(-18px + var(--back-shift)),
+    -70px
+  );
+  will-change: opacity, transform;
+}
+
+.hero-scroll-stage .assembly-orbit,
+.hero-scroll-stage .assembly-note,
+.hero-scroll-stage .assembly-axis,
+.hero-scroll-stage .assembly-wrap::before,
+.hero-scroll-stage .assembly-wrap::after {
+  opacity: var(--assembly-fade);
+  will-change: opacity;
+}
+
 .hero::before {
   content: "";
   position: absolute;
@@ -461,7 +529,7 @@ html {
 
 .layer-back {
   transform: translate3d(-118px, -18px, -70px);
-  animation: settle-back 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: settle-back 1.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 .layer-back .layer-face {
@@ -476,7 +544,7 @@ html {
 
 .layer-mid {
   transform: translate3d(0, 0, 0);
-  animation: settle-mid 1.35s 80ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: settle-mid 1.35s 80ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 .layer-mid .layer-face {
@@ -493,7 +561,7 @@ html {
 
 .layer-front {
   transform: translate3d(118px, 18px, 70px);
-  animation: settle-front 1.4s 140ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: settle-front 1.4s 140ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 .layer-front .layer-face {
@@ -773,6 +841,15 @@ html {
 }
 
 @media (max-width: 720px) {
+  .hero-scroll-stage {
+    height: 145vh;
+    min-height: 920px;
+  }
+
+  .hero-scroll-stage .hero {
+    min-height: 640px;
+  }
+
   .nav-shell {
     padding: 12px;
   }
@@ -843,5 +920,15 @@ html {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+  }
+
+  .hero-scroll-stage {
+    height: auto;
+    min-height: 0;
+  }
+
+  .hero-scroll-stage .hero {
+    position: relative;
+    height: auto;
   }
 }
