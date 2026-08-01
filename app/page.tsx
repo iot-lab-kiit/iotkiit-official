@@ -1,30 +1,10 @@
-const domains = [
-  ["01", "Competitive Programming", "Algorithms"],
-  ["02", "App Dev", "Mobile"],
-  ["03", "Web Dev", "Full-stack"],
-  ["04", "IoT", "Hardware"],
-  ["05", "Machine Learning", "Intelligence"],
-  ["06", "Cyber Security", "Defence"],
-  ["07", "Content", "Stories"],
-  ["08", "GD & UI/UX", "Design"],
-  ["09", "Video", "Motion"],
-  ["10", "Marketing", "Reach"],
-  ["11", "Administration", "Operations"],
-];
+import Process from '@/components/homePage/Process';
+import AboutUs from '@/components/homePage/AboutUs';
+import Services from '@/components/homePage/Services';
+import Domains from '@/components/homePage/Domains';
+import Showcase from '@/components/homePage/Showcase';
+import Reveal from '@/components/Reveal';
 
-function DomainRail({ hidden = false }: { hidden?: boolean }) {
-  return (
-    <div className="domain-run" aria-hidden={hidden || undefined}>
-      {domains.map(([number, name, note]) => (
-        <div className="domain-pill" key={`${number}-${hidden ? "copy" : "main"}`}>
-          <span className="domain-number">{number}</span>
-          <span className="domain-name">{name}</span>
-          <span className="domain-note">{note}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
 function LogoLayer({
   className,
   label,
@@ -117,61 +97,23 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="domains-band" id="domains">
-          <div className="domains-heading">
-            <span className="domains-kicker">Our domains</span>
-            <p>
-              Eleven disciplines.
-              <br />
-              One connected system.
-            </p>
-            <span className="rail-direction" aria-hidden="true">
-              SCROLL / DISCOVER →
-            </span>
-          </div>
-          <div className="domain-marquee">
-            <div className="domain-track">
-              <DomainRail />
-              <DomainRail hidden />
-            </div>
-          </div>
-        </div>
       </section>
 
-      <section className="method-section" id="method">
-        <div className="method-intro">
-          <p className="section-index">[ 00—01 ]</p>
-          <h2>
-            Not a club with
-            <br />
-            <span>eleven disconnected teams.</span>
-          </h2>
-        </div>
-        <div className="method-copy">
-          <p>
-            We are a working system. A hardware idea needs software. Software
-            needs an interface. An interface needs a story. The strongest work
-            happens where the domains overlap.
-          </p>
-          <div className="method-steps">
-            <article>
-              <b>01</b>
-              <h3>Find the signal</h3>
-              <p>Start with a problem grounded in real life.</p>
-            </article>
-            <article>
-              <b>02</b>
-              <h3>Build the circuit</h3>
-              <p>Bring the right disciplines into one loop.</p>
-            </article>
-            <article>
-              <b>03</b>
-              <h3>Test the impact</h3>
-              <p>Research, prototype, break it, and iterate.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+      <Reveal>
+        <Process />
+      </Reveal>
+      <Reveal>
+        <AboutUs />
+      </Reveal>
+      <Reveal>
+        <Services />
+      </Reveal>
+      <Reveal>
+        <Domains />
+      </Reveal>
+      <Reveal>
+        <Showcase />
+      </Reveal>
     </main>
   );
 }
