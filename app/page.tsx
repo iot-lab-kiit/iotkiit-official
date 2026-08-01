@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Process from '@/components/homePage/Process';
 import AboutUs from '@/components/homePage/AboutUs';
 import Services from '@/components/homePage/Services';
@@ -29,9 +32,79 @@ function LogoLayer({
 }
 
 export default function Home() {
+  const scrollStageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const stage = scrollStageRef.current;
+    if (!stage) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+
+    const clamp = (value: number) => Math.min(1, Math.max(0, value));
+    const smooth = (value: number) => {
+      const normalized = clamp(value);
+      return normalized * normalized * (3 - 2 * normalized);
+    };
+    const phase = (progress: number, start: number, end: number) =>
+      smooth((progress - start) / (end - start));
+
+    const update = () => {
+      frame = 0;
+
+      if (reducedMotion.matches) {
+        stage.style.removeProperty('--front-fade');
+        stage.style.removeProperty('--mid-fade');
+        stage.style.removeProperty('--back-fade');
+        stage.style.removeProperty('--front-shift');
+        stage.style.removeProperty('--mid-shift');
+        stage.style.removeProperty('--back-shift');
+        stage.style.removeProperty('--assembly-fade');
+        stage.style.removeProperty('--copy-fade');
+        stage.style.removeProperty('--copy-lift');
+        return;
+      }
+
+      const distance = Math.max(stage.offsetHeight - window.innerHeight, 1);
+      const progress = clamp(-stage.getBoundingClientRect().top / distance);
+      const front = phase(progress, 0.06, 0.32);
+      const middle = phase(progress, 0.25, 0.55);
+      const back = phase(progress, 0.48, 0.78);
+      const assembly = phase(progress, 0.64, 0.9);
+      const copy = phase(progress, 0.76, 1);
+
+      stage.style.setProperty('--front-fade', String(1 - front));
+      stage.style.setProperty('--mid-fade', String(1 - middle));
+      stage.style.setProperty('--back-fade', String(1 - back));
+      stage.style.setProperty('--front-shift', `${front * 58}px`);
+      stage.style.setProperty('--mid-shift', `${middle * -42}px`);
+      stage.style.setProperty('--back-shift', `${back * -58}px`);
+      stage.style.setProperty('--assembly-fade', String(1 - assembly));
+      stage.style.setProperty('--copy-fade', String(1 - copy));
+      stage.style.setProperty('--copy-lift', `${copy * -28}px`);
+    };
+
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    reducedMotion.addEventListener('change', scheduleUpdate);
+
+    return () => {
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+      reducedMotion.removeEventListener('change', scheduleUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <main className="landing-page">
-      <section className="hero" id="home">
+      <div className="hero-scroll-stage" ref={scrollStageRef}>
+        <section className="hero" id="home">
         <div className="hero-grid" aria-hidden="true" />
 
         <div className="hero-body">
@@ -97,7 +170,8 @@ export default function Home() {
           </div>
         </div>
 
-      </section>
+        </section>
+      </div>
 
       <div className="hero-to-content" aria-hidden="true">
         <span />
