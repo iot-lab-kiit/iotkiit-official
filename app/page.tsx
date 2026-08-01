@@ -1,3 +1,10 @@
+import Process from '@/components/homePage/Process';
+import AboutUs from '@/components/homePage/AboutUs';
+import Services from '@/components/homePage/Services';
+import Domains from '@/components/homePage/Domains';
+import Showcase from '@/components/homePage/Showcase';
+import Reveal from '@/components/Reveal';
+
 function LogoLayer({
   className,
   label,
@@ -40,7 +47,7 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a className="primary-action" href="#method">
+              <a className="primary-action" href="#domains">
                 Explore our domains
                 <span className="action-icon" aria-hidden="true">
                   ↓
@@ -92,40 +99,21 @@ export default function Home() {
 
       </section>
 
-      <section className="method-section" id="method">
-        <div className="method-intro">
-          <p className="section-index">[ 00—01 ]</p>
-          <h2>
-            Not a club with
-            <br />
-            <span>eleven disconnected teams.</span>
-          </h2>
-        </div>
-        <div className="method-copy">
-          <p>
-            We are a working system. A hardware idea needs software. Software
-            needs an interface. An interface needs a story. The strongest work
-            happens where the domains overlap.
-          </p>
-          <div className="method-steps">
-            <article>
-              <b>01</b>
-              <h3>Find the signal</h3>
-              <p>Start with a problem grounded in real life.</p>
-            </article>
-            <article>
-              <b>02</b>
-              <h3>Build the circuit</h3>
-              <p>Bring the right disciplines into one loop.</p>
-            </article>
-            <article>
-              <b>03</b>
-              <h3>Test the impact</h3>
-              <p>Research, prototype, break it, and iterate.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+      <Reveal>
+        <Process />
+      </Reveal>
+      <Reveal>
+        <AboutUs />
+      </Reveal>
+      <Reveal>
+        <Services />
+      </Reveal>
+      <Reveal>
+        <Domains />
+      </Reveal>
+      <Reveal>
+        <Showcase />
+      </Reveal>
     </main>
   );
 }
