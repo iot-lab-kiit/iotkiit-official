@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const links = [
@@ -18,7 +19,15 @@ export default function Navbar() {
     <header className="nav-shell">
       <nav className="floating-nav" aria-label="Primary navigation">
         <Link className="nav-brand" href="/">
-          IoT LAB
+          <Image
+            className="nav-brand-logo"
+            src="/images/logo_small.webp"
+            alt=""
+            width={36}
+            height={36}
+            priority
+          />
+          <span>IoT LAB</span>
         </Link>
 
         <div className="nav-links">
