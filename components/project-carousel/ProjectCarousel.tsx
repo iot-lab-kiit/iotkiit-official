@@ -276,17 +276,17 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
                 >
                   {project.title}
                 </motion.h3>
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-sm leading-relaxed text-slate-300 mb-6"
+                  className="text-sm leading-relaxed text-slate-300 mb-4 overflow-y-auto pr-2 flex-grow [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-indigo-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
                 >
                   {project.description}
                   {" "}This project showcases advanced integration of hardware and software, designed with a focus on scalability, real-time performance, and a seamless user experience.
-                </motion.p>
+                </motion.div>
 
-                <div className="mt-auto flex flex-col gap-3">
+                <div className="mt-auto flex flex-col gap-3 shrink-0 pt-2">
                   {project.github && (
                     <motion.a
                       initial={{ opacity: 0, y: 10 }}
@@ -342,6 +342,9 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-500 line-clamp-2">
               {project.description}
+            </p>
+            <p className="mt-1 text-xs font-semibold text-indigo-500 hover:text-indigo-700 transition-colors cursor-pointer inline-flex items-center gap-1">
+              Read more <ChevronRight size={14} className="inline" />
             </p>
           </div>
         </div>

@@ -13,7 +13,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     title: "IoT Dashboard",
     category: "Analytics",
-    description: "Real-time analytics dashboard with modern UI and responsive monitoring.",
+    description: "Real-time analytics dashboard with modern UI and responsive monitoring.   lorem ipfewjnnnnnnnnnnnnnnnnnnnnnnnwef we fwejf jwe fwe fjwe fjwe f wejf wej fweh fjweh fjwe ajb fj bawfjb ewfjl wjelf jlweb afljb fljebw fljba wfljbe wflj awljf ewlajf elwj fljwa fljwb fljewa fljwbe fljbw eflwej fljaw ef waef webf w fajbw efj awljbf ljb ewf ewf alwje fj;w flja fljwae flj we;fjal fljwa efj aflj ewf aljf ljwea fljwa flewj flewa lje f efef ef   e lE FLJWEFLJ LJF eljf LJ FLJEbf jle FJE",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     link: "#",
     github: "https://github.com",
