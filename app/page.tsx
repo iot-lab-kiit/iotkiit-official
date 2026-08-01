@@ -1,30 +1,3 @@
-const domains = [
-  ["01", "Competitive Programming", "Algorithms"],
-  ["02", "App Dev", "Mobile"],
-  ["03", "Web Dev", "Full-stack"],
-  ["04", "IoT", "Hardware"],
-  ["05", "Machine Learning", "Intelligence"],
-  ["06", "Cyber Security", "Defence"],
-  ["07", "Content", "Stories"],
-  ["08", "GD & UI/UX", "Design"],
-  ["09", "Video", "Motion"],
-  ["10", "Marketing", "Reach"],
-  ["11", "Administration", "Operations"],
-];
-
-function DomainRail({ hidden = false }: { hidden?: boolean }) {
-  return (
-    <div className="domain-run" aria-hidden={hidden || undefined}>
-      {domains.map(([number, name, note]) => (
-        <div className="domain-pill" key={`${number}-${hidden ? "copy" : "main"}`}>
-          <span className="domain-number">{number}</span>
-          <span className="domain-name">{name}</span>
-          <span className="domain-note">{note}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
 function LogoLayer({
   className,
   label,
@@ -67,7 +40,7 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a className="primary-action" href="#domains">
+              <a className="primary-action" href="#method">
                 Explore our domains
                 <span className="action-icon" aria-hidden="true">
                   ↓
@@ -117,25 +90,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="domains-band" id="domains">
-          <div className="domains-heading">
-            <span className="domains-kicker">Our domains</span>
-            <p>
-              Eleven disciplines.
-              <br />
-              One connected system.
-            </p>
-            <span className="rail-direction" aria-hidden="true">
-              SCROLL / DISCOVER →
-            </span>
-          </div>
-          <div className="domain-marquee">
-            <div className="domain-track">
-              <DomainRail />
-              <DomainRail hidden />
-            </div>
-          </div>
-        </div>
       </section>
 
       <section className="method-section" id="method">
