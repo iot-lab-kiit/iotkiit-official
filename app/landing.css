@@ -314,21 +314,17 @@ html {
 
 .landing-page h1 > span {
   display: block;
-  font-family: inherit;
+  font-family: "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
   font-size: clamp(72px, 8.2vw, 138px);
-  font-weight: 700;
-  font-stretch: normal;
+  font-weight: 950;
+  font-stretch: condensed;
 }
 
 .landing-page h1 em {
   display: block;
   margin-top: 20px;
   color: var(--blue);
-  font-family: inherit;
-  font-size: clamp(21px, 2.2vw, 36px);
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1;
+  font: normal 800 clamp(21px, 2.2vw, 36px)/1 "Courier New", monospace;
   letter-spacing: -0.07em;
   text-transform: uppercase;
 }
@@ -356,10 +352,7 @@ html {
   color: #fff;
   background: var(--ink);
   border: 1px solid var(--ink);
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
+  font: 700 11px/1 "Courier New", monospace;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   transition:
@@ -412,17 +405,12 @@ html {
 }
 
 .hero-meta strong {
-  font-family: inherit;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1;
+  font: 800 22px/1 "Courier New", monospace;
 }
 
 .hero-meta span {
   color: #687189;
-  font-family: inherit;
-  font-size: 9px;
-  line-height: 1.2;
+  font: 9px/1.2 "Courier New", monospace;
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
@@ -641,10 +629,7 @@ html {
   color: var(--ink);
   background: rgba(245, 243, 239, 0.88);
   border: 1px solid rgba(6, 13, 41, 0.22);
-  font-family: inherit;
-  font-size: 8px;
-  font-weight: 700;
-  line-height: 1;
+  font: 700 8px/1 "Courier New", monospace;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   transform: rotateZ(29deg) rotateX(-58deg);
@@ -664,7 +649,7 @@ html {
   position: absolute;
   z-index: 5;
   display: grid;
-  font-family: inherit;
+  font-family: "Courier New", monospace;
   text-transform: uppercase;
 }
 
@@ -705,10 +690,7 @@ html {
   z-index: 4;
   display: grid;
   justify-items: center;
-  font-family: inherit;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1;
+  font: 700 9px/1 "Courier New", monospace;
 }
 
 .assembly-axis i {
