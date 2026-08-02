@@ -104,7 +104,7 @@ export default function Home() {
   return (
     <main className="landing-page">
       <div className="hero-scroll-stage" ref={scrollStageRef}>
-        <section className="hero" id="home">
+        <section className="landing-hero" id="home">
         <div className="hero-grid" aria-hidden="true" />
 
         <div className="hero-body">
