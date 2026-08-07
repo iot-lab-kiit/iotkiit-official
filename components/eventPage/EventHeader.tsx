@@ -1,7 +1,7 @@
 const EventHeader = () => {
   return (
     <div>
-      <div className="bg-primary-600 md:overflow-hidden py-0">
+      <div className="bg-primary-600 overflow-hidden py-0">
         <div className="px-4 py-12 md:pt-0">
           <div className="md:max-w-6xl md:mx-auto">
             <div className="md:flex md:flex-wrap">
@@ -235,7 +235,7 @@ const EventHeader = () => {
                     <div className="grid--gray h-48 w-48" />
                   </div>
                 </div>
-                <div className="md:hidden w-full absolute right-0 top-0 flex rounded-lg bg-white overflow-hidden shadow">
+                <div className="md:hidden w-full relative flex rounded-lg bg-white overflow-hidden shadow">
                   <div className="h-4 bg-gray-200 absolute top-0 left-0 right-0 rounded-t-lg flex items-center">
                     <span className="h-2 w-2 rounded-full bg-red-500 inline-block mr-1 ml-2" />
                     <span className="h-2 w-2 rounded-full bg-orange-400 inline-block mr-1" />
@@ -338,8 +338,8 @@ const EventHeader = () => {
                   </div>
                 </div>
                 <div
-                  className="mr-3 md:hidden absolute right-0 bottom-2 pb-3 w-40 bg-white rounded-lg shadow-lg px-10 py-6"
-                  style={{ zIndex: 2, marginBottom: "-380px" }}
+                  className="mr-3 md:hidden relative mt-4 pb-3 w-40 bg-white rounded-lg shadow-lg px-10 py-6"
+                  style={{ zIndex: 2 }}
                 >
                   <div className="bg-indigo-800 mx-auto rounded-lg px-2 pb-2 relative mb-8">
                     <div className="mb-1">

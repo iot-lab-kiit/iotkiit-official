@@ -292,6 +292,12 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   background: #f3f4f6;
 }
+
+@media (max-width: 480px) {
+  .photoGrid {
+    height: 220px;
+  }
+}
 .tile {
   position: relative;
   grid-row: 1 / 3;

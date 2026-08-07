@@ -870,6 +870,7 @@ html {
   .hero-body {
     min-height: auto;
     padding-top: 124px;
+    overflow-x: clip;
   }
 
   h1 > span {
@@ -888,7 +889,7 @@ html {
   .assembly-wrap {
     min-height: 430px;
     transform: scale(0.76);
-    margin: -30px -80px;
+    margin: -30px 0;
   }
 
   .hero-to-content {

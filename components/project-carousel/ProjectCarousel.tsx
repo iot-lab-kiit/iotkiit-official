@@ -10,6 +10,22 @@ const mono = JetBrains_Mono({ subsets: ["latin"] });
 
 import { Project } from "@/data/projects";
 
+// Returns the current viewport width, re-rendering the consumer when it
+// changes (e.g. rotation or resize) so carousel geometry can adapt to phones.
+const useViewportWidth = () => {
+  const [width, setWidth] = useState(
+    typeof window === "undefined" ? 1024 : window.innerWidth,
+  );
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return width;
+};
+
 // --- Components ---
 
 const GithubIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
@@ -206,7 +222,7 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
         rotateY: isActive ? rotateY : 0,
         transformStyle: "preserve-3d",
       }}
-      className={`relative h-[480px] w-[340px] rounded-[32px] cursor-pointer will-change-transform ${isActive ? "z-50" : "z-10"}`}
+      className={`relative w-[min(340px,78vw)] h-[min(480px,114vw)] rounded-[32px] cursor-pointer will-change-transform ${isActive ? "z-50" : "z-10"}`}
       aria-hidden={!isActive}
     >
       <motion.div
@@ -337,6 +353,12 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const autoplayRef = useRef<NodeJS.Timeout>();
+  const viewportWidth = useViewportWidth();
+
+  // Card width is min(340px, 78vw); the JS x-offset must mirror the CSS size
+  // so neighbour cards tile beside the active one without leaving a gap.
+  const cardWidth = Math.min(340, viewportWidth * 0.78);
+  const step = cardWidth - 20;
 
   const next = useCallback(() => setActive((p) => (p + 1) % projects.length), [projects]);
   const prev = useCallback(() => setActive((p) => (p - 1 + projects.length) % projects.length), [projects]);
@@ -426,11 +448,14 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
 
           {orderedItems.map((project) => {
             const isActive = project.offset === 0;
-            const x = project.offset * 320;
+            const x = project.offset * step;
             const rotateY = project.offset * -12;
             const scale = isActive ? 1 : 0.85;
             const z = isActive ? 100 : 50 - Math.abs(project.offset) * 20;
-            const opacity = Math.abs(project.offset) > 2 ? 0 : 1;
+            // On phones the neighbours drift far enough off-screen that the
+            // ambient stack only adds distraction; hide them beyond ±1.
+            const maxOffset = viewportWidth < 640 ? 1 : 2;
+            const opacity = Math.abs(project.offset) > maxOffset ? 0 : 1;
 
             return (
               <motion.div
