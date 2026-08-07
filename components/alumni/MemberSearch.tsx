@@ -126,7 +126,7 @@ const MemberSearch = ({ members }: Props) => {
       {/* Results */}
       {filteredMembers.length > 0 ? (
         <Stagger
-          className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-5"
+          className="grid grid-cols-2 justify-items-center gap-x-14 gap-y-16 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
           childClassName="h-full"
           step={60}
         >

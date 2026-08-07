@@ -5,6 +5,7 @@ export interface Alum {
   name: string;
   role?: string;
   tier: "coordinator" | "lead" | "mentor" | "member";
+  image?: string;
   linkedin?: string;
   github?: string;
 }

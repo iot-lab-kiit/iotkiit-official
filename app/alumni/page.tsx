@@ -17,7 +17,7 @@ const leads = alumni.filter((a) => a.tier === 'lead');
 const mentors = alumni.filter((a) => a.tier === 'mentor');
 const members = alumni.filter((a) => a.tier === 'member');
 
-// NEW: Complete alumni list for the searchable directory
+// Complete alumni list for the searchable directory
 const allMembers = alumni;
 
 const Alumni = () => {
@@ -67,11 +67,11 @@ const Alumni = () => {
 
       {/* Coordinators */}
       {coordinators.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 py-16">
+        <section className="mx-auto max-w-7xl px-8 py-16 lg:px-12">
           <SectionTitle eyebrow="Leadership" title="Coordinators" />
 
           <Stagger
-            className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-5"
+            className="grid grid-cols-1 justify-items-center gap-x-16 gap-y-20 sm:grid-cols-2 lg:grid-cols-5"
             childClassName="h-full"
             step={60}
           >
@@ -85,11 +85,11 @@ const Alumni = () => {
       {/* Leads */}
       {leads.length > 0 && (
         <section className="bg-primary-50/40 py-16">
-          <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-7xl px-8 lg:px-12">
             <SectionTitle eyebrow="Core Team" title="Team Leads" />
 
             <Stagger
-              className="mx-auto grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 md:grid-cols-4"
+              className="grid grid-cols-1 justify-items-center gap-x-16 gap-y-20 sm:grid-cols-2 lg:grid-cols-5"
               childClassName="h-full"
               step={60}
             >
@@ -103,11 +103,11 @@ const Alumni = () => {
 
       {/* Mentors */}
       {mentors.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 py-16">
+        <section className="mx-auto max-w-7xl px-8 py-16 lg:px-12">
           <SectionTitle eyebrow="Guidance" title="Mentors & Advisors" />
 
           <Stagger
-            className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8 md:grid-cols-6"
+            className="grid grid-cols-2 justify-items-center gap-x-16 gap-y-16 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
             childClassName="h-full"
             step={60}
           >
@@ -121,14 +121,14 @@ const Alumni = () => {
       {/* Members */}
       {members.length > 0 && (
         <section className="bg-primary-50/40 py-16">
-          <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-7xl px-8 lg:px-12">
             <SectionTitle
               eyebrow="The Family"
               title="Members"
               subtitle="People from the previous batch who were part of the lab."
             />
 
-            {/* CHANGED: Pass all alumni instead of only members */}
+            {/* Pass all alumni instead of only members */}
             <MemberSearch members={allMembers} />
           </div>
         </section>
