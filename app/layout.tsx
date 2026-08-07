@@ -1,5 +1,4 @@
 import './globals.css';
-import './landing.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
@@ -15,14 +14,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://iotkiit.in/'),
   title: 'IoT Lab KIIT',
   description:
-    'IoT Lab KIIT — Centre of Excellence. A multidisciplinary lab where software, hardware, design, and storytelling meet to build technology that matters.',
+    'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research  and projects with more end-user interactions.',
   icons: '/images/logo_small.png',
   openGraph: {
     type: 'website',
     url: 'https://iotkiit.in/',
     title: 'IoT Lab KIIT',
     description:
-      'IoT Lab KIIT — Centre of Excellence. A multidisciplinary lab where software, hardware, design, and storytelling meet to build technology that matters.',
+      'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research  and projects with more end-user interactions.',
     images: '/images/logo_small.png', // or webp
   },
   twitter: {
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
     site: 'https://iotkiit.in/',
     title: 'IoT Lab KIIT',
     description:
-      'IoT Lab KIIT — Centre of Excellence. A multidisciplinary lab where software, hardware, design, and storytelling meet to build technology that matters.',
+      'IoT Lab, KIIT is a team of dedicated students working under a team of competent and encouraging professors guiding us at every phase and step. IoT Lab is technically a research forum exploring the potential of crowdsourcing and Internet of Things for multidisciplinary research  and projects with more end-user interactions.',
     images: '/images/logo_small.png', // or webp
   },
 };
