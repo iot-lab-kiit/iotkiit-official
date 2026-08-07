@@ -51,8 +51,8 @@ const Footer = () => {
               <span className="text-lg font-bold text-gray-900">IoT Lab, KIIT</span>
             </div>
             <p className="mt-3 text-sm font-light leading-relaxed text-gray-500">
-              A Centre of Excellence where software, hardware, design, and storytelling
-              meet to build technology that matters.
+              A Centre of Excellence, a student research forum exploring the Internet of Things
+              and building across every domain of technology.
             </p>
           </div>
 

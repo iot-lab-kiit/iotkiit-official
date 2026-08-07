@@ -2,7 +2,7 @@ import Stagger from '@/components/Stagger';
 
 const Process: React.FC = () => {
   return (
-    <section id='our-process' className='process-section relative'>
+    <div id='our-process' className='relative'>
       <img
         src='/images/circle2.svg'
         alt='side_image'
@@ -47,7 +47,7 @@ const Process: React.FC = () => {
           </div>
         </Stagger>
       </div>
-    </section>
+    </div>
   );
 };
 

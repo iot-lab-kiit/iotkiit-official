@@ -174,7 +174,7 @@ const Domains = () => {
   const [activeId, setActiveId] = useState<string>(domains[0].id);
 
   return (
-    <section id="domains" className="relative overflow-hidden bg-[#060d29] px-4 py-16 text-white md:px-8 md:py-24">
+    <section className="relative overflow-hidden bg-[#060d29] px-4 py-16 text-white md:px-8 md:py-24">
       {/* Ambient glows */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-full max-w-3xl -translate-x-1/2 rounded-full bg-primary-500/20 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-blue-500/10 blur-[100px]" />
