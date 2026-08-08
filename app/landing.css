@@ -73,7 +73,6 @@ html {
   margin: 0 auto;
   padding: 0 24px;
   color: var(--ink);
-  overflow: hidden;
   background:
     linear-gradient(
       115deg,
@@ -95,6 +94,7 @@ html {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  border-radius: inherit;
   background:
     radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.72), transparent 34%),
     linear-gradient(90deg, rgba(58, 120, 255, 0.04), transparent 40%);

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-
+import { useRef, useEffect } from 'react';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
@@ -16,6 +16,26 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const detailsRef = useRef<HTMLDetailsElement>(null);
+
+  const closeMenu = () => {
+    if (detailsRef.current) {
+      detailsRef.current.removeAttribute('open');
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (detailsRef.current && !detailsRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="nav-shell">
@@ -44,7 +64,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <details className="mobile-menu">
+        <details className="mobile-menu" ref={detailsRef}>
           <summary aria-label="Toggle menu">
             <span />
             <span />
@@ -56,6 +76,7 @@ export default function Navbar() {
                 className={pathname === link.href ? 'active' : undefined}
                 href={link.href}
                 key={link.href}
+                onClick={closeMenu}
               >
                 {link.label}
               </Link>
