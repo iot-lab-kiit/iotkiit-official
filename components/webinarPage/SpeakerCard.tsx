@@ -20,7 +20,7 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
     <>
       <div className='max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 my-6'>
         <img
-          className='object-cover w-screen h-auto'
+          className='object-cover w-full h-auto'
           src={imageUrl}
           alt='avatar'
         />

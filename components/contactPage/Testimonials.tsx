@@ -1,7 +1,7 @@
 const Testimonials = () => {
   return (
     <div>
-      <div className='flex items-center justify-center py-8 bg-gray-100 min-w-screen'>
+      <div className='flex items-center justify-center py-8 bg-gray-100 w-full'>
         <div className='max-w-6xl px-6 bg-gray-100 '>
           <div className='flex flex-col items-center lg:flex-row'>
             <div className='flex flex-col items-start justify-center w-full h-full pr-8 mb-10 lg:mb-0 lg:w-1/2'>
