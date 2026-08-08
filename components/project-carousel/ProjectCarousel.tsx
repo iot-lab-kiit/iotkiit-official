@@ -28,7 +28,7 @@ const useViewportWidth = () => {
 
 // --- Components ---
 
-const GithubIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+const GithubIcon = ({ size = 24, className = "" }: { size?: number; className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -151,7 +151,7 @@ const CanvasBackground = memo(function CanvasBackground() {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(0, 98, 255, ${0.35 * (1 - dist / mouse.radius)})`; 
+          ctx.strokeStyle = `rgba(0, 98, 255, ${0.35 * (1 - dist / mouse.radius)})`;
           ctx.lineWidth = 1.2;
           ctx.stroke();
         }
@@ -222,7 +222,9 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
         rotateY: isActive ? rotateY : 0,
         transformStyle: "preserve-3d",
       }}
-      className={`relative w-[min(340px,78vw)] h-[min(480px,114vw)] rounded-[32px] cursor-pointer will-change-transform ${isActive ? "z-50" : "z-10"}`}
+      className={`relative w-[min(340px,78vw)] h-[min(480px,114vw)] rounded-[32px] cursor-pointer will-change-transform ${
+        isActive ? "z-50" : "z-10"
+      }`}
       aria-hidden={!isActive}
     >
       <motion.div
@@ -230,7 +232,7 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
           scale: isActive ? 1 : 0.95,
           boxShadow: isActive
             ? "0 30px 80px rgba(0, 98, 255, 0.25), 0 0 0 1px rgba(0, 98, 255, 0.2)"
-            : "0 10px 30px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255,255,255,0.5)"
+            : "0 10px 30px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255,255,255,0.5)",
         }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
         className="absolute inset-0 bg-white rounded-[32px] overflow-hidden flex flex-col"
@@ -240,16 +242,16 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
           style={{
             background: "linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%)",
             opacity: isActive ? glareOpacity : 0,
-            mixBlendMode: "overlay"
+            mixBlendMode: "overlay",
           }}
         />
 
         <AnimatePresence>
           {isActive && isHovered && (
             <motion.div
-              initial={{ opacity: 0, y: '100%' }}
+              initial={{ opacity: 0, y: "100%" }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: '100%' }}
+              exit={{ opacity: 0, y: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
               className="absolute inset-0 z-50 flex flex-col bg-slate-900/95 backdrop-blur-xl text-white p-8 overflow-hidden rounded-[32px]"
             >
@@ -279,8 +281,8 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
                   transition={{ delay: 0.2 }}
                   className="text-sm leading-relaxed text-slate-300 mb-4 overflow-y-auto pr-2 flex-grow [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-indigo-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
                 >
-                  {project.description}
-                  {" "}This project showcases advanced integration of hardware and software, designed with a focus on scalability, real-time performance, and a seamless user experience.
+                  {project.description}{" "}
+                  This project showcases advanced integration of hardware and software, designed with a focus on scalability, real-time performance, and a seamless user experience.
                 </motion.div>
 
                 <div className="mt-auto flex flex-col gap-3 shrink-0 pt-2">
@@ -469,7 +471,7 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
                   project={project}
                   isActive={isActive}
                   onClick={() => {
-                    setActive(projects.findIndex(p => p.id === project.id));
+                    setActive(projects.findIndex((p) => p.id === project.id));
                     setIsPaused(true);
                   }}
                 />
@@ -499,7 +501,7 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
                 <motion.div
                   animate={{
                     width: active === i ? 36 : 8,
-                    backgroundColor: active === i ? "#0062FF" : "rgba(0, 98, 255, 0.25)"
+                    backgroundColor: active === i ? "#0062FF" : "rgba(0, 98, 255, 0.25)",
                   }}
                   className="h-2 rounded-full"
                 />
