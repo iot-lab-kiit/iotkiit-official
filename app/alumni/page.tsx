@@ -23,6 +23,7 @@ const allMembers = alumni;
 const Alumni = () => {
   return (
     <main className="bg-white">
+
       {/* Header */}
       <section className="relative overflow-hidden px-6 py-24 text-center sm:py-28">
         {/* Background photo */}
@@ -76,7 +77,11 @@ const Alumni = () => {
             step={60}
           >
             {coordinators.map((a) => (
-              <AlumCard key={a.name} alum={a} featured />
+              <AlumCard
+                key={a.name}
+                alum={a}
+                featured
+              />
             ))}
           </Stagger>
         </section>
@@ -94,7 +99,11 @@ const Alumni = () => {
               step={60}
             >
               {leads.map((a) => (
-                <AlumCard key={a.name} alum={a} featured />
+                <AlumCard
+                  key={a.name}
+                  alum={a}
+                  featured
+                />
               ))}
             </Stagger>
           </div>
@@ -112,7 +121,10 @@ const Alumni = () => {
             step={60}
           >
             {mentors.map((a) => (
-              <AlumCard key={a.name} alum={a} />
+              <AlumCard
+                key={a.name}
+                alum={a}
+              />
             ))}
           </Stagger>
         </section>
@@ -133,6 +145,7 @@ const Alumni = () => {
           </div>
         </section>
       )}
+
     </main>
   );
 };
