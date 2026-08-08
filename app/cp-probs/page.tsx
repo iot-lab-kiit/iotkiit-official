@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import SingleQuestion from '../../components/cp-probs/AccordionCard';
 import style from '../../styles/AccordionCard.module.css';
+import { API_URL } from '../../lib/config';
 
 interface QuestionType {
   id: number;
@@ -21,10 +22,14 @@ const Cp = () => {
     setLoading(true);
 
     // Getting data from Server
-    fetch('https://api.iotkiit.in/items/questions?groupBy[]=category')
+    fetch(`${API_URL}/items/questions?groupBy[]=category`)
       .then(res => res.json())
       .then(res => {
         setQuestions(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching questions:', err);
         setLoading(false);
       });
   }, []);

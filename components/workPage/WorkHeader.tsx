@@ -30,9 +30,9 @@ const WorkHeader = ({ numBlogs, numProjects }: WorkHeaderProps) => {
             </div>
           </div>
           <div className='description w-full sm:w-full md:w-4/5 mt-12 text-gray-500 text-md'>
-            "A new idea emerges from a great thinking and success comes from
+            &quot;A new idea emerges from a great thinking and success comes from
             hard work. Hard work does not necessarily guarantee success, but no
-            success is possible without hard work.”
+            success is possible without hard work.&quot;
           </div>
         </div>
       </div>

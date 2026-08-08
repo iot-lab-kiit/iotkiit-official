@@ -3,13 +3,13 @@ import Image from 'next/image';
 const HandWave = () => {
   return (
     <section className='pt-20 pb-10 bg-gray-50'>
-      <div className='container items-center max-w-6xl px-10 mx-auto sm:px-20 md:px-32 lg:px-16'>
+      <div className='container items-center max-w-6xl px-6 mx-auto sm:px-20 md:px-32 lg:px-16'>
         <div className='flex flex-wrap items-center -mx-3'>
           <div className='order-1 w-full px-3 lg:w-1/2 lg:order-0'>
             <div className='w-full lg:max-w-md'>
-              <h2 className='mb-4 text-2xl font-bold leading-tight tracking-tight sm:text-3xl font-heading'>
+              <h1 className='mb-4 text-2xl font-bold leading-tight tracking-tight sm:text-3xl font-heading'>
                 Jam-packed with all the tools you need to succeed!
-              </h2>
+              </h1>
               <div className='mb-4 leading-normal font-semibold tracking-tight text-gray-500 '>
                 “You don&apos;t have to see the whole staircase, just take the
                 first step.”

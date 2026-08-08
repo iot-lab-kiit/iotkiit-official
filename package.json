@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "prettier-check": "prettier --check \"{app,components,container}/**/*.{ts,tsx}\"",
-    "prettier-fix": "prettier --write \"{app,components,container}/**/*.{ts,tsx}\""    
+    "prettier-fix": "prettier --write \"{app,components,container}/**/*.{ts,tsx}\""
   },
   "dependencies": {
+    "@dicebear/collection": "9.4.2",
+    "@dicebear/core": "9.4.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^1.7.17",
@@ -22,12 +24,16 @@
     "autoprefixer": "10.4.16",
     "axios": "^1.5.1",
     "date-fns": "^2.30.0",
+    "framer-motion": "^12.43.0",
+    "isomorphic-dompurify": "^3.18.0",
     "lottie-react": "^2.4.0",
+    "lucide-react": "^1.30.0",
     "next": "13.5.3",
     "postcss": "8.4.30",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
+    "react-simple-typewriter": "^5.0.1",
     "rss-parser": "^3.13.0",
     "sweetalert": "^2.1.2",
     "swiper": "^9.4.1",
@@ -35,11 +41,11 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "eslint": "8.51.0",
-    "eslint-config-next": "13.5.4",
     "@types/node": "20.7.0",
     "@types/react": "18.2.23",
     "@types/react-dom": "18.2.8",
-    "@types/react-lottie": "^1.2.7"
+    "@types/react-lottie": "^1.2.7",
+    "eslint": "8.51.0",
+    "eslint-config-next": "13.5.4"
   }
 }

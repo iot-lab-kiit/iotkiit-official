@@ -7,109 +7,95 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 // import dayjs from 'dayjs';
 import CustomTextField from './CustomTextField';
-
+import { API_URL } from '../../lib/config';
 const teams: string[] = [
   'CP',
   'Web Dev',
-  'App',
+  'App Dev',
+  'AI/ML',
   'Marketing & Management',
   'Content',
   'GD & UI/UX',
   'IoT',
-  'Cyber',
+  'Cyber Security',
   'Administration(HR)',
   'Video Editing',
+  '3D Prototyping',
 ];
-
-interface FormDataType {
-  email: string;
-  name: string;
-  roll: string;
-  team: string;
-  selectedDate: Date;
-  from: Date;
-  to: Date;
-  reason: string;
-}
-
-interface SubmitDataType {
-  department: string;
-  name: string;
-  roll_no: string;
-  time: string;
-  reason: string;
-}
-
-const RequestForm: React.FC = () => {
+const RequestForm = () => {
   const [pop, setPop] = useState(false);
-  const handleClick = () => setPop(true);
-  const handleClose = () => setPop(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    roll: '',
-    team: '',
+    roll_no: '',
+    department: '',
     selectedDate: new Date(),
     from: new Date(),
     to: new Date(),
     reason: '',
   });
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const isDurationValid = (): boolean => {
     const diffMs: number = formData.to.getTime() - formData.from.getTime();
-    const diffMinutes: number = Math.round(
-      ((diffMs % 86400000) % 3600000) / 60000,
-    );
-    return diffMinutes > 60; // Modify the validation logic as needed
+    const diffMinutes: number = Math.round(diffMs / 60000); // Convert milliseconds to minutes
+    return diffMinutes > 60;
   };
 
   const validate = (): boolean => {
     return (
       formData.name !== '' &&
       formData.email !== '' &&
-      formData.roll !== '' &&
-      formData.team !== '' &&
+      formData.roll_no !== '' &&
+      formData.department !== '' &&
       formData.reason !== ''
     );
   };
 
-  const handleSubmit = () => {
-    // Sending Lab Opening Request to Server
-    const data: SubmitDataType = {
-      department: formData.team,
-      name: formData.name,
-      roll_no: formData.roll,
-      time: `${formData.to.getHours()}:${formData.to.getMinutes()}:${formData.to.getSeconds()}`,
-      reason: formData.reason,
-    };
+  const handleClick = () => setPop(true);
+  const handleClose = () => setPop(false);
 
-    // Perform your fetch request here
-    // Replace the following code with your actual API call
-    fetch('https://api.iotkiit.in/items/lab_open_request', {
+  const handleSubmit = () => {
+    if (!validate()) {
+      setErrorMessage('Please fill out all fields.');
+      return;
+    }
+
+    if (!isDurationValid()) {
+      setErrorMessage('Enter a valid duration.');
+      return;
+    }
+    fetch(`${API_URL}/items/lab_open_request`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(formData),
     })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(() => {
         setFormData({
           name: '',
           email: '',
-          roll: '',
-          team: '',
+          roll_no: '',
+          department: '',
           selectedDate: new Date(),
           from: new Date(),
           to: new Date(),
           reason: '',
         });
+        setErrorMessage('');
+        handleClose();
       })
-      .catch(e => {
-        console.error(e);
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        setErrorMessage('There was a problem submitting your request. Please try again later.');
       });
-    setErrorMessage('');
-    handleClose();
   };
 
   return (
@@ -144,7 +130,7 @@ const RequestForm: React.FC = () => {
             py={3}
             px={3}
             zIndex={1}
-            width={'500px'}
+            width={{ xs: 'calc(100vw - 32px)', sm: '500px' }}
             bgcolor={'#FFF'}
             display={'flex'}
             flexDirection={'column'}
@@ -194,20 +180,20 @@ const RequestForm: React.FC = () => {
             <CustomTextField
               label='Enter Roll No.'
               type='number'
-              value={formData.roll}
+              value={formData.roll_no}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setFormData({ ...formData, roll: e.target.value })
+                setFormData({ ...formData, roll_no: e.target.value })
               }
             />
             <Box mt={2} />
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <CustomTextField
                   label={'Team'}
                   select
-                  value={formData.team}
+                  value={formData.department}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setFormData({ ...formData, team: e.target.value })
+                    setFormData({ ...formData, department: e.target.value })
                   }
                 >
                   {teams.map((team, index) => (
@@ -217,7 +203,7 @@ const RequestForm: React.FC = () => {
                   ))}
                 </CustomTextField>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <MobileDatePicker
                     // inputFormat="dd/MM/yyyy"
@@ -228,13 +214,6 @@ const RequestForm: React.FC = () => {
                         selectedDate: e || new Date(),
                       })
                     }
-                    // renderInput={(params: Date) => (
-                    //   <CustomTextField
-                    //     {...params}
-                    //     label={"Date"}
-                    //     InputProps={{ disableUnderline: true }}
-                    //   />
-                    // )}
                   />
                 </LocalizationProvider>
               </Grid>
@@ -242,7 +221,7 @@ const RequestForm: React.FC = () => {
             <Box mt={2} />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Grid container spacing={2}>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <MobileTimePicker
                     label='From'
                     value={formData.from}
@@ -252,32 +231,18 @@ const RequestForm: React.FC = () => {
                         from: e || new Date(),
                       })
                     }
-                    // renderInput={(params: Date) => (
-                    //   <CustomTextField
-                    //     {...params}
-                    //     label={"From"}
-                    //     InputProps={{ disableUnderline: true }}
-                    //   />
-                    // )}
                   />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <MobileTimePicker
                     label='To'
                     value={formData.to}
                     onAccept={(e: Date | null) => {
-                      if (isDurationValid()) {
+                      if (!isDurationValid()) {
                         setFormData({ ...formData, to: e || new Date() });
                         setErrorMessage('');
-                      } else setErrorMessage('Enter a valid duration');
+                      } 
                     }}
-                    // renderInput={(params: any) => (
-                    //   <CustomTextField
-                    //     {...params}
-                    //     label={"To"}
-                    //     InputProps={{ disableUnderline: true }}
-                    //   />
-                    // )}
                   />
                 </Grid>
               </Grid>
