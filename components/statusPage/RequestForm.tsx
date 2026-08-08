@@ -130,7 +130,7 @@ const RequestForm = () => {
             py={3}
             px={3}
             zIndex={1}
-            width={'500px'}
+            width={{ xs: 'calc(100vw - 32px)', sm: '500px' }}
             bgcolor={'#FFF'}
             display={'flex'}
             flexDirection={'column'}
@@ -187,7 +187,7 @@ const RequestForm = () => {
             />
             <Box mt={2} />
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <CustomTextField
                   label={'Team'}
                   select
@@ -203,7 +203,7 @@ const RequestForm = () => {
                   ))}
                 </CustomTextField>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <MobileDatePicker
                     // inputFormat="dd/MM/yyyy"
@@ -221,7 +221,7 @@ const RequestForm = () => {
             <Box mt={2} />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Grid container spacing={2}>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <MobileTimePicker
                     label='From'
                     value={formData.from}
@@ -233,7 +233,7 @@ const RequestForm = () => {
                     }
                   />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <MobileTimePicker
                     label='To'
                     value={formData.to}

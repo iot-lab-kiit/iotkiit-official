@@ -108,7 +108,7 @@ const AlumCard = ({
         hover:border-blue-700
         hover:shadow-xl
 
-        ${featured ? 'h-[300px] w-[220px]' : 'h-[260px] w-[230px] p-4'}
+        ${featured ? 'h-[300px] w-full max-w-[220px]' : 'h-[260px] w-full max-w-[230px] p-4'}
       `}
     >
       {/* Animated Accent */}
@@ -230,8 +230,10 @@ const AlumCard = ({
           <div
             className="
               mx-auto
-              h-40
-              w-40
+              h-28
+              w-28
+              sm:h-40
+              sm:w-40
               overflow-hidden
               rounded-full
               border-4

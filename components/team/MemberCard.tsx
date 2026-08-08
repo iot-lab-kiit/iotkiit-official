@@ -63,7 +63,7 @@ const MemberCard = ({ person }: { person: Person }) => {
           {person.name}
         </p>
         {person.domain && (
-          <span className="mt-2 inline-block rounded-full bg-primary-50 px-2.5 py-0.5 text-[11px] font-medium text-primary-700">
+          <span className="mt-2 inline-block max-w-full truncate rounded-full bg-primary-50 px-2.5 py-0.5 text-[11px] font-medium text-primary-700">
             {person.domain}
           </span>
         )}

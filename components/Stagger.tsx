@@ -36,7 +36,15 @@ const Stagger = ({ children, step = 80, delay = 0, className = '', childClassNam
           io.disconnect();
         }
       },
-      { threshold: 0.12 },
+      // threshold: 0 fires as soon as any part of the container is visible,
+      // rather than requiring a fixed % of its *own area* to be on-screen.
+      // That % based threshold used to mean a very tall grid (e.g. 100+
+      // member cards) needed way more scrolling before the reveal fired,
+      // since 12% of a huge container is much more screen space than 12% of
+      // a small one. rootMargin nudges the trigger point up slightly so
+      // cards animate in just before they'd be fully in view, instead of
+      // popping in right at the bottom edge of the screen.
+      { threshold: 0, rootMargin: '0px 0px -10% 0px' },
     );
     io.observe(el);
     return () => io.disconnect();
