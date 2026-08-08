@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const HeroComponent: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const HeroComponent: React.FC = () => {
           <div className='flex flex-wrap mt-12 justify-center'>
             <div className='w-full lg:w-3/12 px-4 text-center'>
               <div className='text-lightBlue-300 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center'>
-                <img src='/images/online-learning.svg' alt='Learning' />
+                <Image src='/images/online-learning.svg' alt='Learning' width={48} height={48} />
               </div>
               <h6 className='text-xl mt-5 font-semibold text-gray-800'>
                 Learn
@@ -35,7 +36,7 @@ const HeroComponent: React.FC = () => {
             </div>
             <div className='w-full lg:w-3/12 px-4 text-center'>
               <div className='text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center'>
-                <img src='/images/skill.svg' alt='Skills' />
+                <Image src='/images/skill.svg' alt='Skills' width={48} height={48} />
               </div>
               <h5 className='text-xl mt-5 font-semibold text-gray-800'>
                 Grow your skills
@@ -47,7 +48,7 @@ const HeroComponent: React.FC = () => {
             </div>
             <div className='w-full lg:w-3/12 px-4 text-center'>
               <div className='text-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center'>
-                <img src='/images/implement.svg' alt='Implement' />
+                <Image src='/images/implement.svg' alt='Implement' width={48} height={48} />
               </div>
               <h5 className='text-xl mt-5 font-semibold text-gray-800'>
                 Implement!

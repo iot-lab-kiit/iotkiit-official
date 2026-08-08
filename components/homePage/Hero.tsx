@@ -1,48 +1,62 @@
-const Hero: React.FC = () => {
-  return (
-    <div className='relative overflow-hidden px-0 pb-0 z-0'>
-      <img
-        src='/images/wave.svg'
-        alt='bg_cloud_photo'
-        className='absolute top-0 left-2/5'
-      />
-      <div className='container mx-auto relative px-6 lg:px-12'>
-        <div className='flex flex-col md:flex-row items-center pt-32 lg:pl-12 md:px-12 px-6 pb-16 sm:px-12 md:pb-0 '>
-          <div className='md:w-1/2 lg:w-1/3 mb-4 sm:mb-16 md:mb-0'>
-            <h1
-              className='animate-fade-up text-5xl sm:text-6xl md:text-7xl font-bold font-sans text-secondary leading-tight mb-4 md:mb-4 mt-8 md:mt-0 motion-reduce:animate-none'
-              style={{ animationDelay: '80ms' }}
-            >
-              <div>
-                <span className='flex h-7 w-7 sm:-ml-0.5 -m-1.5'>
-                  <span className='animate-ping inline-flex h-full w-full rounded-full bg-primary-default opacity-75' />
-                  <span className=' absolute inline-flex rounded-full h-7 w-7 bg-primary-default' />
-                </span>
-                IOT LAB,
-                <br /> KIIT
-              </div>
-            </h1>
-            <h2
-              className='animate-fade-up text-2xl font-bold text-secondary-600 uppercase mb-12 ml-1 motion-reduce:animate-none'
-              style={{ animationDelay: '220ms' }}
-            >
-              A Centre Of Excellence
-            </h2>
-          </div>
-          <div
-            className='mt-16 sm:mt-0 flex-1 flex justify-end animate-fade-up motion-reduce:animate-none'
-            style={{ animationDelay: '360ms' }}
-          >
-            <img
-              src='/images/hero.svg'
-              alt='lab_photo'
-              className='w-full max-w-[560px] h-auto animate-float motion-reduce:animate-none'
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+'use client';
 
-export default Hero;
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const VantaCloudsBackground = dynamic(() => import('./VantaCloudsBackground'), { ssr: false });
+
+export default function Hero() {
+  return (
+    <>
+      <section className="hero" id="home">
+        <VantaCloudsBackground />
+
+        {/* ── Centered hero copy ── */}
+        <motion.div
+          className="hero-body"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+
+          <h1 className="hero-title">
+            <span className="hero-title-main">IoT Lab</span>
+            <span className="hero-title-accent">KIIT</span>
+          </h1>
+
+          <p className="hero-description">
+            A multidisciplinary lab where software, hardware, design<br />
+            and storytelling meet to build technology that matters.
+          </p>
+
+          <div className="hero-actions">
+            <a className="primary-action" href="#domains">
+              Explore our domains
+              <span className="action-icon" aria-hidden="true">↓</span>
+            </a>
+            <a className="secondary-action" href="#about-us">
+              About us
+            </a>
+          </div>
+
+          <div className="hero-meta">
+            <div className="hero-stat">
+              <strong>11</strong>
+              <span>Domains</span>
+            </div>
+            <div className="hero-stat-divider" />
+            <div className="hero-stat">
+              <strong>∞</strong>
+              <span>Projects</span>
+            </div>
+            <div className="hero-stat-divider" />
+            <div className="hero-stat">
+              <strong>01</strong>
+              <span>Shared culture</span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+    </>
+  );
+}

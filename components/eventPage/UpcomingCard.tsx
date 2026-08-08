@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const UpcomingCard = ({ index, title, desc, link, date, year, imgUrl }: { index: any; title: any; desc: any; link: any; date: any; year: any; imgUrl: any }) => {
   return (
     <div className="flex relative pt-10 pb-14 sm:items-center md:w-2/3 mx-auto">
@@ -9,7 +11,13 @@ const UpcomingCard = ({ index, title, desc, link, date, year, imgUrl }: { index:
       </div>
       <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
         <div className="flex-shrink-0 w-28 h-28 bg-indigo-100 text-indigo-900 rounded-full inline-flex items-center justify-center">
-          <img className="w-18 h-14" alt="event image" src={imgUrl} />
+          <Image
+            className="w-18 h-14 object-contain"
+            alt="event image"
+            src={imgUrl || '/images/logo_small.webp'}
+            width={72}
+            height={56}
+          />
         </div>
         <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
           <div className="h-full flex items-start">

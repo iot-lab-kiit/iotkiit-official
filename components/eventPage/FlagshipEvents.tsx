@@ -1,3 +1,4 @@
+import Image from "next/image";
 import RightArrow from "../bullets/RightArrow";
 import Tick from "../bullets/Tick";
 import { CyanBottom, OrangeBottom, PurpleBottom } from "./BottomCards";
@@ -44,10 +45,13 @@ const FlagshipEvents = ({ main, left, right }: { main: any; left: any; right: an
             <div className="w-11/12 max-w-sm sm:w-3/5 lg:w-1/3 sm:my-5 my-8 relative z-0 rounded-lg shadow-lg md:-mr-4">
               <div className="bg-white text-black rounded-lg shadow-inner overflow-hidden">
                 <div className="text-sm object-center leading-none rounded-t-lg bg-white-200 text-black font-semibold uppercase pt-6 text-center tracking-wide">
-                  <img
+                  <Image
                     className="w-auto h-16 inline-block"
                     alt="event image"
-                    src={left.imgUrl}
+                    src={left.imgUrl || '/images/logo_small.webp'}
+                    width={200}
+                    height={64}
+                    style={{ width: 'auto', height: '64px' }}
                   />
                 </div>
 
@@ -74,10 +78,13 @@ const FlagshipEvents = ({ main, left, right }: { main: any; left: any; right: an
             <div className="w-full max-w-md sm:w-2/3 lg:w-2/5 sm:my-5 my-8 relative z-10 rounded-lg shadow-lg ">
               <div className="bg-white text-black rounded-lg shadow-inner overflow-hidden">
                 <div className="text-sm object-center leading-none rounded-t-lg bg-white-200 text-black font-semibold uppercase pt-3 text-center tracking-wide">
-                  <img
+                  <Image
                     className="w-auto h-24 inline-block"
                     alt="event image"
-                    src={main?.imgUrl}
+                    src={main?.imgUrl || '/images/logo_small.webp'}
+                    width={300}
+                    height={96}
+                    style={{ width: 'auto', height: '96px' }}
                   />
                 </div>
                 <div className="block text-left text-sm sm:text-md max-w-sm mx-auto mt-2 text-black px-8 lg:px-6">
@@ -104,10 +111,13 @@ const FlagshipEvents = ({ main, left, right }: { main: any; left: any; right: an
             <div className="w-11/12 max-w-sm sm:w-3/5 lg:w-1/3 sm:my-5 my-8 relative z-0 rounded-lg shadow-lg md:-ml-4">
               <div className="bg-white text-black rounded-lg shadow-inner overflow-hidden">
                 <div className="text-sm object-center leading-none rounded-t-lg bg-white-200 text-black font-semibold uppercase pt-6 text-center tracking-wide">
-                  <img
+                  <Image
                     className="w-auto h-16 inline-block"
                     alt="event image"
-                    src={right?.imgUrl}
+                    src={right?.imgUrl || '/images/logo_small.webp'}
+                    width={200}
+                    height={64}
+                    style={{ width: 'auto', height: '64px' }}
                   />
                 </div>
 

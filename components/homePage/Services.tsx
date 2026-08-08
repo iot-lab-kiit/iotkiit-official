@@ -2,12 +2,16 @@ import AppDevAnimation from '../animations/AppDevAnimation';
 import WebDevAnimation from '../animations/WebDevAnimation';
 import EventManagementAnimation from '../animations/EventManagementAnimation';
 import React from 'react';
+import Image from 'next/image';
+
 const Services: React.FC = () => {
   return (
     <div id='services' className='relative lg:px-32 md:px-32 px-4 pb-14 '>
-      <img
+      <Image
         src='/images/circle.svg'
         alt='side_image'
+        width={600}
+        height={600}
         className='absolute top-0 right-0 mt-64 hidden md:block'
       />
       <div className='container mx-auto px-6 pt-32 sm:pt-24 relative'>

@@ -5,6 +5,7 @@ export interface Achievement {
   title: string;
   author: string;
   url: string;
+  image?: string;
 }
 
 export const achievements: Achievement[] = [

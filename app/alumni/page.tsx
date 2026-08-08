@@ -25,21 +25,9 @@ const Alumni = () => {
     <main className="bg-white">
 
       {/* Header */}
-      <section className="relative overflow-hidden px-6 py-24 text-center sm:py-28">
-        {/* Background photo */}
-        <Image
-          src="/images/alumni-header.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        {/* Darkening overlay so the white text stays legible, plus a soft
-            drop-shadow feel via the vignette at the edges */}
-        <div className="absolute inset-0 bg-gray-900/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/85" />
-        <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_120px_60px_rgba(0,0,0,0.55)]" />
+      <section className="relative overflow-hidden px-6 py-24 text-center sm:py-28 bg-[#060d29]">
+        {/* Ambient glows for the dark header */}
+        <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-full max-w-3xl -translate-x-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
 
         {/* Content */}
         <div className="relative z-10">
@@ -72,8 +60,8 @@ const Alumni = () => {
           <SectionTitle eyebrow="Leadership" title="Coordinators" />
 
           <Stagger
-            className="grid grid-cols-1 justify-items-center gap-x-16 gap-y-20 sm:grid-cols-2 lg:grid-cols-5"
-            childClassName="h-full"
+            className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16"
+            childClassName="w-full max-w-[280px] h-full"
             step={60}
           >
             {coordinators.map((a) => (
@@ -94,8 +82,8 @@ const Alumni = () => {
             <SectionTitle eyebrow="Core Team" title="Team Leads" />
 
             <Stagger
-              className="grid grid-cols-1 justify-items-center gap-x-16 gap-y-20 sm:grid-cols-2 lg:grid-cols-5"
-              childClassName="h-full"
+              className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16"
+              childClassName="w-full max-w-[280px] h-full"
               step={60}
             >
               {leads.map((a) => (

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const EventExtra = ({ extraevents }: { extraevents: any[] }) => {
   return (
     <section className="text-gray-600 body-font">
@@ -20,11 +22,15 @@ const EventExtra = ({ extraevents }: { extraevents: any[] }) => {
           {extraevents.map((i: any) => (
             <div key={i.id} className="xl:w-1/4 md:w-1/2 p-4">
               <div className="bg-gray-100 p-6 rounded-lg">
-                <img
-                  className="h-80 md:h-64 rounded w-full object-cover object-center mb-6"
-                  src={i.imgUrl}
-                  alt="content"
-                />
+                <div className="relative h-80 md:h-64 mb-6">
+                  <Image
+                    className="rounded w-full object-cover object-center"
+                    src={i.imgUrl}
+                    alt={i.name || "content"}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
                 <div className="tracking-wide text-indigo-900 text-sm font-medium mb-1 title-font">
                   {i.type}
                 </div>

@@ -11,12 +11,12 @@ export interface Alum {
 }
 
 export const alumni: Alum[] = [
-  { name: "AYUSH DAS", role: "Former Coordinator", tier: "coordinator", image: "/images/team/default.png", linkedin: "https://www.linkedin.com/in/ayush-das-042b93223/" },
+  { name: "AYUSH DAS", role: "Former Coordinator", tier: "coordinator", linkedin: "https://www.linkedin.com/in/ayush-das-042b93223/" },
   { name: "Diya Ghosh", role: "Former Administrative Coordinator", tier: "coordinator" },
   { name: "Kumar Priyanshu", role: "Former Tech Coordinator", tier: "coordinator", linkedin: "https://www.linkedin.com/in/kpriyanshu2003/", github: "https://github.com/kpriyanshu2003" },
   { name: "Sandeep Kashyap", role: "Former Tech Coordinator", tier: "coordinator", linkedin: "https://www.linkedin.com/in/sandeep-kashyap-0b160a255/", github: "https://github.com/sktut" },
   { name: "Taniya Nawal Pathak", role: "Former Non-Tech Coordinator", tier: "coordinator", linkedin: "https://www.linkedin.com/in/tansexe/", github: "https://github.com/tansexe" },
-  { name: "Nekhil Kumar Agarwal", role: "Former Team Lead", tier: "lead",image: "/images/team/aaditya-sah.jpg", linkedin: "https://www.linkedin.com/in/nekhil-k-agarwal" },
+  { name: "Nekhil Kumar Agarwal", role: "Former Team Lead", tier: "lead", image: "/images/team/aaditya-sah.jpg", linkedin: "https://www.linkedin.com/in/nekhil-k-agarwal" },
   { name: "Shibajyoti Choudhury", role: "Former Team Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/shibajyoti-choudhury-27105665", github: "https://github.com/Shiba1809" },
   { name: "Umang Shekhar", role: "Former Team Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/umang-shekhar-84bb36221/", github: "https://github.com/P4R4D0X-HACKS" },
   { name: "Rick Ritwik", role: "Former Video Editing Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/rick-ritwik-b55749233", github: "https://github.com/ritwikrick" },
@@ -30,9 +30,9 @@ export const alumni: Alum[] = [
   { name: "Medhavi Sahgal", role: "Former Competitive Programming Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/medhavi-sahgal-900800247/", github: "https://github.com/medhavisahgal" },
   { name: "Yugansh Kumar", role: "Former IoT Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/yugansh-kumar-0a2004201" },
   { name: "Soudeep Ghoshal", role: "Former Machine Learning Lead", tier: "lead", linkedin: "https://www.linkedin.com/in/soudeep-ghoshal/", github: "https://github.com/SoudeepGhoshal" },
-  { name: "Samriddhi", role: "Former Social Media Manager",image: "/images/team/aaditya-sah.jpg", tier: "member" },
+  { name: "Samriddhi", role: "Former Social Media Manager", image: "/images/team/aaditya-sah.jpg", tier: "member" },
   { name: "Aditya Tulsyan", tier: "member", linkedin: "https://www.linkedin.com/in/aditya-tulsyan28/", github: "https://github.com/adityatulsyan03" },
-  { name: "Aakash Raj", tier: "member",image: "/images/team/aaditya-sah.jpg", linkedin: "https://www.linkedin.com/in/akash-raj-82981b23a/", github: "https://github.com/akash-R-A-J" },
+  { name: "Aakash Raj", tier: "member", image: "/images/team/aaditya-sah.jpg", linkedin: "https://www.linkedin.com/in/akash-raj-82981b23a/", github: "https://github.com/akash-R-A-J" },
   { name: "Aakriti Roy", tier: "member", linkedin: "https://www.linkedin.com/in/aakriti-roy-3a3534261?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app", github: "https://github.com/Aakriti184" },
   { name: "Aayushi Das", tier: "member", linkedin: "https://www.linkedin.com/in/aayushi-das-741a43256?utm_source=share\\&amp;utm_campaign=share_via\\&amp;utm_content=profile\\&amp;utm_medium=ios_app", github: "https://github.com/iyoushedas" },
   { name: "Abhigna Motla", tier: "member", linkedin: "https://www.linkedin.com/mwlite/in/abhigna-motla-943483253", github: "https://github.com/Eternal-Soul07/Abhigna" },

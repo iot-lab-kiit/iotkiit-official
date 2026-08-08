@@ -132,17 +132,18 @@ const Lightbox = ({ event, index, open, onClose, onIndexChange }: Props) => {
   // a fully decoded resource.
   useEffect(() => {
     if (!open || !src) return;
-    const token = ++loadToken.current;
+    const currentLoadToken = loadToken;
+    const token = ++currentLoadToken.current;
     setLoading(true);
     setErrored(false);
 
     const img = new window.Image();
     img.onload = () => {
-      if (token !== loadToken.current) return;
+      if (token !== currentLoadToken.current) return;
       setLoading(false);
     };
     img.onerror = () => {
-      if (token !== loadToken.current) return;
+      if (token !== currentLoadToken.current) return;
       setErrored(true);
       setLoading(false);
     };
@@ -152,7 +153,7 @@ const Lightbox = ({ event, index, open, onClose, onIndexChange }: Props) => {
       // invalidate on cleanup by bumping the token — captured at effect
       // creation so cleanup uses the same value React saw
       const myToken = token;
-      if (loadToken.current === myToken) loadToken.current++;
+      if (currentLoadToken.current === myToken) currentLoadToken.current++;
     };
   }, [open, src]);
 

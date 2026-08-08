@@ -1,11 +1,14 @@
 import Stagger from '@/components/Stagger';
+import Image from 'next/image';
 
 const Process: React.FC = () => {
   return (
     <section id='our-process' className='process-section relative'>
-      <img
+      <Image
         src='/images/circle2.svg'
         alt='side_image'
+        width={600}
+        height={600}
         className='hidden sm:block absolute top-0 left-0 -mx-32'
       />
       <div className='container mx-auto px-6 pt-0 pb-8 relative'>

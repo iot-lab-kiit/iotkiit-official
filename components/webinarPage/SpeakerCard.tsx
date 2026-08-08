@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { API_URL } from '../../lib/config';
 
 interface SpeakerCardProps {
@@ -19,11 +20,16 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
   return (
     <>
       <div className='max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 my-6'>
-        <img
-          className='object-cover w-full h-auto'
-          src={imageUrl}
-          alt='avatar'
-        />
+        <div className="relative w-full aspect-square">
+          <Image
+            className='object-cover'
+            src={imageUrl || '/images/logo_small.webp'}
+            alt={name || 'avatar'}
+            fill
+            sizes="(max-width: 768px) 100vw, 320px"
+            unoptimized
+          />
+        </div>
 
         <div className='py-5 text-center'>
           <a

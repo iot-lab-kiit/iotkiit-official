@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, memo, useCallback } from "react";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 const mono = JetBrains_Mono({ subsets: ["latin"] });
@@ -211,22 +212,25 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
   };
 
   return (
-    <motion.div
+    <div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeaveWrapper}
       onClick={onClick}
-      style={{
-        rotateX: isActive ? rotateX : 0,
-        rotateY: isActive ? rotateY : 0,
-        transformStyle: "preserve-3d",
-      }}
-      className={`relative w-[min(340px,78vw)] h-[min(480px,114vw)] rounded-[32px] cursor-pointer will-change-transform ${
+      className={`relative w-[min(340px,78vw)] h-[min(480px,114vw)] cursor-pointer ${
         isActive ? "z-50" : "z-10"
       }`}
       aria-hidden={!isActive}
     >
+      <motion.div
+        style={{
+          rotateX: isActive ? rotateX : 0,
+          rotateY: isActive ? rotateY : 0,
+          transformStyle: "preserve-3d",
+        }}
+        className="w-full h-full rounded-[32px] will-change-transform"
+      >
       <motion.div
         animate={{
           scale: isActive ? 1 : 0.95,
@@ -321,11 +325,13 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
         </AnimatePresence>
 
         <div className="relative h-[55%] w-full bg-slate-100 overflow-hidden">
-          <img
+          <Image
             src={project.image}
             alt={`Screenshot of ${project.title}`}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
-            loading="lazy"
+            fill
+            sizes="(max-width: 768px) 100vw, 340px"
+            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
@@ -343,8 +349,9 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
             </p>
           </div>
         </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 });
 
@@ -393,8 +400,7 @@ export default function PolishedProjectShowcase({ projects }: { projects: Projec
 
   return (
     <section
-      className={`${inter.className} relative w-full min-h-screen py-16 md:py-24 flex flex-col justify-between overflow-hidden bg-slate-50`}
-      style={{ backgroundImage: "linear-gradient(135deg, #E0EBFF 0%, #C7DCFF 100%)" }}
+      className={`${inter.className} relative w-full min-h-screen py-16 md:py-24 flex flex-col justify-between overflow-hidden bg-[#f5f3ef]`}
       aria-label="Featured Projects Showcase"
     >
       <CanvasBackground />

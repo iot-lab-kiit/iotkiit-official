@@ -1,6 +1,6 @@
 import type { Alum } from '@/data/alumni';
-import { createAvatar } from '@dicebear/core';
-import { initials } from '@dicebear/collection';
+import Image from 'next/image';
+import PhotoPlaceholder from './PhotoPlaceholder';
 
 const normalize = (url: string) =>
   url.startsWith('http') ? url : `https://${url}`;
@@ -11,13 +11,6 @@ const AlumCard = ({
   alum: Alum;
   featured?: boolean;
 }) => {
-  const avatarSvg = createAvatar(initials, {
-    seed: alum.name,
-    backgroundColor: ['2563eb'],
-    textColor: ['ffffff'],
-    fontWeight: 600,
-  }).toDataUri();
-
   const hasSocials = alum.linkedin || alum.github;
 
   const SocialIcons = ({ onImage = false }: { onImage?: boolean }) => {
@@ -108,7 +101,7 @@ const AlumCard = ({
         hover:border-blue-700
         hover:shadow-xl
 
-        ${featured ? 'h-[300px] w-full max-w-[220px]' : 'h-[260px] w-full max-w-[230px] p-4'}
+        ${featured ? 'min-h-[320px] h-auto w-full max-w-[280px] pb-4' : 'h-[260px] w-full max-w-[230px] p-4'}
       `}
     >
       {/* Animated Accent */}
@@ -135,25 +128,28 @@ const AlumCard = ({
           <div
             className="
               relative
-              h-[75%]
+              h-[240px]
               w-full
               overflow-hidden
+              shrink-0
             "
           >
-            <img
-              src={alum.image || avatarSvg}
-              alt={alum.name}
-              className="
-    h-full
-    w-full
-    object-cover
-
-    transition-transform
-    duration-700
-
-    group-hover:scale-110
-  "
-            />
+            {alum.image ? (
+              <Image
+                src={alum.image}
+                alt={alum.name}
+                fill
+                sizes="(max-width: 640px) 45vw, 220px"
+                className="
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-110
+                "
+              />
+            ) : (
+              <PhotoPlaceholder name={alum.name} className="h-full w-full" />
+            )}
 
             {/* Social icons overlaid on the photo */}
             {hasSocials && (
@@ -230,6 +226,7 @@ const AlumCard = ({
           <div
             className="
               mx-auto
+              relative
               h-28
               w-28
               sm:h-40
@@ -246,54 +243,56 @@ const AlumCard = ({
               group-hover:shadow-lg
             "
           >
-            <img
-              src={alum.image || avatarSvg}
-              alt={alum.name}
-              className="
-    h-full
-    w-full
-    object-cover
-
-    transition-transform
-    duration-700
-
-    group-hover:scale-110
-  "
-            />
+            {alum.image ? (
+              <Image
+                src={alum.image}
+                alt={alum.name}
+                fill
+                sizes="(max-width: 640px) 112px, 160px"
+                className="
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-110
+                "
+              />
+            ) : (
+              <PhotoPlaceholder name={alum.name} className="h-full w-full" />
+            )}
           </div>
 
-          <h3
-            className="
-              mt-4
-              text-sm
-              font-semibold
-              tracking-tight
-              text-gray-900
-
-              transition-all
-              duration-300
-
-              group-hover:-translate-y-1
-              group-hover:text-blue-700
-            "
-          >
-            {alum.name}
-          </h3>
-
-          {alum.role && (
-            <p
+          <div className="flex flex-col items-center transition-transform duration-500 group-hover:-translate-y-4 mt-4">
+            <h3
               className="
-                mt-1
-                text-[10px]
-                font-medium
-                uppercase
-                tracking-widest
-                text-blue-700
+                text-sm
+                font-semibold
+                tracking-tight
+                text-gray-900
+
+                transition-all
+                duration-300
+
+                group-hover:text-blue-700
               "
             >
-              {alum.role}
-            </p>
-          )}
+              {alum.name}
+            </h3>
+
+            {alum.role && (
+              <p
+                className="
+                  mt-1
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-widest
+                  text-blue-700
+                "
+              >
+                {alum.role}
+              </p>
+            )}
+          </div>
 
           {/* Social icons below (members) */}
           {hasSocials && (

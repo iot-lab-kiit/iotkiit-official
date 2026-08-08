@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const Showcase: React.FC = () => {
   return (
     <div className='bg-gray-200'>
@@ -5,10 +7,12 @@ const Showcase: React.FC = () => {
         <div className='relative'>
           <div className='relative lg:flex rounded-lg shadow-2xl overflow-hidden'>
             <div className='h-64 lg:h-auto lg:w-5/12 relative flex items-center justify-center'>
-              <img
+              <Image
                 className='absolute h-full w-full object-cover'
                 alt='The IoT Lab team at Campus 25'
                 src='/images/team-group.jpeg'
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
               />
               <div className='absolute inset-0 bg-secondary-900 opacity-70' />
               <a
