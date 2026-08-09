@@ -35,7 +35,7 @@ const Announcement = () => {
           <div className="hidden sm:block h-8 w-px bg-white/10"></div>
 
           <a
-            href="https://encode-x-zenith-cup.vercel.app/register"
+            href="https://encode.iotkiit.in/register"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white text-black px-5 py-1.5 sm:px-6 sm:py-2 text-xs sm:text-sm font-bold shadow-[0_0_15px_rgba(255,255,255,0.15)] transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.3)]"
