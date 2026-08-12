@@ -1,6 +1,5 @@
 "use client";
 
-import { Box } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -23,15 +22,7 @@ const PageNotFound = () => {
 					},
 				})}
 			>
-				<Box
-					width={"100%"}
-					height={{ xs: "auto", md: "93vh" }}
-					display={"flex"}
-					flexDirection={"column"}
-					justifyContent={"center"}
-					alignItems={"center"}
-					pt={8}
-				>
+				<div className="flex w-full flex-col items-center justify-center md:h-[93vh] pt-8">
 					<Image
 						src="/images/closed-img.svg"
 						alt="closed"
@@ -39,12 +30,7 @@ const PageNotFound = () => {
 						width={303}
 					/>
 
-					<Box
-						fontSize={{ xs: "34px", md: "44px" }}
-						lineHeight={1.2}
-						mt={5}
-						textAlign={"center"}
-					>
+					<div className="mt-5 text-center leading-[1.2] text-[34px] md:text-[44px]">
 						we don&apos;t any page with name
 						<span
 							style={{
@@ -55,10 +41,10 @@ const PageNotFound = () => {
 						>
 							{" " + path}
 						</span>
-					</Box>
-					<Box mt={{ xs: 3, md: 1 }} />
-				</Box>
-				<Box mt={{ xs: 10, md: 0 }} />
+					</div>
+					<div className="mt-3 md:mt-1" />
+				</div>
+				<div className="mt-10 md:mt-0" />
 			</ThemeProvider>
 		</>
 	);
