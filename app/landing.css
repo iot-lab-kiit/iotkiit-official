@@ -22,9 +22,9 @@ html {
 .hero {
   min-height: 100vh;
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   align-items: center;
-  justify-content: center;
   overflow: hidden;
   background: var(--paper);
 }
@@ -225,18 +225,35 @@ html {
   background: var(--blue);
 }
 
-/* ── Centered hero body ── */
+/* ── Hero body: left column copy ── */
 .hero-body {
   position: relative;
   z-index: 3;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   width: 100%;
-  padding: clamp(140px, 15vw, 180px) clamp(24px, 6vw, 80px) clamp(80px, 10vw, 120px);
+  padding: clamp(140px, 14vw, 170px) clamp(24px, 5vw, 72px) clamp(80px, 10vw, 120px);
   will-change: opacity, transform;
+}
+
+/* ── Hero visual: right column 3D animation ── */
+.hero-visual {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  min-height: 520px;
+}
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--paper) 0%, transparent 18%);
 }
 
 .hero-eyebrow {
@@ -276,7 +293,7 @@ html {
 .hero-title-main {
   display: block;
   font-family: "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
-  font-size: clamp(90px, 14vw, 200px);
+  font-size: clamp(76px, 9vw, 168px);
   font-weight: 950;
   font-stretch: condensed;
   background: linear-gradient(160deg, var(--ink) 20%, var(--blue) 90%);
@@ -288,7 +305,7 @@ html {
 .hero-title-accent {
   display: block;
   font-family: "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
-  font-size: clamp(90px, 14vw, 200px);
+  font-size: clamp(76px, 9vw, 168px);
   font-weight: 950;
   font-stretch: condensed;
   color: transparent;
@@ -299,17 +316,17 @@ html {
 
 .hero-description {
   max-width: 600px;
-  margin: 36px auto 0;
+  margin: 36px 0 0;
   color: #4b5563;
   font-size: 18px;
   line-height: 1.85;
-  text-align: center;
+  text-align: left;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
   margin-top: 48px;
   flex-wrap: wrap;
@@ -387,7 +404,7 @@ html {
 .hero-meta {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0;
   margin-top: 72px;
   padding-top: 36px;
@@ -539,8 +556,38 @@ html {
     display: block;
   }
 
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .hero-body {
-    padding-top: 110px;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 120px clamp(20px, 6vw, 40px) 24px;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-meta {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    min-height: 42vh;
+    order: 2;
+  }
+
+  .hero-visual::after {
+    background: linear-gradient(to bottom, var(--paper) 0%, transparent 14%);
   }
 
   .hero-title-main,

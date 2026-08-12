@@ -3,15 +3,13 @@
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
-const VantaCloudsBackground = dynamic(() => import('./VantaCloudsBackground'), { ssr: false });
+const NetworkBackground = dynamic(() => import('./NetworkBackground'), { ssr: false });
 
 export default function Hero() {
   return (
     <>
       <section className="hero" id="home">
-        <VantaCloudsBackground />
-
-        {/* ── Centered hero copy ── */}
+        {/* ── Left: hero copy ── */}
         <motion.div
           className="hero-body"
           initial={{ opacity: 0, y: 30 }}
@@ -56,6 +54,11 @@ export default function Hero() {
             </div>
           </div>
         </motion.div>
+
+        {/* ── Right: 3D network animation ── */}
+        <div className="hero-visual" aria-hidden>
+          <NetworkBackground />
+        </div>
       </section>
     </>
   );
