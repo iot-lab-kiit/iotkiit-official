@@ -121,6 +121,36 @@ function NetworkScene({
     const count = isMobile ? 5 : 10;
     return Array.from({ length: count }, () => newPacket(data));
   }, [data, isMobile]);
+  const packetAlphas = useMemo(
+    () => new Float32Array(packetStates.length),
+    [packetStates.length]
+  );
+  const packetMaterial = useMemo(
+    () =>
+      new THREE.ShaderMaterial({
+        uniforms: {
+          uColor: { value: new THREE.Color("#24bff3") },
+        },
+        vertexShader: `
+          attribute float aAlpha;
+          varying float vAlpha;
+          void main() {
+            vAlpha = aAlpha;
+            gl_Position = projectionMatrix * modelViewMatrix * instanceMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          uniform vec3 uColor;
+          varying float vAlpha;
+          void main() {
+            gl_FragColor = vec4(uColor, vAlpha);
+          }
+        `,
+        transparent: true,
+        depthWrite: false,
+      }),
+    []
+  );
 
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
@@ -156,17 +186,23 @@ function NetworkScene({
 
     const mesh = packetRef.current;
     if (mesh) {
+      const alphaAttr = mesh.geometry.getAttribute(
+        "aAlpha"
+      ) as THREE.InstancedBufferAttribute;
       packetStates.forEach((pk, k) => {
         pk.t += delta * pk.speed;
         if (pk.t >= 1) Object.assign(pk, newPacket(data, pk));
         const a = data.positions[pk.i];
         const b = data.positions[pk.j];
         _v.lerpVectors(a, b, pk.t);
-        _s.setScalar(0.8 + Math.sin(pk.t * Math.PI) * 0.55);
+        const fade = Math.sin(pk.t * Math.PI);
+        _s.setScalar(0.4 + fade * 0.6);
         _m.compose(_v, _q, _s);
         mesh.setMatrixAt(k, _m);
+        packetAlphas[k] = fade;
       });
       mesh.instanceMatrix.needsUpdate = true;
+      alphaAttr.needsUpdate = true;
     }
 
     if (ring1Ref.current) ring1Ref.current.rotation.z += delta * 0.35;
@@ -261,14 +297,14 @@ function NetworkScene({
         ref={packetRef}
         args={[undefined as any, undefined as any, packetStates.length]}
         frustumCulled={false}
+        material={packetMaterial}
       >
-        <sphereGeometry args={[0.09, 10, 10]} />
-        <meshBasicMaterial
-          color="#24bff3"
-          transparent
-          opacity={0.95}
-          toneMapped={false}
-        />
+        <sphereGeometry args={[0.09, 10, 10]}>
+          <instancedBufferAttribute
+            attach="attributes-aAlpha"
+            args={[packetAlphas, 1]}
+          />
+        </sphereGeometry>
       </instancedMesh>
     </group>
   );
