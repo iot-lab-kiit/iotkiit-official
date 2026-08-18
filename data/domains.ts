@@ -24,7 +24,7 @@ export const domains: Domain[] = [
     id: "app",
     title: "App Dev",
     icon: "PhoneAndroid",
-    desc: "Crafting cross-platform mobile experiences with Flutter, React Native, and native tooling.",
+    desc: "Building native mobile apps with Kotlin, cross-platform solutions with KMP, and backends with Spring Boot.",
     img: "/images/domains/appdev.png",
     color: "from-emerald-500 to-green-400",
   },
