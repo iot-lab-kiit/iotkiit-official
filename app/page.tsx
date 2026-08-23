@@ -12,7 +12,6 @@ import Reveal from '@/components/Reveal';
 export default function Home() {
   return (
     <main className="landing-page">
-      <Announcement />
       <Hero />
       <Reveal className="process-flow">
         <Process />
