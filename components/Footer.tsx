@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { site } from '@/data/site';
 
+import type { JSX } from "react";
+
 const iconClass = 'w-5 h-5';
 
 const socialDefs: { key: keyof typeof site.socials; label: string; path: JSX.Element }[] = [
