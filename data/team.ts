@@ -120,7 +120,12 @@ export const leads: Person[] = [
     domain: 'Video',
     photo: '/team/24157003.webp',
   },
-  { name: 'Kushagra', role: 'App Dev Lead', domain: 'App Dev' },
+  {
+    name: 'Kushagra',
+    role: 'App Dev Lead',
+    domain: 'App Dev',
+    photo: '/team/2406037.webp',
+  },
   {
     name: 'Harsh Singh',
     role: 'App Dev Lead',
@@ -158,7 +163,12 @@ export const leads: Person[] = [
     domain: 'Competitive Programming',
     photo: '/team/24155175.webp',
   },
-  { name: 'Harsh Vardhan', role: 'CP Lead', domain: 'Competitive Programming' },
+  {
+    name: 'Harsh Vardhan',
+    role: 'CP Lead',
+    domain: 'Competitive Programming',
+    photo: '/team/2405055.webp',
+  },
   {
     name: 'Aaditya Sah',
     role: 'Cybersecurity Lead',
