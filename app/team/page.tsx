@@ -115,7 +115,7 @@ const Team = () => {
             subtitle='Heads driving cross-domain initiatives — speaking, outreach, operations, and projects.'
           />
           <Stagger
-            className='grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-4'
+            className='grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-3'
             childClassName='h-full'
             step={60}
           >

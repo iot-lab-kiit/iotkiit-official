@@ -1,6 +1,6 @@
 // Team roster for 2026-27. Edit these arrays by hand, then `git push` (Vercel redeploys).
 // Photos live in /public/team/<rollno>.webp (2026-27 intake, named by roll number).
-// People carried over from last year keep their old photo in /public/images/team/<slug>.webp.
+// People carried over from last year keep their old photo in /public/images/legacy-team-images/<slug>.webp.
 // People without a photo render a muted placeholder.
 // Domains + social links are sourced from the members' own form responses (new.csv).
 
@@ -32,14 +32,14 @@ export const coordinators: Person[] = [
   {
     name: 'Jagadish Mohanty',
     role: 'Tech Coordinator',
-    photo: '/images/team/jagadish-mohanty.webp',
+    photo: '/images/legacy-team-images/jagadish-mohanty.webp',
     linkedin: 'https://www.linkedin.com/in/jagthefriend/',
     github: 'https://github.com/JagTheFriend',
   },
   {
     name: 'Om Prakash Ojha',
     role: 'Non-Tech Coordinator',
-    photo: '/images/team/om-prakash-ojha.webp',
+    photo: '/images/legacy-team-images/om-prakash-ojha.webp',
     linkedin:
       'https://www.linkedin.com/in/om-prakash-ojha-0a9679282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
@@ -51,7 +51,7 @@ export const coordinators: Person[] = [
   {
     name: 'Aadya Singh',
     role: 'Community & Event Management Coordinator',
-    photo: '/images/team/aadya-singh.webp',
+    photo: '/images/legacy-team-images/aadya-singh.webp',
     linkedin: 'http://linkedin.com/in/aadya-singh-21a3a034a',
   },
 ];
@@ -163,7 +163,7 @@ export const leads: Person[] = [
     name: 'Aaditya Sah',
     role: 'Cybersecurity Lead',
     domain: 'Cyber Security',
-    photo: '/images/team/aaditya-sah.webp',
+    photo: '/images/legacy-team-images/aaditya-sah.webp',
     linkedin: 'https://www.linkedin.com/in/aadityasah',
     github: 'https://hackerone.com/root___professor?type=user',
   },

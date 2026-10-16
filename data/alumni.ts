@@ -50,7 +50,7 @@ export const alumni: Alum[] = [
     name: 'Nekhil Kumar Agarwal',
     role: 'Former Team Lead',
     tier: 'lead',
-    image: '/images/team/aaditya-sah.webp',
+    image: '/images/legacy-team-images/aaditya-sah.webp',
     linkedin: 'https://www.linkedin.com/in/nekhil-k-agarwal',
   },
   {
@@ -141,7 +141,7 @@ export const alumni: Alum[] = [
   {
     name: 'Samriddhi',
     role: 'Former Social Media Manager',
-    image: '/images/team/aaditya-sah.webp',
+    image: '/images/legacy-team-images/aaditya-sah.webp',
     tier: 'member',
   },
   {
@@ -153,7 +153,7 @@ export const alumni: Alum[] = [
   {
     name: 'Aakash Raj',
     tier: 'member',
-    image: '/images/team/aaditya-sah.webp',
+    image: '/images/legacy-team-images/aaditya-sah.webp',
     linkedin: 'https://www.linkedin.com/in/akash-raj-82981b23a/',
     github: 'https://github.com/akash-R-A-J',
   },
@@ -1107,53 +1107,53 @@ export const alumni: Alum[] = [
   {
     name: 'Aayushi Singh',
     tier: 'member',
-    image: '/images/team/aayushi-singh.webp',
+    image: '/images/legacy-team-images/aayushi-singh.webp',
     linkedin: 'https://www.linkedin.com/in/aayushi801',
   },
   {
     name: 'Adarsh Kumar',
     tier: 'member',
-    image: '/images/team/adarsh-kumar.webp',
+    image: '/images/legacy-team-images/adarsh-kumar.webp',
     linkedin: 'https://www.linkedin.com/in/adarsh-kumar-12239b346/',
   },
   { name: 'Adarsh Pal', tier: 'member' },
   {
     name: 'Akash Routh',
     tier: 'member',
-    image: '/images/team/akash-routh.webp',
+    image: '/images/legacy-team-images/akash-routh.webp',
     linkedin: 'https://www.linkedin.com/in/akash-routh-66b9682aa/',
     github: 'https://github.com/Bridge-007',
   },
   {
     name: 'Ayush Suman',
     tier: 'member',
-    image: '/images/team/ayush-suman.webp',
+    image: '/images/legacy-team-images/ayush-suman.webp',
     linkedin: 'https://www.linkedin.com/in/ayushsuman001',
   },
   {
     name: 'Biswadeep Dev',
     tier: 'member',
-    image: '/images/team/biswadeep-dev.webp',
+    image: '/images/legacy-team-images/biswadeep-dev.webp',
     linkedin: 'https://www.linkedin.com/in/biswadeepdev/',
     github: 'https://github.com/ModRed-0',
   },
   {
     name: 'Purab Jana',
     tier: 'member',
-    image: '/images/team/purab-jana.webp',
+    image: '/images/legacy-team-images/purab-jana.webp',
     linkedin: 'https://www.linkedin.com/in/purab-jana-87a151288/',
     github: 'https://github.com/CaptainCrunchilicious',
   },
   {
     name: 'Tanishq Makhija',
     tier: 'member',
-    image: '/images/team/tanishq-makhija.webp',
+    image: '/images/legacy-team-images/tanishq-makhija.webp',
     linkedin: 'https://www.linkedin.com/in/tanishq-makhija',
   },
   {
     name: 'Utkarsh Prakash',
     tier: 'member',
-    image: '/images/team/utkarsh-prakash.webp',
+    image: '/images/legacy-team-images/utkarsh-prakash.webp',
     linkedin: 'https://www.linkedin.com/in/utkarsh-prakash-116b3127a',
   },
   { name: 'Vinayak Tiwari', tier: 'member' },
@@ -1163,21 +1163,21 @@ export const alumni: Alum[] = [
   {
     name: 'Binayak Shome',
     tier: 'member',
-    image: '/images/team/binayak-shome.webp',
+    image: '/images/legacy-team-images/binayak-shome.webp',
     linkedin: 'https://linkedin.com/in/binayak-shome-831b192b6',
     github: 'https://github.com/BinayakShome',
   },
   {
     name: 'Doni Somesh',
     tier: 'member',
-    image: '/images/team/doni-somesh.webp',
+    image: '/images/legacy-team-images/doni-somesh.webp',
     linkedin: 'https://www.linkedin.com/in/doni-somesh-adjc/',
     github: 'https://github.com/Somesh9832',
   },
   {
     name: 'Manya Pandey',
     tier: 'member',
-    image: '/images/team/manya-pandey.webp',
+    image: '/images/legacy-team-images/manya-pandey.webp',
     linkedin: 'https://in.linkedin.com/in/manya-pandey',
     github: 'https://github.com/manya7842',
   },
@@ -1185,14 +1185,14 @@ export const alumni: Alum[] = [
   {
     name: 'Sarthak Singh',
     tier: 'member',
-    image: '/images/team/sarthak-singh.webp',
+    image: '/images/legacy-team-images/sarthak-singh.webp',
     linkedin: 'https://www.linkedin.com/in/sarthak-singh-in',
     github: 'https://github.com/sarthakksingh',
   },
   {
     name: 'Sunnik Chatterjee',
     tier: 'member',
-    image: '/images/team/sunnik-chatterjee.webp',
+    image: '/images/legacy-team-images/sunnik-chatterjee.webp',
     linkedin: 'https://www.linkedin.com/in/sunnik-chatterjee-9b3a06281',
     github: 'https://github.com/Sunnik-Chatterjee',
   },
@@ -1201,7 +1201,7 @@ export const alumni: Alum[] = [
   {
     name: 'Archi Shaw',
     tier: 'member',
-    image: '/images/team/archi-shaw.webp',
+    image: '/images/legacy-team-images/archi-shaw.webp',
     linkedin:
       'https://www.linkedin.com/in/archi-shaw-279a34277?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     github: 'https://github.com/Archi-shaw',
@@ -1209,27 +1209,27 @@ export const alumni: Alum[] = [
   {
     name: 'Deepak Maurya',
     tier: 'member',
-    image: '/images/team/deepak-maurya.webp',
+    image: '/images/legacy-team-images/deepak-maurya.webp',
     linkedin: 'https://linkedin.com/in/deepak-mry',
   },
   {
     name: 'Jeet Das',
     tier: 'member',
-    image: '/images/team/jeet-das.webp',
+    image: '/images/legacy-team-images/jeet-das.webp',
     linkedin: 'https://www.linkedin.com/in/jeet-das-7633a52ab',
     github: 'https://github.com/JeetDas5',
   },
   {
     name: 'Kingsuk Nandi',
     tier: 'member',
-    image: '/images/team/kingsuk-nandi.webp',
+    image: '/images/legacy-team-images/kingsuk-nandi.webp',
     linkedin: 'https://www.linkedin.com/in/kingsuk-nandi/',
     github: 'https://github.com/KingsukNandi',
   },
   {
     name: 'Mohak Bhattacharya',
     tier: 'member',
-    image: '/images/team/mohak-bhattacharya.webp',
+    image: '/images/legacy-team-images/mohak-bhattacharya.webp',
     linkedin: 'https://www.linkedin.com/in/mohak-bhattacharya-a74184285/',
     github: 'https://github.com/mohakbh10',
   },
@@ -1239,14 +1239,14 @@ export const alumni: Alum[] = [
   {
     name: 'Rachit Agarwal',
     tier: 'member',
-    image: '/images/team/rachit-agarwal.webp',
+    image: '/images/legacy-team-images/rachit-agarwal.webp',
     linkedin: 'https://www.linkedin.com/in/rachit1105',
     github: 'https://github.com/Rachit1105',
   },
   {
     name: 'Sambit Prusty',
     tier: 'member',
-    image: '/images/team/sambit-prusty.webp',
+    image: '/images/legacy-team-images/sambit-prusty.webp',
     linkedin:
       'https://www.linkedin.com/in/sambit-prusty-2ab5592ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
     github: 'https://github.com/Jai-Jagannath',
@@ -1254,7 +1254,7 @@ export const alumni: Alum[] = [
   {
     name: 'Sumeet Singh',
     tier: 'member',
-    image: '/images/team/sumeet-singh.webp',
+    image: '/images/legacy-team-images/sumeet-singh.webp',
     linkedin: 'https://www.linkedin.com/in/sumeet-singh20',
   },
 
@@ -1262,14 +1262,14 @@ export const alumni: Alum[] = [
   {
     name: 'Akshat Chauhan',
     tier: 'member',
-    image: '/images/team/akshat-chauhan.webp',
+    image: '/images/legacy-team-images/akshat-chauhan.webp',
     linkedin: 'https://www.linkedin.com/in/akshat-chauhan-ai/',
     github: 'https://github.com/AkZcH',
   },
   {
     name: 'Avaneesh Kumar rai',
     tier: 'member',
-    image: '/images/team/avaneesh-kumar-rai.webp',
+    image: '/images/legacy-team-images/avaneesh-kumar-rai.webp',
     linkedin:
       'https://www.linkedin.com/in/avaneesh-rai-16aa01287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     github: 'https://github.com/Avaneesh040',
@@ -1277,21 +1277,21 @@ export const alumni: Alum[] = [
   {
     name: 'Souvik Bose',
     tier: 'member',
-    image: '/images/team/souvik-bose.webp',
+    image: '/images/legacy-team-images/souvik-bose.webp',
     linkedin:
       'https://www.linkedin.com/in/souvik-thecvguy?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
     name: 'Taniya Chouhan',
     tier: 'member',
-    image: '/images/team/taniya-chouhan.webp',
+    image: '/images/legacy-team-images/taniya-chouhan.webp',
     linkedin: 'https://www.linkedin.com/in/taniya-chouhan-625999286',
     github: 'https://github.com/TaniyaChouhan20',
   },
   {
     name: 'Vaidik Gupta',
     tier: 'member',
-    image: '/images/team/vaidik-gupta.webp',
+    image: '/images/legacy-team-images/vaidik-gupta.webp',
     linkedin:
       'https://www.linkedin.com/in/vaidik-gupta-ss2311383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     github: 'https://github.com/VaidikGuptaSS2311383',
@@ -1301,21 +1301,21 @@ export const alumni: Alum[] = [
   {
     name: 'Abul Kalam Azad',
     tier: 'member',
-    image: '/images/team/abul-kalam-azad.webp',
+    image: '/images/legacy-team-images/abul-kalam-azad.webp',
     linkedin: 'https://www.linkedin.com/in/abul-kalam-azad-a7a41a260/',
     github: 'https://github.com/Abulkalam1524',
   },
   {
     name: 'Sohom Chandra',
     tier: 'member',
-    image: '/images/team/sohom-chandra.webp',
+    image: '/images/legacy-team-images/sohom-chandra.webp',
     linkedin: 'https://www.linkedin.com/in/sohom-chandra-chandra-8212b7286',
     github: 'https://www.github.com/PaweesRaag',
   },
   {
     name: 'Tazil Khan',
     tier: 'member',
-    image: '/images/team/tazil-khan.webp',
+    image: '/images/legacy-team-images/tazil-khan.webp',
     linkedin: 'https://www.linkedin.com/in/tazil-khan-4b0544312',
   },
   { name: 'Rohit Raj', tier: 'member' },
@@ -1324,7 +1324,7 @@ export const alumni: Alum[] = [
   {
     name: 'Laveeza Zafar',
     tier: 'member',
-    image: '/images/team/laveeza-zafar.webp',
+    image: '/images/legacy-team-images/laveeza-zafar.webp',
     linkedin:
       'https://www.linkedin.com/in/laveeza-z-891382267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
@@ -1333,35 +1333,35 @@ export const alumni: Alum[] = [
   {
     name: 'Akanksha Shrivastava',
     tier: 'member',
-    image: '/images/team/akanksha-shrivastava.webp',
+    image: '/images/legacy-team-images/akanksha-shrivastava.webp',
     linkedin:
       'https://www.linkedin.com/in/akanksha-shrivastava-6ba708299?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
     name: 'Aruj Agarwal',
     tier: 'member',
-    image: '/images/team/aruj-agarwal.webp',
+    image: '/images/legacy-team-images/aruj-agarwal.webp',
     linkedin:
       'https://www.linkedin.com/in/aruj-agarwal-159301321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
     name: 'Khushi Kushwaha',
     tier: 'member',
-    image: '/images/team/khushi-kushwaha.webp',
+    image: '/images/legacy-team-images/khushi-kushwaha.webp',
     linkedin: 'https://www.linkedin.com/in/khushkushwaha45',
     github: 'https://github.com/khushhub',
   },
   {
     name: 'Maureen Morris',
     tier: 'member',
-    image: '/images/team/maureen-morris.webp',
+    image: '/images/legacy-team-images/maureen-morris.webp',
     linkedin:
       'https://www.linkedin.com/in/maureen-morris-166111357?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
   },
   {
     name: 'Md Zaid',
     tier: 'member',
-    image: '/images/team/md-zaid.webp',
+    image: '/images/legacy-team-images/md-zaid.webp',
     linkedin: 'http://linkedin.com/in/zaid2003',
     github: 'https://github.com/Zaidco',
   },
@@ -1372,20 +1372,20 @@ export const alumni: Alum[] = [
   {
     name: 'Aditya Singh',
     tier: 'member',
-    image: '/images/team/aditya-singh.webp',
+    image: '/images/legacy-team-images/aditya-singh.webp',
     linkedin:
       'https://www.linkedin.com/in/fakadits?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
     name: 'AYUSH SANKRIT',
     tier: 'member',
-    image: '/images/team/ayush-sankrit.webp',
+    image: '/images/legacy-team-images/ayush-sankrit.webp',
     linkedin: 'https://www.linkedin.com/in/ayush-sankrit-689694330',
   },
   {
     name: 'Prangshu Mondal',
     tier: 'member',
-    image: '/images/team/prangshu-mondal.webp',
+    image: '/images/legacy-team-images/prangshu-mondal.webp',
     linkedin: 'https://www.linkedin.com/in/prangggshu',
     github: 'https://github.com/prangggshu',
   },
@@ -1394,20 +1394,20 @@ export const alumni: Alum[] = [
   {
     name: 'Arpit Rathour',
     tier: 'member',
-    image: '/images/team/arpit-rathour.webp',
+    image: '/images/legacy-team-images/arpit-rathour.webp',
     linkedin:
       'https://www.linkedin.com/in/arpit-rathour?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
     name: 'Dev Jhawar',
     tier: 'member',
-    image: '/images/team/dev-jhawar.webp',
+    image: '/images/legacy-team-images/dev-jhawar.webp',
     linkedin: 'https://www.linkedin.com/in/dev-jhawar11/',
   },
   {
     name: 'Tithi Bera',
     tier: 'member',
-    image: '/images/team/tithi-bera.webp',
+    image: '/images/legacy-team-images/tithi-bera.webp',
     linkedin:
       'https://www.linkedin.com/in/tithi-bera-b146902aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     github: 'https://github.com/Tithi14/T1',
@@ -1419,7 +1419,7 @@ export const alumni: Alum[] = [
   {
     name: 'John James',
     tier: 'member',
-    image: '/images/team/john-james.webp',
+    image: '/images/legacy-team-images/john-james.webp',
     linkedin: 'https://www.linkedin.com/in/john-james-10j10j/',
     github: 'https://github.com/johnjames10',
   },
@@ -1427,7 +1427,7 @@ export const alumni: Alum[] = [
   {
     name: 'Sayam Jain',
     tier: 'member',
-    image: '/images/team/sayam-jain.webp',
+    image: '/images/legacy-team-images/sayam-jain.webp',
     linkedin:
       'https://www.linkedin.com/in/sayam-jain-8a6151310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
