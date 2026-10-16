@@ -3,14 +3,9 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const PageNotFound = () => {
 	const asPath = usePathname();
-	const [path, setPath] = useState(asPath);
-	useEffect(() => {
-		setPath(asPath);
-	}, [asPath]);
 	return (
 		<>
 			<ThemeProvider
@@ -39,7 +34,7 @@ const PageNotFound = () => {
 								color: "red",
 							}}
 						>
-							{" " + path}
+							{" " + asPath}
 						</span>
 					</div>
 					<div className="mt-3 md:mt-1" />

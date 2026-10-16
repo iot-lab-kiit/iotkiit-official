@@ -361,7 +361,7 @@ const ProjectCard = memo(function ProjectCard({ project, isActive, onClick }: Pr
 export default function PolishedProjectShowcase({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const autoplayRef = useRef<NodeJS.Timeout>();
+  const autoplayRef = useRef<NodeJS.Timeout>(undefined);
   const viewportWidth = useViewportWidth();
 
   // Card width is min(340px, 78vw); the JS x-offset must mirror the CSS size
