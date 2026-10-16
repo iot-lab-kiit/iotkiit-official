@@ -347,6 +347,11 @@ export const members: Person[] = [
     photo: '/team/25051448.webp',
     domain: 'Machine Learning',
   },
+  {
+    name: 'Udit Kumar Jaiswal',
+    photo: '/team/25156129.webp',
+    domain: 'Machine Learning',
+  },
 
   // Cyber Security
   {
