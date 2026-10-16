@@ -50,7 +50,6 @@ export const alumni: Alum[] = [
     name: 'Nekhil Kumar Agarwal',
     role: 'Former Team Lead',
     tier: 'lead',
-    image: '/images/legacy-team-images/aaditya-sah.webp',
     linkedin: 'https://www.linkedin.com/in/nekhil-k-agarwal',
   },
   {

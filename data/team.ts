@@ -381,6 +381,7 @@ export const members: Person[] = [
   { name: 'Ayush Omkar', photo: '/team/25158034.webp', domain: 'Video' },
   { name: 'Drupadh K', photo: '/team/24155399.webp', domain: 'Video' },
   { name: 'Gungun Raj', photo: '/team/2405279.webp', domain: 'Video' },
+  { name: 'Priyanshu', photo: '/team/2507022.webp', domain: 'Video' },
   { name: 'Ruhan Saha', photo: '/team/24052408.webp', domain: 'Video' },
   { name: 'Rwik Pal', photo: '/team/25155808.webp', domain: 'Video' },
   { name: 'Shresth Agrawal', photo: '/team/2405610.webp', domain: 'Video' },
