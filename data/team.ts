@@ -181,9 +181,7 @@ export const leads: Person[] = [
     name: 'Arpit',
     role: 'Cybersecurity Lead',
     domain: 'Cyber Security',
-    photo: '/team/24051540.webp',
-    linkedin: 'https://www.linkedin.com/in/arpit-485249322/',
-    github: 'https://github.com/Arpit1536',
+    photo: '/team/24051765.webp',
   },
   {
     name: 'Ritisha Sahni',
