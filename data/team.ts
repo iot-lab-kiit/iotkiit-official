@@ -206,6 +206,12 @@ export const members: Person[] = [
     domain: 'Competitive Programming',
   },
   {
+    name: 'Ananya Yadav',
+    photo: '/team/24158039.webp',
+    domain: 'Competitive Programming',
+    email: '24158039@kiit.ac.in',
+  },
+  {
     name: 'Anurag Anand',
     photo: '/team/2405417.webp',
     domain: 'Competitive Programming',
@@ -323,6 +329,12 @@ export const members: Person[] = [
     name: 'Aman Singh',
     photo: '/team/24052361.webp',
     domain: 'Cyber Security',
+  },
+  {
+    name: 'Poorbasha Kar',
+    photo: '/team/25052140.webp',
+    domain: 'Cyber Security',
+    linkedin: 'https://in.linkedin.com/in/poorbasha-kar-0aa5b92a0',
   },
   {
     name: 'Soumyadeep Roy Karmakar',

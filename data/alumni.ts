@@ -1415,7 +1415,6 @@ export const alumni: Alum[] = [
   { name: 'Divyesh Jhunjhunwala', tier: 'member' },
 
   // 2025-26 Members — Administration
-  { name: 'Ananya Yadav', tier: 'member' },
   {
     name: 'John James',
     tier: 'member',
