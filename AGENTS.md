@@ -4,15 +4,15 @@ Guidance for AI agents (and new contributors) working in this repo.
 
 ## What this is
 
-The official website of **IoT Lab, KIIT** — a Next.js 14 (App Router) site.
+The official website of **IoT Lab, KIIT** — a Next.js 16 (App Router) site.
 Most pages are static and data-driven; there is no CMS. Content lives in
 hand-edited TypeScript files and is deployed by pushing to git.
 
-- Framework: Next.js 14.2 (App Router, `app/`), React 18, TypeScript 5.2 (strict)
+- Framework: Next.js 16.4 (App Router, `app/`), React 19, TypeScript 5.2 (strict)
 - Styling: Tailwind CSS; some MUI (`@mui/*`) and Emotion; animations via
   framer-motion, GSAP, and Lottie
-- Backend API (events, etc.): `https://api.iotkiit.in` (see `next.config.js`);
-  `publicRuntimeConfig.SERVER` + `apiVersion` are how pages reach it
+- Backend API (events, etc.): `https://api.iotkiit.in`; pages fetch it
+  directly (`publicRuntimeConfig` was removed in the Next.js 16 upgrade)
 - Path alias: `@/*` maps to the repo root (`@/data/team`, `@/components/...`)
 
 ## Commands
@@ -20,14 +20,13 @@ hand-edited TypeScript files and is deployed by pushing to git.
 ```bash
 npm run dev        # dev server on http://localhost:3000
 npm run build      # production build (run this before handing off big changes)
-npm run lint       # eslint (next/core-web-vitals)
+npm run lint       # eslint CLI (flat config in eslint.config.mjs)
 npm run prettier-check
 npm run prettier-fix
 ```
 
-Both `package-lock.json` and `yarn.lock` are committed and both get updated
-(there's even a commit shifting from npm to yarn, yet npm keeps being used).
-Don't add a third lockfile (no pnpm/bun), and don't delete either one.
+npm is the only package manager: `package-lock.json` is the single committed
+lockfile (`yarn.lock` was removed). Don't add another lockfile (no yarn/pnpm/bun).
 
 ## Deployment
 
