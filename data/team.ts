@@ -1,6 +1,8 @@
-// Team roster for 2025-26. Edit these arrays by hand, then `git push` (Vercel redeploys).
-// Photos live in /public/team/<slug>.webp. People without a photo render a muted placeholder.
-// Domains + social links are sourced from the members' own form responses.
+// Team roster for 2026-27. Edit these arrays by hand, then `git push` (Vercel redeploys).
+// Photos live in /public/team/<rollno>.webp (2026-27 intake, named by roll number).
+// People carried over from last year keep their old photo in /public/images/team/<slug>.webp.
+// People without a photo render a muted placeholder.
+// Domains + social links are sourced from the members' own form responses (new.csv).
 
 export interface Person {
   name: string;
@@ -15,136 +17,390 @@ export interface Person {
   email?: string;
 }
 
+// Board of Coordinators — the lab's top-level board for 2026-27.
 export const coordinators: Person[] = [
-  { name: "Aaron Chakraborty", role: "Lab Coordinator", photo: "/team/aaron.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/aaron-chakraborty-309197287/", github: "https://github.com/aaron-631" },
-  { name: "Pratham Chaturvedi", role: "Kreative Coordinator", photo: "/team/pratham.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/pratham-chaturvedi-499a74280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" },
+  {
+    name: 'Sumedha Gunturi',
+    role: 'Lab Coordinator',
+    photo: '/team/2405198.webp',
+  },
+  {
+    name: 'Sai Suman Bebarta',
+    role: 'Tech Coordinator',
+    photo: '/team/2405754.webp',
+  },
+  {
+    name: 'Jagadish Mohanty',
+    role: 'Tech Coordinator',
+    photo: '/images/team/jagadish-mohanty.webp',
+    linkedin: 'https://www.linkedin.com/in/jagthefriend/',
+    github: 'https://github.com/JagTheFriend',
+  },
+  {
+    name: 'Om Prakash Ojha',
+    role: 'Non-Tech Coordinator',
+    photo: '/images/team/om-prakash-ojha.webp',
+    linkedin:
+      'https://www.linkedin.com/in/om-prakash-ojha-0a9679282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+  },
+  {
+    name: 'Chun Chayanika Uday Singh',
+    role: 'Admin Coordinator',
+    photo: '/team/24052074.webp',
+  },
+  {
+    name: 'Aadya Singh',
+    role: 'Community & Event Management Coordinator',
+    photo: '/images/team/aadya-singh.webp',
+    linkedin: 'http://linkedin.com/in/aadya-singh-21a3a034a',
+  },
 ];
 
+// Specialized Leads — heads of cross-domain initiatives.
+export const specializedLeads: Person[] = [
+  { name: 'Snigdha Mishra', role: 'Ideation & Public Speaking Head' },
+  {
+    name: 'Rishikesh Mishra',
+    role: 'KSAC & Outreach Head',
+    photo: '/team/24156082.webp',
+    linkedin:
+      'https://www.linkedin.com/in/rishikesh-mishra-ba20002a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+  },
+  {
+    name: 'Shreyash Tripathy',
+    role: 'KSAC & Outreach Head',
+    photo: '/team/24051580.webp',
+    linkedin:
+      'https://www.linkedin.com/in/shreyash-tripathy-039088322?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+  },
+  {
+    name: 'Subham Pattanaik',
+    role: 'Logistics & Operations Head',
+    photo: '/team/2405094.webp',
+  },
+  {
+    name: 'Arpit',
+    role: 'Technical Projects Head',
+    photo: '/team/24051540.webp',
+    linkedin: 'https://www.linkedin.com/in/arpit-485249322/',
+    github: 'https://github.com/Arpit1536',
+  },
+  { name: 'Hitesh Singh', role: 'Technical Projects Head' },
+];
+
+// Domain Leads — one (or two) leads per domain.
 export const leads: Person[] = [
-  { name: "Absar Ali", role: "CP Lead", domain: "Competitive Programming", photo: "/team/absar.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/watching-absar-ali", github: "https://github.com/Absar-ao4" },
-  { name: "Ajay Kumar", role: "Video Lead", domain: "Video", photo: "/team/ajay.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/ajay-kumar-2a192324a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Adrija Bhowmick", role: "App Dev Lead", domain: "App Dev", photo: "/team/adrija.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/adrija-bhowmick-b07b75229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/adrija2205" },
-  { name: "Kunal Saha", role: "App Dev Co-Lead", domain: "App Dev", photo: "/team/kunal.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/kunalsaha1107", github: "https://github.com/korags05" },
-  { name: "Suman Saha", role: "IoT Lead", domain: "IoT", photo: "/team/suman.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/suman-saha-69ba5029a", github: "https://github.com/circuito-suman" },
-  { name: "Priyanshu De", role: "Web Lead", domain: "Web Dev", photo: "/team/priyanshu.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/priyanshude/", github: "https://github.com/Undercrashers" },
-  { name: "Adwai Mohan", role: "ML Lead", domain: "Machine Learning", photo: "/team/adwai.webp", objectPosition: "object-center", linkedin: "https://www.linkedin.com/in/adwaimohan/", github: "https://github.com/adwaimohan" },
-  { name: "Shrinkhala Anand", role: "ML Co-Lead", domain: "Machine Learning", photo: "/team/shrinkhala.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/shrinkhala-anand-484998274?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", github: "https://github.com/Shrinkhalaa27" },
-  { name: "Bajinder Kumar", role: "Cyber Lead", domain: "Cyber Security", photo: "/team/bajinder.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/bajinder-kumar-8139bb275" },
-  { name: "Wriddhirupa Das", role: "Content Lead", domain: "Content", photo: "/team/wriddhirupa.webp", objectPosition: "object-center", linkedin: "https://www.linkedin.com/in/wriddhirupa-das-59b277320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Srinjoy Debnath", role: "GD Lead", domain: "GD & UI/UX", photo: "/team/srinjoy.webp", objectPosition: "object-center", linkedin: "https://www.linkedin.com/in/srinjoy-debnath-a27470266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Hemant Srivastava", role: "GD Co-Lead", domain: "GD & UI/UX", photo: "/team/hemant.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/hemant-srivastava-692875280" },
-  { name: "Anushka Thakur", role: "Marketing Lead", domain: "Marketing", photo: "/team/anushka.webp", objectPosition: "object-center", linkedin: "https://www.linkedin.com/in/anushka-thakur-4857162b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Yashovardhhan Ajitsaria", role: "Marketing Lead", domain: "Marketing", photo: "/team/yashovardhan.webp", objectPosition: "object-top", linkedin: "https://www.linkedin.com/in/yashovardhhan-ajitsaria-338719285", github: "https://github.com/Yashovardhhan-Ajitsaria" },
+  {
+    name: 'Ananya Acharya',
+    role: 'Admin Lead',
+    domain: 'Administration',
+    photo: '/team/24051680.webp',
+    linkedin: 'https://www.linkedin.com/in/ananya-acharya-470351346/',
+    github: 'https://github.com/Ananya-1801',
+  },
+  {
+    name: 'Anwesha Gupta',
+    role: 'Admin Lead',
+    domain: 'Administration',
+    photo: '/team/2405113.webp',
+  },
+  {
+    name: 'Komal Singh',
+    role: 'Marketing Lead',
+    domain: 'Marketing',
+    photo: '/team/2405730.webp',
+  },
+  { name: 'Akshit Jain', role: 'Marketing Lead', domain: 'Marketing' },
+  { name: 'Aqifa Aziz', role: 'Creative Lead', domain: 'GD & UI/UX' },
+  { name: 'Adarsh', role: 'Creative Lead', domain: 'GD & UI/UX' },
+  { name: 'Unnita', role: 'Creative Co-Lead', domain: 'GD & UI/UX' },
+  {
+    name: 'Abhishek Kumar',
+    role: 'Video Lead',
+    domain: 'Video',
+    photo: '/team/24157003.webp',
+  },
+  { name: 'Kushagra', role: 'App Dev Lead', domain: 'App Dev' },
+  {
+    name: 'Harsh Singh',
+    role: 'App Dev Lead',
+    domain: 'App Dev',
+    photo: '/team/2405655.webp',
+    linkedin:
+      'https://www.linkedin.com/in/harsh-singh-60a7b432b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    github: 'https://github.com/harshkumarsingh12',
+  },
+  {
+    name: 'Prabir Prabhudutta Rout',
+    role: 'IoT Lead',
+    domain: 'IoT',
+    photo: '/team/24155717.webp',
+    linkedin: 'https://www.linkedin.com/in/prabir-prabhudutta-rout',
+    github: 'https://github.com/prabir-rout',
+  },
+  {
+    name: 'Shreya Singh',
+    role: 'IoT Lead',
+    domain: 'IoT',
+    photo: '/team/24052180.webp',
+  },
+  {
+    name: 'Shivam Ramraika',
+    role: 'Web Dev Lead',
+    domain: 'Web Dev',
+    photo: '/team/24052455.webp',
+    linkedin: 'https://www.linkedin.com/in/shivam-ramraika',
+    github: 'https://github.com/Ramraika-s',
+  },
+  {
+    name: 'Himanshi Saxena',
+    role: 'CP Lead',
+    domain: 'Competitive Programming',
+    photo: '/team/24155175.webp',
+  },
+  { name: 'Harsh Vardhan', role: 'CP Lead', domain: 'Competitive Programming' },
+  {
+    name: 'Aaditya Sah',
+    role: 'Cybersecurity Lead',
+    domain: 'Cyber Security',
+    photo: '/images/team/aaditya-sah.webp',
+    linkedin: 'https://www.linkedin.com/in/aadityasah',
+    github: 'https://hackerone.com/root___professor?type=user',
+  },
+  {
+    name: 'Arpit',
+    role: 'Cybersecurity Lead',
+    domain: 'Cyber Security',
+    photo: '/team/24051540.webp',
+    linkedin: 'https://www.linkedin.com/in/arpit-485249322/',
+    github: 'https://github.com/Arpit1536',
+  },
+  {
+    name: 'Ritisha Sahni',
+    role: 'Machine Learning Lead',
+    domain: 'Machine Learning',
+  },
+  {
+    name: 'Naman Singh',
+    role: 'Machine Learning Lead',
+    domain: 'Machine Learning',
+    photo: '/team/24052230.webp',
+    linkedin: 'https://linkedin.com/in/naman-singh419',
+    github: 'https://github.com/NamanSingh69',
+  },
 ];
 
 // Members are rendered grouped by domain on the Team page (see app/team/page.tsx).
-// Not everyone submitted a domain; those without one simply carry no domain tag.
+// Someone in multiple domains gets one entry per domain, so their name shows up
+// in every group they belong to.
 export const members: Person[] = [
-  { name: "Aayushi Singh", photo: "/images/team/aayushi-singh.jpg", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/aayushi801" },
-  { name: "Adarsh Kumar", photo: "/images/team/adarsh-kumar.jpg", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/adarsh-kumar-12239b346/" },
-  { name: "Adarsh Pal", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/adarsh-kumar-12239b346/" },
-  { name: "Akash Routh", photo: "/images/team/akash-routh.jpg", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/akash-routh-66b9682aa/", github: "https://github.com/Bridge-007" },
-  { name: "Ayush Suman", photo: "/images/team/ayush-suman.jpg", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/ayushsuman001" },
-  { name: "Biswadeep Dev", photo: "/images/team/biswadeep-dev.jpg", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/biswadeepdev/", github: "https://github.com/ModRed-0" },
-  { name: "Purab Jana", photo: "/images/team/purab-jana.jpg", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/purab-jana-87a151288/", github: "https://github.com/CaptainCrunchilicious" },
-  { name: "Tanishq Makhija", photo: "/images/team/tanishq-makhija.jpg", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/tanishq-makhija" },
-  { name: "Utkarsh Prakash", photo: "/images/team/utkarsh-prakash.jpg", domain: "Competitive Programming", linkedin: "https://www.linkedin.com/in/utkarsh-prakash-116b3127a" },
-  { name: "Arpit", photo: "/images/team/arpit.jpg", domain: "App Dev", linkedin: "https://www.linkedin.com/in/arpit-485249322/", github: "https://github.com/Arpit1536" },
-  { name: "Arpit Kumar", domain: "App Dev" },
-  { name: "Bhumi Singh", domain: "App Dev" },
-  { name: "Binayak Shome", photo: "/images/team/binayak-shome.jpg", domain: "App Dev", linkedin: "https://linkedin.com/in/binayak-shome-831b192b6", github: "https://github.com/BinayakShome" },
-  { name: "Doni Somesh", photo: "/images/team/doni-somesh.jpg", domain: "App Dev", linkedin: "https://www.linkedin.com/in/doni-somesh-adjc/", github: "https://github.com/Somesh9832" },
-  { name: "Harsh Pal", domain: "App Dev", linkedin: "https://www.linkedin.com/in/harsh-singh-60a7b432b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/harshkumarsingh12" },
-  { name: "Harsh singh", photo: "/images/team/harsh-singh.jpg", domain: "App Dev", linkedin: "https://www.linkedin.com/in/harsh-singh-60a7b432b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/harshkumarsingh12" },
-  { name: "Harsh Vardhan", domain: "App Dev", linkedin: "https://www.linkedin.com/in/harsh-singh-60a7b432b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/harshkumarsingh12" },
-  { name: "Kushagra", domain: "App Dev" },
-  { name: "Manya Pandey", photo: "/images/team/manya-pandey.jpg", domain: "App Dev", linkedin: "https://in.linkedin.com/in/manya-pandey", github: "https://github.com/manya7842" },
-  { name: "Pratyush Shasi Swagati Nishank", domain: "App Dev" },
-  { name: "Sarthak", domain: "App Dev", linkedin: "https://www.linkedin.com/in/sarthak-singh-in", github: "https://github.com/sarthakksingh" },
-  { name: "Sarthak Singh", photo: "/images/team/sarthak-singh.jpg", domain: "App Dev", linkedin: "https://www.linkedin.com/in/sarthak-singh-in", github: "https://github.com/sarthakksingh" },
-  { name: "Soumyadeep Roy Karmakar", photo: "/images/team/soumyadeep-roy-karmakar.jpg", domain: "App Dev", linkedin: "https://www.linkedin.com/in/soumyadeeprk/", github: "https://github.com/SoumyadeepRoyKarmakar" },
-  { name: "Sunnik Chatterjee", photo: "/images/team/sunnik-chatterjee.jpg", domain: "App Dev", linkedin: "https://www.linkedin.com/in/sunnik-chatterjee-9b3a06281", github: "https://github.com/Sunnik-Chatterjee" },
-  { name: "Amrendra", domain: "Web Dev" },
-  { name: "Archi Shaw", photo: "/images/team/archi-shaw.jpg", domain: "Web Dev", linkedin: "https://www.linkedin.com/in/archi-shaw-279a34277?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Archi-shaw" },
-  { name: "Deepak Maurya", photo: "/images/team/deepak-maurya.jpg", domain: "Web Dev", linkedin: "https://linkedin.com/in/deepak-mry", github: "https://github.com/deepakmauryadev" },
-  { name: "Jagadish Mohanty", photo: "/images/team/jagadish-mohanty.jpg", domain: "Web Dev", linkedin: "https://www.linkedin.com/in/jagthefriend/", github: "https://github.com/JagTheFriend" },
-  { name: "Jeet Das", photo: "/images/team/jeet-das.jpg", domain: "Web Dev", linkedin: "https://www.linkedin.com/in/jeet-das-7633a52ab", github: "https://github.com/JeetDas5" },
-  { name: "Kingsuk Nandi", photo: "/images/team/kingsuk-nandi.jpg", domain: "Web Dev", linkedin: "https://www.linkedin.com/in/kingsuk-nandi/", github: "https://github.com/KingsukNandi" },
-  { name: "Mohak Bhattacharya", photo: "/images/team/mohak-bhattacharya.jpg", domain: "Web Dev", linkedin: "https://www.linkedin.com/in/mohak-bhattacharya-a74184285/", github: "https://github.com/mohakbh10" },
-  { name: "Pratik Halder", domain: "Web Dev" },
-  { name: "Shivam Ramraika", photo: "/images/team/shivam-ramraika.jpg", domain: "Web Dev", linkedin: "https://www.linkedin.com/in/shivam-ramraika", github: "https://github.com/Ramraika-s" },
-  { name: "Avrrodeep Banerjee", photo: "/images/team/avrrodeep-banerjee.jpg", domain: "IoT", linkedin: "https://www.linkedin.com/in/avrrodeep-banerjee-a8b012241", github: "https://github.com/star-on-earth" },
-  { name: "Ayush Ranjan", domain: "IoT" },
-  { name: "Himanshi Saxena", domain: "IoT" },
-  { name: "Prabir Prabhudutta Rout", photo: "/images/team/prabir-prabhudutta-rout.jpg", domain: "IoT", linkedin: "https://www.linkedin.com/in/prabir-prabhudutta-rout", github: "https://github.com/prabir-rout" },
-  { name: "Rachit Agarwal", photo: "/images/team/rachit-agarwal.jpg", domain: "IoT", linkedin: "https://www.linkedin.com/in/rachit1105", github: "https://github.com/Rachit1105" },
-  { name: "Sai Suman Bebarta", domain: "IoT" },
-  { name: "Sambit Prusty", photo: "/images/team/sambit-prusty.jpg", domain: "IoT", linkedin: "https://www.linkedin.com/in/sambit-prusty-2ab5592ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", github: "https://github.com/Jai-Jagannath" },
-  { name: "Sayan Das", domain: "IoT" },
-  { name: "Shreya Singh", domain: "IoT" },
-  { name: "Shreyash Tripathy", photo: "/images/team/shreyash-tripathy.jpg", domain: "IoT", linkedin: "https://www.linkedin.com/in/shreyash-tripathy-039088322?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Shubham Sinha", photo: "/images/team/shubham-sinha.jpg", domain: "IoT", linkedin: "https://www.linkedin.com/in/cosmic-infinity", github: "https://github.com/Cosmic-Infinity" },
-  { name: "Sumeet Singh", photo: "/images/team/sumeet-singh.jpg", domain: "IoT", linkedin: "https://www.linkedin.com/in/sumeet-singh20" },
-  { name: "Tamanna Banik", domain: "IoT" },
-  { name: "Akshat Chauhan", photo: "/images/team/akshat-chauhan.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/akshat-chauhan-ai/", github: "https://github.com/AkZcH" },
-  { name: "Aman Singh", domain: "Machine Learning", linkedin: "https://linkedin.com/in/naman-singh419", github: "https://github.com/NamanSingh69" },
-  { name: "Avaneesh Kumar rai", photo: "/images/team/avaneesh-kumar-rai.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/avaneesh-rai-16aa01287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Avaneesh040" },
-  { name: "Naman Singh", photo: "/images/team/naman-singh.jpg", domain: "Machine Learning", linkedin: "https://linkedin.com/in/naman-singh419", github: "https://github.com/NamanSingh69" },
-  { name: "Souvik Bose", photo: "/images/team/souvik-bose.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/souvik-thecvguy?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Taniya Chouhan", photo: "/images/team/taniya-chouhan.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/taniya-chouhan-625999286", github: "https://github.com/TaniyaChouhan20" },
-  { name: "Vaidik Gupta", photo: "/images/team/vaidik-gupta.jpg", domain: "Machine Learning", linkedin: "https://www.linkedin.com/in/vaidik-gupta-ss2311383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Aaditya Sah", photo: "/images/team/aaditya-sah.jpg", domain: "Cyber Security", linkedin: "https://www.linkedin.com/in/aadityasah", github: "https://hackerone.com/root___professor?type=user" },
-  { name: "Abul Kalam Azad", photo: "/images/team/abul-kalam-azad.jpg", domain: "Cyber Security", linkedin: "https://www.linkedin.com/in/abul-kalam-azad-a7a41a260/", github: "https://github.com/Abulkalam1524" },
-  { name: "Sohom Chandra", photo: "/images/team/sohom-chandra.jpg", domain: "Cyber Security", linkedin: "https://www.linkedin.com/in/sohom-chandra-chandra-8212b7286", github: "https://www.github.com/PaweesRaag" },
-  { name: "Tazil Khan", photo: "/images/team/tazil-khan.jpg", domain: "Cyber Security", linkedin: "https://www.linkedin.com/in/tazil-khan-4b0544312" },
-  { name: "Laveeza Zafar", photo: "/images/team/laveeza-zafar.jpg", domain: "Content", linkedin: "https://www.linkedin.com/in/laveeza-z-891382267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Akanksha Shrivastava", photo: "/images/team/akanksha-shrivastava.jpg", domain: "GD & UI/UX", linkedin: "https://www.linkedin.com/in/akanksha-shrivastava-6ba708299?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Aruj Agarwal", photo: "/images/team/aruj-agarwal.jpg", domain: "GD & UI/UX", linkedin: "https://www.linkedin.com/in/aruj-agarwal-159301321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Khushi Kushwaha", photo: "/images/team/khushi-kushwaha.jpg", domain: "GD & UI/UX", linkedin: "https://www.linkedin.com/in/khushkushwaha45", github: "https://github.com/khushhub" },
-  { name: "Maureen Morris", photo: "/images/team/maureen-morris.jpg", domain: "GD & UI/UX", linkedin: "https://www.linkedin.com/in/maureen-morris-166111357?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" },
-  { name: "Md Zaid", photo: "/images/team/md-zaid.jpg", domain: "GD & UI/UX", linkedin: "http://linkedin.com/in/zaid2003", github: "https://github.com/Zaidco" },
-  { name: "Chandni Kar", domain: "GD & UI/UX" },
-  { name: "Tarni Verma", domain: "GD & UI/UX" },
-  { name: "Aditya Singh", photo: "/images/team/aditya-singh.jpg", domain: "Video", linkedin: "https://www.linkedin.com/in/fakadits?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "AYUSH SANKRIT", photo: "/images/team/ayush-sankrit.jpg", domain: "Video", linkedin: "https://www.linkedin.com/in/ayush-sankrit-689694330" },
-  { name: "Drupadh K", photo: "/images/team/drupadh-k.jpg", domain: "Video" },
-  { name: "Om prakash ojha", photo: "/images/team/om-prakash-ojha.jpg", domain: "Video", linkedin: "https://www.linkedin.com/in/om-prakash-ojha-0a9679282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Prangshu Mondal", photo: "/images/team/prangshu-mondal.jpg", domain: "Video", linkedin: "https://www.linkedin.com/in/prangggshu", github: "https://github.com/prangggshu" },
-  { name: "Arpit Rathour", photo: "/images/team/arpit-rathour.jpg", domain: "Marketing", linkedin: "https://www.linkedin.com/in/arpit-rathour?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Dev Jhawar", photo: "/images/team/dev-jhawar.jpg", domain: "Marketing", linkedin: "https://www.linkedin.com/in/dev-jhawar11/" },
-  { name: "Komal Singh", domain: "Marketing" },
-  { name: "Rishikesh Mishra", domain: "Marketing", linkedin: "https://www.linkedin.com/in/rishikesh-mishra-ba20002a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Subham Pattanaik", domain: "Marketing" },
-  { name: "Sumedha G", domain: "Marketing" },
-  { name: "Tithi Bera", photo: "/images/team/tithi-bera.jpg", domain: "Marketing", linkedin: "https://www.linkedin.com/in/tithi-bera-b146902aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", github: "https://github.com/Tithi14/T1" },
-  { name: "Aadya singh", photo: "/images/team/aadya-singh.jpg", domain: "Administration", linkedin: "http://linkedin.com/in/aadya-singh-21a3a034a" },
-  { name: "Ananya Acharya", photo: "/images/team/ananya-acharya.jpg", domain: "Administration", linkedin: "https://www.linkedin.com/in/ananya-acharya-470351346/", github: "https://github.com/Ananya-1801" },
-  { name: "Ananya Yadav", domain: "Administration", linkedin: "https://www.linkedin.com/in/ananya-acharya-470351346/", github: "https://github.com/Ananya-1801" },
-  { name: "Anwesha gupta", domain: "Administration" },
-  { name: "Chun Chayanika Uday Singh", domain: "Administration" },
-  { name: "John James", photo: "/images/team/john-james.jpg", domain: "Administration", linkedin: "https://www.linkedin.com/in/john-james-10j10j/", github: "https://github.com/johnjames10" },
-  { name: "Sanghamitra Sahoo", domain: "Administration" },
-  { name: "Sayam Jain", photo: "/images/team/sayam-jain.jpg", domain: "Administration", linkedin: "https://www.linkedin.com/in/sayam-jain-8a6151310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Suraj Nayak", domain: "Administration" },
-  { name: "Abhishek Kumar", domain: "Video" },
-  { name: "Akshit jain", domain: "Marketing" },
-  { name: "Anurag Anand" },
-  { name: "Aqifa aziz", domain: "Content" },
-  { name: "Arth Parashar", domain: "Marketing" },
-  { name: "Divyansh Upadhyay" },
-  { name: "Divyesh Jhunjhunwala", domain: "Marketing" },
-  { name: "Hitesh Singh", domain: "Machine Learning" },
-  { name: "Jasmeet Kaur", domain: "Content" },
-  { name: "Muskan Kumari" },
-  { name: "Navendu Mishra" },
-  { name: "Prajukta Banerjee" },
-  { name: "Ritisha sahni", domain: "Machine Learning" },
-  { name: "Rohit Raj", domain: "Cyber Security" },
-  { name: "Ruhan Saha" },
-  { name: "Shresth Agrawal" },
-  { name: "Snigdha Mishra", domain: "Administration" },
-  { name: "Soumyajit Mandal" },
-  { name: "Tanmay sharma" },
-  { name: "Tanya" },
-  { name: "Vinayak Tiwari", domain: "Competitive Programming" },
+  // Competitive Programming
+  {
+    name: 'Aditya Gupta',
+    photo: '/team/24052208.webp',
+    domain: 'Competitive Programming',
+  },
+  {
+    name: 'Aditya Tiwari',
+    photo: '/team/24155151.webp',
+    domain: 'Competitive Programming',
+  },
+  {
+    name: 'Anurag Anand',
+    photo: '/team/2405417.webp',
+    domain: 'Competitive Programming',
+  },
+  {
+    name: 'Swastik Biswas',
+    photo: '/team/24052392.webp',
+    domain: 'Competitive Programming',
+  },
+
+  // App Dev
+  { name: 'Apoorva Deep', photo: '/team/241551071.webp', domain: 'App Dev' },
+  { name: 'Bhumi Singh', photo: '/team/2405719.webp', domain: 'App Dev' },
+  {
+    name: 'Naveen Kumar Mohanka',
+    photo: '/team/25051360.webp',
+    domain: 'App Dev',
+  },
+  { name: 'Piyush Anand', photo: '/team/25051568.webp', domain: 'App Dev' },
+  {
+    name: 'Pratyush Shasi Swagati Nishank',
+    photo: '/team/24155191.webp',
+    domain: 'App Dev',
+  },
+  { name: 'Rewant Rai', photo: '/team/25052014.webp', domain: 'App Dev' },
+  { name: 'Shubham Bhuyan', photo: '/team/25157052.webp', domain: 'App Dev' },
+  {
+    name: 'Soumyadeep Roy Karmakar',
+    photo: '/team/2405842.webp',
+    domain: 'App Dev',
+    linkedin: 'https://www.linkedin.com/in/soumyadeeprk/',
+    github: 'https://github.com/SoumyadeepRoyKarmakar',
+  },
+
+  // Web Dev
+  { name: 'Abhisekh Nayak', photo: '/team/2405926.webp', domain: 'Web Dev' },
+  { name: 'Aditya Jaggi', photo: '/team/2505182.webp', domain: 'Web Dev' },
+  {
+    name: 'Amrendra Kumar Yadav',
+    photo: '/team/24155604.webp',
+    domain: 'Web Dev',
+  },
+  { name: 'Ayush Pathak', photo: '/team/25051683.webp', domain: 'Web Dev' },
+  { name: 'Muskan Kumari', photo: '/team/24051784.webp', domain: 'Web Dev' },
+  { name: 'Sujal Agarwal', photo: '/team/24051292.webp', domain: 'Web Dev' },
+  { name: 'Surarihan Sarkar', photo: '/team/25051326.webp', domain: 'Web Dev' },
+  { name: 'Swastik Biswas', photo: '/team/24052392.webp', domain: 'Web Dev' },
+
+  // IoT
+  { name: 'Aniket Prakash', photo: '/team/2430079.webp', domain: 'IoT' },
+  {
+    name: 'Avrrodeep Banerjee',
+    photo: '/team/2328158.webp',
+    domain: 'IoT',
+    linkedin: 'https://www.linkedin.com/in/avrrodeep-banerjee-a8b012241',
+    github: 'https://github.com/star-on-earth',
+  },
+  { name: 'Ayush Ranjan', photo: '/team/24155533.webp', domain: 'IoT' },
+  { name: 'Deepraj Banerjee', photo: '/team/2430028.webp', domain: 'IoT' },
+  { name: 'Farhan Akhter Khan', photo: '/team/25155307.webp', domain: 'IoT' },
+  { name: 'Girika Sarkar', photo: '/team/25052099.webp', domain: 'IoT' },
+  { name: 'N Puspanjali Reddy', photo: '/team/2405132.webp', domain: 'IoT' },
+  { name: 'Ritesh Behera', photo: '/team/24156084.webp', domain: 'IoT' },
+  { name: 'Sayan Das', photo: '/team/2405301.webp', domain: 'IoT' },
+  {
+    name: 'Shubham Sinha',
+    photo: '/team/23051626.webp',
+    domain: 'IoT',
+    linkedin: 'https://www.linkedin.com/in/cosmic-infinity',
+    github: 'https://github.com/Cosmic-Infinity',
+  },
+  { name: 'Sriram Kondury', photo: '/team/2405388.webp', domain: 'IoT' },
+  { name: 'Tamanna Banik', photo: '/team/24052195.webp', domain: 'IoT' },
+  { name: 'Yash Raj', photo: '/team/2505718.webp', domain: 'IoT' },
+
+  // Machine Learning
+  {
+    name: 'Ayush Raj',
+    photo: '/team/251551021.webp',
+    domain: 'Machine Learning',
+  },
+  {
+    name: 'Pragati Singh',
+    photo: '/team/25051640.webp',
+    domain: 'Machine Learning',
+  },
+  {
+    name: 'Pranjal Kumar',
+    photo: '/team/24155038.webp',
+    domain: 'Machine Learning',
+  },
+  {
+    name: 'Sagun Patro',
+    photo: '/team/24155199.webp',
+    domain: 'Machine Learning',
+  },
+  {
+    name: 'Sanchayan Chakraborty',
+    photo: '/team/25051040.webp',
+    domain: 'Machine Learning',
+  },
+  {
+    name: 'Shadwal Singh',
+    photo: '/team/25051314.webp',
+    domain: 'Machine Learning',
+  },
+  {
+    name: 'Siddhidh Chandra',
+    photo: '/team/25051448.webp',
+    domain: 'Machine Learning',
+  },
+
+  // Cyber Security
+  {
+    name: 'Aman Singh',
+    photo: '/team/24052361.webp',
+    domain: 'Cyber Security',
+  },
+  {
+    name: 'Soumyadeep Roy Karmakar',
+    photo: '/team/2405842.webp',
+    domain: 'Cyber Security',
+    linkedin: 'https://www.linkedin.com/in/soumyadeeprk/',
+    github: 'https://github.com/SoumyadeepRoyKarmakar',
+  },
+  {
+    name: 'Tanmay Sharma',
+    photo: '/team/24051065.webp',
+    domain: 'Cyber Security',
+  },
+
+  // Content
+  { name: 'Jasmeet Kaur', photo: '/team/2405945.webp', domain: 'Content' },
+  { name: 'Samridhi Pradhan', photo: '/team/2405603.webp', domain: 'Content' },
+
+  // GD & UI/UX
+  { name: 'Aditya Jaggi', photo: '/team/2505182.webp', domain: 'GD & UI/UX' },
+
+  // Video
+  { name: 'Arth Parashar', photo: '/team/2405566.webp', domain: 'Video' },
+  { name: 'Ayush Omkar', photo: '/team/25158034.webp', domain: 'Video' },
+  { name: 'Drupadh K', photo: '/team/24155399.webp', domain: 'Video' },
+  { name: 'Gungun Raj', photo: '/team/2405279.webp', domain: 'Video' },
+  { name: 'Ruhan Saha', photo: '/team/24052408.webp', domain: 'Video' },
+  { name: 'Rwik Pal', photo: '/team/25155808.webp', domain: 'Video' },
+  { name: 'Shresth Agrawal', photo: '/team/2405610.webp', domain: 'Video' },
+  { name: 'Soumyajit Mandal', photo: '/team/25155815.webp', domain: 'Video' },
+
+  // Marketing
+  { name: 'Arth Parashar', photo: '/team/2405566.webp', domain: 'Marketing' },
+  {
+    name: 'Deepraj Banerjee',
+    photo: '/team/2430028.webp',
+    domain: 'Marketing',
+  },
+  { name: 'Tanya', photo: '/team/2405170.webp', domain: 'Marketing' },
+
+  // Administration
+  {
+    name: 'Aayush Kumar Sharma',
+    photo: '/team/25051059.webp',
+    domain: 'Administration',
+  },
+  {
+    name: 'Akshita Deep',
+    photo: '/team/24051080.webp',
+    domain: 'Administration',
+  },
+  {
+    name: 'Ashish Kumar',
+    photo: '/team/25155061.webp',
+    domain: 'Administration',
+  },
+  { name: 'Gungun Raj', photo: '/team/2405279.webp', domain: 'Administration' },
+  { name: 'Harsh Pal', photo: '/team/2405877.webp', domain: 'Administration' },
+  {
+    name: 'Kritika Sharma',
+    photo: '/team/2405733.webp',
+    domain: 'Administration',
+  },
+  {
+    name: 'Kumar Manglam Agrawal',
+    photo: '/team/2406130.webp',
+    domain: 'Administration',
+  },
+  {
+    name: 'Samridhi Pradhan',
+    photo: '/team/2405603.webp',
+    domain: 'Administration',
+  },
+  {
+    name: 'Shubham Sinha',
+    photo: '/team/23051626.webp',
+    domain: 'Administration',
+    linkedin: 'https://www.linkedin.com/in/cosmic-infinity',
+    github: 'https://github.com/Cosmic-Infinity',
+  },
 ];
