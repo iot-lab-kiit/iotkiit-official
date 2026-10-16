@@ -225,6 +225,12 @@ export const members: Person[] = [
     domain: 'Competitive Programming',
   },
   {
+    name: 'Rudransh Singh',
+    photo: '/team/251551024.webp',
+    domain: 'Competitive Programming',
+    email: '251551024@kiit.ac.in',
+  },
+  {
     name: 'Swastik Biswas',
     photo: '/team/24052392.webp',
     domain: 'Competitive Programming',
@@ -245,6 +251,12 @@ export const members: Person[] = [
     domain: 'App Dev',
   },
   { name: 'Rewant Rai', photo: '/team/25052014.webp', domain: 'App Dev' },
+  {
+    name: 'Rudransh Singh',
+    photo: '/team/251551024.webp',
+    domain: 'App Dev',
+    email: '251551024@kiit.ac.in',
+  },
   { name: 'Shubham Bhuyan', photo: '/team/25157052.webp', domain: 'App Dev' },
   {
     name: 'Soumyadeep Roy Karmakar',
