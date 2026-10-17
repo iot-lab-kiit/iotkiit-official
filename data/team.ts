@@ -86,6 +86,11 @@ export const specializedLeads: Person[] = [
     github: 'https://github.com/Arpit1536',
   },
   { name: 'Hitesh Singh', role: 'Technical Projects Head' },
+  {
+    name: 'Harsh Kumar',
+    role: 'Technical Projects Head',
+    photo: '/team/24155246.webp',
+  },
 ];
 
 // Domain Leads — one (or two) leads per domain.
@@ -110,7 +115,12 @@ export const leads: Person[] = [
     domain: 'Marketing',
     photo: '/team/2405730.webp',
   },
-  { name: 'Akshit Jain', role: 'Marketing Lead', domain: 'Marketing' },
+  {
+    name: 'Akshit Jain',
+    role: 'Marketing Lead',
+    domain: 'Marketing',
+    photo: '/team/2405707.webp',
+  },
   { name: 'Aqifa Aziz', role: 'Creative Lead', domain: 'GD & UI/UX' },
   {
     name: 'Aadarsh Gupta',
