@@ -136,7 +136,7 @@ export const leads: Person[] = [
   {
     name: 'Abhishek Kumar',
     role: 'Video Lead',
-    domain: 'Video',
+    domain: 'Photo and Video',
     photo: '/team/24157003.webp',
   },
   {
@@ -393,6 +393,11 @@ export const members: Person[] = [
     github: 'https://github.com/SoumyadeepRoyKarmakar',
   },
   {
+    name: 'Subham Sekhar Patra',
+    photo: '/team/24159018.webp',
+    domain: 'Cyber Security',
+  },
+  {
     name: 'Tanmay Sharma',
     photo: '/team/24051065.webp',
     domain: 'Cyber Security',
@@ -405,16 +410,16 @@ export const members: Person[] = [
   // GD & UI/UX
   { name: 'Aditya Jaggi', photo: '/team/2505182.webp', domain: 'GD & UI/UX' },
 
-  // Video
-  { name: 'Arth Parashar', photo: '/team/2405566.webp', domain: 'Video' },
-  { name: 'Ayush Omkar', photo: '/team/25158034.webp', domain: 'Video' },
-  { name: 'Drupadh K', photo: '/team/24155399.webp', domain: 'Video' },
-  { name: 'Gungun Raj', photo: '/team/2405279.webp', domain: 'Video' },
-  { name: 'Priyanshu', photo: '/team/2507022.webp', domain: 'Video' },
-  { name: 'Ruhan Saha', photo: '/team/24052408.webp', domain: 'Video' },
-  { name: 'Rwik Pal', photo: '/team/25155808.webp', domain: 'Video' },
-  { name: 'Shresth Agrawal', photo: '/team/2405610.webp', domain: 'Video' },
-  { name: 'Soumyajit Mandal', photo: '/team/25155815.webp', domain: 'Video' },
+  // Photo and Video
+  { name: 'Arth Parashar', photo: '/team/2405566.webp', domain: 'Photo and Video' },
+  { name: 'Ayush Omkar', photo: '/team/25158034.webp', domain: 'Photo and Video' },
+  { name: 'Drupadh K', photo: '/team/24155399.webp', domain: 'Photo and Video' },
+  { name: 'Gungun Raj', photo: '/team/2405279.webp', domain: 'Photo and Video' },
+  { name: 'Priyanshu', photo: '/team/2507022.webp', domain: 'Photo and Video' },
+  { name: 'Ruhan Saha', photo: '/team/24052408.webp', domain: 'Photo and Video' },
+  { name: 'Rwik Pal', photo: '/team/25155808.webp', domain: 'Photo and Video' },
+  { name: 'Shresth Agrawal', photo: '/team/2405610.webp', domain: 'Photo and Video' },
+  { name: 'Soumyajit Mandal', photo: '/team/25155815.webp', domain: 'Photo and Video' },
 
   // Marketing
   { name: 'Arth Parashar', photo: '/team/2405566.webp', domain: 'Marketing' },

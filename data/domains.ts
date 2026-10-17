@@ -78,7 +78,7 @@ export const domains: Domain[] = [
   },
   {
     id: "video",
-    title: "Video",
+    title: "Photo and Video",
     icon: "Videocam",
     desc: "Documenting events and crafting cinematic reels, with visual storytelling through the lens.",
     img: "/images/domains/videography.png",

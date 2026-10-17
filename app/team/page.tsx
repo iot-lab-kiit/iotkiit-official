@@ -23,7 +23,7 @@ const DOMAIN_ORDER = [
   'Cyber Security',
   'Content',
   'GD & UI/UX',
-  'Video',
+  'Photo and Video',
   'Marketing',
   'Administration',
 ];
