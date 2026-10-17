@@ -126,6 +126,12 @@ export const leads: Person[] = [
     domain: 'Marketing',
     photo: '/team/2405707.webp',
   },
+  {
+    name: 'Anima Swain',
+    role: 'Social Media Lead',
+    domain: 'Marketing',
+    photo: '/team/24051390.webp',
+  },
   { name: 'Aqifa Aziz', role: 'Creative Lead', domain: 'GD & UI/UX' },
   {
     name: 'Aadarsh Gupta',
