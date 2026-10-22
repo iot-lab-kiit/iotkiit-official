@@ -66,11 +66,11 @@ export const specializedLeads: Person[] = [
     linkedin:
       'https://www.linkedin.com/in/rishikesh-mishra-ba20002a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
-  {
-    name: 'Farhan Khan',
-    role: 'KSAC & Outreach Head',
-    photo: '/team/24052344.webp',
-  },
+  // {
+  //   name: 'Farhan Khan',
+  //   role: 'KSAC & Outreach Head',
+  //   photo: '/team/24052344.webp',
+  // },
   {
     name: 'Shreyash Tripathy',
     role: 'KSAC & Outreach Head',
