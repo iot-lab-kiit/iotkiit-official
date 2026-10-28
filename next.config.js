@@ -1,10 +1,15 @@
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  output: "standalone",
+
   reactStrictMode: true,
+
   experimental: {
     agentUpgrade: "latest",
   },
+
   images: {
     remotePatterns: [
       {
@@ -17,7 +22,7 @@ const nextConfig = {
       },
     ],
   },
-    // target: "serverless",
 };
 
 module.exports = nextConfig;
+
