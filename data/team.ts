@@ -195,14 +195,6 @@ export const leads: Person[] = [
     photo: '/team/2405055.webp',
   },
   {
-    name: 'Aaditya Sah',
-    role: 'Cybersecurity Lead',
-    domain: 'Cyber Security',
-    photo: '/images/legacy-team-images/aaditya-sah.webp',
-    linkedin: 'https://www.linkedin.com/in/aadityasah',
-    github: 'https://hackerone.com/root___professor?type=user',
-  },
-  {
     name: 'Arpit',
     role: 'Cybersecurity Lead',
     domain: 'Cyber Security',
@@ -380,6 +372,13 @@ export const members: Person[] = [
   },
 
   // Cyber Security
+  {
+    name: 'Aaditya Sah',
+    photo: '/images/legacy-team-images/aaditya-sah.webp',
+    domain: 'Cyber Security',
+    linkedin: 'https://www.linkedin.com/in/aadityasah',
+    github: 'https://hackerone.com/root___professor?type=user',
+  },
   {
     name: 'Aman Singh',
     photo: '/team/24052361.webp',
