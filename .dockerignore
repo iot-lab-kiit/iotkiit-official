@@ -1,17 +1,48 @@
+# ---------------------------------------------------------------------------
+# Build-context exclusions. This file is what keeps host-side build artifacts
+# (.next, node_modules, .git) OUT of the image — without it, `COPY . .` drags
+# a stale local `.next`/`node_modules` into the build and reproduces exactly
+# the "latest commit but old output" bug.
+# ---------------------------------------------------------------------------
 
+# Dependencies & build output — always rebuilt inside the image.
 node_modules
 .next
+out
+build
+
+# Version control / CI — never needed at build time.
 .git
 .github
-.vscode
-.idea
-coverage
-*.log
+.gitignore
 
+# Local env & secrets. Only `.env.example` (no secrets) may be committed.
 .env
 .env.*
 !.env.example
 
+# Logs & debug artifacts.
 npm-debug.log*
-.DS_Store
+yarn-debug.log*
+yarn-error.log*
+*.log
 
+# Docker files themselves are not part of the build context.
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Docs & tooling not required to build or run the site.
+README.md
+AGENTS.md
+*.md
+.vscode
+.idea
+
+# TypeScript incremental build cache / Next env stub (regenerated on build).
+*.tsbuildinfo
+next-env.d.ts
+
+# OS cruft.
+.DS_Store
+Thumbs.db
