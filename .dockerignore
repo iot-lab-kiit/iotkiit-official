@@ -29,6 +29,8 @@ yarn-error.log*
 
 # Docker files themselves are not part of the build context.
 Dockerfile
+compose.yml
+compose.yaml
 docker-compose*.yml
 .dockerignore
 
