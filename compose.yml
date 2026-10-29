@@ -13,8 +13,8 @@ services:
       PORT: "3000"
       NEXT_TELEMETRY_DISABLED: "1"
 
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
 
     security_opt:
       - no-new-privileges:true
